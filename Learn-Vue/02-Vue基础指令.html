@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>02-Vue基础指令</title>
+
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1、v-cloak -->
+      <!-- 使用 v-cloak 能够解决 插值{{}}表达式闪烁问题，加载慢 -->
+      <p v-cloak>+++++++ {{ msg }} -------</p>
+
+      <!-- 2、v-text -->
+      <!-- 默认 v-text 没有闪烁问题 -->
+      <!-- v-text 会覆盖元素中原本的内容，但是 v-cloak 只会把当前的占位符替换，不会把整个内容清空 -->
+      <h4 v-text="msg">==========</h4>
+
+      <!-- 3、v-html -->
+      <!-- v-html 覆盖元素中所有内容，但是会将内容当成HTML放入 -->
+      <div v-html="msg2"></div>
+
+      <!-- 4、v-bind :属性绑定 -->
+      <!-- v-bind 是 VUE 中提供的用于绑定属性的指令，可以简写为 : 冒号，跟上要绑定的属性。-->
+      <!-- v-bind 中可以写一个合法的js表达式，myTitle相当于一个表达式，可以进行方法调用、字符串拼接 -->
+      <input type="button" value="按钮" v-bind:title="myTitle + '123123'" />
+
+      <!-- 5、v-on @事件绑定 -->
+      <!-- v-on 是用来绑定事件机制的 -->
+      <!-- v-on 也可以用 @ 符号简写 -->
+      <input
+        type="button"
+        value="v-on 按钮"
+        :title="myTitle"
+        v-on:click="show"
+        @mouseover="mouseover"
+      />
+    </div>
+    <!-- 模拟网络慢，Google 浏览器中将 F12 中NETWORK的 Offline设置为 Slow  -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          msg: '123',
+          msg2: '<h1>哈哈，我是H1</h1>',
+          myTitle: '这是一个自己定义的 Title'
+        },
+        // 这个 methods 属性中定义了当前 Vue 实例中所有可用的方法
+        methods: {
+          show: function() {
+            alert('hello');
+          },
+          mouseover: function() {
+            this.msg = '我变了';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

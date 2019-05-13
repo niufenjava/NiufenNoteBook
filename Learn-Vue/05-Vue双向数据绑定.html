@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>05.Vue双向数据绑定</title>
+  <!-- 1. 导入 Vue 的包 -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- 2、创建一个要控制的区域 -->
+  <div id="app">
+    <h4>{{ msg }}</h4>
+    <h5> v-bind4 只能实现数据的单向绑定，从 M 自动绑定到 V，无法实现数据的双向绑定</h5>
+    <input v-bind:value="msg" >
+    <h5> v-model 可以实现数据表单元素与 model 中数据的双向数据绑定</h5>
+    <p>注意：v-model 只能运用在表单元素中 </p>
+    <p>input(radio\text\address\email)、select、checkbox、textarea</p>
+    <input v-model="msg" >
+    <br>
+    <input type="button" value="重置" @click="buttonClick">
+  </div>
+
+  <script>
+    // 3. 创建一个 Vue 的实例
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        msg: '欢迎学习Vue'
+      },
+      methods: {
+        buttonClick(){
+          this.msg = '欢迎学习Vue'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

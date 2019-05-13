@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>02.Vue跑马灯项目</title>
+    <!-- 1. 导入 Vue 的包 -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <!-- 2、创建一个要控制的区域 -->
+    <div id="app">
+      <input type="button" value="浪起来" @click="lang" />
+      <input type="button" value="低调" @click="stop" />
+      <h4>{{ msg }}</h4>
+    </div>
+
+    <script>
+      // 3. 创建一个 Vue 的实例
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          intervalId: null, // z在 data 上定义定时器
+          msg: '~欢迎学习Vue~'
+        },
+        methods: {
+          lang() {
+            // console.log(msg) // 未定义；注意：在 VM 实例中，想要调用 data 上的数据或者调用 methods 中的方法，必须通过 this.数据属性名 或 this.方法名 来进行访问。这里的 this 表示 new 出来的 VM 实例对象
+            // console.log(this.msg)
+
+            // 获取到头的第一个字符
+            // var start = this.msg.substring(0, 1);
+            // 获取到后面的所有字符
+            // var end = this.msg.substring(1);
+            // 重新拼接得到新的字符串，并赋值给 this.msg
+            // 注意：VM实例，会监听自己身上的 data 中所有数据的改变，只要数据一发生变化，就会自动把新的数据，从 data 上同步到页面中去；好处：程序员只需要关心数据，不需要关系数据如何如重新渲染到页面
+            // this.msg = end + start;
+
+            var _this = this;
+            // 这种写法需要重新定义一个this
+            // setInterval(function() {
+            //   var start = _this.msg.substring(0, 1);
+            //   var end = _this.msg.substring(1);
+            //   _this.msg = end + start;
+            // }, 400);
+            
+            if(this.intervalId != null){
+              return
+            }
+            // 箭头函数的作用：解决this指向的问题。箭头函数内部的 this 和外部的 this 是同一个
+            this.intervalId = setInterval(() => {
+              var start = this.msg.substring(0, 1);
+              var end = this.msg.substring(1);
+              this.msg = end + start;
+            }, 400);
+          },
+          stop() {
+            clearInterval(this.intervalId)
+            // 每当清除了定时器之后，需要重新把 intervalId 设置为 null
+            this.intervalId = null
+          }
+        }
+      });
+
+      // 分析
+      // 1. 给 【浪起来】 按钮，绑定一个点击事件 v-on @
+      // 2. 在按钮的事件处理函数中，写相关的业务代码：拿到msg 字符串，然后调用字符串的 substring 方法进行截取，把第一个字符截取出来放到最后一个位置即可
+      // 3. 为了实现点击一下按钮，自动截取的功能，需要把 2 步骤中的代码放到一个定时器里面
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>08.Vue使用内联演示</title>
+  <!-- 1. 导入 Vue 的包 -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- 2、创建一个要控制的区域 -->
+  <div id="app">
+    <h4>直接在元素上通过 :style 的形式，书写样式对象</h4>
+    <div :style="{'color':'red','font-size':'20px'}">直接在元素上通过 :style 的形式，书写样式对象:style="{'color':'red','font-size':'20px'}"</div>
+
+    <h4>将样式对象，定义到 data 中，并直接引用到 :style 中</h4>
+    <div :style="div1StyleObj">将样式对象，定义到 data 中，并直接引用到 :style 中:style="div1StyleObj"</div>
+
+    <h4>在 :style 中通过数组，引用多个 data 上的样式对象</h4>
+    <div :style="[div1StyleObj,div2StyleObj]">在 :style 中通过数组，引用多个 data 上的样式对象:style="[div1StyleObj,div2StyleObj]"</div>
+  </div>
+
+  <script>
+    // 3. 创建一个 Vue 的实例
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        div1StyleObj: {'color':'red','font-size':'20px'},
+        div2StyleObj: {'background-color':'black'}
+      }
+    })
+  </script>
+</body>
+
+</html>

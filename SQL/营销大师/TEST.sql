@@ -1,0 +1,1 @@
+select * from lucky_cube.t_bi_mkt_channel_history

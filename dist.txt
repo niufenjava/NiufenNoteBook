@@ -1,0 +1,3660 @@
+a collection of   |   一组、一堆   |
+a couple of…   |   几个，两三个，一对   |
+a kind of   |   一种   |
+a number of…   |   许多…   |
+a point in time   |   时间点   |
+a series of   |   一系列   |
+a set of…   |   一组…   |
+abbreviation   |   n.缩写,缩略语   |   [əˌbrivɪ'eʃən]   |
+ability   |   n.能力   |   [ə'bɪlətɪ]   |
+abnormal   |   adj.不正常的   |   [æbˈnɔrməl]   |
+absence   |   n.缺席，不存在   |   [ˈæbsəns]   |
+absolute   |   adj.绝对的   |   [ˈæbsəlu:t]   |
+abstract   |   adj.抽象的   |   [ˈæbstrækt]   |
+abstract base class   |   抽象基类   |
+abstract class   |   抽象类   |
+abstract data type   |   抽象数据类型   |
+abstraction   |   n.抽象   |   [æbˈstrækʃn]   |
+abstraction of function calls   |   抽象函数调用   |
+access   |   v.访问、存取   |   [ˈækses]   |
+access function   |   调用函数   |
+access level   |   访问级别   |
+access time   |   存取时间   |
+accessed   |   adj.访问的   |
+accessible   |   adj.可访问的   |   [əkˈsesəbl]   |
+accessor   |   n.存取器、访问器   |   [ˈæksesə]   |
+accidental   |   adj.意外的   |   [ˌæksɪˈdentl]   |
+accommodate   |   v.容纳，适应   |   [ə'kɒmədeɪt]   |
+accompany   |   v.陪同   |   [ə'kʌmpənɪ]   |
+accomplish   |   v.完成   |   [ə'kʌmplɪʃ]   |
+accordion   |   adj.可折叠的   |   [əˈkɔ:diən]   |
+account   |   n.账户   |   [ə'kaʊnt]   |
+accountable   |   adj.负有责任的   |   [əˈkaʊntəbl]   |
+accumulate   |   v.累积   |   [ə'kju:mjəleɪt]   |
+accumulator   |   n.累加器，计数器   |   [ə'kjumjəletɚ]   |
+accuracy   |   n.准确性   |   ['ækjərəsi]
+accurate   |   adj.精确的   |   [ˈækjərət]   |   [/'ækjərəsi/]
+achieve   |   vi.实现、完成   |   [ə'tʃiv]
+ACID (atomicity\consistency\isolation\durability)   |   数据库事物正确执行的基本要素（原子性、一致性、隔离性、持久性）   |
+acquire   |   vt.获得   |   [ə'kwaɪr]
+across…   |   在…间   |
+act as…   |   v.充当…   |
+action   |   n.操作   |   [ˈækʃən]   |
+activate   |   vt.激活   |   ['æktə'vet]   |
+activation   |   n.激活   |   [ˌæktɪ'veɪʃn]   |
+active   |   adj.活跃的   |   [ˈæktɪv]   |
+actively   |   adv.主动地   |   ['æktɪvlɪ]   |
+activematrix   |   有源矩阵   |
+actual   |   adj.真实的   |   [ˈæktʃuəl]   |
+actual parameter   |   实参   |
+actually   |   adv.实际上   |   [ˈæktʃuəli]   |
+ad hoc   |   adj. 特别的；临时；专设;   n.点对点， ad hoc 网络   |   [,æd'hɔk]   |
+adaptation   |   n.改编   |   [ˌædæp'teɪʃn]   |
+adapter   |   n.适配器   |   [əˈdæptə]   |
+adapter cards   |   适配卡   |
+add   |   v.增加   |   [æd]   |
+addin  plugin   |   插件   |
+addition   |   n.加   |   [əˈdɪʃn]   |
+additional   |   adj.附加的   |   [ə'dɪʃənl]   |
+address   |   n.地址   |   [əˈdres]   |
+address of operator   |   地址操作符   |
+address space   |   地址空间   |
+adequate   |   adj.足够的 adj.不推荐的 adj.能干的   |   [ˈædɪkwət]   |
+adjacency list method   |   邻接表表示法   |
+adjacency matrix method   |   邻接矩阵表示法   |
+adjacent   |   adj.邻近的   |   [əˈdʒeɪsnt]   |
+adjust   |   v.调整   |   [ə'dʒʌst]   |
+advance   |   v.提前，向前一步   |   [əd'vɑ:ns]   |
+advance..past..   |   将…移至…后   |
+advanced   |   高级的   |
+advanced application   |   高级应用   |
+advise   |   v.建议   |   [əd'vaɪz]   |
+affect   |   v.影响   |   [ə'fekt]   |
+against  |   adj.反对、违反   |   [əˈɡɛnst]
+agent  |   n.代理   |   [edʒənt]
+agent  |   vt.由...代理   |   [edʒənt]
+aggregate   |   vi.聚合   |   ['æɡrɪɡət]
+aggregation   |   聚合、聚集   |
+AGP (accelerated graphics port)   |   加速图形接口   |
+ahead   |   adv.预先   |   [əˈhed]   |
+alert   |   v.警示   |   [ə'lɜ:t]   |
+algebraic data type   |   代数数据类型   |
+algorithm   |   n.算法   |   ['ælɡərɪðəm]   |
+alias   |   n.别名   |   [ˈeɪliəs]   |
+align   |   v.对齐   |   [əˈlaɪn]   |
+align  alignment   |   排列、对齐   |
+allocate   |   v.分配   |   ['æləkeɪt]   |
+allocation   |   n.分配   |   [ˌæləˈkeɪʃn]   |
+allocator   |   分配器、配置器   |
+allowable   |   adj.允许的   |   [əˈlaʊəbl]   |
+alone   |   adj.单独的   |   [əˈləun]   |
+along with…   |   以及…   |
+alow   |   v.支持   |
+alphabetical   |   adj.字母的   |   [ˌælfəˈbetɪkl]   |
+alphanumeric   |   adj.字母数字式的   |   [ˌælfənju:ˈmerɪk]   |
+already   |   adv.已经   |   [ɔ:lˈredɪ]   |
+alter   |   v.更改   |   ['ɔ:ltə]   |
+alternate   |   v.交替   |   ['ɔ:ltɜ:nət]   |
+alternative   |   n.选择   |   [ɔ:lˈtɜ:nətɪv]   |
+ambiguity   |   n.含糊   |   [ˌæmbɪ'ɡju:ətɪ]   |
+ambiguous   |   adj.含糊的   |   [æmˈbɪgjuəs]   |
+among   |   prep.在…中   |   [əˈmʌŋ]   |
+amongst   |   prep.在…之内   |   [ə'mʌŋst]   |
+amortized   |   adj.分期的   |   ['əmɔ:taɪzd]   |
+amortized analysis   |   平摊分析   |
+amount   |   n.数量   |   [ə'maʊnt]   |
+AMQP (Advanced Message Queuing Protocol)   |   一个提供统一消息服务的应用层标准高级消息队列协议,是应用层协议的一个开放标准,为面向消息的中间件设计。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件不同产品，不同的开发语言等条件的限制。Erlang中的实现有 RabbitMQ等。
+analog   |   推论   |
+analog signals   |   模拟信号   |
+analysis   |   n.分析   |   [əˈnæləsɪs]   |
+analytical graph   |   分析图表   |
+analyze   |   分析   |
+anaphoric   |   指代   |
+ancestor   |   n.祖先   |   ['ænsestə]   |
+anchor   |   n.锚   |   ['æŋkə]   |
+angel   |   n.天使   |   ['eɪndʒl]   |
+angle bracket   |   尖括号   |
+animate   |   adj.生气勃勃的   |   ['ænɪmeɪt]   |
+animations   |   动画   |
+annotated   |   adj.注解的   |   ['ænəteɪtɪd]   |
+annotation   |   n.注解   |   [ˌænəuˈteɪʃən]   |
+anonymous   |   adj.匿名的   |   [əˈnɔnɪməs]   |
+anonymous function   |   匿名函数   |
+ant   |   n.蚂蚁   |   [ænt]   |
+antecedent   |   前提  前件  先决条件   |
+API (application programming interface)   |   abbr.应用程序编程接口   |
+APP domain (application domain)   |   abbr.应用域   |
+appearance   |   n.外表   |   [əˈpɪərəns]   |
+append   |   v.追加   |   [əˈpend]   |
+applets   |   程序   |
+applicable   |   adj.适当的   |   [əˈplɪkəbl]   |
+application   |   n.应用   |   [ˌæplɪˈkeɪʃn]   |
+application framework   |   应用程序框架   |
+application software   |   应用软件   |
+application-specific   |   adj.应用程序特定的   |
+applicative   |   应用序   |
+apply   |   v.应用   |   [ə'plaɪ]   |
+apply to…   |   适用于…   |
+appropriate   |   adj.适当的   |   [ə'prəʊprɪət]   |
+appropriately   |      |      |
+approximate   |   adj.近似的   |   [ə'prɒksɪmət]   |
+approximate string matching   |   模糊匹配   |
+approximately   |   adv.近似   |   [əˈprɒksɪmətli]   |
+approximation   |   n.近似值   |   [əˌprɒksɪˈmeɪʃn]   |
+arbiter   |   n.仲裁人   |   ['ɑrbɪtɚ]   |
+arbitrary   |   adj.任意的   |   [ˈɑ:bitrəri]   |
+arbitrary precision arithmetic   |   高精度计算   |
+architecture   |   n.架构   |   [ˈɑ:kɪtektʃə]   |
+archive   |   n.档案   |   ['ɑ:kaɪv]   |
+archive file   |   归档文件、存档文件   |
+area   |   n.面积；范围；区域   |   [ˈεərɪə]   |
+argument   |   n.参数   |   [ˈa:gjumənt]   |
+arise   |   v.产生   |   [ə'raɪz]   |
+arithmetic   |   n.算术   |   [əˈrɪθmətɪk]   |
+arithmetic operations   |   算术运算   |
+around   |   v.根据 prep.在…周围   |   [ə'raʊnd]   |
+arrange   |   v.安排   |   [ə'reɪndʒ]   |
+array   |   n.数组   |   [əˈreɪ]   |
+arrow operator   |   箭头操作符   |
+arrow operator arrow   |   （箭头）运算子 箭头操作符   |
+artificial intelligence ai   |   人工智能   |
+as a result of…   |   由于   |
+as by…   |   如通过…   |
+as follows   |   如下所示   |
+as for…   |   类似于…   |
+as if…   |   正如   |
+as large as   |   等于   |
+as long as...   |   只要…   |
+as much as   |   差不多   |
+as necessary   |   根据需要   |
+as of…   |   从…开始   |
+as soon as…   |   一旦   |
+as to…   |   关于…   |
+as well as   |   以及   |
+as with…   |   和…一样   |
+ascend   |   v.上升   |   [ə'send]   |
+ascending   |   adj.上升的   |   [ə'sendɪŋ]   |
+asp(active server page)   |   活动服务器页面   |
+asp.net worker process asp.net   |   .   .工作者进程   |
+aspect   |   n.方面   |   [ˈæspekt]   |
+assemble   |   组合   |
+assembly   |   装配件   |
+assembly language   |   组合语言 汇编语言   |
+assembly manifest   |   装配件清单   |
+assert   |   断言(Java 关键字)   |
+assertion   |   n.断言   |   [əˈsɜːʃn]   |
+assign   |   v.分配   |   [əˈsaɪn]   |
+assigned   |   adj.指定的   |   [ə'saɪnd]   |
+assignment   |   n.赋值   |   [ə'saɪnmənt]   |
+assignment operator   |   赋值操作符   |
+assign…to…   |   将…分配给…   |
+assist   |   v.帮助   |   [ə'sɪst]   |
+associate   |   v.关联   |   [əˈsəuʃieit]   |
+associated   |   adj.相关的   |   [əˈsəʊʃieɪtɪd]   |
+associated with…   |   与…相关   |
+association   |   n.关联   |   [əˌsəʊʃɪ'eɪʃn]   |
+association list alist   |   ,  关联列表   |
+associative container  sequential container   |   关联式容器（对应  ） 关联式容器   |
+assume   |   v.认为，假定   |   [əˈsju:m]   |
+assurance   |   确信信任   |
+assure   |   v.确定   |   [ə'ʃʊə]   |
+asynchronous   |   adj.异步的   |   [eɪˈsɪŋkrənəs]   |
+asynchronous communications port   |   异步通信端口   |
+at least   |   至少   |
+at most   |   至多   |
+at once   |   adv.同时   |
+at the same time   |   同一时间   |
+ATM (asynchronous transfer mode)   |   abbr.异步传输模式   |
+atom   |   原子   |
+atomic   |   adj.原子的   |   [ə'tɒmɪk]   |
+atomic operation   |   原子操作   |
+atomic value   |   原子型值   |
+atomically   |   adv.不可分地   |   [ə'tɒmɪklɪ]   |
+atomicity   |   n.原子性   |   [,ætə'mɪsɪti]   |
+attach   |   vi.附加   |
+attachment   |   n.附件   |   [əˈtætʃmənt]   |
+attempt   |   v.尝试   |   [əˈtempt]   |
+attempt to…   |   v.尝试…   |
+attribute   |   n.属性   |   [əˈtrɪbju:t]   |
+audio   |   音讯 音频   |
+audiooutput device   |   音频输出设备   |
+auditing   |   n.审计   |   ['ɔ:dɪtɪŋ]   |
+augmented   |   扩充   |
+authentication   |   n.身份验证   |   [ɔ:ˌθentɪ'keɪʃn]   |
+authentication service   |   验证服务   |
+author   |   n.作者   |   [ˈɔ:θə]   |
+authority   |   n.权限   |   [ə'θɔrəti]
+authorization   |   n.授权   |
+authorize   |   v.授权   |   [ˈɔ:θəraɪz]   |
+authorized   |   adj.经授权的   |   [ˈɔ:θəraɪzd]   |
+autoboxing   |   n.自动装箱   |
+automatic   |   adj.自动的   |   [ˌɔ:tə'mætɪk]   |
+automatic memory management   |   自动内存管理   |
+automatically   |   adv.自动地   |   [ˌɔ:təˈmætɪkəlɪ]   |
+automatically infer   |   自动推导   |
+autometa theory   |   自动机理论   |
+auxiliary   |   辅助   |
+avail   |   vt.有利于   |   [əˈveɪləbl]   |
+Availability   |   n.可用性   |   [ˈspjʊəriəs]   |
+available   |   adj.可用的   |   [əˈveɪləbl]   |
+avatar   |   n.化身   |   ['ævətɑ:r]   |
+avoid   |   v.避免   |   [əˈvɔɪd]   |
+awaken   |   v.唤醒   |   [ə'weɪkən]   |
+awakened   |   adj.已唤醒的   |
+aware   |   adj.意识到的   |   [əˈwɛə]   |
+back   |   v.后退，支持   |   [bæk]   |
+backend   |   n.后端   |
+background   |   n.背景   |   [ˈbækgraund]   |
+backing   |   adj.底层的   |   [ˈbækɪŋ]   |
+backquote   |   反引用   |
+backslash   |   n.反斜杠   |   [ˈbækslæʃ]   |
+backspace   |   n.退格   |   [ˈbækspeɪs]   |
+backtrace   |   回溯   |
+backup   |   备份   |
+backup device   |   备份设备   |
+backup file   |   备份文件   |
+backup tape cartridge units   |   备份磁带盒单元   |
+backward   |   adv.向后   |   [ˈbækwəd]   |
+backward compatible   |   向下兼容   |
+balance   |   v.(使)平衡   |   [ˈbæləns]   |
+bandwidth   |   频宽 带宽   |
+bandwidth reduction   |   带宽压缩   |
+bar   |   n.栏   |   [bɑ:]   |
+bar code   |   条形码   |
+bar code reader   |   条形码读卡器   |
+base   |   v.基于   |   [beɪs]   |
+BASE (Basically Available、Soft state、Eventually Consistency)   |   BASE 理论：基本可用、软状态、最终一致性   |
+base case   |   基本情形   |
+base class   |   基类   |
+base type   |   基类型   |
+basic   |   adj.基本的   |   ['beɪsɪk]   |
+basic application   |   基础程序   |
+basically   |   adv.基本上   |   ['beɪsɪk]   |
+batch   |   n.一批   |   [bætʃ]   |
+bayes theorem   |   '   贝叶斯定理   |
+BCL (base class library)   |   abbr.二进制文件、基类库   |
+be all about…   |   是关于…   |
+be aware to…   |   意识到…   |
+be capable of   |   v.能够，有…能力   |
+be of…   |   属于…   |
+be subject to…   |   服从…   |
+be taken to   |   被用于   |
+be up to   |   取决于   |
+bean   |   n.豆   |   [bɪ:n]   |
+beautification   |   n.美化   |   [ˌbju:tɪfɪ'keɪʃən]   |
+begin with…   |   以…开头   |
+beginning   |   n.头部   |   [bɪˈgɪnɪŋ]   |
+behalf   |   [biˈhɑ:f]   |
+behave   |   v.表现   |   [bɪˈheɪv]   |
+behavior   |   n.行为   |   [bɪ'heɪvjə]   |
+benchmark   |   基准测试程序   |
+benefit   |   n.利益，好处   |   ['bɛnɪfɪt]
+benefit from…   |   受益于…   |   [ˈbenɪfɪt]   |
+best viable function   |   最佳可行函式 最佳可行函式   |
+best-effort basis   |   尽最大努力原则   |
+bestfit algorithm   |   最佳适应算法   |
+beyond   |   prep.超出   |   [bɪ'jɒnd]   |
+beyond the fact that…   |   跨过这个事实就是…   |
+bezier curve   |   贝塞尔曲线   |
+BFS (breadth first search)   |   abbr.广度优先搜索法   |
+bidirectional   |   adj.双向的   |   [ˌbaɪdəˈrekʃənl]   |
+bignum   |   大数   |
+BigTable   |   Google设计的分布式数据存储系统，用来处理海量的数据的非关系型数据库。BigTable是一个稀疏的、分布式的、持久化存储的多维度排序Map。Bigtable的设计目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。
+bin (binary)   |   abbr.二进制   |
+bin packing   |   装箱问题   |
+binary   |   adj.二进制的   |   [ˈbaɪnərɪ]   |
+binary coding schemes   |   二进制译码方案   |
+binary function   |   二元函式 双叁函数   |
+binary large object   |   二进制大对象   |
+binary operator   |   二元运算子 二元操作符   |
+binary relation   |   二元关系   |
+binary search   |   二分搜寻法 二分查找   |
+binary search tree   |   二叉搜索树   |
+binary system   |   二进制系统   |
+binary tree   |   二元树 二叉树   |
+bind   |   v.捆绑   |   [baɪnd]   |
+binding   |   绑定   |
+binding vector   |   绑定向量   |
+bind…to…   |   将…绑定到…上   |
+bit   |   位   |
+bit field   |   位元栏 位域   |
+bit manipulation   |   位操作   |
+bit series   |   比特序列   |
+bitmap   |   位图   |
+BitSet   |   C++语言的一个类库，用来方便地管理一系列的bit位而不用程序员自己来写代码。bitset除了可以访问指定下标的bit位以外，还可以把它们作为一个整数来进行某些统计。
+bitwise  bit   |   以  为单元逐一┅   |
+bitwise ...   |   按位...   |
+bitwise copy   |   为单元进行复制；位元逐一复制,按位拷   |
+bitwise copy  bit   |   以  为单元进行复制；位元逐一复制 位拷贝   |
+bitwise operation   |   按位运算   |
+black box abstraction   |   黑箱抽象   |
+blackbox whitebox   |   黑盒白盒   |
+blank   |   adj.空白的 n.空白   |   [blæŋk]   |
+blank space   |   n.空格   |   [blæŋk speis]   |
+BLOB (binary large object)   |   abbr.二进制大型对象   |
+block   |   n.块 v.阻塞   |   [blɔk]   |
+block miss   |   块失效   |
+block name   |   代码块名字   |
+block statement   |   n.块语句   |
+block structure   |   块结构 区块结构   |
+blocked   |   阻塞(等待状态也称阻塞或封锁状态)   |
+blub paradox    blub   |   困境   |
+bluetooth   |   蓝牙   |
+body   |   体   主体   |
+boilerplate   |   公式化 样板   |
+bold   |   n.粗体 简写 b   |   [bəuld]   |
+bomb   |   v.轰炸   |   [bɒm]   |
+bone   |   n.骨头   |   [bəʊn]   |
+bookkeeping   |   簿记   |
+boolean   |   n.布尔   |   [ˈbu:lɪən]   |
+bootstrap   |   n.引导   |   ['bu:tstræp]   |
+border   |   n.边框   |   [ˈbɔ:də]   |
+bottomup design   |   自底向上的设计   |
+bottomup programming   |   自底向上编程   |
+bound   |   n.界限 v.绑定   |   [baʊnd]   |
+bound with…   |   与…绑定的   |
+boundary   |   n.边界   |   ['baʊndrɪ]   |
+bounds checking   |   边界检查   |
+box notation   |   箱子表示法   |
+boxing   |   装箱、装箱转换   |
+brace   |   大括号、花括号   |
+bracket   |   中括号、方括号   |
+brackets   |   n.括号   |   [brækəts]   |
+branch   |   分支  跳转   |
+brand   |   n.品牌   |   [brænd]   |
+breadthfirst   |   广度优先   |
+breadthfirst search bfs   |   广度优先搜索   |
+break   |   n.中断 缩写 br 表示换行   |   [breɪk]   |
+break up   |      |      |
+breakpoint   |   断点   |
+break…into..   |   将…分解为…   |
+brevity   |   简洁   |
+bridge   |   n.桥梁   |   [brɪdʒ]   |
+broadband   |   宽带   |
+broker   |   n.代理   |   [ˈbrəʊkə]   |
+browse   |   v.浏览   |   [braʊz]   |
+browser   |   n.浏览器   |   ['braʊzə]   |
+browser applications   |   浏览器应用   |
+browseraccessible application   |   可经由浏览器访问的应用程序   |
+BSON ( Binary Serialized Document Format)   |   一种类json的一种二进制形式的存储格式，简称Binary JSON，它和JSON一样，支持内嵌的文档对象和数组对象，但是BSON有JSON没有的一些数据类型，如Date和BinData类型。
+bubble   |   n.冒泡   |   ['bʌbl]   |
+bubble sort   |   冒泡排序   |
+bucket   |   n.桶   |   ['bʌkɪt]   |
+buffer   |   n.缓冲区 v.缓冲   |   [ˈbʌfə]   |
+buffer overflow attack   |   缓冲区溢出攻击   |
+buffered   |   adj.缓冲的   |
+buffering   |   n.缓冲   |   ['bʌfərɪŋ]   |
+bug   |   n.错误   |   [bʌɡ]   |
+build   |   v.生成   |   [bɪld]   |
+build ms   |   建造、构筑、建置（ 用语）   |
+builder   |   n.建造者、生成器   |   [ˈbɪldə]   |
+buildin   |   内建 内置   |
+building   |   创建   |
+built-in   |   adj.内置的   |
+builtin   |   內建、内置   |
+burlap   |   n.麻袋   |
+bus   |   总线   |
+bus line   |   总线   |
+business   |   业务、商务   |
+business logic   |   业务逻辑   |
+business rules   |   业务规则   |
+businesstobusiness   |   --企业对企业电子商务   |
+businesstoconsumer   |   --企业对消费者   |
+button   |   n.按钮   |   [ˈbʌtn]   |
+buttons   |   按钮   |
+by default   |   默认情况下   |
+by first   |   首先   |
+by pass   |   v.绕过   |
+byte   |   n.字节   |   [baɪt]   |
+byte  8 bits   |   位元组（由   组成） 字节   |
+bytecode   |   字节码   |
+bythrough   |   /通过   |
+C3P0   |   一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。   |
+cable modems   |   有线调制解调器   |
+cables   |   连线   |
+cache   |   n.缓存   |   [kæʃ]   |
+calculate   |   v.计算   |   ['kælkjʊleɪt]   |
+calculation   |   计算   |
+calendar   |   日历   |
+calendrical calculations   |   日期   |
+call   |   v.调用   |   [kɔ:l]   |
+call operator   |   调用操作符   |
+call operator call   |   （函式呼叫）运算子调用操作符   |
+call stack   |   n.调用栈   |   [kɔ:l stæk]   |
+callback   |   n.回调   |   [ˈkɔ:lbæk]   |
+called by the garbage collector on an object when garbage collection determines that there are no more references to the object.
+caller   |   n.调用者   |   [ˈkɔ:lə]   |
+camelcase   |   驼峰式大小写   |
+cancel   |   v.取消   |   [ˈkænsl]   |
+candidate function   |   候选函式 候选函数 ###### （在函式多载决议程序中出现的候选函式）   |
+canonical   |   adj.规范的   |   [kəˈnɒnɪkl]   |
+CAP (Consistency、Availability、Partition tolerance)   |   CAP定理：一致性、可用性、分区容错性[可扩展]）三者不可兼得   |
+capability   |   n.功能   |   [ˌkeɪpə'bɪlətɪ]   |
+capable   |   abj.能干的   |   [ˈkeɪpəbl]   |
+capacity   |   n.容量   |   [kə'pæsətɪ]   |
+Capped Collections   |       MongoDB 中具有固定大小的集合，其吞吐性能出色。固定集合其实就类似于一个环，当空姐用完，那么就从头开始存储。
+capture   |   vi.捕获   |
+captured   |   adj.已捕获的   |
+cardinality   |   n.基数   |   [kɑ:di'næləti]   |
+carriage return   |   n.回车   |
+cartesian product   |   笛卡尔积   |
+cascade   |   n.级联   |   [kæ'skeɪd]   |
+cascade to…   |   与…级联   |
+cascading delete   |   级联删除   |
+cascading update   |   级联更新   |
+case   |   n.情形，大小写   |   [keɪs]   |
+cast   |   n.强制转换   |   [kɑ:st]   |
+casting   |   转换、造型转换   |
+catalog   |   目录   |
+cause   |   v.导致   |   [kɔ:z]   |
+caution   |   n.谨慎   |   ['kɔ:ʃn]   |
+cd compact disc   |   压缩盘   |
+cdr   |   可记录压缩光盘   |
+cdrom   |   可记录光盘   |
+cdrw   |   可重写光盘   |
+ceil   |   v.向上取整   |   [si:l]   |
+cell   |   信元   |
+center   |   n.圆心   |   [ˈsentə]   |
+certificate   |   n.证书   |      |      |
+chain   |   n.链   |   [tʃeɪn]   |
+chain printer   |   链式打印机   |
+change   |   v.更改   |   [tʃeɪndʒ]   |
+channel   |   信道   |
+chapter   |   n.章   |   [ˈtʃæptə]   |
+char   |   n.字符(character 的缩写)   |   [tʃɑ:]   |
+character   |   字符   |
+character and recognition device   |   字符标识识别设备   |
+character format   |   字符格式   |
+character set   |   字符集   |
+characteristic   |   特征特性   |
+charset   |   n.字符集(character set 的缩写)   |
+chart   |   图表   |
+chassis   |   支架   |
+chat group   |   谈话群组   |
+check box   |   复选框   |
+check button   |   复选按钮   |
+check constrains check   |   约束   |
+checkbox   |   n.复选框   |   [ˈtʃekbɔks]   |
+checked   |   adj.已检查过的   |   [tʃekt]   |
+checked exception   |   可控式异常()   |
+checkpoint   |   检查点   |
+checksum   |   校验和   |
+chick   |   n.小鸡   |   [tʃɪk]   |
+child class   |   子类   |
+child class derived class subtype   |   子类别（或称为 , ） 子类   |
+chip   |   芯片   |
+choice   |   n.选择   |   [tʃɔɪs]   |
+choose   |   v.选择   |   [tʃu:z]   |
+chore   |   n.杂务   |   [tʃɔ:]   |
+chunk   |   n.块   |   [tʃʌŋk]   |
+chunked encoding   |   块编码   |
+ci (case insensitive)   |   abbr.大小写不敏感，不区分大小写   |
+circle   |   n.圆   |   [ˈsə:kl]   |
+circuit switching   |   线路交换   |
+circular definition   |   循环定义   |
+circular wait   |   循环等待   |
+circumference   |   n.周长   |   [səˈkʌmfərəns]   |
+circumstance   |   n.情况   |   [ˈsə:kəmstəns]   |
+CISC (complex instruction set computer)   |   abbr.复杂指令集计算机   |
+clarity   |   清晰度   |
+class   |   n.类   |   [klɑ:s]   |
+class  memberfunctions   |   （与 同名的一种 ）   |
+class body   |   n.类体   |
+class declaration   |   类声明   |
+class definition   |   类定义   |
+class derivation list   |   类继承列表   |
+class factory   |   类厂   |
+class head   |   类别表头 类头   |
+class hierarchy   |   类层次结构   |
+class library   |   类库   |
+class loader   |   类装载器   |
+class template   |   类模板   |
+class template partial specializations   |   类模板部分特化   |
+class template specializations   |   类别模板特化 类模板特化   |
+classification   |   分类   |
+clause   |   n.子句   |   [klɔ:z]   |
+clean up…   |   v.清理   |
+cleanly   |   adj.利落   |   [ˈklenli:]   |
+cleanup   |   清理、清除   |
+clear   |   v.清除   |   [klɪə]   |
+clearly   |   adv.明确地   |   [ˈklɪəlɪ]   |
+CLI (command Line Interface)   |   abbr.命令行接口、命令行界面   |
+client   |   n.客户端   |   [ˈklaɪənt]   |
+client application   |   客户端应用程序   |
+client area   |   客户区   |
+client cursor   |   客户端游标   |
+clipboard   |   剪贴板   |
+clique   |   最大团   |
+clock cycle clock rate   |   时钟周期时钟频率   |
+clone   |   v.克隆   |   [kləun]   |
+close   |   v.关闭 adj.紧密的 close to…与…接近的   |   [kləuz]   |
+closed   |   adj.已关闭的   |   [kləʊzd]   |
+closed architecture   |   封闭式体系结构   |
+closed world assumption   |   封闭世界假定   |
+closest   |   adj.最接近的   |   [k'ləʊsɪst]   |
+closing   |   n.关闭   |   [ˈkləuziŋ]   |
+closure   |   闭包   |
+CLS (common language specification)   |   abbr.通用语言规范   |
+cluster   |   n.簇、群、串   |   ['klʌstɚ]   |
+clutter   |   杂乱   |
+cmos complementary metaloxide semiconductor   |   互补金属氧化物半导体   |
+coaxial cable   |   同轴电缆   |
+Cobar   |   n.眼镜蛇;n.(人名)科巴   |   [kɒbrə]   |
+cock   |   n.公鸡   |   [kɔk]   |
+code   |   n.代码   |   [kəud]   |
+code access security   |   代码访问安全   |
+code bloat   |   代码膨胀   |
+code page   |   代码页   |
+coerce   |   v.强制   |   [kəʊ'ɜ:s]   |
+coercion   |   n.强制   |   [kəʊ'ɜ:ʃn]   |
+COFF (common object file format)   |   abbr.通用对象文件格式   |
+cohesion   |   内聚,黏聚,结合   |
+cohesion coupling   |   内聚耦合   |
+coincidental logical procedural functional   |   偶然内聚逻辑内聚过程内聚功能内聚   |
+cold site   |   冷战   |
+collapse   |   v.折叠   |   [kə'læps]   |
+collate   |   n.校对集   |
+collection   |   n.回收，集合   |   [kəˈlekʃn]   |
+collectively   |   adv.统一地   |   [kə'lektɪvlɪ]   |
+collision   |   n.冲突   |   [kəˈlɪʒn]   |
+colon   |   n.冒号   |   ['kəʊlən]   |
+color   |   n.颜色   |   [ˈkʌlə]   |
+column   |   n.列   |   [ˈkɔləm]   |
+columnmajor order   |   行主序   |
+COM (component object model)   |   abbr.组件对象模型   |
+combination   |   n.组合、联合   |   [,kɑmbɪ'neʃən]
+combination key   |   结合键   |
+combinatorial problems   |   组合问题   |
+combo box   |   组合框   |
+comma   |   n.逗号   |   ['kɒmə]   |
+command   |   n.命令   |   [kəˈmɑ:nd]   |
+command line   |   命令行   |
+commandline   |   命令行   |
+commandline interface cli   |   命令行界面   |
+comment   |   n.注释   |   [ˈkɔment]   |
+comments   |   文本注释   |
+commerce servers   |   商业服务器   |
+commit   |   v.提交   |   [kə'mɪt]   |
+common   |   adj.公共的   |   [ˈkɔmən]   |
+common gateway interface cgi   |   ,    通用网关接口   |
+common lisp object system clos common lisp   |   ,    对象系统   |
+commonly   |   adv.通常   |   [ˈkɒmənli]   |
+communicate   |   v.沟通   |   [kə'mju:nɪkeɪt]   |
+communication   |   n.通信   |   [kəˌmju:nɪ'keɪʃn]   |
+communication channel   |   信道   |
+communication systems   |   信息系统   |
+compact   |   vt.压缩、整理   |   ['kɒmpækt]   |
+compact disc   |   光盘   |
+compact disc rewritable   |      |      |
+companion   |   n.同伴   |   [kəmˈpæniən]   |
+comparable   |   adj.可比较的   |   [ˈkɔmpərəbl]   |
+comparator   |   n.比较器   |   ['kɒmpəreɪtə]   |
+compare   |   v.比较   |   [kəm'peə]   |
+compare ...against   |   与…比较   |
+compare…to…   |   将…与…比较   |
+comparison   |   n.比较   |   [kəmˈpærɪsn]   |
+compatibility   |   n.兼容性   |   [kəmˌpætə'bɪlətɪ]   |
+compatible   |   adj.兼容的   |   [kəm'pætəbl]   |
+compatible with...   |   与…兼容   |
+compete   |   v.竞争   |   [kəm'pi:t]   |
+compilation   |   n.编译   |   [ˌkɔmpɪˈleɪʃn]   |
+compilation parameter   |   编译参数   |
+compile   |   v.编译   |   [kəmˈpaɪl]   |
+compile inline   |   内联编译   |
+compile time   |   编译期、编译时   |
+compiled   |   adj.编译的   |   [kəm'paɪld]   |
+compiled form   |   编译后的形式   |
+compiler   |   n.编译器   |   [kəm'paɪlə]   |
+complement number   |   补码   |
+complete   |   v.完成 adj.完整的   |   [kəmˈpli:t]   |
+completed   |   adj.完成的   |   [kəm'pli:tɪd]   |
+completely   |   adv.彻底   |   [kəmˈpli:tli]   |
+completion   |   n.完成   |   [kəmˈpli:ʃn]   |
+complex   |   adj.复杂   |   [kəmˈplɛks]
+complexity   |   n.复杂度   |   [kəm'pleksətɪ]   |
+compliance   |   n.承诺   |   [kəmˈplaɪəns]   |
+compliment   |   补集   |
+comply   |   v.遵从   |   [kəm'plaɪ]   |
+component   |   n.元素，组件   |   [kəmˈpəʊnənt]   |
+composability   |   可组合性   |
+compose   |   v.包含   |   [kəmˈpəʊz]   |
+composite index   |   复合索引、组合索引   |
+composite key   |   复合键、组合键   |
+composition   |   复合、组合   |
+compound   |   adj.混合的   |   [ˈkɔmpaund]   |
+compound value   |   复合数据    复合值   |
+compress   |   vt.压缩   |   [kəmˈprɛs]   |
+compression   |   n.压缩   |   [kəm'preʃn]   |
+compromised   |   adj.不安全的   |
+computation   |   计算   |
+computational geometry   |   计算几何   |
+compute   |   v.计算   |   [kəm'pju:t]   |
+computer   |   电脑、计算机 计算机、电脑   |
+computer competency   |   计算机能力   |
+computer crime   |   计算机犯罪   |
+computer ethics   |   计算机道德   |
+computer network   |   计算机网络   |
+computer support specialist   |   计算机支持专家   |
+computer technician   |   计算机技术人员   |
+computer trainer   |   计算机教师   |
+concatenate   |   v.连接   |   [kɒn'kætɪneɪt]   |
+concatenation   |   n.连接   |   [kənˌkætəˈneɪʃn]   |
+concept   |   n.概念   |   ['kɒnsept]   |
+concern   |   vi.关系到   |   [kən'sɝn]   |
+concerning   |   prep.关于   |   [kənˈsɜ:nɪŋ]   |
+concise   |   adj.简洁的   |   [kənˈsaɪs]   |
+concrete   |   adj.具体的 v.使凝固   |   ['kɒŋkri:t]   |
+concrete class   |   具体类   |
+concurrency   |   并发、并发机制   |
+concurrent   |   adj.并发的   |   [kən'kʌrənt]   |
+concurrently   |   adv.同时地   |   [kən'kʌrəntlɪ]   |
+condition   |   n.条件   |   [kənˈdɪʃn]   |
+conditional   |   adj.有条件的   |   [kənˈdɪʃənl]   |
+conditional variable   |   条件变量   |
+configuration   |   n.配置   |   [kənˌfɪgəˈreɪʃn]   |
+configure   |   v.配置 缩写 config   |   [kənˈfɪgə]   |
+confirm   |   v.确认   |   [kənˈfɜ:m]   |
+confirmation   |   n.确认   |   [ˌkɒnfəˈmeɪʃn]   |
+conflict   |   n.冲突   |   [ˈkɔnflɪkt]   |
+conform   |   v.遵守   |   [kən'fɔ:m]   |
+confuse   |   v.混淆   |   [kən'fju:z]   |
+connect   |   v.连接   |   [kə'nekt]   |
+connected components   |   连通分支   |
+connection   |   n.连接；n.关系   |   [kəˈnekʃn]   |
+connection device   |   连接设备   |
+connection pooling   |   连接池   |
+connection to…   |   到…的连接   |
+connection with…   |   与…的连接   |
+connectivity   |   n.连接   |   [ˌkɒnekˈtɪvɪti]   |
+cons   |   构造   |
+cons cell     cons   |   构元   单元   |
+consecutive   |   adj.连续的   |   [kənˈsekjətɪv]   |
+consequent   |   结果  推论   |
+consider   |   v.认为，考虑   |   [kən'sɪdə]   |
+consideration   |   n.考虑   |   [kənˌsɪdəˈreɪʃn]   |
+consist   |   vi. 由…组成   |   [kən'sɪst]
+consist of…   |   由…组成   |
+consistency   |   n.一致性   |   [kən'sɪstənsi]   |
+consistent   |   adj.一致的   |   [kənˈsɪstənt]   |
+consistently   |   adv.一致的   |   [kən'sɪstəntli]
+console   |   n.控制台   |   [kənˈsəʊl]   |
+const   |   (保留字)   |
+constant   |   n.常量 adj.固定的   |   [ˈkɔnstənt]   |
+constant  variable   |   常数（相对於 ） 常量   |
+constitute   |   v.构成   |   ['kɒnstɪtju:t]   |
+constrain   |   约束   |
+constrained and unconstrained optimization   |   最值问题   |
+constraint   |   n.约束   |   [kənˈstreɪnt]   |
+constraint programming   |   约束式编程   |
+construct   |   v.构造 n.结构   |   [kənˈstrʌkt]   |
+construct for language   |   构件、成分、概念、构造（ ）   |
+constructor   |   n.构造方法   |   [kənˈstrʌktə]   |
+constructor summary   |   构造方法摘要    |
+construe   |   v.解释   |   [kən'stru:]   |
+consult   |   v.翻阅   |   [kənˈsʌlt]   |
+contain   |   v.包含   |   [kənˈteɪn]   |
+contained   |   adj.包含的   |   [kən'teɪnd]   |
+container   |   n.容器   |   [kənˈteɪnə]   |
+containment   |   包容   |
+content   |   n.内容   |   [ˈkɔntent]   |
+contentbased filtering   |   基于内容的过滤   |
+contention   |   n.竞争   |   [kənˈtenʃn]   |
+context   |   n.上下文   |   [ˈkɒntekst]   |
+continuation   |   延续性   |
+continue   |   继续   |
+continue to…   |   不断…   |
+continuous integration ci   |   持续集成   |
+continuousspeech recognition system   |   连续语言识别系统   |
+contract   |   n.协议   |   ['kɒntrækt]   |
+contrary   |   adj.违反的   |   ['kɒntrərɪ]   |
+control   |   v.控制   |   [kənˈtrəʊl]   |
+control unit   |   操纵单元   |
+controller   |   n.控制器   |   [kənˈtrəʊlə]   |
+convenience   |   n.便捷   |   [kənˈvi:niəns]   |
+convenient   |   adj.便捷的   |   [kənˈvi:niənt]   |
+convention   |   n.约定   |   [kənˈvenʃn]   |
+conversion   |   n.转换   |   [kən'vɜ:ʃn]   |
+convert   |   v.转换 convert into…转换为…   |   [kənˈvɜ:t]   |
+converter   |   n.转换器   |   [kənˈvɜ:tə]   |
+convex hull   |   凸包   |
+cookie   |   一种客户端存储信息的技术   |   [ˈkʊki]   |
+cookies   |   信息记录程序   |
+cookiescutter programs   |   信息记录截取程序   |
+cooperative multitasking   |   协作式多任务   |
+copy   |   v.复制   |   [ˈkɔpi]   |
+Copying   |   gc.复制算法：将内存分为大小相同的2块，每次只用其中一块，当这块用完了，就将活着的对象复制到另一块上，再把已经使用过的内存空间一次性清理掉。适用于新生代
+CORBA (common object request broker architecture)   |   abbr.公共对象请求代理结构   |
+cordless or wireless mouse   |   无线鼠标   |
+corollary   |   推论   |
+coroutine   |   协程   |
+correct   |   adj.正确的   |   [kəˈrekt]   |
+correctness   |   n.正确性   |   [kə'rektnəs]   |
+correspond   |   v.符合   |   [ˌkɔrisˈpɔnd]   |
+correspond to   |   与……相关，与…对应   |
+corresponding   |   adj.对应的   |   [ˌkɒrəˈspɒndɪŋ]   |
+corruption   |   程序崩溃   |
+CORS (Cross-Origin Resource Sharing)   |   abbr.跨域资源共享   |
+cost   |   n.开销   |   [kɔst]   |
+costly   |   adj.高开销的   |   ['kɒstlɪ]   |
+count   |   v.计数 n.总数   |   [kaʊnt]   |
+counter   |   n.计数器 adj.相反的 v.反驳   |   [ˈkaʊntə]   |
+counterpart   |   n.副本   |   [ˈkaʊntəpɑ:t]   |
+couple   |   n.对，数个   |   ['kʌpl]
+coupling   |   耦合,联结   |
+course of action   |   n.做法   |
+cover   |   覆盖、涵盖   |
+cover  |   vt.覆盖   |   ['kʌvɚ]
+cover index   |   索引覆盖   |
+coverage   |   n.覆盖   |   [ˈkʌvərɪdʒ]   |
+cpett   |   计算机性能评价工具与技术   |
+cpi   |   每条指令需要的周期数   |
+cpu (central processing unit)   |   中央处理器   |
+cracker   |   解密高手   |
+crash   |   崩溃   |
+create   |   v.创造   |   [kriˈeɪt]   |
+createcreation   |   /创建、生成   |
+creation   |   产生、生成 创建   |
+credit   |   n.信用   |   ['kredɪt]   |
+criteria   |   n.标准   |   [kraɪˈtɪərɪə]   |
+CRL (common language runtime)   |   abbr.通用语言执行层   |
+cron   |   n.[计量]克龙(时间单位，百万年)；n.计划任务   |
+cross   |   vi.跨；交叉   |   [krɔs]
+crosstab query   |   交叉表查询   |
+cryptography   |   密码   |
+crystallize   |   固化   |
+cs (case sensitive)   |   abbr.大小写敏感，区分大小写   |
+CTS (common type system)   |   abbr.通用类型系统   |
+cube   |   多维数据集   |
+cumulative trauma disorder   |   积累性损伤错乱   |
+curly   |   括弧状的   |
+currency   |   n.货币   |   ['kʌrənsɪ]   |
+current   |   adj.当前的   |   [ˈkʌrənt]   |
+currently   |   adv.目前   |   [ˈkʌrəntli]   |
+curried   |   柯里的   |
+currying   |   柯里化   |
+cursor   |   n.指针、光标   |   [ˈkɜ:sə]   |
+curvy   |   卷曲的   |
+custom   |   adj.自定义的   |   [ˈkʌstəm]   |
+customize   |   v.定制   |   ['kʌstəmaɪz]   |
+customized   |   adj.自定义的   |
+cut   |   v.剪切   |   [kʌt]   |
+cybercash   |   电子现金   |
+cyberspace   |   计算机空间   |
+cycle   |   周期   |
+cyclic redundency check   |   循环冗余检校   |
+cynic   |   愤世嫉俗者   |
+daemon   |   n.守护进程、后台进程   |   ['dimən]
+dangling pointer   |   迷途指针    野指针   |
+data   |   n.数据   |   [ˈdeɪtə]   |
+data bus   |   数据总线   |
+data connection   |   数据连接   |
+data dictionary   |   数据字典   |
+data dictionary view   |   数据字典视图   |
+data file   |   数据文件   |
+data integrity   |   数据完整性   |
+data mart   |   数据集市   |
+data member   |   数据成员、成员变量   |
+data projector   |   数码放映机   |
+data pump   |   数据抽取   |
+data scrubbing   |   数据清理   |
+data security   |   数据安全   |
+data source   |   数据源   |
+data structure   |   数据结构   |
+data table   |   数据表   |
+data transmission specifications   |   数据传输说明   |
+data type   |   数据类型   |
+data warehouse   |   数据仓库   |
+dataaware control   |   数据感知控件   |
+database   |   n.数据库   |   [ˈdeɪtəbeɪs]   |
+database administrator   |   数据库管理员   |
+database catalog   |   数据库目录   |
+database diagram   |   数据关系图   |
+database file   |   数据库文件   |
+database manager   |   数据库管理   |
+database object   |   数据库对象   |
+database owner   |   数据库所有者   |
+database project   |   数据库工程   |
+database role   |   数据库角色   |
+database schema   |   数据库模式、数据库架构   |
+database script   |   数据库脚本   |
+databound   |   数据绑定   |
+datadriven   |   数据驱动   |
+datagram   |   数据报文   |
+dataplay   |   数字播放器   |
+dataset   |   数据集   |
+datasource   |   n.数据源   |
+date   |   n.日期   |   [deɪt]   |
+datum   |   n.数据   |   [ˈdeɪtəm]   |
+DBCP (DataBase Connection Pool)   |   abbr.数据库连接池   |   是Java数据库连接池的一种，由Apache开发，通过数据库连接池，可以让程序自动管理数据库连接的释放和断开。  |
+DBCS (double byte character set)   |   abbr.双字节字符集   |
+DBMS (database management system)   |   abbr.数据库管理系统   |
+DCL (data control language)   |   abbr.数据控制语言   |
+DCOM (Distributed Component Object Model)   |   abbr.分布式组件对象模型   |
+DDL (data definition language)   |   abbr.数据定义语言   |
+de facto   |   adj.实际上的   |   [ˌdeɪ ˈfæktəʊ]   |
+dead lock   |   死锁   |
+deallocate   |   归还   |
+debug   |   v.调试   |   [ˌdi:ˈbʌg]   |
+debugger   |   n.调试器   |   [ˌdi:ˈbʌgə]   |
+debugging   |   n.调试   |   [diː'bʌɡɪŋ]   |
+decay   |   v.衰减   |   [dɪˈkeɪ]   |
+decimal   |   n.小数 n.十进制   |   [ˈdesɪml]   |
+decision   |   n.决定   |   [dɪˈsɪʒn]   |
+decision support   |   决策支持   |
+declaration   |   n.声明   |   [ˌdekləˈreɪʃn]   |
+declaration forms   |   声明形式   |
+declarative   |   声明式 说明式   |
+declarative knowledge   |   声明式知识   说明式知识   |
+declarative programming   |   声明式编程   说明式编程   |
+declarativeness   |   可声明性   |
+declare   |   v.声明   |   [diˈklɛə]   |
+declared   |   adj.声明的   |   [dɪˈkleəd]   |
+declaring   |   声明   |
+decode   |   v.解码   |   [ˌdi:'kəʊd]   |
+decomposition   |   双重的混合的   |
+deconstruction   |   解构   |
+decoration   |   n.装饰   |   [ˌdekəˈreɪʃn]   |
+decrease   |   v.减少   |   [dɪ'kri:s]   |
+deduction   |   推导   |
+deem   |   v.认为   |   [di:m]   |
+deep   |   adj.深的   |   [di:p]   |
+default   |   n.默认   |   [dɪˈfɔ:lt]   |
+default constraint   |   默认约束   |
+default database   |   默认数据库   |
+default instance   |   默认实例   |
+default result set   |   默认结果集   |
+defaults   |   n.默认值   |
+defer   |   v.推迟   |   [dɪ'fɜ:]   |
+deficiency   |   缺陷  不足   |
+define   |   v.定义   [dɪˈfaɪn]   |
+defined   |   adj.定义的   |   [dɪ'faɪnd]   |
+defining   |   n.定义   |   [dɪ'faɪnɪŋ]   |
+definition   |   n.定义   |   [ˌdefɪˈnɪʃn]   |
+definition phase   |   定义阶段   |
+delegate   |   v.代理   |   ['delɪɡət]   |
+delegation   |   n.代理   |   [ˌdelɪˈgeɪʃn]   |
+delete   |   v.删除 简写 del   |   [dɪˈli:t]   |
+deletion   |   n.删除   |   [dɪ'li:ʃn]   |
+delimit   |   v.分隔   |   [diˈlɪmɪt]   |
+delimiter   |   n.分隔符   |   [di:ˈlimitə]   |
+delimiting   |   n.定界   |
+dellocate   |   释放   |
+demarshal   |   反编列 散集   |
+demo   |   n.演示   |   ['deməʊ]   |
+demodulation   |   解调   |
+demonstrate   |   证明   |
+denial of service attack   |   拒绝服务攻击   |
+denote   |   v.表示   |   [dɪ'nəʊt]   |
+deny   |   v.拒绝   |   [dɪ'naɪ]   |
+depend   |   v.依赖 depend on… v.取决于…   |   [dɪˈpend]   |
+dependency   |   n.依赖   |   [dɪˈpendənsi]   |
+dependent   |   adj.依赖的   |   [dɪˈpendənt]   |
+dependent name   |      |      |
+deploy   |   部署   |
+deployment   |   n.部署   |   [dɪ'plɔɪmənt]   |
+deprecate   |   v.不推荐   |   ['deprəkeɪt]   |
+deprecated   |      |      |
+depth   |   n.深度   |   [depθ]   |
+depthfirst   |   深度优先   |
+depthfirst search bfs   |   深度优先搜索   |
+dereference   |   提领（取出指标所指物体的内容） 解叁考   |
+dereference operator   |   (提领)运算子   |
+dereference operator dereference *   |   （提领）运算子 * 解叁考操作符   |
+derive   |   v.导出   |   [dɪ'raɪv]   |
+derived   |   派生   |
+derived class   |   派生类   |
+descendant   |   n.后代   |   [dɪˈsendənt]   |
+description   |   n.描述 简写 descrpt   |   [dɪˈskrɪpʃn]   |
+descriptor   |   n.描述符   |   [dɪˈskrɪptə]   |
+design by contract   |   契约式设计   |
+design pattern   |   设计范式、设计样式 设计模式 ※ 最近我比较喜欢「设计范式」一词   |
+design phase   |   设计阶段   |
+designate   |   v.表示   |   ['dezɪɡneɪt]   |
+designated   |   adj.指定的   |   ['dezɪɡneɪtɪd]   |
+designator   |   指示符   |
+desire   |   v.需要   |   [dɪ'zaɪə]   |
+desired   |   adj.所需的   |   [dɪ'zaɪəd]   |
+desktop system unit   |   台式电脑系统单元   |
+destination   |   n.目标 缩写 dest   |   [ˌdestɪˈneɪʃn]   |
+destination file   |   目标文件   |
+destroy   |   v.销毁   |   [dɪ'strɔɪ]   |
+destructive   |   adj.破坏性的   |   [dɪ'strʌktɪv]   |
+destructive function   |   破坏性函数   |
+destructor   |   析构函数、析构器   |
+destructuring   |   解构   |
+detached   |   adj.分离的   |   [dɪˈtætʃt]   |
+detail   |   n.细节   |   [ˈdi:teɪl]   |
+detect   |   v.检测   |   [dɪˈtekt]   |
+determinants and permanents   |   行列式   |
+determine   |   v.判定   |   [dɪ'tɜ:mɪn]   |
+determine statements   |   判断语句   |
+determinedtmn   |   判断   |
+deterministic   |   adj.确定性的   |   [dɪˌtɜ:mɪ'nɪstɪk]   |
+detractor   |   n.诋毁者   |   [kəˌmju:nɪ'keɪʃn]   |
+develop   |   v.开发   |   [dɪˈveləp]   |
+developer   |   n.开发者   |   [dɪˈveləpə]   |
+development   |   n.开发   |   [dɪˈveləpmənt]   |
+development phase   |   开发阶段   |
+device   |   n.设备   |   [dɪˈvaɪs]   |
+device driver   |   硬件驱动程序   |
+DFS (Distributed File System)   |   abbr.分布式文件系统   |
+DHTML (Dynamic Hyper Text Markup Language)   |   abbr.动态超文本标记语言   |
+diagnostic   |   n.诊断日志   |   [,daɪəɡ'nɑstɪk]   |
+diagram   |   图表   |
+dialect   |   方言   |   []   |
+dialog   |   n.对话   |   ['daɪəlɒg]   |
+dialup service   |   拨号服务   |
+diameter   |   n.直径   |   [daɪˈæmɪtə]   |
+dictionaries   |   字典   |
+dictionary   |   n.字典   |   [ˈdɪkʃənri]   |
+difference   |   n.差数   |   ['dɪfrəns]   |
+difference manchester   |   差分曼彻斯特   |
+digest   |   摘要   |
+digit   |   n.位   |   [ˈdɪdʒɪt]   |
+digital   |   数字的   |
+digital bideo camera   |   数码摄影机   |
+digital cameras   |   数码照相机   |
+digital cash   |   数字现金   |
+digital notebooks   |   数字笔记本   |
+digital signals   |   数字信号   |
+digital subscriber line   |   数字用户线路   |
+digital versatile disc   |   数字化通用磁盘   |
+digital video disc   |   数字化视频光盘   |
+dimension   |   n.尺寸，维   |   [daɪˈmenʃn]   |
+dimensions   |   维度   |
+direct   |   adj.直接的 v.指导   |   [dəˈrekt]   |
+direct access   |   直接存取   |
+directed graph |   有向图   |
+directive   |   (编译)指示符   |
+directory   |   n.目录   |   [dəˈrektəri]   |
+directory search   |   目录搜索   |
+dirty pages   |   脏页   |
+dirty read   |   脏读   |
+disable   |   v.禁用   |   [dɪs'eɪbl]   |
+disabled   |   adj.禁用的   |   [dɪsˈeɪbld]   |
+disadvantage   |   n.劣势   |   [ˌdɪsəd'vɑ:ntɪdʒ]   |
+disassembler   |   反编译器   |
+disaster recovery plan   |   灾难恢复计划   |
+discard   |   v.丢弃   |   [dɪs'kɑ:d]   |
+disconnecting   |   n.断开   |   ['dɪskə'nektɪŋ]   |
+discount   |   n.折扣   |   ['dɪskaʊnt]   |
+discouraged   |   adj.不推荐的   |   [dɪs'kʌrɪdʒd]   |
+discover   |   v.确定   |   [dɪ'skʌvə]   |
+discretion   |   n.决定   |   [dɪˈskreʃn]   |
+discriminate   |   vi.区别、辨别   |   [dɪ'skrɪmɪnet]
+discriminating   |   adj. 识别的；有差别的   |    [dɪ'skrɪmɪnetɪŋ]
+disign pattern   |   设计模式   |
+disk   |   n.磁盘   |   [dɪsk]   |
+disk caching   |   磁盘驱动器高速缓存   |
+disk drive   |   磁盘驱动器   |
+diskette   |   磁盘   |
+dispatch   |   v.分发   |   [dɪˈspætʃ]   |
+dispatcher   |   n.分发器   |   [dɪˈspætʃə]   |
+disperse   |   v.分布   |   [dɪ'spɜ:s]   |
+display   |   v.显示   |   [dɪˈspleɪ]   |
+distinct   |   adj.不同的   |   [dɪˈstɪŋkt]   |
+distinguish   |   v.区分   |   [dɪ'stɪŋɡwɪʃ]   |
+distributed   |   adj.分布式的   |   [dɪs'trɪbju:tɪd]   |
+distributed computing   |   分布式计算   |
+distributed data processing system   |   分布式数据处理系统   |
+distributed processing   |   分布处理   |
+distributed query   |   分布式查询   |
+distributed system   |   分布式系统   |
+distribution   |   n.分布   |   [ˌdɪstrɪ'bju:ʃn]   |
+divide   |   v.除以   |   [dɪ'vaɪd]   |
+divide division   |   分开除除法   |
+divide union intersection difference   |   除并交差   |
+division   |   n.除   |   [dɪ'vɪʒn]   |
+dll hell    dll   |   地狱   |
+DML (data manipulation language)   |   abbr.数据操作语言   |
+DNS (Domain Name System)   |   abbr.域名系统   |   万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。DNS协议运行在UDP协议之上，使用端口号53。
+document   |   n.文档 v.记录   |   [ˈdɔkjumənt]   |
+document files   |   文档文件   |
+documentation   |   n.文件   |   [ˌdɒkjumenˈteɪʃn]   |
+DOM (document object model)   |   abbr.文档对象模型   |
+domain   |   n.域、领域   |   [də'meɪn]   |
+domain code   |   域代码   |
+domain name systemdns   |   域名服务器   |
+dot operator   |   点操作符   |
+dotmatrix printer   |   点矩阵式打印机   |
+dotted list   |   点状列表   |
+dottedpair notation   |   带点尾部表示法 带点尾部记法   |
+double   |   adj.两倍的   |   [dʌbl]   |
+doublebyte character set   |   双字节字符集   |
+doubly   |   adv.双重地   |   [ˈdʌbli]   |
+downcasting   |   n.向下转型   |   ['daunkɑ:stɪŋ]   |
+download   |   v.下载   |   ['daʊnləʊd]   |
+downloading   |   下载   |
+drag   |   v.拖动   |   [dræɡ]   |
+draw   |   v.抽取   |   [drɔ:]   |
+drawing graphs nicely   |   图的描绘   |
+drawing trees   |   树的描绘   |
+DRBD (Distributed Replicated Block Device)   |   abbr.服务器间镜像块设备内容的存储复制解决方案   |
+drive   |   n.驱动器   |   [draɪv]   |
+driver   |   n.驱动程序   |   [ˈdraɪvə]   |
+driver manager   |   驱动管理   |
+drop-in   |   adj.简易的   |   [ˈdrɔpˌɪn]   |
+druid   |   n.德鲁伊   |   ['dru:id]   |
+DSN (data source name)   |   abbr.数据源名称   |
+DTD (document type definition)   |   abbr.文档类型定义   |
+dual   |   n.对偶   |   ['dʊə]
+dualscan monitor   |   双向扫描显示器   |
+due to…   |   由于   |
+dumb terminal   |   非智能终端   |
+dump   |   v.转储   |   [dʌmp]   |
+dump file   |   转储文件   |
+duplicate   |   adj.重复的   |   ['dju:plɪkət]   |
+durability   |   n.持久性   |   [,djuərə'biləti]   |
+duration   |   n.期间   |   [djuˈreɪʃn]   |
+duty   |   n.任务   |   ['dju:tɪ]   |
+dynamic   |   adj.动态的   |   [daɪˈnæmɪk]   |
+dynamic assembly   |   动态装配件、动态配件   |
+dynamic binding   |   动态系结 动态绑定   |
+dynamic cursor   |   动态游标   |
+dynamic design process   |   动态定义过程   |
+dynamic extent   |   动态范围   |
+dynamic filter   |   动态筛选   |
+dynamic languages   |   动态语言   |
+dynamic locking   |   动态锁定   |
+dynamic recovery   |   动态恢复   |
+dynamic scope   |   动态作用域   |
+dynamic snapshot   |   动态快照   |
+dynamic type   |   动态类型   |
+ebook   |   电子阅读   |
+ebusiness   |   电子商务   |
+ecash   |   电子现金   |
+ecommerce   |   电子商务   |
+edge coloring   |   边染色   |
+edit   |   v.编辑   |   [ˈedɪt]   |
+effect   |   n.效果   |   [ɪ'fekt]   |
+effectively   |   adv.有效地   |   [ɪˈfektɪvli]   |
+efficiency   |   n.效率   |   [ɪ'fɪʃnsɪ]   |
+efficient   |   adj.有效的   |   [ɪˈfɪʃnt]   |
+efficiently   |   adv.有效地   |   [ɪ'fɪʃntlɪ]   |
+either   |   任意  |   ['iðɚ]
+eithor ..., or   |   或，其中之一   |
+ejection   |   n.弹出   |   [ɪ'dʒekʃn]   |
+elapse   |   n.消逝   |   [ɪ'læps]   |
+elapsed   |   adj.过去的   |   eg:a specified amount of time has elapsed. 指定的时间已经过去
+electronic cash   |   电子现金   |
+electronic commerce   |   电子商务   |
+element   |   n.元素   |   [ˈelɪmənt]   |
+eliminate   |   v.省去   |   [ɪ'lɪmɪneɪt]   |
+ellipsis   |   n.省略   |   [ɪˈlɪpsɪs]   |
+else   |   adv.否则   |   [els]   |
+embed   |   v.嵌入   |   [ɪmˈbed]   |
+embedded   |   adj.嵌入式的   |   [ɪm'bedɪd]   |
+embedded language   |   嵌入式语言   |
+emit   |   v.发布，发送   |   [ɪ'mɪt]   |
+empty   |   adj.空的   |   [ˈempti]   |
+emulate   |   仿真   |
+enable   |   v.启用   |   [ɪ'neɪbl]   |
+encapsulate   |   v.封装   |   [ɪnˈkæpsjuleɪt]   |
+encapsulation   |   n.封装   |   [inˌkæpsjuˈleiʃən]   |
+encapsulation inheritance   |   封装(压缩) 继承(遗传)   |
+enclose   |   v.封闭   |   [inˈkləuz]   |
+enclosing instance   |   封闭实例   |
+enclosing type   |   封闭类型   |
+encode   |   v.编码   |   [enˈkəʊd]   |
+encounter   |   v.遭遇   |   [ɪnˈkaʊntə]   |
+encrypting   |   加密术   |
+encryption   |   n.加密   |   [ɪn'krɪpʃn]   |
+end user   |   最终用户   |
+endpoint   |   n.端点   |   ['endpɔɪt]   |
+endtoend authentication   |   -- 端对端身份验证   |
+energy star   |   能源之星   |
+enforce   |   v.强制执行   |   [ɪn'fɔ:s]   |
+engine   |   n.引擎   |   ['endʒɪn]   |
+enhance   |   v.增强   |   [ɪn'hɑ:ns]   |
+ensure   |   v.确保   |   [inˈʃuə]   |
+enter   |   v.输入   |   ['entə]   |
+enterprise   |   n.企业   |   [ˈentəpraɪz]   |
+enterprise computing   |   企业计算化   |
+entire   |   adj.整个的   |   [ɪn'taɪə]   |
+entity   |   n.实体   |   [ˈentəti]   |
+entity integrity rule   |   实体完整性规则   |
+entry   |   n.条目   |   [ˈentri]   |
+enum   |   枚举   |
+enumerate   |   v.枚举   |   [ɪ'nju:məreɪt]   |
+enumeration   |   n.枚举 简写 enum   |   [ɪˌnju:məˈreɪʃən]   |
+enumeration   |   枚举   |
+enumeration type   |   枚举类型   |
+enumerators   |   枚举成员、枚举器   |
+enumerators enum   |   列举元（ 型别中的成员） 枚举成员、枚举器   |
+enumrators   |   枚举器   |
+environment   |   n.环境   |   [ɪnˈvaɪrənmənt]   |
+equal   |   adj.相等的   |   [ˈi:kwəl]   |
+equal to...   |   与…相同   |
+equality   |   n.相等性   |   [ɪ'kwɒlətɪ]   |
+equality operator   |   等号操作符   |
+equals   |   相等   |
+equate   |   v.视…相等   |   [ɪ'kweɪt]   |
+equation   |   方程式等式   |
+equivalence   |   n.等价性   |   [ɪ'kwɪvələns]   |
+equivalent   |   adj.相等的   |   [ɪˈkwɪvələnt]   |
+erasable optical disks   |   可擦除式光盘   |
+erasure   |   n.清除   |   [ɪˈreɪʒə]   |
+erasure of…   |   清除…   |
+ergonomics   |   人类工程学   |
+error   |   n.错误   |   [ˈerə]   |
+error log   |   错误日志   |
+error message   |   错误信息   |
+errorchecking   |   错误检查   |
+escape   |   v.转义   |   [ɪˈskeɪp]   |
+escape character   |   转义符、转义字符   |
+escape code   |   转义码   |
+escaped   |   adj.转义的   |   [ɪˈskeɪpt]   |
+essence   |   n.本质 in essense 本质上   |   ['esns]   |
+essential   |   adj.必要的   |   [ɪ'senʃl]   |
+essentially   |   adv.本质上   |   [ɪˈsenʃəli]   |
+establish   |   v.建立   |   [ɪ'stæblɪʃ]   |
+estimate   |   估计判断   |
+ETag (Entity Tag)   |   Etag 是URL的Entity Tag，用于标示URL对象是否改变，区分不同语言和Session等等。具体内部含义是使服务器控制的，就像Cookie那样。
+ethernet   |   以太网   |
+ethics   |   道德规范   |
+eulerian cycle  chinese postmaneuler   |   /  回路/中国邮路   |
+eval   |   函数\脚本.重新运算求出参数的内容   |
+Evalsha   |   Redis命令.根据给定的 sha1 校验码，执行缓存在服务器中的脚本。   |
+evaluate   |   v.计算   |   [ɪ'væljʊeɪt]   |
+evaluation   |   n.计算   |   [ɪˌvæljʊˈeɪʃən]   |
+even   |   n.偶数   |   [ˈi:vn]   |
+event   |   事件   |
+event driven   |   事件驱动的   |
+event handler   |   事件处理器   |
+eventual   |   adj.最终   |
+evict   |   v.剔除   |   [ɪ'vɪkt]   |
+evidence   |   证据   |
+evolution   |   发展演化   |
+evolve   |   v.进化   |   [ɪ'vɒlv]   |
+exact   |   adj.精确的   |   [ɪgˈzækt]   |
+exactly   |   adv.恰好   |   [ɪgˈzæktli]   |
+examine   |   v.检查   |   [ɪɡ'zæmɪn]   |
+excape xml   |   不遵循 XML 格式   |
+exceed   |   v.超过   |   [ɪk'si:d]   |
+exception   |   n.异常，例外   |   [ɪkˈsepʃn]   |
+exception declaration   |   异常声明   |
+exception handling   |   异常处理、异常处理机制   |
+exception specification   |   异常规范   |
+exceptionsafe   |   -异常安全的   |
+exchange sort   |   交换排序   |
+exclude   |   v.不包括   |   [ɪkˈsklu:d]   |
+excluding   |   prep.不包括   |   [ɪkˈsklu:dɪŋ]   |
+exclusive   |   adj.不包括的，独立的   |   [ɪk'sklu:sɪv]   |
+exclusive lock   |   排它锁   |
+exclusively   |   adj.专门地   |   [ɪk'sklu:sɪvlɪ]   |
+execute   |   v.执行   |   [ˈeksɪkju:t]   |
+execution   |   n.执行   |   [ˌeksɪˈkju:ʃn]   |
+exercise care   |   格外小心   |
+exhaust   |   v.耗尽   |   [ɪɡ'zɔ:st]   |
+exhaustive   |   adj.彻底的   |   [ɪgˈzɔ:stɪv]   |
+exhibit   |   表现展示陈列   |
+exist   |   v.存在   |   [ɪgˈzɪst]   |
+existence   |   n.存在   |   [ɪɡ'zɪstəns]   |
+existing   |   adj.现有的   |   [ɪgˈzɪstɪŋ]   |
+exit   |   v.退出   |   [ˈeksɪt]   |
+expand   |   v.扩充   |   [ɪkˈspænd]   |
+expansion cards   |   扩展卡   |
+expect   |   v.期望   |   [ɪkˈspekt]   |
+expected   |   adj.所需要的   |   []   |
+expendable   |   可扩展的   |
+experience   |   n.经验   |   [ɪk'spɪərɪəns]   |
+expertise   |   专门技术   |
+expire   |   v.过期   |   [ɪk'spaɪə]   |
+expired   |   adj.过期的   |
+expiry   |   n.终止   |   [ɪkˈspaɪəri]   |
+explain   |   v.说明、解释   |   [ɪk'splen]   |
+explicit   |   adj.显式的   |   [ɪkˈsplɪsɪt]   |
+explicit specialization   |   显式特化   |
+explicit transaction   |   显式事务   |
+explicitly   |   adv.显示地   |   [ɪkˈsplɪsɪtli]   |
+explode   |   v.爆炸   |   [ɪk'spləʊd]   |
+exploratory programming   |   探索式编程   |
+explore   |   v.探索   |   [ɪkˈsplɔ:]   |
+explorer   |   n.浏览器   |   [ɪkˈsplɔ:rə]   |
+exponent   |   n.指数   |   [ɪkˈspəʊnənt]   |
+export   |   v.导出   |   [eksˈpɔ:t]   |
+exported   |   adj.导出的   |
+exporter   |   n.发布者
+expose   |   v.揭露   |   [ɪk'spəʊz]   |
+express   |   v.表述   |   [ɪk'spres]   |
+expression   |   n.表达式 regular expression 正则表达式   |   [ɪkˈspreʃn]   |
+expressive power   |   表达能力   |
+extend   |   v.扩展   |   [ɪkˈstend]   |
+extends   |   v.继承   |
+extense   |   adj.扩展的   |   [ik'stens]   |
+extensibility   |   可扩展性   |
+extensible   |   adj.可扩展的   |   [ikˈstensib]   |
+extension   |   n.扩展   |   [ɪk'stenʃn]   |
+extent   |   n.程度   |   [ɪkˈstent]   |
+external   |   adj.外部的   |   [eksˈtə:nl]   |
+external fragmentation   |   外碎片   |
+external modem   |   外置调制解调器   |
+external representation   |   外部表示法   |
+extra   |   adj.额外的   |   ['ekstrə]   |
+extraction   |   n.提取   |   [ɪkˈstrækʃn]   |
+extranet   |   企业外部网   |
+extreme   |   adj.极其的   |   [ɪk'stri:m]   |
+extreme programming   |   极限编程   |
+facility   |   n.机制   |   [fəˈsɪləti]   |
+factor   |   n.因素，因子   |   [ˈfæktə]   |
+factorial   |   n.阶乘   |   [fækˈtɔ:riəl]   |
+factoring and primality testing   |   因子分解/质数判定   |
+factory   |   n.工厂   |   ['fæktrɪ]   |
+fail   |   v.失败   |   [feɪl]   |
+fail-fast   |   快速失败   |
+fail-over   |   容错、故障切换   |
+failure   |   n.失败   |   [ˈfeɪljə]   |
+failure to…   |   未能…   |
+family   |   n.系列   |   [ˈfæməli]   |
+fashion   |   n.方式   |   ['fæʃn]   |
+fat client   |   胖客户端   |
+fault page fault   |   中断过错页中断   |
+fax machine   |   传真机   |
+FD (File Descriptor)   |   文件描述符，应用程序通过文件描述符识别该文件。
+feasible   |   可行的   |
+feature   |   n.功能   |   ['fi:tʃə]   |
+feed   |   v.喂养   |   [fi:d]   |
+fetch   |   v.获取   |   [fetʃ]   |
+field   |   n.属性，字段   |   [fi:ld]   |
+field length   |   字段长度   |
+fifo replacement policy   |   先进先出替换算法   |
+figure   |   数字图形   |
+file   |   n.文件   |   [faɪl]   |
+file compression   |   文件压缩   |
+file decompression   |   文件解压缩   |
+file handle   |   文件句柄   |
+fill   |   v.填充   |   [fɪl]   |
+fill pointer   |   填充指针   |
+filter   |   n.过滤器 v.过滤   |   [ˈfɪltə]   |
+filtering   |   n.过滤   |   ['fɪltərɪŋ]   |
+final   |   adj.最终的   |   [ˈfaɪnl]   |
+finalization   |   n.终结化   |
+finalize   |   v.完成，使结束   |   [ˈfaɪnəlaɪz]   |
+finalizer   |   n.终结器   |
+finally   |   adv.最终   |   [ˈfaɪnəli]   |
+find   |   v.查找   |   [faɪnd]   |
+fineograined   |   细粒度   |
+finite   |   adj.有限的、有穷的   |   ['faɪnaɪt]
+finite state machine minimization   |   有穷自动机简化   |
+firewall   |   防火墙　   |
+firewire port port   |   火线端口   |
+firmware   |   韧体 固件   |
+first normal form   |   第一范式   |
+firstclass   |   第一类的    第一级的    一等的   |
+firstclass function   |   第一级函数   第一类函数   一等函数   |
+firstclass object   |   第一类的对象  第一级的对象  一等公民   |
+fit in…   |   适合…   |
+fixed disk   |   固定硬盘   |
+fixedpoint   |   不动点   |
+fixnum   |   定长数 定点数   |
+flag   |   n.标记   |   [flæg]   |
+flash   |   闪存   |
+flash memory   |   闪存   |
+flash ram   |   闪存   |
+flatbed scanner   |   台式扫描器   |
+flatpanel monitor   |   纯平显示器   |
+flexibility   |   弹性 灵活性   |
+flexible disk   |   可折叠磁盘   |
+float   |   n.单精度浮点型   |   [fləut]   |
+floated   |   adj.浮动的   |   ['fləʊtɪd]   |
+floatingpoint   |   浮点数   |
+floatingpoint notation   |   浮点数表示法   |
+floor   |   v.向下取整   |   [flɔ:]   |
+floppies   |   磁盘   |
+floppy   |   活动盘片(软盘)   |
+floppy disk   |   软盘   |
+floppydisk cartridge   |   磁盘盒   |
+flush   |   v.刷新   |   [flʌʃ]   |
+fold   |   vt.折叠   |   [fold]
+folder   |   n.文件夹   |   [ˈfəʊldə]   |
+following   |   n.如下，根据   |   ['fɒləʊɪŋ]   |
+font   |   n.字体   |   [fɔnt]   |
+for gui   |   介面 界面   |
+for instance   |   例如   |
+forbid   |   v.禁止   |   [fəˈbɪd]   |
+force   |   v.强制   |   [fɔ:s]   |
+foregoing   |   adj.前面的   |   [fɔ:ˈgəʊɪŋ]   |
+foreign key   |   外键   |
+fork   |   vi.分叉，复刻   |   [fɔrk]   |
+form   |   n.表单，形式   |   [fɔ:m]   |
+form programming   |   表单（ 用语） 窗体   |
+formal   |   adj.正式的，形式的   |   ['fɔ:ml]   |
+formal parameter   |   形式叁数 形式叁数   |
+formal relation   |   形式关系   |
+formalize   |   v.正式化   |   ['fɔ:məlaɪz]   |
+formally   |   adv.正式地   |   ['fɔ:məlɪ]   |
+format   |   n.格式 v.格式化   |   [ˈfɔ:mæt]   |
+format...as…   |   将…格式化为…   |
+formatted   |   adj.有格式的   |   [fɔ:rmæt]   |
+formatter   |   n.格式器   |   ['fɔ:mætə]   |
+formatting   |   n.格式化   |   ['fɔ:mætɪŋ]   |
+formatting toolbar   |   格式化工具条   |
+former   |   n.前者   |   [ˈfɔ:mə]   |
+formula   |   n.公式   |   ['fɔ:mjələ]   |
+forth   |   adv.向前   |   [fɔ:θ]   |
+forward   |   adv.向前 v.跳转   |   [ˈfɔ:wəd]   |
+forward declaration   |   前置声明   |
+forward references   |      |      |
+forwarding   |   转呼叫,转发 转发   |
+forwarding function   |   转呼叫函式,转发函式 转发函数   |
+forwardonly   |   -只向前的   |
+forwardonly cursor   |   只向前游标   |
+found   |   v.创建   |   [faʊnd]   |
+foundation   |   基础根据基金   |
+fractal   |   碎形 分形   |
+fraction   |   n.小数   |   [ˈfrækʃn]   |
+fractional   |   adj.小数的   |   [ˈfrækʃənl]   |
+fractions   |   派系   |
+fragment   |   n.片段   |   [ˈfrægmənt]   |
+fragmentation   |   碎片   |
+fragments            ;   |   段落; 代码块   |
+frame   |   n.框架   |   [freɪm]   |
+frame page frame   |   帧结构页结构   |
+frameset   |   框架集   |
+framework   |   n.框架   |   [ˈfreɪmwɜ:k]   |
+free   |   adj.随意的   |   [fri:]   |
+freeware   |   自由软件   |
+frequency   |   n.频率   |   [ˈfri:kwənsi]   |
+frequent   |   adj.频繁的   |   ['fri:kwənt]   |
+from and to…   |   在…中   |
+fromal parameter   |   形参   |
+frustrated   |   受挫折   |
+FST (Finite State Transducers)   |   有限状态转移器   |
+ftp   |   文件传送服务   |
+FTP (file transfer protocol)   |   abbr.文件传输协议   |
+fulfill   |   v.实现   |   [fulˈfil]   |
+full   |   adj.满的   |   [fʊl]   |
+full specialization   |   完全特化   |
+fully   |   adv.完全   |   [ˈfʊli]   |
+function   |   n.功能   |   [ˈfʌŋkʃn]   |
+function call operator   |   函数调用操作符   |
+function literal   |   函数字面常量   |
+function object   |   函数对象   |
+function overloaded resolution   |   函式多载决议程序 函数重载解决（方案）   |
+function template   |   函数模板   |
+functional arguments   |   函数型参数   |
+functional programming   |   函数式编程   |
+functionality   |   n.功能   |   [ˌfʌŋkʃəˈnæləti]   |
+functionally dependent   |   函数依赖   |
+functor   |   仿函数   |
+further   |   adj.更多的，进一步的   |   [ˈfɜ:ðə]   |
+furthermore   |   此外   |   [ˈfə:ðəˌmɔ:]   |
+future   |   n.将来、未来   |   [ˈfjutʃɚ]
+GAC (global assembly cache)   |   abbr.全局程序集缓存   |
+gap   |   n.间隔   |   [ɡæp]   |
+garbage   |   n.垃圾   |   [ˈgɑ:bɪdʒ]   |
+garbage collected   |   垃圾回收   |
+garbage collection   |   垃圾回收   |
+garbage collector   |   垃圾回收器   |   eg.finalize() method
+gateway   |   n.网关   |   [ˈgeɪtweɪ]   |
+gather   |   聚集采集推测   |
+GC (garbage collection)   |   abbr.垃圾回收机制   |
+gender   |   n.性别   |   [ˈdʒendə]   |
+general   |   adj.大致的，常规的   |
+general-purpose   |   adj.通用的   |   [ˈdʒenrəl]   |
+generality   |   n.一般性   |   [ˌdʒenəˈræləti]   |
+generalized   |   adj.广泛的   |   [ˈdʒenrəlaɪzd]   |
+generalized variable   |   广义变量   |
+generally   |   adv.通常   |   [ˈdʒenrəli]   |
+generally speaking   |   一般来讲   |
+generalpurose registers   |   通用寄存器   |
+generalpurpose application   |   通用运用程序   |
+generate   |   v.生成   |   [ˈdʒenəreɪt]   |
+generated   |   adj.生成的   |
+generating graphs   |   图的生成   |
+generating partitions   |   划分生成   |
+generating permutations   |   排列生成   |
+generating subsets   |   子集生成   |
+generation   |   n.生成   |   [ˌdʒenəˈreiʃən]   |
+generator   |   n.生成器   |   [ˈdʒenəreɪtə]   |
+generic   |   adj.通用的   |   [dʒə'nerɪk]   |
+generic algorithm   |   通用算法   |
+generic function   |   通用函数   |
+generic programming   |   通用编程    泛型编程   |
+genericity   |   泛型   |
+genrative programming   |   生产式编程   |
+GEO (Gene Expression Omnibus)   |   基因表达数据库   |
+get   |   v.得到   |   [get]   |
+getter   |   n.获取   |   [ˈɡetə]   |
+GFS (Google File System)   |   Google公司为了存储海量搜索数据而设计的专用文件系统。GFS是一个可扩展的分布式文件系统，用于大型的、分布式的、对大量数据进行访问的应用。它运行于廉价的普通硬件上，并提供容错功能。它可以给大量的用户提供总体性能较高的服务。
+gigahertz   |   千兆赫   |
+gird   |   n.表格   |   [ɡɜ:d]   |
+give a view into…   |   关于…的视图   |
+given   |   adj.指定的   |   ['ɡɪvn]   |
+giving   |   表示   |
+global   |   adj.全局的、全局   |   ['ɡlobl]
+global  local   |   全域的（对应於 ） 全局的   |
+global declaration   |   全局声明   |
+global object   |   全局对象   |
+global scope resolution operator   |   全局范围解析操作符   |
+glue program   |   胶水程序   |
+gnaw   |   v.啃   |   [nɔ:]   |
+goto   |   跳转   |
+grade   |   等级标准   |
+grammar   |   n.语法   |   [ˈgræmə]   |
+grant   |   v.授予，授权   |   [ɡrɑ:nt]   |
+granularity   |   粒度   |
+graph   |   n.图   |   [ɡræf]   |
+graph data structures   |   图   |
+graph isomorphism   |   同构   |
+graph partition   |   图的划分   |
+graph problems  hard np   |   --  图论-问题   |
+graph problems  polynomial   |   --  图论-多项式算法   |
+graphic tablet   |   绘图板   |
+graphical user interface gui   |   ,    图形用户界面   |
+greatest common divisor   |   最大公因数   |
+greedy   |   adj.贪婪的   |   ['ɡri:dɪ]   |
+green pc   |   绿色个人计算机   |
+greenspuns tenth rule   |   '    格林斯潘第十定律   |
+grid   |   n.网格   |   []   |
+GridFS    |   MongoDB 中的一个内置功能，用于存储和获取超过 16 MB（BSON文件限制）的文件，将其存储在集合中，是文件存储的一种。
+gropher   |   将用户的请求自动转换成   |
+group   |   n.组   |   [gru:p]   |
+group box   |   分组框   |
+grouping   |   n.分组   |   [ˈgru:pɪŋ]   |
+growable   |   adj.可增长的   |   [ɡ'rəʊeɪbl]   |
+growth   |   n.增长   |   [ɡrəʊθ]   |
+guarantee   |   n.保证   |   [ˌɡærən'ti:]   |
+guaranteed   |   adj.有保证的   |   ['gærən'ti:d]   |
+Guava   |   是一种基于开源的Java库，Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I/O 等等。 所有这些工具每天都在被Google的工程师应用在产品服务中。
+GUI (Graphical User Interface)  |   abbr.图形用户界面   |
+GUID (globally unique identifier)   |   abbr.全球唯一标识符   |
+hack   |   破解   |
+hacker   |   黑客   |
+halfduplex communication   |   半双通通信   |
+hamiltonian cycle hamilton   |   回路   |
+hand shaking   |   握手协商   |
+hand-code   |   手编   |   ['hændk'əʊd]   |
+handheld computer   |   手提电脑   |
+handle   |   v.处理 n.句柄   |   ['hændl]   |
+handler   |   n.处理   |   [ˈhændlə]   |
+handling   |   n.处理   |   [ˈhændlɪŋ]   |
+hard copy   |   硬拷贝   |
+hard disk   |   硬盘   |
+hardcoded   |   -硬编码的   |
+hardcopy   |   -截屏图   |
+harddisk cartridge   |   硬盘盒   |
+harddisk pack   |   硬盘组   |
+hardware   |   硬件   |
+has no direct effect on…   |   对…没有直接影响   |
+hash   |   n.散列 h  |   [hæʃ]   |
+hash code   |   哈希编码   |
+hash function collision   |  哈希函数(散列函数) 碰撞   |
+hash table   |   散列表、哈希表   |
+have access to…   |   可以使用…   |
+hazardous   |   adj.有害的   |   [ˈhæzədəs]   |
+head   |   n.头部   |   [hed]   |
+head crash   |   磁头碰撞   |
+header   |   n.头部   |   [ˈhedə]   |
+header file   |   头文件   |
+heading   |   n.标题   |   [ˈhedɪŋ]   |
+heap   |   n.堆   |   [hi:p]   |
+hedge   |   adj.不确定的   |   [hedʒ]   |
+height   |   n.高度   |   [haɪt]   |
+help file   |   帮助文件   |
+helper   |   辅助函数    辅助方法   |
+helper applications   |   帮助软件   |
+hen   |   n.母鸡   |   [hen]   |
+hence   |   adv.因此   |   [hens]   |
+hessian    |   n.麻绳   |
+Hessian    |   一个轻量级的remoting onhttp工具，使用简单的方法提供了RMI的功能。 相比WebService，Hessian更简单、快捷。采用的是二进制RPC协议，因为采用的是二进制协议，所以它很适合于发送二进制数据。
+heuristic   |   启发式   |
+hexadecimal   |   adj.十六进制的 缩写 hex   |   [ˌheksəˈdesɪml]   |
+HFile   |   HBase 的数据底层存储。每次数据从 MemStore 中 flush，最终都会形成一个 HFile。
+HFile   |   HFile是HBase存储数据的文件组织形式。
+hidden   |   adj.隐藏的   |   [ˈhɪdn]   |
+hide   |   v.隐藏   |   [haɪd]   |
+hierarchical   |   adj.分层的   |   [ˌhaɪəˈrɑ:kɪkl]   |
+hierarchical data   |   阶层式数据、层次式数据   |
+hierarchical network   |   层次型网络   |
+hierarchy   |   n.层级   |   [ˈhaɪərɑ:ki]   |   eg.Class Object is the root of the class hierarchy.
+high level   |   高阶、高层   |
+higherorder function   |   高阶函数   |
+higherorder procedure   |   高阶过程   |
+highest   |   adj.最高的   |   [haɪɪst]   |
+highlight   |   v.强调   |   [ˈhaɪlaɪt]   |
+highorder   |   高阶   |
+hint   |   n.提示   |   [hɪnt]   |
+history file   |   历史文件   |
+hit rate   |   命中率   |
+hits   |   匹配记录   |
+HLog   |   HBase日志文件，用于恢复数据   |
+hold   |   v.保存   |   [həʊld]   |
+holdability   |   n.可保留性   |
+home page   |   主页   |
+honest   |   adj.诚实的   |   [ˈɒnɪst]   |
+hook   |   钩子   |
+horizontal   |   adj.水平的   |   [ˌhɔriˈzɔntəl]   |
+horizontal portal   |   横向用户   |
+host   |   n.主机   |   [həust]   |
+host computer   |   主机   |
+host language statement   |   主语言语句   |
+hot key   |   热键   |
+hot site   |   热战   |
+hover   |   v.盘旋   |   [ˈhɔvə]   |
+however   |   conj.但是   |   [haʊˈevə]   |
+hpsb high performance serial bus   |   高性能串行总线   |
+HTML (hypertext markup language)   |   abbr.超文本标记语言   |
+HTTP (HyperText Transfer Protocol)   |   abbr.超文本传输协议   |
+human   |   n.人类   |   [ˈhju:mən]   |
+hybrid network   |   混合网络   |
+hyper   |   adj.超级的   |   ['haɪpɚ]
+hyperlink   |   超链接   |
+hyperlinks   |   超连接   |
+hypertext   |   超级文本   |
+icon   |   图标   |
+IDE (integrated development environment)   |   abbr.集成开发环境   |
+idempotent   |   adj.幂等的   |   [aɪ'dempətənt]   |
+identical   |   adj.相同的   |   [aɪˈdentɪkl]   |
+identification   |   n.识别   |   [aɪˌdentɪfɪˈkeɪʃn]   |
+identifier   |   n.标识符 缩写 id   |   [aɪˈdentɪfaɪə]   |
+identify   |   v.标识   |   [aɪ'dentɪfaɪ]   |
+idiom   |   n.语句   |   [ˈɪdiəm]   |
+IDL (interface definition language)   |   abbr.接口定义语言   |
+idle time   |   空闲时间   |
+idrive   |   -网络硬盘驱动器   |
+if and only if   |   当且仅当   |
+ignore   |   v.忽略   |   [ɪɡ'nɔ:]   |
+IL (intermediate language)   |   abbr.解释语言   |
+ill type   |   类型不正确   |
+illegal   |   adj.非法的   |   [ɪˈli:gl]   |
+illinois   |   伊利诺 伊利诺斯   |
+illusion   |   错觉   |
+illusion of anonymity   |   匿名幻想   |
+illustrate   |   v.说明   |   [ˈɪləstreɪt]   |
+image   |   n.图像   |   [ˈɪmɪdʒ]   |
+image capturing device   |   图像获取设备   |
+ime   |   输入法   |
+imitate   |   v.模仿   |   [ˈɪmɪteɪt]   |
+immediate   |   adj.立即的，直接的   |   [ɪˈmi:diət]   |
+immediate base   |   直接基类   |
+immediate base  base class   |   直接的（紧临的）上层  。 直接上层基类   |
+immediate derived   |   直接派生类   |
+immediate derived  derived class   |   直接的（紧临的）下层  。 直接下层派生类   |
+immediate updating   |   即时更新   |
+immediately following…   |   紧随…   |
+immutability   |   不变性   |
+immutable   |   adj.不可变的   |   [ɪˈmju:təbl]   |
+imperative   |   命令式   |
+imperative programming   |   命令式编程   |
+implement   |   v.实现   |   [ˈɪmplɪment]   |
+implementation   |   n.实现   |   [ˌɪmplɪmənˈteɪ-ʃən]   |
+implemented   |   adj.以实现的   |   ['ɪmplɪmentɪd]   |
+implementor   |   n.实现者   |   [ɪm'plɪmentə]   |
+implements   |   实现   |
+implicit   |   adj.银式的   |   [ɪm'plɪsɪt]   |
+implicit transaction   |   隐式事务   |
+implicitly   |   adv.隐式地   |   [ɪmˈplɪsɪtlɪ]   |
+imply   |   v.说明   |   [ɪmˈplaɪ]   |
+import   |   v.导入   |   [ˈimpɔ:t]   |
+impose   |   v.强行，产生   |   [ɪm'pəʊz]   |
+improve   |   v.改善   |   [ɪm'pru:v]   |
+in addition to…   |   adv.除…之外   |
+in contrast to..   |   与…相反   |
+in effect   |   实际上   |
+in essense   |   本质上   |
+in exactly   |   完全   |
+in general   |   adv.通常   |
+in order   |   依次   |
+in order for…   |   为了…   |
+in other words   |   换句话说   |
+in particular   |   尤其   |
+in place   |   在位   |
+in place of   |   而不是   |
+in preference to…   |   优先于…   |
+in progress   |   正在进行   |
+in sequence   |   按顺序   |
+in terms of   |   v.根据   |
+in that   |   因为   |
+in the absence of..   |   在没有…时   |
+in the case of…   |   在发生…的情况下   |
+in the face of…   |   面对…   |
+in-memory   |   adj.内存中的   |
+inactive   |   adj.不活跃的   |   [ɪnˈæktɪv]   |
+inclined   |   adj.倾向的   |   [ɪnˈklaɪnd]   |
+include   |   v.包含   |   [ɪnˈklu:d]   |
+inclusive   |   adj.包括的   |   [ɪn'klu:sɪv]   |
+incompatible   |   adj.不兼容的   |   [ˌɪnkəmˈpætəbl]   |
+inconceivable   |   adj.难以想象的   |   [ˌɪnkənˈsi:vəbl]   |
+incorporate   |   v.合并   |   [ɪnˈkɔ:pəreɪt]   |
+incorrect   |   adj.不正确的   |   [ˌɪnkəˈrekt]   |
+incredibly   |   adv.极为   |   [ɪnˈkredəbli]   |
+increment   |   n.增加   |   ['ɪŋkrəmənt]   |
+increment operator   |   增加操作符   |
+incremental   |   adj.递增式的   |   [ˌɪŋkrə'mentl]   |
+incremental testing   |   增量测试   |
+incremental update   |   增量更新   |
+indent   |   n.缩进   |   [ɪn'dent]   |
+indentation   |   n.缩进   |   [ˌɪndenˈteɪʃn]   |
+indented   |   缩排  缩进   |
+indention   |   缩排  缩进   |
+independence   |   n.独立性   |   [independence]
+independent   |   adj.独立的   |   [ˌɪndɪˈpendənt]   |
+independent set   |   独立集   |
+independently of..   |   独立于…   |   [ˌɪndɪˈpendəntlɪ ɔv]   |
+index   |   n.下标、索引   |   [ˈɪndeks]   |
+index search   |   索引搜索   |
+indexing   |   n.下标   |   ['ɪndeksɪŋ]   |
+indexing through   |   n.索引遍历   |
+indicate   |   v.预示   |   ['ɪndɪkeɪt]   |
+indicated   |   adj.指示的   |
+indication   |   n.指示   |   [ˌɪndɪˈkeɪʃn]   |
+indice   |   n.下标   |
+indirect   |   间接的   |
+indirectly   |   adv.间接地   |   [ˌɪndɪˈrektlɪ]   |
+indistinguishable   |   adj.难区分的   |   [ˌɪndɪˈstɪŋgwɪʃəbl]   |
+individual   |   adj.个别的   |   [ˌɪndɪˈvɪdʒuəl]   |
+ineligible   |   adj.不合格的   |   [ɪnˈelɪdʒəbl]   |
+infer   |   v.推断   |   [ɪn'fɜ:]   |
+infinite loop   |   无限循环   |
+infinite precision   |   无限精度   |
+infinite recursion   |   无限递归   |
+infinity   |   n.无穷大   |   [ɪn'fɪnətɪ]   |
+infix   |   中序   |
+influence   |   有影响的   |
+info   |   信息   |   ['ɪnfo]
+information   |   n.信息   |   [ˌɪnfəˈmeɪʃn]   |
+information pushers   |   信息推送器   |
+information technology   |   信息技术   |
+information technology it   |   ,   信息技术   |
+informative   |   adj.有益的   |   [ɪnˈfɔ:mətɪv]   |
+infrastructure   |   公共基础建设   |
+inherent   |   adj.固有的   |   [ɪnˈhɪərənt]   |
+inherently   |   adv.固有地   |   [ɪn'herəntlɪ]   |
+inherit   |   v.继承   |   [ɪnˈherɪt]   |
+inheritance   |   n.继承   |   [ɪnˈherɪtəns]   |
+inherited   |   adj.继承得到的   |   [ɪnˈherɪtɪd]   |
+initial   |   adj.初始的   |   [ɪˈnɪʃl]   |
+initialization   |   n.初始化   |   [ɪˌnɪʃəlaɪ'zeɪʃn]   |
+initialization list   |   初始化列表   |
+initialize   |   v.初始化   |   [ɪˈnɪʃəlaɪz]   |
+initializer   |   n.初值   |   [ɪ'nɪʃəlaɪzə]   |
+initializing   |   初始化   |
+initially   |   adv.最初   |   [ɪˈnɪʃəli]   |
+inject   |   v.注入   |   [ɪnˈdʒekt]   |
+injection   |   n.注入   |   [ɪnˈdʒekʃn]   |
+inkjet printer   |   墨水喷射印刷机   |
+inline   |   内联   |
+inline expansion   |   内联展开   |
+inner   |   adj.内部的 n.内部   |   [ˈɪnə]   |
+inner class   |   内隐类别 内嵌类   |
+inner join   |   内连接   |
+inner loop   |   内层循环   |
+inplace active   |   现场激活   |
+input   |   n.输入   |   [ˈɪnpʊt]   |
+input source   |   n.输入源   |
+inquire   |   v.询问   |   [ɪn'kwaɪə]   |
+insensitive   |   adj.不敏感的   |   [ɪnˈsensətɪv]   |
+insert   |   v.插入   |   [inˈsə:t]   |
+insertion   |   n.插入   |   [ɪnˈsɜ:ʃən]   |
+insertion point   |   n.插入点   |
+insertion sort   |   插入排序   |
+inside   |   adj.内部的 n.内部   |   [ˌɪnˈsaɪd]   |
+install   |   v.安装   |   [ɪnˈstɔ:l]   |
+instance   |   n.实例   |   [ˈɪnstəns]   |
+instance methods   |   接口方法
+instanceof   boolean   |   运算符，用于引用变量，以检查这个对象是否是某种类型。返回  值。   |
+instances   |   实例   |
+instant   |   n.瞬间   |   [ˈɪnstənt]   |
+instant messaging   |   计时信息   |
+instantiate   |   v.实例化   |   [inˈstænʃieit]   |
+instantiated   |   具现化、实体化   |
+instantiation   |   n.实例化   |   []   |
+instantiation  template   |   具现体、具现化实体（常应用於 ） 实例   |
+instead of…   |   而不是…   |
+instruction   |   n.指令   |   [ɪnˈstrʌkʃn]   |
+instruction format   |   指令格式   |
+instruction set   |   指令集   |
+instructive   |   教学性的   |
+instrument   |   记录仪   |
+integer   |   n.整数 缩写 int   |   [ˈɪntɪdʒə]   |
+integrate   |   集成、整合   |
+integrated   |   adj.集成的   |   ['ɪntɪgreɪtɪd]   |
+integrated package   |   综合性组件   |
+integration   |   n.集成、一体化   |   ['ɪntə'greʃən]
+integrity   |   n.完整性   |   [ɪnˈtegrəti]   |
+integrity constraint   |   完整性约束   |
+intelligent terminal   |   智能终端设备   |
+intended   |   adj.预期的   |   [ɪnˈtendɪd]   |
+intent   |   n.含义、目的   |   [ɪn'tɛnt]
+intentionally   |   adv.故意地   |   [ɪn'tenʃənəlɪ]   |
+interact with…   |   与…的交互   |
+interactive   |   n.互动   |   [ˌɪntərˈæktɪv]   |
+interactive language   |   交互式语言   |
+interactive programming environment   |   交互式编程环境   |
+interactive testing   |   交互式测试   |
+interacts   |   交互   |
+interface   |   n.接口，界面   |   [ˈɪntəfeɪs]   |
+interface cards   |   接口卡   |
+interfer   |   v.干预   |   [ˌɪntə'fɪə]   |
+intergrated circuit   |   集成电路   |
+interleave   |   v.交叉   |   [ˌɪntəˈli:v]   |
+intermediate form   |   过渡形式    中间形式   |
+intermix with…   |   与…混合   |   [ˌɪntəˈmɪks]   |
+intern   |   v.   |   ['ɪntɜ:n]   |
+internal   |   adj.内部的   |   [inˈtə:nəl]   |
+internal fragmentation   |   内碎片   |
+internal hard disk   |   内置硬盘   |
+internal modem   |   内部调制解调器   |
+internally   |   adv.内部   |   [ɪn'tɜ:nəlɪ]   |
+internet   |   互联网 因特网   |
+internet hard drive   |   网络硬盘驱动器   |
+internet telephony   |   网络电话   |
+internet terminal   |   互联网终端   |
+interoperability   |   n.互动能力   |   ['ɪntərɒpərə'bɪlətɪ]   |
+interpolation   |   插值   |
+interpret   |   v.解释   |   [ɪnˈtɜ:prɪt]   |
+interpreter   |   解释器   |
+interprocess communication ipc   |   进程间通信   |
+interrupt   |   v.中断   |   [ˌɪntəˈrʌpt]   |
+interrupted   |   adj.中断的   |
+intersection   |   n.交集   |   [ˌɪntə'sekʃn]   |
+intersection detection   |   碰撞测试   |
+interval   |   n.间隔   |   [ˈintəvəl]   |
+intetrity constraint   |   完整性约束   |
+intranet   |   企业内部网   |
+introduce   |   v.引入   |   [ˌɪntrəˈdju:s]   |
+introduction   |   n.导论   |   [ˌɪntrəˈdʌkʃn]   |
+introspection   |   自省   |
+invalid   |   adj.无效的   |   [ɪnˈvælɪd]   |
+invalidate   |   v.使无效   |   [ɪnˈvælɪdeɪt]   |
+invalidated   |   adj.无效的   |
+invariant   |   n.不变   |   [ɪnˈveəriənt]   |
+invariants   |   不变性   |
+inversion   |   n.反转   |   [ɪnˈvɜ:ʒən]   |
+invocate   |   v.调用   |   [ˈinvəukeit]   |
+invocation   |   n.调用   |   [ˌɪnvəˈkeɪʃn]   |
+invoke   |   v.调用   |   [ɪnˈvəʊk]   |
+invoker   |   n.调用者   |   [ɪnˈvəʊk]   |
+involved   |   adj.涉及的   |   [ɪnˈvɔlvd]   |
+ipc   |   工业过程控制   |
+is closer to…   |   靠近…   |
+is free to…   |   随意…   |
+is interleaved with...   |   与…交叉   |
+is meant for…   |   被用作…   |
+is not required to   |   不一定   |
+is referred to as…   |   被称为…   |
+is said to…   |   被认为…   |
+ISA (Instruction Set Architecture)   |  指令集体系结构，简称体系结构或系统结构，它是软件和硬件之间接口的一个完整定义。ISA定义了一台计算机可以执行的所有指令的集合，每条指令规定了计算机执行什么操作，所处理的操作数存放的地址空间以及操作数类型。ISA规定的内容包括数据类型及格式，指令格式，寻址方式和可访问地址空间的大小，程序可访问的寄存器个数、位数和编号，控制寄存器的定义，I/O空间的编制方式，中断结构，机器工作状态的定义和切换，输入输出结构和数据传送方式，存储保护方式等。因此，可以看出，指令集体系结构是指软件能够感知到的部分，也称软件可见部分。
+isa industry standard architecture   |   工业标准结构体系   |
+ISAM (Indexed Sequential Access Method)   |   abbr.索引顺序存取方法   |
+isam vsam   |   索引顺序存取方法虚拟存储存取方法   |
+isolation   |   n.隔离性   |   [ˌaɪsəˈleɪʃn]   |
+isolation level   |   隔离级别   |
+it ingormation technology   |   信息技术   |
+it is good practice to  …   |   是一个好习惯   |
+italic   |   n.斜体 简写 i   |   [ɪˈtælɪk]   |
+item   |   n.项   |   [ˈaɪtəm]   |
+iterate   |   v.迭代   |   [ˈɪtəreɪt]   |
+iterate over…   |   迭代…   |
+iteration   |   n.迭代   |   [ˌɪtəˈreɪʃn]   |
+iterative   |   反复的、迭代的   |
+iterator   |   n.迭代器   |   [ˈɪtəreɪtə]   |
+jagged   |   锯齿状的   |
+january   |   n.一月   |   [ˈdʒænjuəri]   |
+java content pane   |   （有时为嵌板之意，例   ）   |
+JDBC (Java DataBase Connectivity)   |   abbr.Java数据库连接   |
+jit compilation jit   |   编译 即时编译   |
+jit compilationjit   |   编译即时编译   |
+JMS (Java Message Service)   |   Java消息服务   |
+JMX (Java Management Extensions)   |   abbr.Java 管理扩展   |
+JNDI (Java Naming and Directory Interface)   |   abbr.Java命名和目录接口   |
+job control language jcl   |   ,    作业控制语言   |
+job scheduling   |   工程安排   |
+join   |   vt.连接   |   [dʒɔɪn]
+join natural join semijoin   |   连接自然连接半连接   |
+journal   |   n.日志   |   ['dʒɝnl]   |   eg.在 MongoDB 中 Journal 是预写日志的概念。
+journaling   |   日志记录   |   ['dʒə:nliŋ]
+joystick   |   操纵杆   |
+JSONP (JSON with Padding)   |   abbr.跨域读取数据技术   |
+judgment   |   判断   |
+judicious   |   明智的   |
+junior   |   n.初级   |   [ˈdʒu:niə]   |
+JVM (Java Virtual Machine)  |   Java虚拟机，JVM是可运行 Java 代码的假想计算机 ，包括一套字节码指令集、一组寄存器、一个栈、
+kdtrees   |   线段树   |
+keep track of   |   v.跟踪   |
+kernel   |   核心   |
+kernel executive supervisor user   |   核心执行管理用户   |
+kernel language   |   核心语言   |
+kernels   |   核心程序   |
+key   |   n.键 adj.主要的   |   [ki:]   |
+key colume   |   键列   |
+key comparison   |   键(码)值比较   |
+keyword   |   n.关键字   |   [ˈki:wɜ:d]   |
+keyword argument   |   关键字参数   |
+keyword search   |   关键字搜索   |
+keywords   |   关键字   |
+kit   |   n.工具包   |   [kɪt]   |
+kludge   |   蹩脚   |
+knapsack problem   |   背包问题   |
+known as…   |   被称为…   |
+Kryo   |   快速高效的Java序列化框架，旨在提供快速、高效和易用的API。无论文件、数据库或网络数据Kryo都可以随时完成序列化。Kryo还可以执行自动深拷贝（克隆）、浅拷贝（克隆）。这是对象到对象的直接拷贝，非对象->字节->对象的拷贝。
+label   |   n.标签   |   [ˈleɪbl]   |
+lambda calculus lambda   |   演算   |
+LAN (local area network)   |   abbr.局域网   |
+lands   |   凸面   |
+language   |   n.语言 缩写 lang   |   [ˈlæŋgwɪdʒ]   |
+large   |   adj.大的   |   [lɑ:dʒ]   |
+larger   |   adj.更大的   |   [la:dʒə]   |
+larval startup   |   雏形创业公司   |
+laser   |   雷射 激光   |
+laser printer   |   激光打印机   |
+late binding   |   迟绑定   |
+latency   |   n.延迟   |   ['letnsi]   |
+latitude   |      |      |
+latter   |   n.后者   |   ['lætə]   |
+launch   |   v.启动   |   [lɔ:ntʃ]   |
+launcher   |   n.启动器   |   [ˈlɔ:ntʃə]   |
+layout   |   n.布局   |   [ˈleɪaʊt]   |
+layout files   |   版式文件   |
+lazy   |   惰性   |
+lazy evaluation   |   惰性求值   |
+lcd liquid crystal display monitor   |   液晶显示器   |
+leading   |   adj.前导的 n.前导   |   [ˈledɪŋ]   |
+leaf   |   n.叶   |   [li:f]   |
+least   |   adj.最少的、最小的   |   [list]
+leaving   |   adj.剩下的   |   ['li:vɪŋz]   |
+left   |   n..左   |   [left]   |
+left outer join   |   左向外联接   |
+legacy   |   n.遗留   |   [ˈlegəsi]   |
+legacy software   |   历史遗留软件   |
+legal   |   合法的   |
+length   |   n.长度   |   [leŋθ]   |
+lengthen   |   v.延长   |   ['leŋθən]   |
+less   |   adj.较小的   |
+less than   |   小于   |
+letter   |   n.字母   |   ['letə]   |
+level   |   n.级别   |   ['levl]   |
+leverage   |   杠杆  (动词)利用   |
+lexical   |   词法的   |
+lexical analysis   |   词法分析   |
+lexical closure   |   词法闭包   |
+lexical scope   |   词法作用域   |
+lexicographic   |   adj.按字典的   |   [ˌleksɪkə'græfɪk]   |
+lexicographical   |   adj.按字典的   |   [leksɪkə'græfɪkl]   |
+library   |   n.库   |   [ˈlaɪbrəri]   |
+life-cycle   |   生命周期   |
+lifetime   |   生命期、寿命   |
+light   |   adj.轻的   |   [ˈlaɪt]   |
+light pen   |   光笔   |
+lighter   |   adj.较轻的   |   [ˈlaɪtə]   |
+like   |   adv.和…一样   |   [laɪk]   |
+likelihood   |   n.可能性   |   [ˈlaɪklihʊd]   |
+likewise   |   同理   |
+limitation   |   n.限制   |   [ˌlɪmɪˈteɪʃn]   |
+line   |   n.行 line separator 行分隔符   |   [laɪn]   |
+line feed   |   换行   |
+line of sight communication   |   视影通信   |
+linear   |   adj.线性的   |   [ˈlɪniə]   |
+linear iteration   |   线性迭代   |
+linear programming   |   线性规划   |
+linear recursion   |   线性递归   |
+link   |   n.链接   |   [lɪŋk]   |
+linkage   |   n.链接   |   [ˈlɪŋkɪdʒ]   |
+linked   |   adj.链接的   |   ['lɪŋkt]   |
+linker   |   联结器、连结器 连接器   |
+list   |   n.列表 v.列出   |   [lɪst]   |
+list box   |   列表框   |
+list linkedlist   |   串列（－） 列表、表、链表   |
+list operation   |   列表操作   |
+list vector...   |   （存放资料的某种结构如 , ...）   |
+listen   |   n.听   |   ['lɪsn]   |
+listenable   |   adj.监听的   |   ['lɪsnəbl]   |
+listening   |   n.监听   |   ['lɪsənɪŋ]   |
+listing   |   n.名单   |   [ˈlɪstɪŋ]   |
+literal   |   n.字面值   |   [ˈlɪtərəl]   |
+literal constant   |   字面常数   |
+literal representation   |   字面量   |
+livelock   |   活锁   |
+load   |   v.加载   |   [ləʊd]   |
+load balancing   |   负载平衡   |
+loaded   |   adj.已加载的   |   ['ləʊdɪd]   |
+loader   |   n.加载器   |   ['ləʊdə]   |
+loading   |   n.加载   |   [ˈləʊdɪŋ]   |
+local   |   adj.局部的   |   [ˈləukəl]   |
+local  global   |   区域的（对应於 ） 局部的   |
+local area networklan   |   （）局域网   |
+local declarations   |   局部声明   |
+local function   |   局部函数    局域函数   |
+local object   |   局部对象   |
+local variable   |   n.局部变量   |
+locale   |   n.语言环境   |   [ləʊˈkæl]   |
+locality   |   局部性   |
+localize   |   v.本地化   |   [ˈləʊkəlaɪz]   |
+localized   |   adj.本地化的   |   [ˈləʊkəlaɪzd]   |
+locate   |   v.定位   |   [ləuˈkeit]   |
+located   |   adj.定位所得的   |   [ləʊˈkeɪtɪd]   |
+location   |   n.位置   |   [ləʊˈkeɪʃn]   |
+lock   |   锁   |
+locking   |   v.锁定   |   [lɒkɪŋ]   |
+log   |   n.日志   |   [lɔɡ]   |
+logging   |   n.日志   |   [ˈlɒgɪŋ]   |
+logic   |   n.逻辑   |   ['lɒdʒɪk]   |
+logical   |   adj.逻辑的   |   [ˈlɒdʒɪkl]   |
+logical functional   |   逻辑内聚功能内聚   |
+logical operations   |   逻辑运算   |
+login   |   n.登录   |   [ˈlɒgɪn]   |
+login security mode   |   登录安全模式   |
+long   |   n.长整型   |   [lɔŋ]   |
+longest common substring   |   最长公共子串   |
+longitudinal   |   水平的   |
+lookup   |   v.查找   |
+lookup table   |   查找表   |
+loop   |   n.循环   |   [lu:p]   |
+loose coupling   |   松散耦合   |
+low bandwidth   |   低带宽   |
+lower   |   adj.小写   |   ['ləʊə]   |
+lowercase   |   n.小写   |   ['ləʊəˌkeɪs]   |
+lowest   |   adj.最低的   |   ['ləʊɪst]   |
+LRU (Least Recently Userd)   |   LRU算法(最近最少使用)。内存管理的一种页面置换算法，对于在内存中但又不用的数据块（内存块）叫做LRU，操作系统会根据哪些数据属于LRU而将其移出内存而腾出空间来加载另外的数据。
+LSM Tree (Log-Structured Merge Tree)   |   LSM树(日志结构的合并数)   |   将对数据的修改增量保持在内存中，达到指定的大小限制后将这些修改操作批量写入磁盘，不过读取的时候稍微麻烦，需要合并磁盘中历史数据和内存中最近修改操作，所以写入性能大大提升，读取时可能需要先看是否命中内存，否则需要访问较多的磁盘文件。极端的说，基于LSM树实现的HBase的写性能比Mysql高了一个数量级，读性能低了一个数量级。
+Lua   |   一种轻量小巧的脚本语言，用标准C语言编写并以源代码形式开放， 其设计目的是为了嵌入应用程序中，从而为应用程序提供灵活的扩展和定制功能。
+lurking   |   潜伏   |
+lvalue   |   左值   |
+LZO (Lempel-Ziv-Oberhumer )   |   致力于解压速度的一种数据压缩算法   |
+machine   |   n.机器   |   [məˈʃi:n]   |
+machine code   |   机器码、机器代码   |
+machine instruction   |   机器指令   |
+machine language   |   机器语言   |
+machine language code   |   机器语言代码   |
+machine learning   |   机器学习   |
+macro   |   宏   |
+magic number   |   魔术数字 魔法数   |
+magnetic tape reels   |   磁带卷   |
+magnetic tape streamers   |   磁带条   |
+mail   |   n.邮件   |   [meɪl]   |
+mailing list   |   邮件列表   |
+main   |   adj.主要的   |   [meɪn]   |
+main board   |   主板   |
+main function   |   n.主函数   |   [mein ˈfʌŋkʃən]   |
+mainframes   |   大型机   |
+maintain   |   v.维护   |   [meɪn'teɪn]   |
+maintaining line arrangements   |   平面分割   |
+maintanence phase   |   维护(保养)阶段   |
+make up…   |   组成…   |
+make use of…   |   利用…   |
+mal   |   <前缀>错误   |   [mæl]   |
+malformed   |   adj.形式错误的   |   [ˌmælˈfɔ:md]   |
+mammal   |   n.哺乳动物   |   [ˈmæml]   |
+MAN (metropolitan area network)   |   abbr.城域网   |
+manage   |   v.管理   |   ['mænɪdʒ]   |
+managed code   |   受控代码、托管代码   |
+managed extensions   |   受控扩充件、托管扩展   |
+managed object   |   受控对象、托管对象   |
+management   |   n.管理   |   ['mænɪdʒmənt]   |
+manager   |   n.管理   |   [ˈmænɪdʒə]   |
+manchester   |   曼彻斯特   |
+mandate   |   v.要求   |   [ˈmændeɪt]   |
+mandated   |   adj.要求的   |   [ˈmændeɪtɪd]   |
+mangled name   |      |      |
+mango   |   n.芒果   |   ['mæŋɡo]   |
+mangoDB   |   一种NoSQL 文档数据库   |
+manifest   |   清单   |
+manifest typing   |   显式类型   |
+manipulate   |   v.操作   |   [mə'nɪpjʊleɪt]   |
+manipulation   |   n.操作   |   [məˌnɪpjʊ'leɪʃn]   |
+manipulator   |   操纵器   |
+manner   |   n.方式   |   [ˈmænə]   |
+manual   |   n.手册 adj.手动的   |   [ˈmænjuəl]   |
+manytomany relationship   |   多对多关系   |
+manytoone relationship   |   　多对一关系   |
+map   |   v. n.映射   |   [mæp]   |
+mappable   |   adj.可映射的   |   ['mæpəbl]   |
+mapped   |   adj.映射的   |   ['mæpt]   |
+mapping   |   n.映射关系   |   ['mæpɪŋ]   |
+mapping functions   |   映射函数   |
+map…to…   |   将…映射到…   |
+margin   |   n.页边   |   [ˈmɑ:dʒin]   |
+mark   |   v.标记   |   [mɑ:k]   |
+mark sensing   |   标志检测   |
+Mark-Compact   |   gc.标记-整理算法：标记后，让所有存活对象都向一端移动，然后清理掉边界意外的内存。
+Mark-Sweep   |   GC.标记-清除算法：先标记需要回收的对象，标记完成后统一回收所有被标记的对象。容易产生内存碎片，老年代的对象都是长期存活或者比较大的对象，复制成本高，适用于标记-清除算法。
+marker   |   n.标记   |   [ˈmɑ:kə]   |
+markup   |   v.标记   |   ['mɑːkʌp]   |
+mask   |   n.掩码 v.掩盖   |   [mɑ:sk]   |
+master   |   n.主要的；v.掌握   |   ['mɑ:stə]   |
+match   |   v.匹配 n.匹配项   |   [mætʃ]   |
+matcher   |   n.匹配器   |   ['mætʃə]   |
+matches   |   n.匹配项   |
+matching   |   匹配   |
+match…against…   |   将…与…匹配   |
+match…with…   |   匹配…与…   |
+materialize   |   v.实现   |   [mə'tɪərɪəlaɪz]   |
+mathematical   |   adj.数学的   |   [ˌmæθiˈmætikəl]   |
+matrix   |   n.矩阵   |   [ˈmeɪtrɪks]   |
+matrix multiplication   |   矩阵乘法   |
+max   |   adj.最大的   |   [mæks]   |
+maximal   |   adj.最大的   |   [ˈmæksɪml]   |
+maximize   |   v.最大化   |   ['mæksɪmaɪz]   |
+maximum   |   adj.最大的   |   ['mæksɪməm]   |
+MD5 (Message-Digest Algorithm)   |   MD5消息摘要算法   |   一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。
+MD5 （Message Digest Algorithm 5)   |   信息摘要算法，是计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护以及散列数据的功能。
+mean   |   v.用作   |   [mi:n]   |
+meaningful   |   adj.有意义的   |   ['mi:nɪŋfl]   |
+measure to…   |   精确到…   |
+mechanical mouse   |   机械鼠标   |
+mechanism   |   n.机制   |   ['mekənɪzəm]   |
+meddleware   |   中间件   |
+media   |   n.媒体   |   ['mi:dɪə]   |
+medialaxis transformation   |   中轴变换   |
+median and selection   |   中位数   |
+medium band   |   媒质带宽   |
+member   |   n.成员   |   [ˈmembə]   |
+member function   |   成员函式 成员函数   |
+member initialization list   |   成员初始值列表   |
+Memcached   |   Memcached 是一个高性能的分布式内存对象缓存系统，用于动态Web应用以减轻数据库负载。它通过在内存中缓存数据和对象来减少读取数据库的次数，从而提高动态、数据库驱动网站的速度。Memcached基于一个存储键/值对的hashmap。其守护进程（daemon ）是用C写的，但是客户端可以用任何语言来编写，并通过memcached协议与守护进程通信。
+memeber function   |   成员函数   |
+memorizing   |   记忆化   |
+memory   |   n.内存   |   ['memərɪ]   |
+memory allocation   |   内存分配   |
+memory leak   |   内存泄漏   |
+memory reference   |   存储器参量   |
+MemStore   |   可以看做 HBase 的内部缓存，每次数据写入完成 HLog 后，都会写入对应 Region 的 MemStore。
+mention   |   v.提及   |   [ˈmenʃn]   |
+menu   |   n.菜单   |   [ˈmenju:]   |
+menu bar   |   菜单条   |
+merely   |   adv.仅仅   |   [ˈmiəli]   |
+merge   |   v.合并   |   [mɜ:dʒ]   |
+mergesort   |   归并排序   |
+message   |   n.信息   |   [ˈmesɪdʒ]   |
+message based   |   基于消息的   |
+message loop   |   消息环   |
+message queuing   |   消息队列   |
+message switching   |   报文交换   |
+messagepassing   |   消息传递   |
+meta   |   n.元   |   ['metə]   |
+meta programming   |   超编程、元编程   |
+metacircular   |   元循环   |
+metadata   |   元数据   |
+metaprogramming   |   元编程   |
+metasearch engine   |   整合搜索引擎   |
+method   |   n.方法   |   [ˈmeθəd]   |
+method combination   |   方法组合    方法组合机制   |
+MHA (Master High Availability)   |   abbr.Java数据库连接   |
+micro   |   微   |
+microprocessor   |   微处理器   |
+microseconds   |   微秒   |
+microwave   |   微波   |
+middle tier   |   中间层   |
+middleware   |   中介层 中间件   |
+migrate   |   v.迁移   |   [maɪ'ɡreɪt]   |
+migration   |   （数据库）迁移   |
+millisecond   |   n.毫秒   |   [ˈmɪlisekənd]   |
+mine   |   n.地雷   |   [maɪn]   |
+minimal network   |   最小网络   |
+minimize   |   v.最小化   |   ['mɪnɪmaɪz]   |
+minimum   |   最小的   |
+minimum spanning tree   |   最小生成树   |
+minkowski sum minkowski   |   和   |
+minux   |   n.减号   |   [ˈmaɪnəs]   |
+MIPS (millions of instructions per second)   |   abbr.每秒百万条指令   |
+mirror   |   镜射   |
+mismatch type   |   类型不匹配   |
+missile   |   n.导弹   |   [ˈmisail]   |
+missing   |   adj.丢失的   |   ['mɪsɪŋ]   |
+mix   |   n.混合   |   [mɪks]   |
+mixed   |   adj.混合的   |   [mɪkst]   |
+MMAP   |   MongoDB 最早的存储引擎。比较简单的内存映射文件，支持集合级别的并发控制，不支持压缩
+MMM (Multi-Master Replication Manager)   |   abbr.双主架构方案   |
+mobile   |   adj.移动的   |   [ˈməubail]   |
+modal   |   adj.模态的   |   ['məʊdl]   |
+model   |   n.模式 v.建模   |   [ˈmɔdəl]   |
+modeling   |   建模   |
+modeling language   |   建模语言   |
+modem   |   调制解调器   |
+modem card   |   调制解调器   |
+modifiable   |   adj.可修改的   |   ['mɒdɪfaɪəbl]   |
+modification   |   n.修改   |   [ˌmɒdɪfɪˈkeɪʃn]   |
+modified   |   adj.修改的   |   [ˈmɔdifaid]   |
+modifier   |   n.修饰符   |   [ˈmɒdɪfaɪə]   |
+modify   |   v.修改   |   [ˈmɒdɪfaɪ]   |
+modularity   |   模块性   |
+modulation   |   解调   |
+module   |   模块   |
+monad   |   单子   |
+monitor   |   n.监听器   |   ['mɒnɪtə]   |
+monkey patch   |   猴子补丁   |
+monolithic   |   adj.庞大的   |   [ˌmɒnə'lɪθɪk]   |
+monomorphic type language   |   单型语言   |
+moores law   |   '  摩尔定律   |
+more formally   |   更确切的讲   |
+more so   |   尤其   |
+most derived class   |   最底层的派生类   |
+mostly   |   adv.通常   |   [ˈməʊstli]   |
+motherboard   |   主板   |
+motion planning   |   运动规划   |
+mouse   |   鼠标   |
+move up   |   v.挪动   |
+multable   |   多变的   |
+multi   |   pref.多   |   [mʌlti]   |
+multicase delegate   |   组播委托、多点委托   |
+multidimensional   |   多维   |
+multifunctional device   |   多功能设备   |
+multilevel data flow chart   |   分层数据流图   |
+multipart   |   adj.复合的   |   ['mʌlti:pɑ:t]   |
+multiple   |   adj.多个的   |   [ˈmʌltɪpl]   |
+multiple values   |   多值   |
+multiple virtual storage mvs   |   多重虚拟存储   |
+multipleterm formula   |   多项式   |
+multiplexing   |   多路复用技术   |
+multiplication   |   n.乘   |   [ˌmʌltɪplɪˈkeɪʃn]   |
+multiplicity   |   n.多样性   |   [ˌmʌltɪ'plɪsətɪ]   |
+multitask   |   n.多任务   |
+multitasking   |   n.多任务处理   |
+multithread   |   n.多线程   |
+multithreaded   |   adj.多线程的   |   [məltɪθ'redɪd]   |
+multithreaded server application   |   多线程服务器应用程序   |
+multiuser   |   n.多用户   |
+mutable   |   adj.可变的   |   [ˈmju:təbl]   |
+mutate   |   v.更改   |   [mju:'teɪt]   |
+mutex   |   互斥元、互斥体   |
+mutual   |   adj.相互的   |   ['mju:tʃʊəl]   |
+mutual exclusion   |   互相排斥   |
+mutually   |   adv.相互   |   [ˈmju:tʃuəli]   |
+MVCC (Multi-Version Concurrency Control)   |   abbr.多版本并发控制   |
+name   |   v.命名，指定   |   [neɪm]   |
+named   |   adj.指定的   |   [neɪmd]   |
+named parameter   |   命名参数   |
+named pipe   |   命名管道   |
+namely   |   即   |   [ˈneɪmli]   |
+namespace   |   命名空间   |
+nanosecond   |   n.纳秒   |   [ˈnænəʊsekənd]   |
+narrowing   |   收缩   |   ['nærəʊɪŋ]   |
+native   |   adj.本地的   |
+native   |   adj.本地的   |   [ˈneɪtɪv]   |
+native code   |   n.本地码、本机码   |
+native code   |   本地码、本机码   |
+natural   |   adj.自然的   |   [ˈnætʃərəl]   |
+natural language   |   自然语言   |
+natural language processing   |   自然语言处理   |
+naturally   |   adv.自动地   |   [ˈnætʃrəli]   |
+navigable   |   adj.可导航的   |   [ˈnævɪgəbl]   |
+navigate   |   v.导航   |   [ˈnævɪgeɪt]   |
+navigator   |   n.导航   |   [ˈnævɪgeɪtə]   |
+near   |   prep.(表示程度)接近   |   [nɪə]   |
+nearest   |   adj.最接近的   |   ['nɪərɪst]   |
+nearest neighbor search   |   最近点对查询   |
+necessarily   |   adv.一定   |   [ˌnesəˈserəli]   |
+necessary   |   adj.必须的   |   [ˈnɛsəˌsɛri]   |
+negation   |   n.反面   |   [nɪˈgeɪʃn]   |
+negative   |   adj.负的   |   [ˈnegətɪv]   |
+nest   |   v.嵌套   |   [nest]   |
+nested   |   adj.嵌套的   |   [nestɪd]   |
+nested class   |   嵌套类   |
+nested query   |   嵌套查询   |
+nested table   |   嵌套表   |
+nesting   |   n.嵌套   |   [nestɪŋ]   |
+net pc   |   网络计算机   |
+network   |   网络   |
+network adapter card   |   网卡   |
+network architecture   |   网络体系结构   |
+network bridge   |   网桥   |
+network card   |   网卡   |
+network flow   |   网络流   |
+network gateway   |   网关   |
+network manager   |   网络管理员   |
+network personal computer   |   网络个人电脑   |
+network terminal   |   网络终端   |
+newline   |   换行   |   [n'ju:laɪn]   |
+newsgroup   |   新闻组   |
+no electronic theft act of1997   |   无电子盗窃法   |
+no point in…   |   没必要   |
+node   |   节点   |
+nondestructive version   |   非破坏性的版本   |
+nondeterministic choice   |   非确定性选择   |
+nonexistent   |   adj.不存在的   |   [ˌnɒnɪg'zɪstənt]   |
+nonkey attributes   |   非码属性   |
+nonstack strategy   |   非堆栈型   |
+nonstrict   |   非严格   |
+nonstrict evaluation   |   非严格求值   |
+nonvolatile storage   |   非易失性存储   |
+normalize   |   v.使标准化   |   ['nɔ:məlaɪz]   |
+normalized   |   adj.标准的   |   ['nɔ:məlaɪzd]   |
+normally   |   adv.通常   |   [ˈnɔ:məli]   |
+normative   |   adj.标准的   |   ['nɔ:mətɪv]   |
+NOS (network operation system)   |   abbr.网络操作系统   |
+NoSQL (Not only SQL)   |   abbr.非关系型数据库   |
+notation   |   n.符号   |   [nəʊ'teɪʃn]   |
+note   |   n.注意   |   [nəut]   |
+notebook computer   |   笔记本电脑   |
+notebook system unit   |   笔记本系统单元   |
+notification   |   n.通知   |   [ˌnəʊtɪfɪˈkeɪʃn]   |
+notify   |   v.通知   |   [ˈnəʊtɪfaɪ]   |
+notion   |   n.概念   |   [ˈnəuʃən]   |
+null   |   n.空值   |   [nʌl]   |
+number   |   n.数字 v.编号   |   [ˈnʌmbə]   |
+number crunching   |   数字密集运算   |
+numeral   |   n.数字   |   [ˈnju:mərəl]   |
+numeric   |   adj.数字的   |   [nju:'merɪk]   |
+numeric entry   |   数字输入   |
+numerical   |   adj.数字的   |   [nju:ˈmerɪkl]   |
+numerical problems   |   数值问题   |
+nyquist   |   奈奎斯特   |
+obey   |   v.遵守   |   [əˈbeɪ]   |
+object   |   n.对象   |   [ˈɔbdʒ ikt]   |
+object based   |   基于对象的   |
+object code   |   目标代码   |
+object embedding   |   对象嵌入   |
+object file   |   目的档 目标文件   |
+object linking   |   目标链接   |
+object model   |   物件模型 对象模型   |
+object oriented   |   面向对象的   |
+object oriented analysis   |   面向对象的分析   |
+object oriented databases   |   面向对象数据库   |
+object oriented implementation   |   面向对象的实现   |
+object pooling   |   对象池化   |
+objectoriented   |   面向对象   |
+objectoriented programming   |   面向对象编程   |
+observable   |   adj.可以观察到的   |   [əb'zɜ:vəbl]   |
+observe   |   v.观察   |   [əb'zɜ:v]   |
+obsolete   |   adj.过时的   |   [ˌɔbsəˈli:t]   |
+obtain   |   v.获取   |   [əb'teɪn]   |
+occams razor   |   '    奥卡姆剃刀原则   |
+occupy   |   占有居住于   |
+occur   |   v.出现   |   [əˈkɜ:]   |
+occurrence   |   n.出现   |   [əˈkʌrəns]   |
+ocr opticalcharacter recognition   |   光电字符识别器   |
+ODBC (open database connectivity)   |   abbr.开放式数据库连接   |
+odbc data source odbc   |   数据源   |
+odd   |   n.奇数   |   [ɔd]   |
+ODS (open data services )   |   abbr.开放式数据服务   |
+of the sort…   |   这类的…   |
+offer   |   v.提供   |   ['ɒfə]   |
+offline browsers   |   离线浏览器   |
+offset   |   n.偏移量   |   ['ɒfset]   |
+OLAP (online analytical processing)   |   abbr.联机分析技术   |
+ole automation objects ole   |   自动化对象   |
+ole automation server ole   |   自动化服务器   |
+ole db consumer ole db   |   使用者   |
+ole db for olap olapole db   |   用于的   |
+ole db provider ole db   |   提供者   |
+ole object linking and embedding   |   对象链接潜入   |
+OLTP (online transaction processing)   |   abbr.联机事务处理   |
+omit   |   v.忽略   |   [ə'mɪt]   |
+omr opticalmark recognition   |   光标阅读器   |
+on one’s behalf   |   为某人   |
+on the fly   |   运行中 执行时   |
+on-demand   |   按需   |
+once again   |   再次   |
+one for each   |   每一个   |
+onedimensional array   |   一维数组   |
+onetomany relationship   |   　一对多关系   |
+onetoone relationship   |   一对一关系   |
+online   |   线上 在线   |
+online redo log   |   联机重做日志   |
+online storage   |   联机存储   |
+on…   |   在…时   |
+OOD (Object-Oriented Design)   |   addr.面向对象的设计   |
+OODB (object oriented data base)   |   abbr.面向对象数据库   |
+open architecture   |   开放式体系结构   |
+open source   |   开放源码   |
+open system   |   开放系统   |
+operand   |   n.操作数   |   [ˈɒpərænd]   |
+operate   |   v.操作   |   [ˈɒpəreɪt]   |
+operating   |   n.操作   |   [ˈɔpəˌreɪtɪŋ]   |
+operation   |   n.操作   |   [ˌɒpəˈreɪʃn]   |
+operator   |   n.运算符   |   [ˈɒpəreɪtə]   |
+oplog   |   MongoDB 的同步日志，相当于 MySQL 的 Binlog
+opportunity   |   n.机会   |   [ˌɒpə'tju:nətɪ]   |
+optical disk   |   光盘   |
+optical mouse   |   光电鼠标   |
+optical scanner   |   光电扫描仪   |
+optimization   |   n.优化   |   [ˌɒptɪmaɪ'zeɪʃən]   |
+optimization of tail calls   |   尾调用优化   |
+optimize   |   v.优化   |   ['ɒptɪmaɪz]   |
+optimized   |   尽量充分利用   |
+optimizer   |   优化器   |
+option   |   n.选项，选择   |   [ˈɒpʃn]   |
+optional   |   adj.可选的   |   [ˈɒpʃənl]   |
+optional argument   |   选择性参数   |
+order   |   n.顺序 v.排序   |   ['ɔ:də]   |
+ordering   |   n.顺序，排序   |   [ˈɔ:dərɪŋ]   |
+ordinal   |   n.序号   |   ['ɔ:dɪnl]   |
+ordinary   |   常规的 常规的   |
+organize   |   组织   |
+orient   |   v.面向   |   [ˈɔ:rient]   |
+oriented   |   adj.面向…的   |   ['ɔːrɪentɪd]   |
+origin   |   n.原点   |   [ˈɒrɪdʒɪn]   |
+original   |   adj.原始的   |   [ə'rɪdʒənl]   |
+originally   |   adv.最初   |   []   |
+originate   |   vi.发源   |   []   |
+orthogonality   |   正交性   |
+OS (operating system)   |   abbr.操作系统   |
+other than   |   prep.而不是，不是   |
+otherwise   |   adv.否则 adj.另外的   |   [ˈʌðəwaiz]   |
+outer join   |   外联接   |
+outline   |   n.大纲   |   [ˈaʊtlaɪn]   |
+output   |   n.输出   |   [ˈaʊtpʊt]   |
+outputter   |   n.输出器   |
+outside…   |   prep.超出…的范围   |   [ˌaʊtˈsaɪd]   |
+over time   |   随时间   |
+overall   |   adj.总体的   |   [ˌəʊvər'ɔ:l]   |
+overflow   |   n.溢出   |   [ˌəuvəˈfləu]   |
+overhead   |   n.开销   |   [ˈəuvəhed]   |
+overlapping register windows   |   重叠寄存器窗口   |
+overload   |   n.重载   |   [ˌəʊvəˈləʊd]   |
+overload resolution   |   重载决议   |
+overloaded function   |   多载化函式 重载的函数   |
+overloaded operator   |   多载化运算子 被重载的操作符   |
+overloaded set   |   多载集合 重载集合   |
+overly   |   adv.过于   |   ['əʊvəlɪ]   |
+override   |   v.重写，覆盖   |   [ˌəʊvəˈraɪd]   |
+overriding   |   n.重写   |   [ˌəʊvəˈraɪdɪŋ]   |
+overview   |   n.概要   |   [ˈəʊvəvju:]   |
+owner   |   n.拥有者   |   [ˈəʊnə]   |
+ownership   |   n.拥有权   |   [ˈəunəʃip]   |
+package   |   n.包   |   [ˈpækɪdʒ]   |
+package explorer   |   n.包浏览器   |
+packaging   |   打包   |
+packet switching   |   报文分组交换   |
+packets   |   数据包   |
+pad   |   v.填充   |   [pæd]   |
+pad with..   |   用…填充   |
+padding   |   n.填料   |   [ˈpædɪŋ]   |
+page   |   n.页面   |   [peɪdʒ]   |
+page context   |   页面上下文   |
+page encoding   |   页面编码   |
+page fault   |   页面失效   |
+page replacement algorithm   |   页替换算法   |
+paged segments   |   段页式管理   |
+pair   |   对组   |
+palette   |   调色板   |
+palindrome   |   回文   |
+palmtop computer   |   掌上电脑   |
+pane   |   窗格 窗格   |
+panel   |   n.面板   |   ['pænl]   |
+paradigm   |   n.范例   |   [ˈpærədaɪm]   |
+parallel   |   并行   |
+parallel computer   |   并行计算机   |
+parallel data transmission   |   平行数据传输   |
+parallel ports   |   并行端口   |
+parallelism   |   n.并行性   |   ['pærəlelɪzəm]   |
+param   |   参数   |
+parameter   |   n.参数 缩写 param   |   [pəˈræmɪtə]   |
+parameter list   |   参数列表   |
+parameter to ...   |   ...的参数   |
+parameterize   |   参数化   |
+parameterized   |   adj.参数化的   |   [pə'ræmɪtəraɪzd]   |
+parametric   |   adj.带参数的   |
+parenmatching   |   括号匹配   |
+parent   |   n.双亲   |   [ˈpeərənt]   |
+parent class   |   父类   |
+parentheses   |   n.圆括号   |   [pə'renθəsi:z]   |
+parkinsons law   |   '  帕金森法则   |
+parse   |   v.解析   |   [pɑ:s]   |
+parse tree   |   解析树 分析树   |
+parser   |   n.解析器   |
+part   |   零件、部件   |
+partial   |   adj.不完整的   |   [ˈpɑ:ʃəl]   |
+partial application   |   部分应用   |
+partial applied   |   分步代入的   |
+partial function application   |   部分函数应用   |
+partial specialization   |   局部特化   |
+partially   |   adv.部分地   |   [ˈpɑ:ʃəli]   |
+particular   |   adj.特定的   |   [pəˈtɪkjələ]   |
+particular ordering   |   部分有序   |
+partition   |   n.分区(数据分区)   |   [pɑ:'tɪʃn]   |
+partition tolerance   |   分区容错   |
+pass   |   v.传递   |   [pɑ:s]   |
+pass along   |   v.传递   |
+pass around   |   v.传递   |
+pass by adress   |   按址传递    传址   |
+pass by reference   |   引用传递   |
+pass by value   |   值传递   |
+pass in   |   传入   |
+passivematrix   |   被动矩阵   |
+password   |   n.密码   |   [ˈpæsˌwɜ:d]   |
+paste   |   v.粘贴   |   [peɪst]   |
+path   |   n.路径   |   [pɑ:θ]   |
+pathname   |   n.路径名   |   [ˈpæθˌneɪm]   |
+pattern   |   n.模式   |   [ˈpætn]   |
+pattern match   |   模式匹配   |
+pc card   |   个人计算机卡   |
+PCD (process control block)   |   abbr.进程控制块   |
+PDA (personal digital assistant)   |   abbr.个人数字助理   |
+peek   |   v.取   |   [pi:k]   |
+peer entites   |   对等实体   |
+penalty   |   n.影响   |   ['penəltɪ]   |
+pending   |   adj.待处理的   |   [ˈpendɪŋ]   |
+penny   |   n.钱的单位：分   |   ['penɪ]   |
+per   |   prep.每   |   [pə]   |
+percent   |   n.百分比   |   [pə'sent]   |
+percentage   |   n.百分比   |   [pəˈsentɪdʒ]   |
+perfect   |   adj.最佳的   |   ['pɜ:fɪkt]   |
+perform   |   v.执行   |   [pə'fɔ:m]   |
+performance   |   n.性能   |   [pə'fɔ:məns]   |
+performancecritical   |   -   |
+period   |   n.期，句号   |   [ˈpɪəriəd]   |
+periodical   |   adj.定期的   |   [ˌpɪəriˈɒdɪkl]   |
+permissible   |   adj.容许的   |   [pəˈmɪsəbl]   |
+permission   |   n.权限   |   [pəˈmɪʃn]   |
+permit   |   v.允许   |   [pəˈmɪt]   |
+permutation   |   n.置换   |   [ˌpɜ:mjuˈteɪʃn]   |
+permute   |   v.置换   |   [pə'mju:t]   |
+persist   |   v.持久化   |   [pə'sɪst]   |
+persistence   |   持久性   |
+persistent   |   n.持久的   |   [pəˈsɪstənt]   |
+personal laser printer   |   个人激光打印机   |
+personal video recorder card   |   个人视频记录卡   |
+personperson auction site   |   个人对个人拍卖站点   |
+perspective   |   n.透视图   |   [pəˈspektɪv]   |
+perturb   |   v.打乱   |   [pə'tɜ:b]   |
+phase   |   阶段局面状态   |
+photo printer   |   照片打印机   |
+phrenology   |   相面   |
+physical   |   adj.物理的   |   [ˈfɪzɪkl]   |
+physical data link network layer   |   物理层数据链路层网络层   |
+physical security   |   物理安全   |
+physically   |   adv.物理上   |   ['fɪzɪklɪ]   |
+pipe   |   n.管道   |   [paɪp]   |
+pipeline   |   n.管线   |   美 /'paɪplaɪn/
+pits   |   凹面   |
+pixel   |   n.像素   |   [ˈpɪksl]   |
+place   |   v.加入   |   [pleɪs]   |
+placeholder   |   n.占位符   |   [ˈpleɪshəʊldə]   |
+plain   |   n.普通的   |   [pleɪn]   |
+planarity detection and embedding   |   平面性检测和嵌入   |
+plane   |   n.平面，飞机   |   [pleɪn]   |
+planning   |   计画   |
+plant   |   n.植物   |   [plɑ:nt]   |
+platform   |   n.平台   |   [ˈplætfɔ:m]   |
+platform scanner   |   平版式扫描仪   |
+platter track cluster   |   面磁道簇   |
+plotter   |   绘图仪   |
+plug and play   |   即插即用   |
+plugin   |   n.插件   |   ['plʌgɪn]   |
+plugin boards   |   插件卡   |
+plus   |   v.加上   |   [plʌs]   |
+point   |   v.指出 n.点   |   [pɔɪnt]   |
+point location   |   位置查询   |
+pointer   |   n.指针   |   [ˈpɔɪntə]   |
+pointer arithmetic   |   指针运算   |
+pointing stick   |   指示棍   |
+policy   |   n.策略   |   ['pɒləsɪ]   |
+poll   |   vi.轮询   |   [pol]
+polling   |   轮询   |
+polygon partitioning   |   多边形分割   |
+polymorphic   |   多态   |
+polymorphism   |   n.多态   |   [ˌpɒlɪ'mɔ:fɪzəm]   |
+polynomial   |   多项式的   |
+pool   |   池   |
+pooled   |   adj.汇集的   |   ['pu:ld]   |
+pooling   |   池化   |
+pop   |   v.弹出   |   [pɒp]   |
+pop up   |   弹出式   |
+popularity   |   n.流行   |   [ˌpɒpjuˈlærəti]   |
+port   |   n.端口   |   [pɔ:t]   |
+portability   |   n.可移植性   |
+portable   |   adj.轻便的   |   [ˈpɔ:təbl]   |
+portable scanner   |   便携式扫描仪   |
+portal   |   门户   |
+portion   |   n.部分   |   ['pɔ:ʃn]   |
+position   |   n.位置 v.安置   |   [pəˈzɪʃn]   |
+positional   |   adj.按位   |   [pəˈzɪʃənəl]   |
+positional parameters   |   位置参数   |
+positive   |   adj.正的   |   [ˈpɒzətɪv]   |
+possessive   |   adj.占有的   |   [pə'zesɪv]   |
+post   |   n.岗位   |   [post]   |
+postfix   |   后缀   |
+posting   |   n.传递   |   [ˈpəʊstɪŋ]   |
+potential   |   adj.可能的   |   [pəˈtenʃl]   |
+power   |   n.幂   |   ['paʊə]   |
+practical   |   adj.实际的   |   [ˈpræktɪkl]   |
+precede   |   v.开头 preceded and followed by开头并后跟..   |   [prɪˈsi:d]   |
+precedence   |   n.优先级   |   [ˈpresɪdəns]   |
+precedence list   |   优先级列表   |
+preceding   |   v.先于   |   [prɪ'si:dɪŋ]   |
+precise   |   adj.精确的   |   [prɪ'saɪs]   |
+precision   |   n.精度   |   [prɪˈsɪʒn]   |
+precompilation   |   n.预编译   |
+precompile   |   v.预编译   |
+precompiled   |   adj.预编译的   |
+predefined   |   adj.预定义的   |   [pri:dɪ'faɪnd]   |
+predicate   |   谓语   |
+preemption   |   有优先权的   |
+preemptive multitasking   |   抢占式多任务   |
+preferable to…   |   优于…   |   [ˈprefrəbl]   |
+preference   |   n.首选   |   [ˈprefrəns]   |
+preferences   |   n.首选项   |
+preferred   |   adj.首选的   |   [prɪ'fəd]   |
+prefix   |   n.前缀   |   [ˈpri:fiks]   |
+prefixed with…   |   v.加上前缀…   |   [pri:'fikst  wɪð]   |
+preliminary   |   adj.初步的   |   [prɪˈlɪmɪnəri]   |
+premature design   |   过早设计   |
+preoccupation   |   n.占位   |   [priˌɒkjuˈpeɪʃn]   |
+preorder inorder postorder   |   前序中序后序   |
+preprocessor   |   预处理器   |
+prescribe   |   规定   |
+presence   |   n.存在   |   [ˈprezns]   |
+present   |   adj.存在的 v.呈现   |   [ˈprezənt]   |
+presentation   |   n.展现   |   [ˌpreznˈteɪʃn]   |
+presentation application layer   |   表示层应用层   |
+presentation files   |   演示文稿   |
+presentation graphics   |   电子文稿程序   |
+preserve   |   v.确保   |   [prɪˈzɜ:v]   |
+pretty   |   adj.漂亮的   |   ['prɪtɪ]   |
+prevent   |   v.防止   |   [prɪˈvent]   |
+prevent from..   |   v.不允许   |
+previous   |   adj.以前的，前一个   |   [ˈpri:viəs]   |
+previously   |   adv.以前   |   [ˈpri:vjəslɪ]   |
+price   |   n.价格   |   [praɪs]   |
+primarily   |   adv.主要地   |   [praɪˈmerəli]   |
+primary   |   adj.主要的   |   [ˈpraɪmɛri]   |
+primary key   |   主键   |
+primary key attributes   |   主码属性   |
+primary storage   |   主存   |
+primary table   |   主表   |
+primary template   |   原始模板   |
+prime   |   adj.主要的 n.质数   |   [praɪm]   |
+primitive   |   adj 基本的   |   [ˈprɪmətɪv]   |
+primitive recursive   |   主递归   |
+primitive type   |   原始类型   |
+principal   |   adj.主要的   |   ['prɪnsəpl]   |
+principal type   |   主要类型   |
+principle   |   原则方法   |
+print   |   v.打印   |   [prɪnt]   |
+printed   |   adj.打印的   |
+printed representation   |   打印表示法   |
+printer   |   打印机   |
+prior   |   adv.事先   |   [ˈpraɪə]   |
+prior to   |   在…之前   |
+priority   |   n.优先级   |   [praɪˈɒrəti]   |
+priority queues   |   堆   |
+privacy   |   隐私权   |
+private   |   adj.私有的   |   [ˈpraɪvət]   |
+privilege   |   n.权限   |   [ˈprɪvəlɪdʒ]   |
+proactive   |   主动地   |
+probably   |   adv.大概的   |   [prɒbəbli]   |
+problem   |   n.问题   |   [ˈprɒbləm]   |
+proce   |   n. 过程；步骤（等于process）  |
+procedural   |   程序式的、过程化的   |
+procedural coincidental   |   过程内聚偶然内聚   |
+procedure   |   n.过程   |   [prəˈsi:dʒə]   |
+procedures   |   规程   |
+procedurual   |   过程化的   |
+procedurual knowledge   |   过程式知识   |
+proceed   |   v. 执行   |   [prə'si:d]   |
+process   |   n.过程 v.处理   |   [prə'ses]   |
+process priority   |   进程优先级   |
+processed   |   adj.已处理的   |
+processing   |   n.处理   |
+processor   |   n.处理器   |   [ˈprɑsɛsɚ]
+produce   |   v.生成   |   [prə'dju:s]   |
+productivity   |   生产力   |
+proficient   |   精通   |
+profile   |   n.配置文件   |   [ˈprəʊfaɪl]   |
+profiler   |   n.分析器   |
+profiling   |   n.性能分析   |
+program   |   n.程序   |   [ˈprəʊgræm]   |
+program debugging   |   程序排错   |
+programmatic   |   adj.程序性的   |   [ˌprəʊgrəˈmætɪk]   |
+programmer   |   n.程序员   |   [prəʊgræmə]   |
+programming   |   n.编程   |   [ˈprəʊgræmɪŋ]   |
+programming control lanugage   |   程序控制语言   |
+programming language   |   编程语言   |
+progress bar   |   进度指示器   |
+prohibit   |   v.禁止   |   [prə'hɪbɪt]   |
+prohibition   |   n.禁止   |   [ˌprəʊɪˈbɪʃn]   |
+project   |   n.项目   |   [prəˈdʒekt]   |
+projection selection join   |   投影选择连接   |
+prompt   |   n.提示   |   [prɔmpt]   |
+propagate   |   v.传播   |   ['prɒpəɡeɪt]   |
+propagation   |   n.传播   |   [ˌprɒpə'ɡeɪʃn]   |
+proper   |   adj.适当的   |   ['prɒpə]   |
+proper list   |   正规列表   |
+properly   |   adv.正确地   |   [ˈprɔpəlɪ]   |
+property   |   n.属性   |   [ˈprɔpəti]   |
+property list   |   属性列表   |
+proportional to…   |   与…成比例   |   [prəˈpɔ:ʃənl]   |
+proposition   |   主张建议陈述   |
+protect   |   v.保护   |   [prəˈtekt]   |
+protected   |   adj.受保护的   |
+Protobuf (Protocol buffers)   |   Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。目前提供了 C++、Java、Python 三种语言的 API。
+protocal   |   协议   |
+protocol   |   n.协议   |   [ˈprəʊtəˌkɔ:l]   |
+protocols   |   协议   |
+prototype   |   n.原型   |   [ˈprəʊtətaɪp]   |
+provide   |   v.提供   |   [prə'vaɪd]   |
+provided   |   conj.假如
+provider   |   供应商   |
+provide…for…   |   为…提供…   |
+province   |   n.省份   |   ['prɒvɪns]   |
+provoke   |   v.激发   |   [prə'vəʊk]   |
+proxied   |   adj.代理的   |
+proxy   |   n.代理   |   [prɒksɪ]   |
+proxy server   |   代理服务   |
+pseudo code   |   伪码   |
+pseudo instruction   |   伪指令   |
+pseudorandom   |   adj.伪随机的   |   [psju:dəʊ'rændəm]   |
+public   |   adj.公开的   |   [ˈpʌblɪk]   |
+publish   |   vi.发布   |   ['pʌblɪʃ]   |
+pull products   |   推取程序   |
+punctuation   |   标点   |
+pure   |   adj.纯的   |   [pjuə]   |
+purely functional language   |   纯函数式语言   |
+purpose   |   目的意图   |
+push   |   v.压入   |   [pʊʃ]   |
+push products   |   推送程序   |
+pushdown stack   |   下推栈   |
+put forth   |   v.提出   |
+quadratic   |   adj.二次的   |   [kwɒˈdrætɪk]   |
+qualified   |   adj.限定的   |   [ˈkwɒlɪfaɪd]   |
+qualifiedqualifier   |   修饰符   |
+qualifier   |   n.修饰符   |   [ˈkwɒlɪfaɪə]   |
+qualify   |   v.限制   |   ['kwɒlɪfaɪ]   |
+qualify…with…   |   用…限制…   |
+quality   |   质量   |
+quality assurance qa   |   ,    质量保证   |
+quantifier   |   n.量词   |   [ˈkwɒntɪfaɪə]   |
+quartz  |   n.石英表   |   [kwɔrts]
+query   |   v.查询   |   [ˈkwiəri]   |
+query language   |   查询语言   |
+queue   |   n.队列   |   [kju:]   |
+quick   |  adv.快速的   |   ['kwɪk]   |
+Quicklist   |   快速列表   |
+quickly   |   adv.迅速地   |   [ˈkwɪkli]   |
+quota   |   n.配额、限额   |   eg.disk quota 磁盘容量限制   |   ['kwotə]   |
+quote   |   n.引号   |   [kwəut]   |
+quoted form   |   引用形式   |
+quotient   |   n.商   |   [ˈkwəʊʃnt]   |
+race condition   |   竞争条件（多线程环境常用语）   |
+radian   |   径度 弧度   |
+radio button   |   单选按钮   |
+radius   |   n.半径   |   [ˈreɪdiəs]   |
+radix   |   n.基数   |   [ˈreidiks]   |
+RAID (Redundant Arrays of Independent Drives)   |   容错式廉价磁盘阵列。 RAID 可以透过一个技术(软件或硬件)，将多个较小的磁盘整合成为一个较大的磁盘装置；而这个较大的磁盘功能可不止是储存而已，他还具有数据保护的功能呢。整个 RAID 由于选择的等级 (level) 不同，而使得整合后的磁盘具有不同的功能
+raise   |   v.引发   |   [reɪz]   |
+ram cache   |   随机高速缓冲器   |
+ram random access memory   |   随机存储器   |
+random   |   adj.随机的   |   ['rændəm]   |
+random number   |   随机数   |
+random number generation   |   随机数生成   |
+randomness   |   n.随机   |   ['rændəmnəs]   |
+range   |   n.范围   |   [reɪndʒ]   |
+range from…to…   |   范围从…到…   |
+range search   |   范围查询   |
+rank   |   等级   |
+rapid prototyping   |   快速原型开发   |
+rare   |   adj.罕见的   |   [reə]   |
+rate   |   n.速率   |   [reɪt]   |
+ratio   |   n.比   |   [ˈreɪʃiəʊ]   |
+rational database   |   关系数据库   |
+raw   |   adj.原始的   |   [rɔ:]   |
+RDBMS (Relational Database Management System)   |   关系数据库管理系统   |   将数据组织为相关的行和列的系统，而管理关系数据库的计算机软件就是关系数据库管理系统，常用的数据库软件有Oracle、SQL Server等。
+re-execute   |   重新执行   |
+re-use   |   n.复用   |   ['reɪj'u:s]   |
+reactor   |   n.反应器、反应器模式   |   [rɪ'æktɚ]   |
+read   |   读取   |
+read back in   |   读回   |
+read in   |   v.读取   |
+read of…   |   读取…   |
+readmacro   |   读取宏   |
+readonly   |   只读   |
+ready blocked running   |   就绪阻塞(等待) 运行   |
+real page number   |   实页数   |
+real programs   |   实程序   |
+reallocation   |   再分配   |   [ˌri:ˌælə'keɪʃn]   |
+rear   |   adj.后面的   |   [rɪr]   |
+reasonably   |   adv.合理地   |   [ˈri:znəbli]   |
+receive   |   v.接收   |   [rɪ'si:v]   |
+recent   |   adj.最新的   |   [ˈri:snt]   |
+recently   |   adv.最近   |   [ˈrisntli]   |
+recognize   |   v.识别   |   [ˈrekəgnaɪz]   |
+recommend   |   v.推荐  |   [ˌrekəˈmend]   |   eg.It is recommended that all subclasses override this method.
+recommendation   |   n.推荐   |   [ˌrekəmenˈdeɪʃn]   |
+record   |   记录   |
+recordset   |   记录集   |
+recovery   |   n.恢复   |   [recovery]   |
+recurse   |   v.递归   |
+recursion   |   n.递归   |   [rɪˈkɜ:ʃn]   |
+recursive   |   递归   |
+recursive case   |   递归情形   |
+recursively   |   adv.递归地   |   [rɪ'kəsɪvlɪ]   |
+redefine   |   v.重定义   |   [ˌri:dɪˈfaɪn]   |
+redirect   |   v.重定向   |   [ˌri:dəˈrekt]   |
+redirected   |   重定向   |
+redirection   |   － 重导向 重定向   |
+redirrection   |   -重定向   |
+reduce   |   v.减少、缩小   |   [rɪ'dju:s]   |
+redundant   |   adj.冗余的   |   [rɪˈdʌndənt]   |
+redundency   |   冗余   |
+refactor   |   n.重构   |
+refactoring   |   重构   |
+refer   |   引用、参考   |
+refer to   |   指向、指涉、指代   |
+refer to…   |   v.引用   |
+reference   |   v.引用   |   [ˈrefrəns]   |
+reference counting   |   引用计数   |
+reference integrity rule   |   引用完整性规则   |
+referenced   |   adj.引用的   |   ['refrənst]   |
+referential transparency   |   引用透明   |
+referer   |   n.参照页   |
+referred to as .....   |   把.....当作   |
+refill   |   v.再填   |   [ˌri:ˈfɪl]   |
+refine   |   精化   |
+reflect   |   v.反映，映射   |   [rɪ'flekt]   |
+reflected   |   adj.反射的   |   []   |
+reflection   |   反射   |
+reflexive   |   n.自反性   |   [rɪ'flɛksɪv]   |   explain:Object.equal():for any non-null reference value x, x.equals(x) should return true.
+reformatting   |   重组   |
+refresh   |   v.更新   |   [rɪˈfreʃ]   |
+refresh data   |   刷新数据   |
+regarde   |   关于   |
+regarding   |   prep.关于   |   [rɪˈgɑ:dɪŋ]   |
+regardless   |   adv.无论如何   |   [rɪˈgɑ:dləs]   |
+regardless of   |   无论   |
+region   |   n.区域   |   [ˈri:dʒən]   |
+regional service provider   |   区域性服务供应商   |
+RegionServer   |   RegionServer是HBase集群运行在每个工作节点上的服务。它是整个HBase系统的关键所在，一方面它维护了Region的状态，提供了对于Region的管理和服务；另一方面，它与Master交互，上传Region的负载信息上传，参与Master的分布式协调管理。
+register   |   v.注册   |   ['redʒɪstə]   |
+registered   |   adj.已注册的   |   ['redʒɪstəd]   |
+registre   |   寄存器   |
+registry creep   |   注册表蠕变   |
+regular expression   |   正则表达式   |
+regularly   |   定期的常规的   |
+rehash   |   v.再散列   |   [ri:ˈhæʃ]   |
+relation   |   n.关系，关系式   |   [rɪˈleɪʃn]   |
+relational   |   n.关系   |   [rɪ'leɪʃənl]   |
+relational database   |   关系数据库   |
+relative   |   adj.相关的，相对的   |   [ˈrelətɪv]   |
+relative against…   |   相对于…   |
+relay   |   中继   |
+release   |   n.版本 v.释放   |   [rɪ'li:s]   |
+relevant   |   adj.有关的   |   [ˈreləvənt]   |
+reliability   |   可信赖的   |
+reliable   |   adj.可靠的   |   [rɪˈlaɪəbl]   |
+reliably   |   adv.可靠地   |   [rɪ'laɪəblɪ]   |
+relinquish   |   v.让出   |   [rɪ'lɪŋkwɪʃ]   |
+reload   |   vt.重载、重安装   |   [ˌri:ˈloʊd]
+reluctant   |   adj.不情愿的   |   [rɪˈlʌktənt]   |
+rely on   |   v.依赖   |
+remain   |   v.保持   |   [rɪˈmeɪn]   |
+remainder   |   adj.剩余的   |   [rɪ'meɪndə]   |
+remark   |   n.谈论   |   [rɪ'mɑ:k]   |
+remote   |   adj.远程的   |   [riˈməut]   |
+remote procedure call rpc   |   ,   远程过程调用   |
+remote request   |   远程请求   |
+remote requset   |   远程请求   |
+removable   |   adj.可移动的   |   [rɪ'mu:vəbl]   |
+removal   |   n.移除   |   [rɪ'mu:vl]   |
+remove   |   v.移除   |   [rɪˈmu:v]   |
+rename   |   v.重命名   |   [ˌri:ˈneɪm]   |
+render   |   v.渲染   |   ['rendə]   |
+reorder   |   v.重新排序   |   [ˌri:'ɔ:də]   |
+repeat   |   v.重复   |   [rɪˈpi:t]   |
+repeated   |   adj.重复的   |   [rɪˈpi:tɪd]   |
+repeatedly   |   adv.重复地   |   [rɪ'pi:tɪdlɪ]   |
+repeater   |   中继器   |
+repetitive motion injury   |   反复性动作损伤   |
+replace   |   v.替换   |   [rɪˈpleɪs]   |
+replace with…   |   v.替换为…   |
+replacement   |   n.替换   |   [rɪ'pleɪsmənt]   |
+replica   |   n.复制品   |   ['rɛplɪkə]   |
+replicate   |   vt.复制   |   ['rɛplɪket]   |
+replicated   |   adj.重复的   |   ['replɪkeɪtɪd]   |
+replication   |   n.复制   |   [træns'mɪt]   |
+report   |   n.报告   |   [riˈpɔ:t]   |
+repository   |   n.仓库   |   [rɪ'pɒzətrɪ]   |
+represent   |   v.代表，表示 |   [ˌreprɪˈzent]   |
+representation   |   n.描述，形式   |   [ˌreprɪzenˈteɪʃn]   |
+represented   |   adj.所代表的   |
+represented by   |   …由…代表   |
+reptile   |   n.爬虫   |   [ˈreptaɪl]   |
+request   |   v.请求   |   [rɪˈkwest]   |
+request indication response confirm   |   请求指示响应确认   |
+requested   |   adj.请求中的   |   [rɪ'kwestɪd]   |
+require   |   v.需要   |   [rɪˈkwaɪə]   |
+required   |   adj.所需的   |   [rɪ'kwaɪəd]   |
+requirement   |    n.要求，必须
+reserve   |   v.保留   |   [rɪ'zɜ:v]   |
+reset   |   v.重置   |   [ˌri:ˈset]   |
+reside   |   v.驻留   |   [rɪ'zaɪd]   |
+resizable   |   adj.可调整大小的   |   [re'saɪzəb]   |
+resolution   |   n.解决   |   [ˌrezə'lu:ʃn]   |
+resolve   |   v.解析 be resolved to…被解析为…   |   [riˈzɔlv]   |
+resolve…against...   |   根据…解析…   |
+resource   |   n.资源   |   [riˈsɔ:s]   |
+respectively   |   adv.分别   |   [rɪˈspektɪvli]   |
+respon   |   回答响应   |
+respond   |   v.响应   |   [riˈspɔnd]   |
+responder   |   n.响应器   |   [rɪ'spɒndə]   |
+response   |   n.响应   |   [riˈspɔns]   |
+responsibility   |   n.责任   |   [rɪˌspɒnsə'bɪlətɪ]   |
+responsible   |   adj. 负有责任的   |   [rɪ'spɒnsəbl]   |
+REST (Representational State Transfer)   |  REST数据通信架构风格（表述性状态传递）
+rest parameter   |   剩余参数   |
+restore   |   v.恢复   |   [rɪ'stɔ:]   |
+restrict   |   v.限定   |   [rɪ'strɪkt]   |
+restriction   |   n.限制   |   [rɪˈstrɪkʃn]   |
+result   |   n.结果 result in..导致…   |   [rɪˈzʌlt]   |
+result from   |   由于   |
+result set   |   结果集   |
+resultant   |   adj.得到的   |   [rɪ'zʌltənt]   |
+resulting   |   adj.得到的   |   [rɪ'zʌltɪŋ]   |
+resume   |   v.恢复   |   [riˈzju:m]   |
+retain   |   v.保留   |   [rɪ'teɪn]   |
+retention   |   n.保留   |   [rɪˈtenʃn]   |
+retrieve   |   v.获取   |   [rɪˈtri:v]   |
+retrieve data   |   检索数据   |
+retrofit   |   v.改进   |   ['retrəʊfɪt]   |
+return   |   v.返回   |   [riˈtə:n]   |
+return type   |   返回类型   |
+return value   |   返回值   |
+reuse of software   |   代码重用   |
+reverse   |   n.反向 v.倒置   |   [riˈvə:s]   |
+reverse directory   |   反向目录   |
+revoke   |   撤销   |
+right   |   adj.正确的 n.右   |   [raɪt]   |
+right associative   |   右结合   |
+right outer join   |   右向外连接   |
+rightmost   |   adj.最右边的   |   ['raɪtməʊst]   |
+RISC (reduced instruction set computer)   |   abbr.精简指令集计算机   |
+rise to…   |   升到…   |   [raiz tu:]   |
+risk   |   v.冒…的风险   |   [rɪsk]   |
+RMI (Remote Method Invocation)   |   abbr.远程方法调用   |
+robust   |   adj.健壮的   |   [rəʊˈbʌst]   |
+robustness   |   健壮性   |
+roll back   |   回滚   |
+roll forward   |   前滚   |
+rom readonly memory   |   只读存储器   |
+room   |   n.空间   |   [ru:m]   |
+root   |   n.根   |   [ru:t]   |
+roughly   |   adj.大体上   |   [ˈrʌfli]   |
+round   |   v.四舍五入 n.回合   |   [raʊnd]   |
+router   |   路由器   |
+routine   |   例程   |
+routing   |   路由   |
+row   |   n.行   |   [rəʊ]   |
+row lock   |   行锁   |
+rowmajor order   |   列主序   |
+rowset   |   行集   |
+RPC (Remote Procedure Call)   |   abbr.远程过程调用   |   一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC协议假定某些传输协议的存在，如TCP或UDP，为通信程序之间携带信息数据。在OSI网络通信模型中，RPC跨越了传输层和应用层。RPC使得开发包括网络分布式多程序在内的应用程序更加容易。
+rule   |   n.规则，分隔线   |   [ru:l]   |
+run   |   v.运行   |   [rʌn]   |
+run inside…   |   运行在…内   |
+runlength encoding   |   游程编码   |
+runnable   |   adj.可运行的   |   ['rʌnəbl]   |
+runtime   |   adj.运行时的   |   [rʌn'taɪm]   |
+runtime typing   |   运行期类型   |
+rvalue   |   右值   |
+safety   |   n.安全   |   ['seɪftɪ]   |
+SAN (Storage Area Network)   |   abbr.存储区域网络   |
+satellite   |   n.卫星   |   [sætəlaɪt]   |
+satelliteair connection services   |   /  卫星无线连接服务   |
+satisfiability   |   可满足性   |
+satisfiablity   |   可满足性   |
+satisfy   |   v.满足   |   [ˈsætɪsfaɪ]   |
+save   |   v.保存，节省 relative to… 相对于…   |   [seɪv]   |
+savepoint   |   保存点   |
+save…as…   |   将…保存为…   |
+scaffold   |   脚手架 鹰架   |
+scalable   |   可伸缩的、可扩展的   |
+scalar type   |   标量   |
+scan   |   v.扫描   |   [skæn]   |
+scanner   |   n.扫描器   |   [ˈskænə]   |
+schedule   |   vt.调度;vt.计划   |
+scheduled   |   adj.已计划的   |
+scheduler   |   n.调度器;调度程序   |
+schema   |   n.模式   |   ['skimə]
+schemata   |   n.纲要   |   [ˈskiːmətə]   |
+scheme   |   n.协议   |   [ski:m]   |
+scope   |   n.范围 v.限制范围   |   [skəup]   |
+scope operator   |   生存空间操作符   |
+scope resolution operator   |   生存空间解析操作符   |
+scoped variable   |   作用域变量   |
+score   |   n.分数   |   [skɔ:]   |
+screamingsnakecase   |   尖叫式蛇底大写   |
+screen   |   n.屏幕   |   [skri:n]   |
+script   |   n.脚本   |   [skrɪpt]   |
+scripting language   |   脚本语言   |
+scroll   |   v.滚动   |   [skrol]   |
+scroll bar   |   滚动条   |
+scrollable   |   adj.可滚动的   |
+SDK (software development kit)   |   abbr.软件开发包   |
+sealed class   |   密封类   |
+search   |   v.搜索 search througe v.遍历   |   [sə:tʃ]   |
+search engines   |   搜索引擎   |
+search for   |   v.搜索   |
+search providers   |   搜索供应者   |
+search services   |   搜索服务器   |
+searching   |   查找   |
+secondary   |   n.次要的   |   ['sɛkəndɛri]   |
+secondary storage device   |   助存储设备   |
+sector head cylinder   |   扇区磁头柱面   |
+sectors   |   扇区   |
+secure sockets layer ssl   |   ,    安全套接字层   |
+security   |   n.安全   |   [sɪ'kjʊərətɪ]   |
+see   |   v.参见   |
+see pointer   |   址叁器,   |
+segment   |   n.段   |   [ˈsegmənt]   |
+segment of instructions   |   指令片段   |
+select   |   v.选择   |   [sɪˈlekt]   |
+selected   |   adj.选择的   |   [sɪ'lektɪd]   |
+selection sort   |   选择排序   |
+selectivity   |   n.选择性   |   [sə,lɛk'tɪvəti]   |
+semantics   |   n.语义   |   [sɪˈmæntɪks]   |
+semaphore   |   信号量   |
+semaphores   |   信号   |
+semicolon   |   n.分号   |   [ˌsemiˈkəʊlən]   |
+semiconductor   |   半导体   |
+send   |   v.发送   |   [send]   |
+sending and receiving devices   |   发送接收设备   |
+sensible   |   adj.友好的   |   [ˈsensəbl]   |
+sensitive   |   adj.敏感的   |   ['sensətɪv]   |
+Sentinel   |   n.哨兵   |   ['sɛntɪnl]   |
+separate   |   adj.单独的 v.分隔   |   ['seprət]   |
+separator   |   n.分隔符   |   [ˈsepəreɪtə]   |
+sequence   |   n.序列，顺序   |   [ˈsi:kwəns]   |
+sequential   |   adj.有序的   |   [sɪˈkwenʃl]   |
+sequential access   |   顺序存取   |
+sequential collection literals   |      |      |
+sequential container   |   序列化容器   |
+sequentially   |   adv.按顺序   |   [sɪ'kwenʃəlɪ]   |
+serial   |   n.串行 adj.连续的   |   [ˈsɪəriəl]   |
+serial data transmission   |   单向通信   |
+serial ports   |   串行端口   |
+serializability   |   n.可序列化性   |   ['sɪərɪəˌlaɪzəbɪlɪtɪ]   |
+serializable   |   adj.可序列化的   |   [sɪərɪəlaɪ'zəbl]   |
+serialization   |   n.序列化   |   [ˌsɪərɪəlaɪ'zeɪʃn]   |
+serializationserialize   |   /序列化   |
+serialize   |   v.序列化   |   ['sɪərɪəlaɪz]   |
+serialized   |   vt.序列化,串行化   |
+series   |   n.串行、系列   |   ['sɪriz]
+serious   |   adj.严重的   |   [ˈsɪəriəs]   |
+serve to…   |   用于…   |
+server   |   n.服务器   |   [ˈsɜ:və]   |
+server as…   |   充当…   |
+server cursor   |   服务端游标、服务器游标   |
+service   |   n.服务   |   [ˈsɜ:vɪs]   |
+session   |   n.会话   |   [ˈseʃn]   |
+set   |   v.设置；集合   |   [set]   |
+set and string problems   |   集合与串的问题   |
+set cover   |   集合覆盖   |
+set data structures   |   集合   |
+set packing   |   集合配置   |
+SetNx (SET if Not eXists)   |   Redis命令.如果不存在则 Set
+setter   |   n.设定器   |   [ˈsetə]   |
+setting   |   n.设置   |   ['setɪŋ]   |
+several   |   pron.若干   |   [sevrəl]   |
+sexpression    s   |   -表达式   |
+shadow   |   n.影子、阴影、幽灵   |
+shadowing   |   隐蔽了   |
+shallow   |   adj.浅的   |   ['ʃælo]   |   eg.shallow copy
+shanon   |   香农   |
+shape   |   n 形状   |   [ʃeɪp]   |
+shape similarity   |   相似多边形   |
+shard   |   n.碎片   |   [ʃɑrd]   |
+sharding   |   n.分区、分片   |  [ʃɑrding]
+share   |   v.共享   |   [ʃɛə]   |
+shared   |   adj.共享的   |   [ʃeəd]   |
+shared cluster   |   共享集群
+shared laser printer   |   共享激光打印机   |
+shared lock   |   共享锁   |
+sharp   |   犀利的   |
+sharpquote   |   升引号   |
+sheet   |   n.纸   |   [ʃi:t]   |
+shift   |   v.移动   |   [ʃɪft]   |
+shim   |   n.垫片   |   [ʃɪm]   |
+short   |   adj.短的   |   [ʃɔ:t]   |
+short path critical path   |   最短路径关键路径   |
+shorten   |   v.缩短   |   [ˈʃɔ:tn]   |
+shortest common superstring   |   最短公共父串   |
+shortest path   |   最短路径   |
+shorthand   |   n.速记   |   [ˈʃɔ:thænd]   |
+show   |   v.显示   |   [ʃəu]   |
+shrink   |   v.缩小   |   [ʃrɪŋk]   |
+shuffle   |   v.改组   |   ['ʃʌfl]   |
+shutdown   |   n.关闭   |   [ˈʃʌtdaʊn]   |
+sibling   |   n.兄弟   |   [sɪblɪŋ]   |
+sicp   |   《计算机程序的构造与解释》   |
+side effect   |   副作用   |
+side effects   |   副作用   |
+sign   |   n.符号 v.签名   |   [saɪn]   |
+signal   |   信号   |
+signaltonoise ratio bn   |   --  信噪比/   |
+signature   |   n.签名   |   [ˈsɪgnətʃə]   |
+signature line   |   签名档   |
+significantly   |   adj.显著的   |   [sɪgˈnɪfɪkənt]   |
+signum   |   正负号   |   ['saɪɡnəm]   |
+silicon chip   |   硅片   |
+similar   |   adj.同样的   |   [ˈsɪmələ]   |
+similarly   |   同样   |
+simple   |   adj.简单的   |   [ˈsɪmpl]   |
+simple vector   |   简单向量   |
+simplifying polygons   |   多边形化简   |
+simply   |   adv.仅仅   |   [ˈsɪmpli]   |
+simulate   |   模拟   |
+single   |   adj.单个的   |   [ˈsɪŋgl]   |
+single point of truth spot   |   ,  真理的单点性   |
+single-valued   |   adj.单值的   |   ['sɪŋɡlv'ælju:d]   |
+singlesegment   |   单段的   |
+singlethreaded   |   　单线程   |
+sink   |   n.接收器   |   [sɪŋk]   |
+sisd simd misd mimd * *   |   * 指令流* 数据流   |
+size   |   n.大小   |   [saɪz]   |
+sketch   |   草图  初步框架   |
+skip   |   v.跳过   |   [skɪp]   |
+slash   |   n.斜杠   |   [slæʃ]   |
+slave   |   adj.从属的   |   [sli:p]   |
+sleep   |   n.睡眠   |   [sli:p]   |
+slider   |   滑块   |
+slight   |   adj.微小的   |   [slaɪt]   |
+slot   |   n.槽   |   [slɑt]
+slots   |   插槽   |
+smart card   |   智能卡   |
+smart pointer   |   灵巧指标、精灵指标 智能指针   |
+smds   |   交换多兆位数据服务   |
+snakecase   |   蛇底式小写   |
+snappy   |   adj.爽快的   |   ['snæpi]
+Snappy   |   Snappy 是一个 C++ 的用来压缩和解压缩的开发包。其目标不是最大限度压缩或者兼容其他压缩格式，而是旨在提供高速压缩速度和合理的压缩率。Snappy 比 zlib 更快，但文件相对要大 20% 到 100%。在 64位模式的 Core i7 处理器上，可达每秒 250~500兆的压缩速度。
+snapshot   |   快照   |
+snoopware   |   监控软件   |
+so as to…   |   为了…   |
+SOAP (simple object access protocol)   |   abbr.简单对象访问协议   |
+socket   |   n.套接字   |   [ˈsɔkit]   |
+soft copy   |   软拷贝   |
+software   |   n.软件   |   [ˈsɔftwɛə]   |
+software copyright act of 1980   |   软件版权法案   |
+software development phase   |   软件开发阶段   |
+software engineering   |   软件工程   |
+software piracy   |   软件盗版   |
+software portability   |   软件可移植性   |
+software requirements specification   |   软件需求说明书   |
+software suite   |   软件协议   |
+solely   |   [ˈsəʊlli:]   |
+solidstate storage   |   固态存储器   |
+solution   |   n.解决办法   |   [səˈlu:ʃn]   |
+solve   |   解决   |
+solving linear equations   |   线性方程组   |
+sophisticated   |   adj.复杂的   |   [səˈfɪstɪkeɪtɪd]   |
+sort   |   n.种类 v.排序   |   [sɔ:t]   |
+sort by…   |   按某种方式排序   |
+sorted   |   adj.有序的   |   ['sɔ:tɪd]   |
+Sorted Set   |   有序集合
+sorting   |   n.排序   |   ['sɔ:tɪŋ]   |
+sort…into…   |   将…排成…   |
+source   |   n.源代码，源;缩写 src   |   [sɔ:s]   |
+source code   |   源码、源代码   |
+source file   |   源文件   |
+space   |   n.空间   |   [speɪs]   |
+space leak   |   内存泄漏   |
+spaghetti   |   面条式代码   意面式代码   |
+spaghetti stack   |   意面式栈    面条式栈   |
+spam   |   垃圾邮件   |
+span   |   n.跨度 v.跨越   |   [spæn]   |
+spanning tree   |   跨越树(生成树)   |
+spare   |   v.剩余   |   [speə]   |
+sparingly   |   adv.谨慎地   |   ['speərɪŋlɪ]   |
+spec   |   规格   |
+special   |   adj.特殊的   |   [ˈspeʃl]   |
+special form   |   特殊形式   |
+special variable   |   特殊变量   |
+specialization   |   特化   |
+specialize   |   特化   |
+specialized   |   adj.特殊的   |   [ˈspeʃəlaɪzd]   |
+specialized array   |   特化数组   |
+specialized search engine   |   专用搜索引擎   |
+specialpurpose application   |   专用文件   |
+specific   |   adj.特定的   |   [spəˈsɪfɪk]   |
+specification   |   n.规范   |   [ˌspesɪfɪˈkeɪʃn]   |
+specified   |   adj.指定的   |   ['spesifaid]   |
+specifier   |   n.分类符   |   ['spɪsəfaɪə]   |
+specify   |   v.指定   |   [spesɪfaɪ]   |
+speedup   |   加速比   |
+spend   |   v.花费   |   [spend]   |
+spiders   |   n.网页爬虫   |   [spaɪdɚz]
+spike   |   尖峰电压   |
+split   |   v.拆分   |   [splɪt]   |
+splitter   |   切分窗口   |
+spot   |   n.小圆点   |   [spɔt]   |
+spreadsheet   |   电子数据表   |
+sprite   |   精灵图   |
+spurious   |   adj.假的   |   [ˈspjʊəriəs]   |
+SQL (structured query language)   |   abbr.结构化查询语言   |
+square   |   n.平方，方   |   [skweə]   |
+square root   |   平方根   |
+squash   |   碰撞   |
+SSD (Solid State Disk)   |   abbr.固态硬盘   |
+stable   |   adj.稳定的   |   ['steɪbl]   |
+stack   |   n.栈   |   [stæk]   |
+stack frame   |   栈帧   |
+stack strategy   |   堆栈型   |
+staging   |   n.暂存   |   [ˈsteɪdʒɪŋ]   |
+stakeholder   |   n.利益相关者   |
+stand alone   |   adj.独立的   |   ['stændəˌləʊn]   |
+standard   |   adj.标准的   |   [ˈstændəd]   |
+standard library   |   标准库   |
+standard template library   |   标准模板库   |
+standard toolbar   |   标准工具栏   |
+standpoint   |   n.观点   |   [ˈstændpɔɪnt]   |
+star network   |   星型网   |
+stark   |   adj.完全的   |   [stɑ:k]   |
+start at…   |   从…开始   |
+starting at the beginning   |   从头开始   |
+starting with…   |   从…开始   |
+startup   |   n.启动   |   [ˈstɑ:tˌʌp]   |
+starvation   |   饥饿匮乏   |
+stash   |   vi.存放、储藏   |   [stæʃ]   |
+STAT   |   abbr.统计   |
+state   |   n.状态   |   [steɪt]   |
+state machine   |   状态机   |
+stateless   |   无状态的   |
+statement   |   n.语句   |   [ˈsteɪtmənt]   |
+static   |   adj.静态的   |   [ˈstætɪk]   |
+static cursor   |   静态游标   |
+static type   |   静态类型   |
+static type system   |   静态类型系统   |
+STATS   |   abbr.统计   |
+status   |   n.状态   |   [ˈsteɪtəs]   |
+status bar   |   状态条   |
+steiner tree steiner   |   树   |
+step   |   n.步骤   |   [step]   |
+step into   |   v.进入   |
+stipulation   |   n.约定   |   [ˌstɪpjʊ'leɪʃn]   |
+stl  standard template library   |   见   |
+STMP (simple mail transfer protocol)   |   abbr.简单邮件传输协议   |
+storage   |   n.存储   |   [ˈstɔ:rɪdʒ]   |
+store   |   v.存储   |   [stɔ:]   |
+stored procedure   |   存储过程   |
+strange   |   adj.奇怪地   |   [streɪndʒ]   |
+strategy   |   n.策略   |   ['strætədʒɪ]   |
+stream   |   n.流   |   [stri:m]   |
+strict   |   adj.严谨的   |   [strɪkt]   |
+strict evaluation   |   严格求值   |
+strictly   |   adv.严格地   |   [ˈstrɪktli]   |
+string   |   n.字符串   |   [strɪŋ]   |
+string matching   |   模式匹配   |
+string template   |   字串模版   |
+strip   |   v.剥去   |   [strɪp]   |
+strong type   |   强类型   |
+structural   |   adj.结构的   |   [ˈstrʌktʃərəl]   |
+structural recursion   |   结构递归   |
+structurally   |   adv.在结构上   |   ['strʌktʃərəlɪ]   |
+structure   |   n. 结构   |   [ˈstrʌktʃə]   |
+structured   |   adj.结构化的   |   ['strʌktʃəd]   |
+structured values   |   结构型值   |
+stub   |   n.存根   |   [stʌb]   |
+STW（Stop-The-Word）   |   JVM GC 垃圾回收时必须暂停其他所有的工作进程   |
+style   |   n.样式   |   [staɪl]   |
+style sheet   |   n.样式表   |
+styles   |   文体风格   |
+subclass   |   n.子类   |   [ˈsʌbklɑ:s]   |
+subgroup   |   循环的   |
+subject   |   n.主题   |   [ˈsʌbdʒɪkt]   |
+submit   |   v.提交   |   [səbˈmɪt]   |
+subobject   |   子对象   |
+subquery   |   子查询   |
+subscribe   |   vt.订阅   |   [səb'skraɪb]
+subscriber   |   n.订阅者   |   [səbˈskraɪbə]   |
+subscript operator   |   下标操作符   |
+subscription   |   n.订阅   |   [səbˈskrɪpʃn]   |
+subscription address   |   预定地址   |
+subscrpt operator   |   ī  下标操作符   |
+subsequence   |   n.子序列   |   ['sʌbsɪkwəns]   |
+subsequent   |   adj.随后的   |   [ˈsʌbsɪkwənt]   |
+subsequently   |   adv.随后   |   [ˈsʌbsɪkwəntli]   |
+subset   |   n.子集   |   [ˈsʌbset]   |
+substitute   |   v.取代   |   ['sʌbstɪtju:t]   |
+substitution   |   n.替换   |   [ˌsʌbstɪ'tju:ʃn]   |
+substitution model   |   代换模型   |
+substraction   |   n.减   |   [sʌbst'rækʃn]   |
+subtag   |   子标签   |
+subtract   |   v.减去   |   [səb'trækt]   |
+subtype   |   子型别 子类型   |
+succeed   |   v.成功   |   [sək'si:d]   |
+succeeding   |   adj.以后的   |   [sək'si:dɪŋ]   |
+successfully   |   adv.成功地   |   [sək'sesfəlɪ]   |
+successive   |   adj.连续的   |   [səkˈsesɪv]   |
+sufficiently   |   adv.足够地   |   [sə'fɪʃntlɪ]   |
+suffix   |   n.后缀   |   [ˈsʌfɪks]   |
+suitable   |   adj.合适的   |   [ˈsu:təbl]   |
+suitable for…   |   适合于…   |
+sum   |   n.和   |   [sʌm]   |
+summary   |   n.摘要   |   ['sʌmərɪ]   |
+super   |   adj.超级的   |   [ˈsu:pə]   |
+superclass   |   n.父类   |
+superclass subclass abstract class   |   超类子类抽象类   |
+supercomputer   |   巨型机   |
+superdisk   |   超级磁盘   |
+superfluous   |   多余的   |
+superimposed   |   adj.重叠的   |   [sju:pərɪm'pəʊzd]   |
+supertype   |   超集   |
+supplementary   |   adj.增补的   |   [ˌsʌplɪˈmentri]   |
+supplied   |   adj.提供的   |   []   |
+supply   |   v.提供   |   [səˈplaɪ]   |
+supply…with…   |   提供…给…   |
+support   |   v.支持   |   [səˈpɔ:t]   |
+suppose   |   v.假定   |   [səˈpəuz]   |
+suppress   |   v.取消   |   [sə'pres]   |
+surfing   |   网上冲浪   |
+surge protector   |   浪涌保护器   |
+surprisingly   |   adv.奇怪地   |   [sə'praɪzɪŋlɪ]   |
+surrogate   |   n.代理   |   ['sʌrəɡət]   |
+surrogate pair   |   n.代理对   |
+suspend   |   v.暂停   |   [səˈspend]   |
+swap   |   v.交换   |   [swɒp]   |
+swapping values   |   交换变量的值   |
+sweep   |   vt.清除   |   [swip]   |
+switch   |   v.转换   |   [swɪtʃ]   |
+switch workspace   |   转换工作区   |
+symbol   |   n.符号   |   [ˈsɪmbl]   |
+symbolic   |   象征的符号的   |
+symbolic computation   |   符号计算   |
+symmetric   |   adj.对称的   |   [sɪ'metrɪk]   |   explain:for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.
+synchronization   |   n.同步   |   [ˌsɪŋkrənaɪˈzeɪʃn]   |
+synchronize   |   v.使同步   |   [ˈsɪŋkrənaɪz]   |
+synchronized   |   adj.同步的   |
+syntactically   |   adv.语法上   |   [sɪn'tæktɪklɪ]   |
+syntax   |   n.语法   |   [ˈsɪntæks]   |
+synthetic benchmark   |   复合基准程序   |
+system   |   n.系统   |   [ˈsɪstəm]   |
+system administrator   |   系统管理员   |
+system cabine   |   系统箱   |
+system clock   |   时钟   |
+system databases   |   系统数据库   |
+system software   |   系统软件   |
+system tables   |   系统表   |
+system testing   |   系统测试   |
+system-level   |   adj.系统级的   |
+systems analyst   |   系统分析师   |
+systolic   |   脉动阵列   |
+tab   |   n.选项卡   |   [tæb]   |
+table   |   n.表   |   [ˈteɪbl]   |
+table lock   |   表锁   |
+tablelevel constraint   |   表级约束   |
+tag   |   n.标签   |   [tæg]   |
+tag library   |   n.标签库 缩写 taglib   |
+tail   |   n.尾部   |   [teɪl]   |
+tailor   |   v.调整   |   ['teɪlə]   |
+tailrecursion   |   尾递归   |
+tailrecursive   |   尾递归的   |
+take   |   带   |
+take advantage of   |   v.利用   |
+take care to…   |   注意…   |
+take into account…   |   v.考虑   |
+take out of…   |   取出…   |
+take over   |   v.替代   |
+take the place of   |   v.取代   |
+tandem   |   adv.先后   |   ['tændəm]   |
+taocp   |   《计算机程序设计艺术》   |
+tape backup   |   磁带备份   |
+Tarball   |   n.原始码、（Linux下最方便的）打包工具   |
+target   |   n.目标   |   [ˈtɑ:ɡit]   |
+target  target pointer：   |   标的（例  ：标的指标） 目标   |
+task   |   n.任务   |   [tɑ:sk]   |
+task switch   |   工作切换   |
+taxable operators   |   需节制使用的操作符   |
+taxonomy   |   分类法   |
+TCP (Transmission Control Protocol)   |   abbr.传输控制协议   |   一种面向连接的、可靠的、基于字节流的传输层通信协议。
+TDM (time division multiplexing)   |   abbr.时分多路复用   |
+team   |   n.团队   |   [ti:m]   |
+technical writer   |   技术协作者   |
+technique   |   n.技术   |   [tekˈni:k]   |
+technology   |   工艺技术   |
+technostress   |   重压技术   |
+telephony   |   电话学   |
+television boards   |   电视扩展卡   |
+telnet   |   远程登录   |
+temp   |   n.临时   |   [temp]   |
+template   |   n.模板   |   ['templeɪt]   |
+template parameter   |   模板叁数 模板叁数   |
+temporary   |   adj.临时的   |   [ˈtemprəri]   |
+temporary object   |   临时对象   |
+temporary table   |   临时表   |
+terminal   |   adj.终端的   |   ['tɜ:mɪnl]   |
+terminate   |   v.终止   |   [ˈtɜ:mɪneɪt]   |
+termination   |   n.终止   |   [ˌtɜ:mɪˈneɪʃn]   |
+terminator   |   n.结束符   |   [ˈtə:mineitə]   |
+test   |   n.测试   |   [test]   |
+testing   |   测试   |
+testing phase   |   测试阶段   |
+text   |   n.文本   |   [tekst]   |
+text compression   |   压缩   |
+text entry   |   文本输入   |
+text file   |   文本文件   |
+textual   |   adj.文本的   |   [ˈtekstʃuəl]   |
+textually   |   adv.文本上   |
+tft thin film transistor monitor   |   薄膜晶体管显示器   |
+that is…   |   即…   |
+the paradox of choice   |   选择谬论   |
+the rest of… …   |   的其余部分   |
+theme   |   n.主题   |   [θi:m]   |
+thereafter   |   adv.此后   |   [ˌðeərˈɑ:ftə]   |
+therefore   |   adv.因此   |   [ˈðeəfɔ:]   |
+therein   |   adv.其中   |   [ˌðeərˈɪn]   |
+thereof   |   因此，及其   |
+thermal printer   |   热印刷   |
+theta select project theta join   |   θ选择投影θ连接   |
+thin   |   adj.细的   |   [θɪn]   |
+thin client   |   瘦客户端   |
+third-party   |   adj.第三方的   |
+thirdparty   |   第三方   |
+though   |   conj.尽管   |   [ðəu]   |
+thread   |   n.线程   |   [θred]   |
+thread safe   |   多绪安全 多线程安全   |
+thrice   |   n.三倍   |   [θraɪs]   |
+through   |   adv.直到   |   [θru:]   |
+throw   |   v.抛   |   [θrəu]   |
+throw  exception   |   抛出异常   |
+throwaway program   |   一次性程序   |
+thus   |   adv.因此   |   [ðʌs]   |
+time complexity   |   时间复杂度   |
+time-consuming   |   adj.费时的   |
+timeout   |   n.延时   |
+timesharing system   |   分时系统   |
+timestamp   |   n.时间戳   |
+timestamping   |   时标技术   |
+title   |   n.标题   |   [ˈtaɪtl]   |
+toggle   |   v.切换   |   ['tɒɡl]   |
+toggle key   |   触发键   |
+token   |   n.令牌   |   [ˈtəʊkən]   |
+token bus   |   令牌总线   |
+token ring   |   令牌环   |
+tokenizer   |   n.分词器   |
+tokenizing   |   n.分词   |
+tolerance   |   n.容错   |   ['tɑlərəns]   |
+toolbar   |   工具栏   |
+Toolkit   |   n.工具包   |   ['tulkɪt]   |
+top   |   n.顶   |   [tɒp]   |
+topdown design   |   自顶向下的设计   |
+toplevel   |   顶层   |
+topological sorting   |   拓扑排序   |
+topology   |   拓扑结构   |
+total   |   n.总数 adj.整体的   |   [ˈtəutəl]   |
+totally   |   adv.完全   |   [ˈtəʊtəli]   |
+touch screen   |   触摸屏   |
+toy benchmark   |   简单基准程序   |
+trace   |   n.踪迹   |   [treɪs]   |
+trackball   |   追踪球   |
+tracking   |   n.跟踪   |   ['trækɪŋ]   |
+tracks   |   磁道   |
+tradeoff   |   n.折中   |   ['treɪdˌɔ:f]   |
+traditional cookies   |   传统的信息记录程序   |
+trailing   |   adj.尾部的   |   ['treɪlɪŋ]   |
+trailing space   |   行尾空白   |
+transaction   |   n.事务   |   [trænˈzækʃn]   |
+transaction log   |   事务日志   |
+transaction rollback   |   事务回滚   |
+transactional replication   |   事务复制   |
+transform   |   v.改变   |   [træns'fɔ:m]   |
+transient   |   adj.短暂的   |   [ˈtrænziənt]   |
+transition network   |   转移网络   |
+transitive   |   adj.可传递的   |   [ˈtrænsətɪv]   |
+transitive closure and reduction   |   传递闭包   |
+translate   |   v.翻译   |   [trænsˈleɪt]   |
+translation unit   |   翻译单元   |
+transmit   |   v.传输   |   [træns'mɪt]   |
+transmite   |   传送   |
+transparent   |   透明的   |
+transport layer session layer   |   传输层会话层   |
+traveling salesman problem   |   旅行商问题   |
+traversal method   |   遍历方法   |
+traverse   |   v.遍历   |   [trə'vɜ:s]   |
+treat   |   v.看待   |   [tri:t]   |
+tree   |   n.树   |   [tri:]   |
+tree recursion   |   树形递归   |
+triangle   |   n.三角形   |   ['traɪæŋɡl]   |
+triangulation   |   三角剖分   |
+trigger   |   v.触发；n.触发器   |   ['trɪɡə]   |
+triggers store procedures   |   触发器存储过程   |
+trim   |   v.去首尾空白   |   [trɪm]   |
+true   |   n.实际，正确   |   [tru:]   |
+truly   |   adv.真正   |   ['tru:lɪ]   |
+truncate   |   v.截取   |   [ˈtrʌŋˌkeɪt]   |
+TTL (Time To Live)   |   进行失效时间设置   |   在MongoDB 中对集合进行失效时间设置。
+tuned   |   adj.调谐的   |   [tju:nd]   |
+tuple   |   n.元祖，重数   |
+turing complete   |   图灵完备   |
+turing machine   |   图灵机   |
+turn off   |   关掉   |
+tv tuner card   |   电视调谐卡   |
+tweaks   |   n.调整   |
+twisted pair   |   双绞线   |
+twophase commit   |   两阶段提交   |
+twophase lookup   |   两阶段查找   |
+twostate system   |   双状态系统   |
+tying up   |   v.占用   |   [ˈtaiiŋʌp]   |
+typable   |   类型合法   |
+type   |   n.类型   |   [taɪp]   |
+type constructor   |   类构造器   |
+type declaration   |   类型声明   |
+type hierarchy   |   类型层级   |
+type inference   |   类型推导   |
+type name   |   类型名   |
+type safe   |   类型安全   |
+type signature   |   类型签名   |
+type synonym   |   类型别名   |
+type variable   |   类型变量   |
+typical   |   adj.一般的   |   [ˈtɪpɪkl]   |
+typically   |   adv.通常   |   [ˈtɪpɪkli]   |
+typing   |   类型指派    输入   |
+tyre   |   n.轮胎   |   ['taɪə]   |
+UDDI (universary descrptiondiscovery and integration)   |   abbr.统一描述   |
+UML (unified modeling language)   |   abbr.统一建模语言   |
+unaffected   |   adj.不受影响的   |   [ˌʌnəˈfektɪd]   |
+unary   |   一元的   |
+unary function   |   单参函数   |
+unary operator   |   一元操作符   |
+unbiased   |   adj.无偏的   |   [ʌnˈbaɪəst]   |
+unbind   |   v.解除绑定   |   ['ʌn'baɪnd]   |
+unboxing   |   拆箱、拆箱转换   |
+unchecked exception   |   不可控异常   |
+undefined   |   adj.不确定的，未定义的   |   [ˌʌndɪˈfaɪnd]   |
+underflow   |   下限溢位   |
+underline   |   n.下划线 简写 u   |   [ˌʌndəˈlaɪn]   |
+underlying   |   adj.底层的，基本的   |   [ˌʌndəˈlaɪɪŋ]   |
+underneath   |   n.底层   |   [ˌʌndəˈni:θ]   |
+undetermined   |   adj.未确定的   |   ['ʌndɪ'tɜ:mɪnd]   |
+undirected graph   无向图   |
+unencoded   |   adj.未编码的   |
+unexpected   |   adj.不可预料的   |   [ˌʌnɪkˈspektɪd]   |
+unfortunatly   |   不幸的是   |
+unicode   |   统一字符编码标准   |
+unification   |   合一  统一   |
+uniform   |   adj.均匀的，统一的   |   [ˈju:nɪfɔ:m]   |
+uniformity   |   n.统一   |   [ˌju:nɪ'fɔ:mətɪ]   |
+uniformly   |   adv.统一地   |   ['ju:nɪfɔ:mlɪ]   |
+uninitialized   |   adj.未初始化的   |   [ʌnɪ'nɪʃlaɪzd]   |
+union   |   n.并集   |   ['ju:nɪən]   |
+union query   |   联合查询   |
+unique   |   adj.独一无二的   |   [jʊ'ni:k]   |
+unique constraints unique   |   约束   |
+unique index   |   唯一索引   |
+uniquely   |   adv.唯一地   |   [jʊ'ni:klɪ]   |
+unit   |   n.单位   |   ['ju:nɪt]   |
+unit system acceptance testing   |   单元测试系统测试确认测试   |
+universal   |   adj.通用的   |   [ˌju:nɪˈvɜ:sl]   |
+universally   |   adv.通用   |   [ˌju:nɪˈvɜ:səli]   |
+universally quantify   |   全局量化   |
+universe   |   宇宙全世界   |
+unless otherwise mentioned   |   除非另有说明   |
+unlike   |   prep.不像   |   [ˌʌnˈlaɪk]   |
+unlimited   |   adj.无限的   |   [ʌnˈlɪmɪtɪd]   |
+unmanaged code   |   非受控代码、非托管代码   |
+unmarshal   |   散集   |
+unmodifiable   |   adj.不可改变的   |
+unmounting   |   n.卸载   |
+unqualfied   |   未修饰的   |
+unqualified   |   未经限定的、未经修饰的   |
+unselectable   |   adj.未经选择的   |
+unsigned   |   adj.无符号的   |   ['ʌn'saɪnd]   |
+unspecified   |   adj.不明确的   |   [ˌʌnˈspesɪfaɪd]   |
+until…   |   直到…   |   [ənˈtɪl]   |
+untouched   |   adj.原样的   |   [ʌnˈtʌtʃt]   |
+unwinding   |      |      |
+unwinding ref. stack unwinding   |   .   |
+unwrap   |   v.解包   |
+unwrapping   |   n.解包   |
+up-to-date   |   最新的   |
+upcasting   |   n.向上转型   |   [ʌp'kɑ:stɪŋ]   |
+updatable   |   adj.可更新的   |
+update   |   v.更新   |   [ˌʌpˈdeɪt]   |
+updated   |   adj.最新的   |   [ʌp'deɪtɪd]   |
+updater   |   n.更新   |   ['ʌpdeɪtə]   |
+upload   |   v.上传   |   [ˌʌpˈləʊd]   |
+uploading   |   上传   |
+upper   |   adj.大写的   |   ['ʌpə]   |
+uppercase   |   n.大写   |   [ˈʌpəˈkeis]   |
+uptime   |   运行时间   |
+URI (uniform resource identifier)   |   abbr.统一资源标识符   |
+URL (uniform resource locator)   |   abbr.统一资源定位器   |
+usage   |   n.用法   |   [ˈju:sɪdʒ]   |
+usb universal serial bus   |   通用串行总线   |
+usenet   |   世界性新闻组网络   |
+user interface   |   用户界面   |
+user interface ui   |   ,   用户界面   |
+usual   |   adj.通常的   |   [ˈju:ʒuəl]   |
+utilities   |   实用函数   |
+utility   |   n.实用程序 缩写 util   |   [ju:ˈtɪləti]   |
+UUID (Universally Unique Identifier)   |  通用唯一识别码   |   UUID 是 通用唯一识别码（Universally Unique Identifier）的缩写，是一种软件建构的标准，亦为开放软件基金会组织在分布式计算环境领域的一部分。其目的，是让分布式系统中的所有元素，都能有唯一的辨识信息，而不需要通过中央控制端来做辨识信息的指定。如此一来，每个人都可以创建不与其它人冲突的UUID。在这样的情况下，就不需考虑数据库创建时的名称重复问题。目前最广泛应用的UUID，是微软公司的全局唯一标识符（GUID），而其他重要的应用，则有Linux ext2/ext3文件系统、LUKS加密分区、GNOME、KDE、Mac OS X等等。另外我们也可以在e2fsprogs包中的UUID库找到实现。
+valid   |   adj.有效的   |   [ˈvælɪd]   |
+validate   |   v.确认   |   [ˈvælɪdeɪt]   |
+validation   |   n.确认   |   [ˌvælɪˈdeɪʃn]   |
+validator   |   n.验证器   |   ['vɑlɪˌdeɪtə]   |
+value   |   n.值   |   [ˈvælju:]   |
+value constructor   |   值构造器   |
+value types   |   值类型   |
+variable   |   n.变量 缩写 var   |   [ˈveəriəbl]   |
+variable  const   |   变数（相对於常数 ） 变量   |
+variable capture   |   变量捕捉   |
+variadic input   |   可变输入   |
+variant   |   n.变体   |   [ˈveəriənt]   |
+various   |   adj. 各种的   |   [ˈveəriəs]   |
+vary   |   v.变化 vary over…随…而变化   |   ['veərɪ]   |
+vector   |   n.向量   |   ['vektə]   |
+vee (virtual execution engine)   |   虚拟执行引擎   |
+vehicle   |   n.车辆   |   [ˈvi:əkl]   |
+vendor   |   n.供应商   |   [ˈvendə]   |
+venture capitalist vc   |   ,   风险投资商   |
+verbose   |   adj.详细的   |   [vəˈbəʊs]   |
+verification   |   n.验证   |   [ˌverɪfɪ'keɪʃn]   |
+verify   |   v.验证   |   ['verɪfaɪ]   |
+version   |   n.版本   |   [ˈvə:ʃən]   |
+vertex coloring   |   点染色   |
+vertex cover   |   点覆盖   |
+vertical   |   adj.垂直的   |   [ˈvɜ:tɪkl]   |
+vertical portal   |   纵向门户   |
+vertice edge   |   顶点(结点) 边   |
+vessel   |   n.容器   |   [ˈvesl]   |
+via   |   prep.通过   |   [ˈvaɪə]   |
+viable   |   可行的   |
+viable function   |   可行函式 可行函数   |
+vice-versa   |   反之亦然   |
+video   |   视频   |
+video display screen   |   视频显示屏   |
+view   |   n.视图 v.查看   |   [vju:]   |
+viewport   |   n.视图   |   [ˈvju:pɔ:t]   |
+violate   |   v.违反   |   [ˈvaɪəleɪt]   |
+virtual   |   adj.虚拟的   |   [ˈvɜ:tʃuəl]   |
+virtual function   |   虚函数   |
+virtual machine   |   虚拟机   |
+virtual memory   |   虚拟内存   |
+virtual memory system   |   虚拟存储系统   |
+virtually   |   adv.实际上   |   [ˈvɜ:tʃuəli]   |
+virus   |   病毒   |
+virus checker   |   病毒检测程序   |
+visibility   |   n.可见性   |   [ˌvɪzəˈbɪləti]   |
+visible   |   adj.可见的   |   [ˈvɪzəbl]   |
+visit   |   v.访问   |   [ˈvɪzɪt]   |
+voice recognition system   |   声音识别系统   |
+voiceband   |   音频带宽   |
+void   |   adj.无返回值的   |   [vɔɪd]   |
+volant   |   adj.会飞的   |   ['vəʊlənt]   |
+volatile   |   adj.不稳定的   |   [ˈvɔlətail]   |
+volatile storage   |   易失性存储   |
+voltage surge   |   冲击性电压   |
+voronoi diagrams voronoi   |   图   |
+vowel   |   元音字母   |
+wake up   |   v.唤醒   |
+WAL (Write-Ahead Logging )   |   预写日志系统   |   数据库中一种高效的日志算法，对于非内存数据库而言，磁盘I/O操作是数据库效率的一大瓶颈。在相同的数据量下，采用WAL日志的数据库系统在事务提交时，磁盘写操作只有传统的回滚日志的一半左右，大大提高了数据库磁盘I/O操作的效率，从而提高了数据库的性能。
+WAN (wide area network)   |   abbr.广域网   |
+wand reader   |   条形码读入   |
+warning   |   n.警告   |   [ˈwɔ:nɪŋ]   |
+warning message   |   警告信息   |
+wasted   |   adj.消耗的   |   [ˈweɪstɪd]   |
+waterfall model   |   瀑布模型   |
+weak   |   adj.虚弱的   |   [wik]
+web   |   网络   |
+web appliance   |   环球网设备   |
+web auctions   |   网上拍卖   |
+web broadcasters   |   网络广播   |
+web page   |   网页   |
+web portals   |   门户网站   |
+web server   |   网络服务器   |
+web services web   |   服务   |
+web site address   |   网络地址   |
+web sites   |   网站   |
+web storefront creation packages   |   网上商店创建包   |
+web storefronts   |   网上商店   |
+web terminal   |   环球网终端   |
+web utilities   |   网上应用程序   |
+webcam   |   摄像头   |
+webdownloading utilities   |   网页下载应用程序   |
+webmaster web   |   站点管理员   |
+weigher   |   n.过秤员   |   ['weɪə]
+weight   |   n.重量   |   [weɪt]   |
+well type   |   类型正确   |
+whatif analysis   |   假定分析   |
+whenever    |   conj.每当   |   [wɛn'ɛvɚ]   |   eg:Note that it is generally necessary to override the hashCode method whenever this method is overridden
+where clause where   |   子句   |
+where clausewhere   |   子句   |
+whereas   |   conj.而   |   [ˌweərˈæz]   |
+whereby   |   adv.借以   |   [weəˈbaɪ]   |
+wherever   |   conj.不管   |   [weərˈevə]   |
+whether   |   conj.是否   |   ['wɛðɚ]
+whether some   |   是否有   |   Indicates whether some other object is "equal to" this one.
+whichever   |   任一端   |   [wɪtʃˈevə]   |
+while   |   conj.当…时候   |   [waɪl]   |
+white noise   |   白噪声   |
+whitespace   |   n.空白   |
+widening   |   扩展   |
+width   |   n.宽度   |   [wɪdθ]   |
+wildcard   |   n.通配符   |   ['waɪldkɑ:d]   |
+wildcard characters   |   通配符字符   |
+wildcard search   |   通配符搜索   |
+window   |   窗口   |
+window function   |   窗口函数   |
+window procedure   |   窗口过程   |
+windows authentication windows   |   身份验证   |
+wired   |   adj.有线的   |   ['waɪɚd]   |
+WiredTiger   |   MongoDB 3.2 版本的默认存储引擎。其提供文档级别（Document-Level）的并发控制、检查点（CheckPoint）、数据压缩和本地数据加密（Native Encryption）等功能。
+wireless modems   |   无线调制解调器   |
+wireless revolution   |   无线革命   |
+wireless service provider   |   无线服务供应商   |
+with no regard to…   |   与…无关   |
+with respect to…   |   对于…   |
+within   |   在…中   |   [wɪˈðɪn]   |
+withouot have to…   |   无需…   |
+without   |   prep.如果没有   |   [wɪˈðaʊt]   |
+without the need   |   无需   |
+wizard   |   向导   |
+word   |   单词   |
+word processing   |   文字处理   |
+word processor   |   字处理器   |
+word wrap   |   自动换行   |
+work   |   v.运行   |
+worksheet file   |   工作表文件   |
+world wide web   |   万维网   |
+worm   |   蠕虫病毒   |
+wrap   |   n.封装、包装   |   [ræp]   |
+wrapper   |   n.封装   |   [ˈræpə]   |
+wrapper  absence   |   外覆、外包 包装 缺席   |
+wrap…around…   |   v.将…包装到…上   |      |      |
+wrap…with…   |   用…包装   |
+write enable   |   写启用   |
+write out   |   v.写出   |
+writeahead log   |   预写日志   |
+writeonly   |   只写   |
+writeprotect notch   |   写保护口   |
+WSDL (web service descrption language)   |   abbr.描述语言   |
+WWW (world wide web)   |   abbr.万维网   |
+XML (extensible markup language)   |   abbr.可扩展标记语言   |
+XSD (xml schema definition)   |   abbr.模式定义语言   |
+XSL (extensible stylesheet language)   |   abbr.可扩展样式表语言   |
+XSLT (extensible stylesheet language transformation)   |   abbr.可扩展样式表语言转换   |
+xxx based xxx   |   基于的   |
+xxx oriented xxx   |   面向   |
+yield   |   v.产生   |   [ji:ld]   |
+yield to   |   屈服   |
+zip disk   |   压缩磁盘   |
+zone   |   n.区域   |   [zəʊn]   |   一个垃圾回收，堆 和 一个存储方法域。JVM 是运行在操作系统之上的，它与硬件没有直接的交互。

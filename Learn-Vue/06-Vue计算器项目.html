@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>06.Vue计算器项目</title>
+  <!-- 1. 导入 Vue 的包 -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- 2、创建一个要控制的区域 -->
+  <div id="app">
+    <input v-model="n1" >
+    <select v-model="option">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input v-model="n2" >
+    <input type="button" value="=" @click="buttonClick">
+    <input type="text" v-model="result">
+  </div>
+
+  <script>
+    // 3. 创建一个 Vue 的实例
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        option: "+",
+        result: 0,
+        n1: 0,
+        n2: 0
+      },
+      methods: {
+        buttonClick(){
+          方式1
+          switch (this.option){
+            case '+':
+            this.result = parseInt(this.n1) + parseInt(this.n2)
+            break;
+            case '-':
+            this.result = parseInt(this.n1) - parseInt(this.n2)
+            break;
+            case '*':
+            this.result = parseInt(this.n1) * parseInt(this.n2)
+            break;
+            case '/':
+            this.result = parseInt(this.n1) / parseInt(this.n2)
+            break;
+          }
+          
+          // 方式二： eval可以将字符串解析执行；正式开发中尽量少用
+          // var codeStr = 'parseInt(this.n1) '+this.option+' parseInt(this.n2)'
+          // this.result = eval(codeStr)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

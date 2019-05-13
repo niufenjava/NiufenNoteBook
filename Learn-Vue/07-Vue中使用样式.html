@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>07.Vue中使用样式</title>
+  <!-- 1. 导入 Vue 的包 -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<style>
+  .red{
+    color:red;
+  }
+  .thin{
+    font-weight: 200;
+  }
+  .italic{
+    font-style: italic;
+  }
+  .active{
+    /* 字符间距 */
+    letter-spacing: 0.5em; 
+  }
+</style>
+
+<body>
+  <!-- 2、创建一个要控制的区域 -->
+  <div id="app">
+
+    <h4>1. 直接使用数组 :class 直接传递数组。这里的class是使用 b-bind 做了数据绑定</h4>
+    <div :class="['red','thin','active']">直接使用数组:class="['red','thin','active']"</div>
+    <h4>2. 直接使用三元表达式</h4>
+    <div :class="['red',flag ? 'active':'']">直接使用三元表达式:class="['red',flag ? 'active':'']"</div>
+    <h4>3. 在数组中使用对象代替三元表达式，提高代码可读性</h4>
+    <div :class="['red',{'active':flag}]">在数组中使用对象代替三元表达式，提高代码可读性:class="['red',{'active':flag}]"</div>
+
+    <h4>4. 直接使用对象</h4>
+    <div :class="classObj">直接使用对象:class="{'red':flag,'active':flag}"。由于对象的属性可以不带引号，所以这里可以不用写引号；属性的值，是一个标识符</div>
+
+
+  </div>
+
+  <script>
+    // 3. 创建一个 Vue 的实例
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        flag: true,
+        classObj:{red:true,active:true}
+      }
+    })
+  </script>
+</body>
+
+</html>
