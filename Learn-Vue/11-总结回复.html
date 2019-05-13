@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>11.总结回复</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h4>1. MVC 和 MVVM 的区别</h4>
+    <h4>2. Vue 最基本代码的结构</h4>
+    <h4>3. Vue 基本指令：插值表达式、v-cloak、v-text、v-html、v-vind（:）、v-on(@)、v-model、v-for、v-if、v-show</h4>
+    <h4>4. Vue 事件修饰符：.stop、.prevent、capture、.once</h4>
+    <h4>5. el 指定要控制的区域；data 是个对象，指定了区域内要用到的数据；methods 虽然带了个s后缀，但是是个方法集合对象。</h4>
+    <h4>6. 在 VM 实例中，如果要访问 data 上的数据，或者要访问 methods 中的方法，必须要待 this</h4>
+    <h4>7. 在 v-for 中要会使用 key 属性（只接受 string\number）</h4>
+    <h4>8. v-model 只能应用与表单元素</h4>
+    <h4>9. 在 vue 中绑定样式 v-bind:class v-bind:style</h4>
+    <h4></h4>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        msg: '欢迎学习Vue'
+      }
+    })
+  </script>
+</body>
+
+</html>

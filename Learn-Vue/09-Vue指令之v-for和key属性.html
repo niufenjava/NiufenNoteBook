@@ -13,8 +13,13 @@
     <div id="app">
       <h4>1、迭代数组</h4>
       <code>
-        v-for="(item, index) in list"
+        v-for="(item, index) in list"  或者   v-for="item in list"
       </code>
+      <ul>
+        <li v-for="item in list">
+          {{item}}
+        </li>
+      </ul>
       <ul>
         <li v-for="(item, index) in list">
           索引：{{ index }} --- 姓名：{{ item.name }} --- 年龄：{{ item.age }}
@@ -29,12 +34,13 @@
           val：{{ val }} --- key：{{ key }} --- index：{{ index }}
         </li>
       </ul>
-      <h4>3、迭代数字</h4>
+      <h4>3、迭代数字，前面的count 值从1开始不是0哦</h4>
       <code>
             v-for="i in 4"
       </code>
       <p v-for="i in 4">这是第 {{ i }} 个标签</p>
       <p style="color:red">
+        
         当 Vue.js 用 v-for
         正在更新已渲染过的元素列表时，它默认用“就地复用”策略，如果数据项的顺序被改变，Vue
         将不是移动 DOM
@@ -45,6 +51,27 @@
         一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一
         key 属性。
       </p>
+
+      <h4>4、V-for 循环中key属性的使用</h4>
+      <p style="color:red">当在 Vue2.2以上版本时，在组件中使用 v-for 时，key 现在是必须的。key 是为了标识唯一身份的。</p>
+      <p style="color:red">v-for 循环的时候，key 属性只能使用 number 或者 string</p>
+      <p style="color:red">key 在使用的时候，必须使用 v-bind 属性绑定的形式，指定 key 的值</p>
+      <p style="color:red">在组件中，使用 v-for 循环的时候，或者再一些特殊情况下，如果 v-for有问题，必须在使用 v-for 的同时，指定惟一的 字符串\数字 类型的 :key 值</p>
+      <div>
+        <label for="">id:</label>
+        <input type="text" v-model="id">
+        <label for="">name:</label>
+        <input type="text" v-model="name">
+        <input type="button" value="添加" @click="add">
+      </div>
+      <ul>
+        <li v-for="(item, index) in list" :key="item.id">
+          <input type="checkbox" >
+          {{item.id}} : {{item.name}}
+        </li>
+      </ul>
+
+
     </div>
 
     <script>
@@ -53,16 +80,21 @@
         el: '#app',
         index: 0,
         data: {
+          id:'',
+        name:'',
           list: [
             {
+              id:0,
               name: 'Tom',
               age: 18
             },
             {
+              id:1,
               name: 'Jerry',
               age: 17
             },
             {
+              id:2,
               name: 'Stark',
               age: 23
             }
@@ -70,6 +102,12 @@
           userInfo: {
             name: '杰克',
             age: 29
+          }
+        },
+        methods: {
+          add(){
+            // this.list.push({id: this.id, name: this.name})
+            this.list.unshift({id: this.id, name: this.name})
           }
         }
       });

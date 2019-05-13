@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+<head>
+  <meta charset="utf-8">
+  <title>10-Vue指令之v-if和v-show</title>
+  <!-- 1. 导入 Vue 的包 -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- 2、创建一个要控制的区域 -->
+  <div id="app">
+    <input type="button" value="刷新" @click="toggle">
+    <input type="button" value="刷新2" @click="flag=!flag">
+    <h3 v-if="flag">这是使用v-if控制的元素。v-if的特点是每次都会重新删除或创建元素。v-if 有较高的“切换”性能消耗。</h3>
+    <h3 v-show="flag">这是使用v-show控制的元素。v-show 的特点是每次不会重新进行 DOM 的删除和创建操作，只是切换了元素的 display:none 样式。v-show 有较高的“初始”渲染消耗</h3>
+    <p> 注：如果元素可能永远也不会被显示出来给用户看到，则推荐使用 v-if。如果这个元素涉及到频繁的切换，推荐使用 v-show </p>
+  </div>
+
+  <script>
+    // 3. 创建一个 Vue 的实例
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        flag: true
+      },
+      methods: {
+        toggle(){
+          this.flag = !this.flag
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
