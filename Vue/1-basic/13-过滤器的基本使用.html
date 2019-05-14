@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>13-过滤器的基本使用</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 需求，将Vue 替换成 Vue.js -->
+      <p>{{ msg | msgFormat }}</p>
+      <p>{{ msg | msgFormat2('test','123') }}</p>
+      <!-- 可以用多个过滤器，通过管道符分隔，第一个先处理 ... -->
+      <p>{{ msg | msgFormat | msgFormat2('test','123') }}</p>
+    </div>
+
+    <!-- 所谓的全局过滤器，可以作用在多个 Vue 对象，所有的 VM 实例都共享 -->
+    <!-- 如何自定义一个私有的过滤器 -->
+    <div id="app2">
+      <!-- 需求，将Vue 替换成 Vue.js -->
+      <p>{{ msg | msgFormat }}</p>
+      <p>{{ msg | msgFormat2('test','123') }}</p>
+      <!-- 可以用多个过滤器，通过管道符分隔，第一个先处理 ... -->
+      <p>{{ msg | msgFormat | msgFormat2('test','123') }}</p>
+      <p>{{ date | dateFormat }}</p>
+    </div>
+    <script>
+      // 定义一个 Vue 全局的过滤器，名字叫做 msgFormat
+      Vue.filter('msgFormat', function(msg) {
+        // 字符串的 replace 方法，第一个参数，除了可写一个字符串之外，还可以定义一个正则
+        // /斜线匹配正则 g表示全部
+        return msg.replace(/Vue/g, 'Vue.js');
+      });
+
+      // 定义一个 Vue 全局的过滤器，名字叫做 msgFormat2 ，可以传参
+      Vue.filter('msgFormat2', function(msg, arg, arg2) {
+        // 字符串的 replace 方法，第一个参数，除了可写一个字符串之外，还可以定义一个正则
+        // /斜线匹配正则 g表示全部
+        return msg.replace(/Vue/g, arg + arg2);
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue!!!Vue!!!Vue!!!'
+        },
+        methods: {}
+      });
+      var vm2 = new Vue({
+        el: '#app2',
+        data: {
+          msg: '欢迎学习Vue!!!Vue!!!Vue!!!',
+          date: new Date()
+        },
+        // 定义私有过滤器，也是一个对象
+        filters: {
+            // 如果全局里面也有个同名的过滤器，使用私有的过滤器
+            // 过滤器调用的时候，采用就近原则
+          dateFormat: function(date, pattern='') {
+            // 根据给定的时间字符串，得到特定的时间
+            var dt = new Date(date);
+            console.info(dt);
+            // yyyy-mm-dd
+            // > 使用 ES6 中的字符串新方法 String.prototype.padStart(maxLength, fillString='')
+            // 或 String.prototype.padEnd(maxLength, fillString='') 来填充字符串
+            // 但是这里好像不支持，到时候再说吧
+            var y = dt.getFullYear();
+            var m = (dt.getMonth() + 1);
+            var d = dt.getDate();
+            var hh = dt.getHours();
+            var mm = dt.getMinutes();
+            var ss = dt.getSeconds();
+            // return y + '-' + m + '-' + d;
+            if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+              return `${y}-${m}-${d}`;
+            } else {
+              return `${y}-${m}-${d} ${hh}:${mm}`;
+            }
+            return `${y}-${m}-${d}`;
+          }
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
