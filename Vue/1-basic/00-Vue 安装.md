@@ -19,3 +19,18 @@
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 ```
+
+## 3. NPM
+在用 Vue 构建大型应用时应该用 NPM 安装。NPM 能很好地和 webpack 模块打包器配合使用。同时 Vue 也提供配套公建来开发单文件组件。
+```bash
+# 最新稳定版
+npm install vue
+```
+
+## 4. CLI 命令行工具
+Vue 提供了官方的 CLI，为单页应用（SPA）快速搭建繁杂的脚手架。只需要几分钟就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。
+
+* [GitHub 官方的 CLI](https://github.com/vuejs/vue-cli)
+* [Vue CLI 官方文档](https://cli.vuejs.org/)
+
+> CLI 工具假定用户对 Node.js 和相关构建工具由一定程度的了解。最好在熟悉 Vue 本身之后再使用 CLI
