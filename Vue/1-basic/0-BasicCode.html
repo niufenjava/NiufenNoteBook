@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
-<!-- 如何定义一个基本的 Vue 代码结构 -->
+
 <head>
-  <meta charset="utf-8">
-  <title>01.Vue的基本代码</title>
-  <!-- 1. 导入 Vue 的包 -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <meta charset="utf-8">
+    <title>0 </title>
+    <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
-  <!-- 2、创建一个要控制的区域 -->
-  <div id="app">
-    <p>{{ msg }}</p>
-  </div>
 
-  <script>
-    // 3. 创建一个 Vue 的实例
-    var vm = new Vue({
-      el: '#app', 
-      data: {
-        msg: '欢迎学习Vue'
-      }
-    })
-  </script>
+    <div id="app">
+        <p>{{ msg }}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '欢迎学习Vue'
+            },
+            methods: {
+
+            }
+        })
+    </script>
 </body>
 
 </html>

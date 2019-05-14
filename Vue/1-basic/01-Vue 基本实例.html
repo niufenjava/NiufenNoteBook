@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01.Vue 基本实例</title>
+    <!-- 1. 导入 Vue 的包。 -->
+    <!-- 直接下载并用 script 标签引入， Vue 会被注册成为一个全局变量 -->
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 3. 将来 new 的 vue 实例会控制这个元素中的所有内容 -->
+    <!-- MVVM 中的 V，Vue 实例所控制的这个元素区域，就是我们的 V -->
+    <div id="app1">
+        <h1>Vue 基本实例</h1>
+        <h2>1. 创建一个 Vue 实例</h2>
+        <p>每个 Vue 应用都是通过 Vue函数创建一个新的 Vue 实例开始的</p>
+        <code>
+            var vm = new Vue({
+                // 选项
+            })
+        </code>
+        <p>创建一个 Vue 实例时，可以传入一个选项对象。可以在 API 文档中浏览完整的选项列表。</p>
+        <p>一个 Vue 应用由一个通过 new Vue 创建的根 Vue 实例，以及可选的嵌套的、可复用的组件树组成。</p>
+        <p>举个列子，一个 todo 应用的组件树可以是如下形式的：</p>
+        <code>
+            Root 根实例 <br />
+            --- TodoList <br/>
+            --- --- TodoItem <br/>
+            --- --- --- DeleteTodoButton <br/>
+            --- --- --- EditTodoButton <br/>
+            --- --- TodoListFooter <br/>
+            --- --- --- ClearTodoButton <br/>
+            --- --- --- TodoListStatistics <br/>
+        </code>
+        <hr>
+
+        <h2>2. 数据与方法</h2>
+        <p>一个 Vue 实例被创建时，它将 data 对象中的所有的属性加入到 Vue 的响应式系统 中。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值</p>
+        <p>{{ msg }}</p>
+    </div>
+
+    <div id="app2">
+        <p>{{ message }}</p>
+    </div>
+
+    <script>
+        // 2. 创建一个 Vue 的实例
+        // 当我们导入包之后，在浏览器的内存中，就多了一个 Vue 的构造函数
+        // 我们 new Vue({}) 出来的是一个 vm 对象，MVVM 中的 VM 调度者
+        var vm = new Vue({
+            // 2.1 el 属性时 Element的缩写，表示当我们 new 的这个 Vue 实例。
+            // 要控制页面上的哪个区域，通过#app 找到 HTML 中的 id 为 app1 的元素。
+            el: '#app1',
+            // 2.2 这里的 Data 就是 MVVM 中的 M，专门保存每个页面的数据
+            data: {
+                msg: '我是VM对象实例1' // 通过 Vue 提供的指令，很方便的将数据渲染到页面上，不用再手动操作 DOM 元素了。
+            }
+        })
+        new Vue({
+            el: '#app2',
+            data: {
+                message: '我是VM对象实例2'
+            }
+        })
+    </script>
+</body>
+
+</html>

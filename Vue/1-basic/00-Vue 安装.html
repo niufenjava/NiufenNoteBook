@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<!-- 如何定义一个基本的 Vue 代码结构 -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>00-Vue 安装</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue 安装</h1>
+        <h2>1. Vue Devtools</h2>
+        <p>在开发 Vue 时，可以在浏览器上安装 Vue Devtools，方便Vue的调试。</p>
+        <a target="_blank" href="https://github.com/vuejs/vue-devtools#vue-devtools">Vue Devtools</a>
+        <hr />
+
+        <h2>2. 使用 script 标签引入 Vue</h2>
+        <p>直接下载并使用 script 标签引入，Vue 会被注册为一个全局变量。</p>
+        <p>
+            注：在开发环境下不要使用压缩版本，不然就会失去所有常见错误相关的警告
+        </p>
+        <code>开发版本：https://vuejs.org/js/vue.js 包含完整的警告和调试模式</code>
+        <br />
+        <code>生产版本：https://vuejs.org/js/vue.min.js 删除了警告，33.30KB
+      min+gzip</code>
+        <h3>2.1 CDN</h3>
+        <ul>
+            <li>对于制作原型或学习，可以使用如下方式：</li>
+            <code>https://cdn.jsdelivr.net/npm/vue</code>
+            <li>
+                对于生产环境，推荐链接到一个明确的版本号和构建文件，避免新版本造成不可预期的破坏
+            </li>
+            <code>https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js</code>
+        </ul>
+        <hr />
+
+        <h2>3. NPM 方式</h2>
+        <p>
+            在用 Vue 构建大型应用时推荐使用 NPM 安装。NPM 能够很好地和 webpack 模块打包器配合使用。
+        </p>
+        <code>npm install vue</code>
+        <hr />
+
+        <h2>4. 命令行工具（CLI）</h2>
+        <p>Vue 提供了官方的 CLI，为单页应用（SPA）快速搭建复杂的脚手架。</p>
+        <a target="_blank" href="https://github.com/vuejs/vue-cli">vue-cli github</a>
+        <a target="_blank" href="https://cli.vuejs.org/zh/">vue-cli 文档</a>
+    </div>
+
+    <script>
+        // 3. 创建一个 Vue 的实例
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '欢迎学习Vue'
+            }
+        });
+    </script>
+</body>
+
+</html>
