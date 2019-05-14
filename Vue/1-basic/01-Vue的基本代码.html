@@ -4,14 +4,17 @@
 <head>
   <meta charset="utf-8">
   <title>01.Vue的基本代码</title>
-  <!-- 1. 导入 Vue 的包 -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 1. 导入 Vue 的包。 -->
+  <!-- 直接下载并用 script 标签引入， Vue 会被注册成为一个全局变量 -->
+  <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
   <!-- 3. 将来 new 的 vue 实例会控制这个元素中的所有内容 -->
   <!-- MVVM 中的 V，Vue 实例所控制的这个元素区域，就是我们的 V -->
   <div id="app1">
+    <h1>Vue 的基本代码</h1>
+    <h2></h2>
     <p>{{ msg }}</p>
   </div>
 
