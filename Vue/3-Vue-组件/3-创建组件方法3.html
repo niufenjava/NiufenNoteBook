@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2-创建组件方法3</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <my-h1></my-h1>
+    </div>
+    <!-- 因为是全局定义，所以可以复用 -->
+    <div id="app2">
+        <my-h1></my-h1>
+        <my-h5></my-h5>
+        <my-h6></my-h6>
+      </div>
+
+    <!-- 在被控制的 #app 外面，使用 template 元素，定义组件的模板结构 -->
+    <template id="tmpl">
+      <div>
+        <h1>这是通过 template 元素，在外部定义的组件结构，这个方式，有代码的智能提示和高亮</h1>
+      </div>
+    </template>
+
+    <template id="tmpl2">
+        <div>
+          <h1>这是通过 template 元素，在外部定义的组件结构，这个方式，有代码的智能提示和高亮-私有的</h1>
+        </div>
+      </template>
+    <script>
+      Vue.component('myH1', {
+        template: '#tmpl'
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+      var vm2 = new Vue({
+        el: '#app2',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        components:{ // 定义实例内部私有组件
+          myH5:{
+            template:'<h5>这是私有的 myh5组件</h5>'
+          },
+          myH6:{
+            template:'#tmpl2'
+          }
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

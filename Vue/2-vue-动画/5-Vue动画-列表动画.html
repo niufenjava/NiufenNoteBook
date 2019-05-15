@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>0</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+
+    <style>
+      .list-item {
+        margin-right: 10px;
+      }
+      .list-enter-active,
+      .list-leave-active {
+        transition: all 1s;
+      }
+      .list-enter, .list-leave-to
+/* .list-leave-active for below version 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="list-demo" class="demo">
+        <button v-on:click="add">Add</button>
+        <button v-on:click="remove">Remove</button>
+        <ul>
+        <transition-group name="list" tag="p">
+          <li v-for="item in items" v-bind:key="item" class="list-item">
+            {{ item }}
+          </li>
+        </transition-group>
+    </ul>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+          nextNum: 10
+        },
+        methods: {
+          randomIndex: function() {
+            return Math.floor(Math.random() * this.items.length);
+          },
+          add: function() {
+            this.items.splice(this.randomIndex(), 0, this.nextNum++);
+          },
+          remove: function() {
+            this.items.splice(this.randomIndex(), 1);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

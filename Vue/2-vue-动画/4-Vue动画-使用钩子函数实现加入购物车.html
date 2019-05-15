@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>4-Vue动画-使用钩子函数实现加入购物车</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <style>
+      .ball {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+        <input type="button" value="加入购物车" @click="flag=!flag">
+      <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+      >
+        <div class="ball" v-show="flag"></div>
+      </transition>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag:false
+        },
+        methods: {
+            beforeEnter(el){
+                el.style.transform = "translate(0,0)"
+            },
+            enter(el,done){
+                el.offsetWidth
+                el.style.transform = "translate(150px,450px)"
+                el.style.transition = 'all 2s ease'
+                done()
+            },afterEnter(el){
+                console.log('afterEnter')
+                this.flag = !this.flag
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

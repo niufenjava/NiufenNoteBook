@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>5-组件-why components data must bu a function</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <counter></counter>
+      <counter></counter>
+      <counter></counter>
+    </div>
+    <template id="tmpl">
+      <div>
+        <input type="button" value="+1" @click="increment" />
+        <h3>{{ count }}</h3>
+        <hr>
+      </div>
+    </template>
+
+    <script>
+      // 这是一个计数器的组件，身上有一个按钮，每当点击按钮，让 data 中的 count 值 +1
+      var returnObj = {count:0}
+      Vue.component('counter', {
+        template: '#tmpl',
+        data: function() {
+          return returnObj;  // 这样写就有问题了，使用了所有组件实例使用了同一个内存对象
+        // return {count:0}
+        },
+        methods: {
+          increment() {
+            this.count++;
+          }
+        }
+      });
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

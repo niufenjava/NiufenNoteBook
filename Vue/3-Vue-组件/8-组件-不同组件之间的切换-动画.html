@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>7-组件-不同组件之间的切换-动画</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <style>
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+        transform: translate(180px);
+      }
+      .v-enter-active,
+      .v-leave-active {
+        transition: all 1s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="button" value="登录" @click="flag='login'" />
+      <input type="button" value="注册" @click="flag='register'" />
+
+      <!-- 通过 mode 属性，设置组件切换时候的 模式 -->
+      <transition mode="out-in">
+        <component :is="flag"></component>
+      </transition>
+    </div>
+
+    <script>
+      Vue.component('login', {
+        template: '<h3>这是一个登录组件</h3>'
+      });
+      Vue.component('register', {
+        template: '<h3>这是一个注册组件</h3>'
+      });
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: 'login',
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

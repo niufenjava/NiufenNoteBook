@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>4-组件中的data和methods</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <my-h1></my-h1>
+    </div>
+
+    <script>
+      Vue.component('myH1', {
+        template: '<h1>这是全局组件，并且我是组件自己的data 数据{{id}}</h1>',
+        // 1. 组件可以有自己的 data 数据
+        // 2. 组件的 data 和实例的 data 不太一样。实例中的 data 可以为一个对象，但是 组件中的对象，必须为一个方法。
+        // 3. 组件中的 data 除了必须为一个方法之外，这个方法内部还必须返回一个对象才可以
+        // 4. 组件中的 data 数据，使用方式和实例中的 data 使用方式完全一样
+        data: function() {
+          return {
+            id: 5
+          };
+        }
+      });
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

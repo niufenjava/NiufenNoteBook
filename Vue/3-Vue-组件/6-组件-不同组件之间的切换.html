@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>6-组件-不同组件之间的切换</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="button" value="登录" @click="flag=true"/>
+      <input type="button" value="注册" @click="flag=false"/>
+      <!-- 使用 v-if 和 v-else 实现组件切换 -->
+      <login v-if="flag"></login>
+      <register v-else="flag"></register>
+    </div>
+
+    <script>
+      Vue.component('login', {
+        template: '<h3>这是一个登录组件</h3>'
+      });
+      Vue.component('register', {
+        template: '<h3>这是一个注册组件</h3>'
+      });
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: true,
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

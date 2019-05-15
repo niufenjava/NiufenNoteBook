@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>2-创建组件方法2</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+        <!-- 还是使用组件标签形式引入组件 -->
+      <my-h2></my-h2>
+    </div>
+
+    <script>
+        // 这种方式有个缺点，无法自动提示。
+        // 模板里面只能有一个为一个根元素，一般使用一个 div 包裹一下
+        // 注意：不论是哪种方式创建出来的组件，组件的 template 属性，指向的模板内容，必须有且只能有一个惟一的根元素
+        Vue.component('myH2',{
+            template: '<h2>这是直接使用 Vue.component 创建出来的组件</h2>'
+        })
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
