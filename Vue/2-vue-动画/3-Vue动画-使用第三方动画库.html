@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>3-Vue动画-使用第三方动画库</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="button" value="动起来" @click="flag=!flag" />
+      <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
+        <h3 v-if="flag">{{ msg }}</h3>
+      </transition>
+      <hr>
+
+      <input type="button" value="动起来2" @click="flag2=!flag2" />
+      <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="1800">
+        <h3 v-if="flag2" class="animated">{{ msg }}123123</h3>
+      </transition>
+      <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="{enter:2000,leave:4000}">
+          <h3 v-if="flag2" class="animated">{{ msg }}</h3>
+        </transition>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: false,
+          flag2: false,
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

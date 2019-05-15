@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>1-Vue动画-基础</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <style>
+    .v-enter,
+    .v-leave-to{
+        opacity:0;
+        transform: translate(180px)
+    }
+    .v-enter-active,
+    .v-leave-active{
+        transition: all 1s ease;
+    }
+
+    .my-enter,
+    .my-leave-to{
+        opacity:0;
+        transform: translate(280px)
+    }
+    .my-enter-active,
+    .my-leave-active{
+        transition: all 3s ease;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="button" value="动起来" @click="flag=!flag" />
+      <transition name="" mode="">
+        <h3 v-if="flag">{{ msg }}</h3>
+      </transition>
+      <hr>
+
+      <input type="button" value="动起来2" @click="flag2=!flag2" />
+      <transition name="my" mode="">
+        <h3 v-if="flag2">{{ msg }}</h3>
+      </transition>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: false,
+          flag2: false,
+          msg: '欢迎学习Vue'
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>14-Vue 自定义指令</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus v-color="'blue'" >
+        <p v-font-color="'red'" v-bg-color="'blue'">test</p>
+    </div>
+
+    <script>
+        Vue.directive('focus', {
+            inserted: function(el){
+                el.focus();
+            }
+        })
+        Vue.directive('color',{
+            bind: function (el,binding){
+                console.info(binding.value)
+                el.style.color = binding.value
+            }
+        })
+        Vue.directive('bgColor',function(el,binding){
+            el.style.backgroundColor = binding.value
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '欢迎学习Vue'
+            },
+            directives: {
+                'fontColor': function(el,binding){
+                    console.info('fontWeight',binding.value)
+                    el.style.color = binding.value
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
