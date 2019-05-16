@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>10-组件-父组件把方法传递给子组件</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 父组件向子组件 传递 方法，使用的是 事件绑定机制；v-on，当我们自定义了一个 事件属性之后，那么子组件就能通过某些方式，来调用传递进去的 这个方法了 -->
+      <com1 @func="show"></com1>
+    </div>
+
+    <template id="tmpl">
+      <div>
+        <h1>这是 子组件</h1>
+        <input
+          type="button"
+          value="这时子组件中的按钮 - 点击它，触发 子组件传递过来的方法"
+          @click="myClick"
+        />
+      </div>
+    </template>
+
+    <script>
+      var com1 = {
+            template: '#tmpl',
+            props: ['parentMsg'],
+            data: function() {
+              return {
+                msg: '这是子组件参数',
+                some: {
+                  name:'小头儿子',
+                  age: 18
+                }
+              };
+            },
+            methods: {
+              myClick() {
+                // 当点击子组件按钮的时候，如何 拿到 父组件传递过来的 func 方法，并调用这个方法？
+                // emit 代表触发
+                // 从第二个参数开始都可以传参
+                this.$emit('func',this.msg,this.some);
+              }
+            }
+          }
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          dataMsgFromSon:null
+        },
+        methods: {
+          show(data,some) {
+            console.log('调用了父组件身上的 show 方法，data：'+data);
+            console.info(some)
+            this.dataMsgFromSon = some
+            console.info(this.dataMsgFromSon)
+          }
+        },
+        components: {
+          com1
+        }
+      });
+    </script>
+  </body>
+</html>

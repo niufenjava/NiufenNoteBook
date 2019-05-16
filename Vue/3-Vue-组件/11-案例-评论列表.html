@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>11-案例-评论列表</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <com-box @func="add"></com-box>
+      <hr>
+      <el-table :data="list" border stripe>
+        <el-table-column prop="id" label="id"> </el-table-column>
+        <el-table-column prop="user" label="评论员"> </el-table-column>
+        <el-table-column prop="content" label="评论"> </el-table-column>
+      </el-table>
+    </div>
+
+    <template id="tmpl">
+      <div>
+          <el-form :inline="true" :model="formInline" class="demo-form-inline">
+              <el-form-item label="评论员">
+                <el-input v-model="formInline.user" placeholder="评论员"></el-input>
+              </el-form-item>
+              <el-form-item label="评论">
+                  <el-input v-model="formInline.content" placeholder="评论"></el-input>
+                </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">提交</el-button>
+              </el-form-item>
+            </el-form>
+      </div>
+    </template>
+
+    <script>
+      var com1 = {
+        template: '#tmpl',
+        data: function() {
+          return {
+            msg: '这是子组件参数',
+            formInline: {
+              user: null,
+              content: null,
+              id:null
+            }
+          };
+        },
+        methods: {
+          onSubmit() {
+            this.formInline.id = Date.now();
+            this.$emit('func', this.formInline);
+            this.formInline.user = null
+            this.formInline.content = null
+            this.formInline.id = null
+          }
+        }
+      }
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          list: [
+            { id: Date.now(), user: '李白', content: '天生我才必有用' },
+            { id: Date.now(), user: '李白1', content: '天生我才必有用1' },
+            { id: Date.now(), user: '李白2', content: '天生我才必有用2' },
+            { id: Date.now(), user: '李白3', content: '天生我才必有用3' }
+          ]
+        },
+        methods: {
+          add(data) {
+            var data2 = data
+           this.list.push(data2)
+          }
+        },
+        components: {
+          comBox:com1
+        }
+      });
+    </script>
+  </body>
+</html>
