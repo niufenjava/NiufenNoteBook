@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>12-获取DOM元素和组件</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="button" value="获取元素" @click="getElement" />
+      <h3 ref="reference">今天天气不错</h3>
+      
+      <login ref="mylogin"></login>
+    </div>
+
+    <script>
+        var login = {
+            template:'<h3>登录组件</h3>',
+            data(){
+                return {
+                    msg:'son msg'
+                }
+            },
+            methods:{
+                show(){
+                    console.log('子组件 show 方法')
+                }
+            }
+        }
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '欢迎学习Vue'
+        },
+        components:{
+            login:login
+        },
+        methods: {
+          getElement() {
+            // ref 是英文单词，reference 引用的意思。
+            // refs代表多个引用
+            console.info(this.$refs.reference);
+            console.info(this.$refs.mylogin.msg);
+            this.$refs.mylogin.show()
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -16,8 +16,8 @@
 
   <body>
     <div id="app">
-      <com-box @func="add"></com-box>
-      <hr>
+      <com-box @func="flushList"></com-box>
+      <hr />
       <el-table :data="list" border stripe>
         <el-table-column prop="id" label="id"> </el-table-column>
         <el-table-column prop="user" label="评论员"> </el-table-column>
@@ -25,24 +25,28 @@
       </el-table>
     </div>
 
+    <!-- 子组件 -->
     <template id="tmpl">
       <div>
-          <el-form :inline="true" :model="formInline" class="demo-form-inline">
-              <el-form-item label="评论员">
-                <el-input v-model="formInline.user" placeholder="评论员"></el-input>
-              </el-form-item>
-              <el-form-item label="评论">
-                  <el-input v-model="formInline.content" placeholder="评论"></el-input>
-                </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="onSubmit">提交</el-button>
-              </el-form-item>
-            </el-form>
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-form-item label="评论员">
+            <el-input v-model="formInline.user" placeholder="评论员"></el-input>
+          </el-form-item>
+          <el-form-item label="评论">
+            <el-input
+              v-model="formInline.content"
+              placeholder="评论"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">提交</el-button>
+          </el-form-item>
+        </el-form>
       </div>
     </template>
 
     <script>
-      var com1 = {
+      var comBox = {
         template: '#tmpl',
         data: function() {
           return {
@@ -50,20 +54,40 @@
             formInline: {
               user: null,
               content: null,
-              id:null
+              id: null
             }
           };
         },
         methods: {
           onSubmit() {
-            this.formInline.id = Date.now();
-            this.$emit('func', this.formInline);
-            this.formInline.user = null
-            this.formInline.content = null
-            this.formInline.id = null
+            var comment = {
+              id: Date.now(),
+              user: this.formInline.user,
+              content: this.formInline.content
+            };
+            // 方法1：
+            //
+            // this.$emit('func', comment);
+
+            // 发表评论的方法
+            // 分析：发表评论的业务逻辑
+            // 1. 评论数据存到哪里去？？？   存放到了 localStorage 中  localStorage.setItem('cmts', '')
+            // 2. 先组织出一个最新的评论数据对象
+            // 3. 想办法，把 第二步中，得到的评论对象，保存到 localStorage 中：
+            //  3.1 localStorage 只支持存放字符串数据， 要先调用 JSON.stringify
+            //  3.2 在保存 最新的 评论数据之前，要先从 localStorage 获取到之前的评论数据（string）， 转换为 一个  数组对象， 然后，把最新的评论， push 到这个数组
+            //  3.3 如果获取到的 localStorage 中的 评论字符串，为空不存在， 则  可以 返回一个 '[]'  让 JSON.parse 去转换
+            //  3.4  把 最新的  评论列表数组，再次调用 JSON.stringify 转为  数组字符串，然后调用 localStorage.setItem()
+            var list = JSON.parse(localStorage.getItem('cmts') || '[]');
+            list.unshift(comment);
+            localStorage.setItem('cmts', JSON.stringify(list));
+            this.formInline.user = null;
+            this.formInline.content = null;
+            this.formInline.id = null;
+            this.$emit('func');
           }
         }
-      }
+      };
       var vm = new Vue({
         el: '#app',
         data: {
@@ -74,14 +98,21 @@
             { id: Date.now(), user: '李白3', content: '天生我才必有用3' }
           ]
         },
+        created() {
+          localStorage.setItem('cmts', JSON.stringify(this.list));
+          this.flushList();
+        },
         methods: {
-          add(data) {
-            var data2 = data
-           this.list.push(data2)
+          // add(data) {
+          //   this.list.push(data);
+          // }
+          flushList() {
+            var list = JSON.parse(localStorage.getItem('cmts'), '[]');
+            this.list = list;
           }
         },
         components: {
-          comBox:com1
+          comBox: comBox
         }
       });
     </script>
