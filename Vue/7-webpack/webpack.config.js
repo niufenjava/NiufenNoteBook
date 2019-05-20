@@ -1,7 +1,7 @@
 const path = require('path')
 // 启用热更新的 第2步
 const webpack = require('webpack')
-// 导入在内存中生成 HTML 页面的 插件
+// 导入 在内存中生成 HTML 页面的 插件
 // 只要是插件，都一定要 放到 plugins 节点中去
 // 这个插件的两个作用：
 //  1. 自动在内存中根据指定页面生成一个内存的页面
@@ -28,7 +28,7 @@ module.exports = {
   devServer: { // 这是配置 dev-server 命令参数的第二种形式，相对来说，这种方式麻烦一些
     //  --open --port 3000 --contentBase src --hot
     open: true, // 自动打开浏览器
-    port: 3000, // 设置启动时候的运行端口
+    port: 3888, // 设置启动时候的运行端口
     contentBase: 'src', // 指定托管的根目录
     hot: true // 启用热更新 的 第1步
   },
@@ -41,7 +41,7 @@ module.exports = {
   ],
   module: { // 这个节点，用于配置 所有 第三方模块 加载器 
     rules: [ // 所有第三方模块的 匹配规则
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }, //  配置处理 .css 文件的第三方loader 规则
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }, //  配置处理 .css 文件的第三方loader 规则。test 表示匹配规则，是一个正。/.css$/ 表示 匹配以 .css 文件结尾的文件。loader 从右往左调用
       { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }, //配置处理 .less 文件的第三方 loader 规则
       { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }, // 配置处理 .scss 文件的 第三方 loader 规则
     ]

@@ -177,7 +177,7 @@ new webpack.HotModuleReplacementPlugin()
 1. 运行`cnpm i style-loader css-loader --save-dev`
 2. 修改`webpack.config.js`这个配置文件：
 
-```
+```js
 module: { // 用来配置第三方loader模块的
         rules: [ // 文件的匹配规则
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }//处理css文件的规则
