@@ -1,0 +1,22 @@
+{
+  "name": "7-webpack",
+  "version": "1.0.0",
+  "description": "- JS （.js、.jsx、.coffee、.ts（TypeScript 类 C# 语言）\r - CSS （.css、.less、.sass 老版、.scss 新版）\r - Images（.jpg、.png、.gif、.bmp、.svg）\r - 字体文件（Fonts）（.svg、.ttf、.eot、.woff、.woff2）\r - 模板文件（.ejs、.jade、.vue【这是在 webpack 中定义组件的方式，推荐这么用】）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "dev2": "webpack-dev-server --open --port 3000 --contentBase src --hot"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
+}
