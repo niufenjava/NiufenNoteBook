@@ -6,11 +6,11 @@
       <!-- 在组件中，使用v-for循环的话，一定要使用 key -->
       <mt-swipe-item
         v-for="item in lunbotuList"
-        :key="item.url"
+        :key="item.img"
       >
-        <img
+        <img 
           :src="item.img"
-          alt=""
+          alt="item.url"
         >
       </mt-swipe-item>
     </mt-swipe>
@@ -90,9 +90,9 @@ export default {
       //   }
       // });
       this.lunbotuList = [
-        { url: "https://inews.gtimg.com/newsapp_match/0/9029210142/0", img: "https://inews.gtimg.com/newsapp_match/0/9029210142/0" },
-        { url: "http://pic.miercn.com/uploads/allimg/190521/0T201JC-2.png", img: "http://pic.miercn.com/uploads/allimg/190521/0T201JC-2.png" },
-        { url: "http://pic2.miercn.com/miercn/uploads/allimg/190521/189_190521084103_1.png", img: "http://pic2.miercn.com/miercn/uploads/allimg/190521/189_190521084103_1.png" },
+        { url: "https://www.baidu.com", img: "https://inews.gtimg.com/newsapp_match/0/9029210142/0" },
+        { url: "https://www.baidu.com", img: "http://pic.miercn.com/uploads/allimg/190521/0T201JC-2.png" },
+        { url: "https://www.baidu.com", img: "http://pic2.miercn.com/miercn/uploads/allimg/190521/189_190521084103_1.png" },
       ]
     }
   }
