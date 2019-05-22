@@ -69,7 +69,7 @@ getFileByPath('./files/1.txt')
     console.log(data)
 
     // 读取文件2
-    return getFileByPath('./files/22.txt')
+    return getFileByPath('./files/2.txt')
   })
   .then(function (data) {
     console.log(data)
@@ -82,3 +82,5 @@ getFileByPath('./files/1.txt')
   .catch(function (err) { // catch 的作用： 如果前面有任何的 Promise 执行失败，则立即终止所有 promise 的执行，并 马上进入 catch 去处理 Promise中 抛出的异常；
     console.log('这是自己的处理方式：' + err.message)
   })
+
+  console.log('OKOKOK')
