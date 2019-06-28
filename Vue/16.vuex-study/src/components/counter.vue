@@ -3,6 +3,7 @@
     <input type="button" value="减少" @click="remove">
     <input type="button" value="增加" @click="add">
     <br>
+    <!-- 如果在组件中想要访问 store 中的数据，只能通过 this.$store.state.cont 访问 -->
     <input type="text" v-model="$store.state.count">
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
       this.$store.commit("increment");
     },
     remove() {
-      this.$store.commit("subtract", { c: 3, d: 1 });
+      this.$store.commit("subtract", { c: 1, d: 0 });
     }
   },
   computed:{

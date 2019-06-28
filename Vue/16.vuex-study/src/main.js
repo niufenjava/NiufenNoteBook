@@ -6,7 +6,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // 3. 注册vuex到vue中
 Vue.use(Vuex)
-// 4. new Vuex.Store() 实例，得到一个 数据仓储对象
+// 4. new Vuex.Store() 实例，得到一个 数据仓储对象。并传递一个配置对象；默认属性 state、mutations、getters
+
 var store = new Vuex.Store({
   state: {
     // 大家可以把 state 想象成 组件中的 data ,专门用来存储数据的
@@ -14,7 +15,7 @@ var store = new Vuex.Store({
     count: 0
   },
   mutations: {
-    // 注意： 如果要操作 store 中的 state 值，只能通过 调用 mutations 提供的方法，才能操作对应的数据，不推荐直接操作 state 中的数据，因为 万一导致了数据的紊乱，不能快速定位到错误的原因，因为，每个组件都可能有操作数据的方法；
+    // 注意： 可以认为是methods；如果要操作 store 中的 state 值，只能通过 调用 mutations 提供的方法，才能操作对应的数据，不推荐直接操作 state 中的数据，因为 万一导致了数据的紊乱，不能快速定位到错误的原因，因为，每个组件都可能有操作数据的方法；有并发问题~
     increment(state) {
       state.count++
     },

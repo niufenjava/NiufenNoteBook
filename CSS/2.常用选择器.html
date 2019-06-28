@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用选择器</title>
+    <style type="text/css">
+        /* 为页面中所有的 p 元素，设置一个字体颜色为红色 */
+        /*
+         * 元素选择器：
+           作用：通过元素选择器可以选择页面中的所有指定元素
+           语法：标签 {}
+         */
+         p{
+             color: brown
+         }
+         h1{
+             background-color: yellow 
+         }
+         /* id选择器 
+            - 通过元素的 id 属性值选中唯一的一个元素。
+            - 语法：
+                # id 属性值{}
+         */
+         #p1{
+            font-size: 30px
+         }
+         /* class 类选择器
+            我们可以为原始设置 class 属性，
+            class属性和id属性类似，只不过class属性可以重复 .
+            - 通过元素的 class 属性值选中一组元素
+            - 语法：.class属性值 {}
+            可以同时为一个元素设置多个 class 属性值，多个值之间可以使用空格隔开
+          */
+          .p2{
+              color:blue
+          }
+          .hello{
+              background-color: red
+          }
+
+          /* 为 id 为p3 的元素，class 为 p4的元素，还有 h1，同时设置背景样色为黄色 */
+        /* 选择器分组（并集选择器）
+          - 通过选择器分组，可以同时选中多个选择器对应的元素
+          - 语法：选择器1，选择器2，选择器N{}
+         */
+         #p1, .p2, h1{
+             background-color: blueviolet
+         }
+
+         /* 通配选择器
+            - 可以用来选中页面中所有的元素
+            语法： *{}
+          */
+          *{
+              font-style: italic
+          }
+          /* 为拥有 class p3 的span元素，设置一个背景颜色为黄色 */
+          /* 复合选择器（交集选择器）
+            - 作用：
+                - 可以选中同时满足多个选择器的元素
+            - 语法：选择器1选择器2选择器N{}
+            注意：对于 id 选择器来说，不建议使用复合选择器
+           */
+          span.p3{
+              background-color: green
+          }
+    </style>
+</head>
+<body>
+    <p>锄禾日当午</p>
+    <p>汗滴禾下土</p>
+    <p>锄禾日当午</p>
+    <h1>锄禾日当午</h1>
+    <p id="p1">汗滴禾下土 我是通过id选择器渲染的</p>
+    <p class="p2">汗滴禾下土</p>
+    <p class="p2">锄禾日当午</p>
+    <p class="p2 hello">汗滴禾下土</p>
+    <span class="p3">锄禾日当午span</span>
+    <p class="p3">锄禾日当午p</p>
+</body>
+</html>
