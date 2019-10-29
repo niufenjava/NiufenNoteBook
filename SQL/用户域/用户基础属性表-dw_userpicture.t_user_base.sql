@@ -21,7 +21,7 @@ SELECT
   member.wx_pub_openid                           AS wx_pub_openid,
   member.wx_auth_openid                          AS wx_auth_openid,
   member.wx_unionid                              AS wx_unionid,
-  member_wechat_mini.wx_mini_openid              AS wx_mini_openid,
+  member.wx_mini_openid              AS wx_mini_openid,
 
   -- 活动相关
   member.invitation_code as invitation_code,
@@ -77,13 +77,33 @@ SELECT
 
 FROM
   lucky_crm.t_member AS member
-  LEFT JOIN lucky_crm.t_member_profile AS profile ON profile.mem_id = member.id
-  LEFT JOIN lucky_crm.t_member_wechat_mini AS member_wechat_mini ON member_wechat_mini.mem_id = member.id
-  LEFT JOIN lucky_crm.t_member_wechat_subscribe AS member_wechat_subscribe
+  LEFT JOIN   (
+  select mem_id,
+  max(first_login_time) as first_login_time,
+  max(first_order_time) as first_order_time,
+  max(first_pay_time) as first_pay_time,
+  max(first_any_pay_time) as first_any_pay_time,
+  max(first_login_origin) as first_login_origin,
+  max(first_login_deviceNo) as first_login_deviceNo,
+  max(is_send_coupon) as is_send_coupon,
+  max(get_time) as get_time,
+  max(get_deviceNo) as get_deviceNo,
+  max(get_platform) as get_platform
+  from lucky_crm.t_member_profile GROUP BY mem_id
+) AS profile ON profile.mem_id = member.id
+  LEFT JOIN (  SELECT
+    wx_unionid,
+    max(subscribe) as subscribe,
+    max(status) as status
+  FROM lucky_crm.t_member_wechat_subscribe GROUP BY wx_unionid) AS member_wechat_subscribe
     ON member_wechat_subscribe.wx_unionid = member.wx_unionid
-  LEFT JOIN lucky_marketing.t_mkt_invitation_code AS mkt_channel
-    ON mkt_channel.invitation_code = member.inviter_code
-  -- 新人券相关
+  LEFT JOIN ( select
+ invitation_code as invitation_code,
+ max(belong_one_level_channel) as belong_one_level_channel,
+ max(belong_two_level_channel) as belong_two_level_channel,
+ max(belong_three_level_channel) as belong_three_level_channel
+ from lucky_marketing.t_mkt_invitation_code GROUP BY invitation_code ) AS mkt_channel
+    ON mkt_channel.invitation_code = member.inviter_code  -- 新人券相关
   LEFT JOIN
   (
     SELECT newcoupon.member_id AS member_id,

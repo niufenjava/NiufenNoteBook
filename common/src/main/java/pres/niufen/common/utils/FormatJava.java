@@ -1,8 +1,6 @@
 package pres.niufen.common.utils;
 
 
-import info.monitorenter.cpdetector.io.CodepageDetectorProxy;
-import info.monitorenter.cpdetector.io.JChardetFacade;
 
 import java.io.*;
 import java.nio.charset.Charset;

@@ -9,11 +9,6 @@ import java.io.UnsupportedEncodingException;
  * @Date 2018-12-02 23:45
  **/
 public class FileTool {
-    
-    /**
-     * 日志
-     */
-    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(FileTool.class);
 
     /**
      * 批量修正某个文件夹下的所有文件
@@ -32,9 +27,7 @@ public class FileTool {
                     .replaceAll("@www\\.java1234\\.com","")
                     .replaceAll("www\\.java1234\\.com","")
                     .replaceAll("《","").replaceAll("》","");
-            LOGGER.info(newFileName);
             boolean b = file.renameTo(new File(dir +"\\"+ newFileName));
-            LOGGER.info(b+"");
         }
     }
 
