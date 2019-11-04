@@ -1010,7 +1010,7 @@ function setupEventListeners(reference, options, state, updateBound) {
 // This is here just for backward compatibility with versions lower than v1.10.3
 // you should import the utilities using named exports, if you want them all use:
 // ```
-// import * as PopperUtils from 'popper-utils';
+// import * as PopperUtils from 'popper-tools';
 // ```
 // The default export will be removed in the next major version.
 var index = {
@@ -1047,4 +1047,4 @@ var index = {
 
 export { computeAutoPlacement, debounce, findIndex, getBordersSize, getBoundaries, getBoundingClientRect, getClientRect, getOffsetParent, getOffsetRect, getOffsetRectRelativeToArbitraryNode, getOuterSizes, getParentNode, getPopperOffsets, getReferenceOffsets, getScroll, getScrollParent, getStyleComputedProperty, getSupportedPropertyName, getWindowSizes, isFixed, isFunction, isModifierEnabled, isModifierRequired, isNumeric, removeEventListeners, runModifiers, setAttributes, setStyles, setupEventListeners };
 export default index;
-//# sourceMappingURL=popper-utils.js.map
+//# sourceMappingURL=popper-tools.js.map

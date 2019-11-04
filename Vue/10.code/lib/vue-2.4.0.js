@@ -7810,7 +7810,7 @@ var platformComponents = {
 
 /*  */
 
-// install platform specific utils
+// install platform specific tools
 Vue$3.config.mustUseProp = mustUseProp;
 Vue$3.config.isReservedTag = isReservedTag;
 Vue$3.config.isReservedAttr = isReservedAttr;

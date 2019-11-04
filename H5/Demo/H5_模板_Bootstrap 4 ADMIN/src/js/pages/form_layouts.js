@@ -45,7 +45,7 @@ $(document).ready(function() {
         $("#confirm_tel").prop("disabled", true);
     }
     $("#onetime_password").intlTelInput({
-        utilsScript: "vendors/intl-tel-input/js/utils.js"
+        utilsScript: "vendors/intl-tel-input/js/tools.js"
     });
     $('#confirm_tel').on('click', function(e) {
         e.preventDefault();
