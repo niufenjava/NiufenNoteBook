@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--https://blog.csdn.net/hunhun1122/article/details/78591103-->
+    <style>
+
+        .div1{
+            background-color: goldenrod;
+        }
+        .div2 {
+            background-color: red;
+        }
+        .div3 {
+            background-color: yellow;
+        }
+        /* 方法1*/
+        /*#div1{*/
+            /*float: left;*/
+        /*}*/
+        /*#div2 {*/
+            /*float: right;*/
+        /*}*/
+        /*#div3 {*/
+            /*float: right;*/
+        /*}*/
+
+
+        /* 方法2*/
+        /*#div1, #div2, #div3{*/
+            /*display: inline-block;*/
+        /*}*/
+        /* 方法3*/
+        #wrap{
+            display: flex;
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="div1" class="div1">div1</div>
+    <div id="div2" class="div2">div2</div>
+    <div id="div3" class="div3">div3</div>
+</div>
+</body>
+</html>
