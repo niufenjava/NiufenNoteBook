@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<button type="button" class="btn btn-outline-primary" onclick="reload()">reload</button>
+<div id = "dict"></div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+<script>
+    this.reload();
+    function reload (){
+        let allContent="";
+        let list = ['introduce','introduction','object','nature','organize','concept','ascribe','significance','largely','agreement','hold','throughout','community','codify','pattern','except','subscribe','classification','decree','genesis ','revolution ','programming','thus','tend','overview','amplification','expressive','medium ','movement','material'];
+        list =quickSort(list);
+        for (let item of list) {
+            let content = '<div class="alert alert-warning alert-dismissible fade show" role="alert">\n' +
+                '    <strong> '+item+'</strong> \n' +
+                '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '        <span aria-hidden="true">&times;</span>\n' +
+                '    </button>\n' +
+                '</div>'
+            allContent = allContent+content
+        }
+        console.info(allContent)
+        $("#dict").html(allContent);
+
+        //快速排序函数
+        function quickSort(arr) {
+            var len = arr.length;
+            for (var i = 0; i < len - 1; i++) {
+                var index = parseInt(Math.random() * (len - i));
+                var temp = arr[index];
+                arr[index] = arr[len - i - 1];
+                arr[len - i - 1] = temp;
+            }
+            return arr;
+
+        };
+    }
+</script>
+</html>
