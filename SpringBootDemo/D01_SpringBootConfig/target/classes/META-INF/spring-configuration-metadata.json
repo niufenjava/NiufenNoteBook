@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "oos.ali",
+      "type": "io.niufen.springbootconfig.property.OOSAliConfig",
+      "sourceType": "io.niufen.springbootconfig.property.OOSAliConfig"
+    },
+    {
+      "name": "project",
+      "type": "io.niufen.springbootconfig.property.ProjectProperties",
+      "sourceType": "io.niufen.springbootconfig.property.ProjectProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "oos.ali.access-key",
+      "type": "java.lang.String",
+      "sourceType": "io.niufen.springbootconfig.property.OOSAliConfig"
+    },
+    {
+      "name": "oos.ali.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "io.niufen.springbootconfig.property.OOSAliConfig"
+    },
+    {
+      "name": "oos.ali.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "io.niufen.springbootconfig.property.OOSAliConfig"
+    },
+    {
+      "name": "oos.ali.end-point",
+      "type": "java.lang.String",
+      "sourceType": "io.niufen.springbootconfig.property.OOSAliConfig"
+    },
+    {
+      "name": "project.level",
+      "type": "java.lang.Integer",
+      "sourceType": "io.niufen.springbootconfig.property.ProjectProperties"
+    },
+    {
+      "name": "project.name",
+      "type": "java.lang.String",
+      "sourceType": "io.niufen.springbootconfig.property.ProjectProperties"
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: io.niufen.springboot.mybatis.mapper.SysUserMapperTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.43 s <<< FAILURE! - in io.niufen.springboot.mybatis.mapper.SysUserMapperTest
+getById  Time elapsed: 0.02 s  <<< FAILURE!
+java.lang.AssertionError
+	at io.niufen.springboot.mybatis.mapper.SysUserMapperTest.getById(SysUserMapperTest.java:83)
+
+getByUsername  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError
+	at io.niufen.springboot.mybatis.mapper.SysUserMapperTest.getByUsername(SysUserMapperTest.java:92)
+

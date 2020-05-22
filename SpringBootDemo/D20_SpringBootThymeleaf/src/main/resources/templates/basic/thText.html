@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Example String </title>
+</head>
+<body>
+    <div >
+        <h1>Thymeleaf 的 th:text 属性 </h1>
+        <p>在HTML 标签上加上 th:text="${userName}"  HTML标签的 text 会被变量覆盖</p>
+        <br/>
+        <p th:text="${modelAttrValue}"></p>
+        <span th:text="'我是HTML的内容，后面的是controller的model变量返回的内容：' + ${strSplit}"></span>
+        <br/>
+        <span th:text="|Welcome to our application, ${strSplit}!|"></span>
+    </div>
+
+    <h5><a href="/hi" target="_self">Hi Thymeleaf</a><br/></h5>
+
+</body>
+</html>

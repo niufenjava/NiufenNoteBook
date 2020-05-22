@@ -1,0 +1,5 @@
+/Users/niufen/code/Git-Niufen/NiufenNoteBook/SpringBootDemo/SpringBootCommon/src/main/java/io/niufen/springboot/common/dao/SysUserMapperByXml.java
+/Users/niufen/code/Git-Niufen/NiufenNoteBook/SpringBootDemo/SpringBootCommon/src/main/java/io/niufen/springboot/common/dao/SysUserMapperByAnnotation.java
+/Users/niufen/code/Git-Niufen/NiufenNoteBook/SpringBootDemo/SpringBootCommon/src/main/java/io/niufen/springboot/common/entity/SysUserEntity.java
+/Users/niufen/code/Git-Niufen/NiufenNoteBook/SpringBootDemo/SpringBootCommon/src/main/java/io/niufen/springboot/common/dao/SysUserMapperByBase.java
+/Users/niufen/code/Git-Niufen/NiufenNoteBook/SpringBootDemo/SpringBootCommon/src/main/java/io/niufen/springboot/common/controller/CommonController.java

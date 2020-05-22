@@ -1,0 +1,16 @@
+oos:
+  ali:
+    accessKey: LTAIQERc5QHfZeBt
+    accessKeySecret: 6MxAtmOToVLw7rfUq53XWlT2eZdp9H
+    endPoint: niufen-mcp.oss-cn-beijing.aliyuncs.com
+    bucketName: niufen-mcp
+
+niufen:
+  project:
+    name: NiufenProjectName
+    port: 1000
+    title: ${niufen.project.name}:${niufen.project.port}
+
+spring:
+  profiles:
+    active: dev
