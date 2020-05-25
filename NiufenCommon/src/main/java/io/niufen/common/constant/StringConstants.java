@@ -9,7 +9,7 @@ public final class StringConstants {
     /**
      * 空字符串
      */
-    public static final String BLANK = "";
+    public static final String EMPTY = "";
 
     /**
      * zh_CN
@@ -188,9 +188,14 @@ public final class StringConstants {
         public static final String SPACE = " ";
 
         /**
+         * 全角空格
+         */
+        public static final String SPACE_CN = "　";
+
+        /**
          * 中文逗号
          */
-        public static final String COMMA_CN = ",";
+        public static final String COMMA_CN = "，";
 
         /**
          * 中文句号

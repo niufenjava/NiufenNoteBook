@@ -64,6 +64,11 @@ public final class IntConstants {
     public static final Integer TEN = 10;
 
     /**
+     * 16
+     */
+    public static final Integer SIXTEEN = 16;
+
+    /**
      * -1
      */
     public static final Integer ONE_MINUS = -1;

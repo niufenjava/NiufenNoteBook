@@ -44,14 +44,14 @@ public enum SexEnum implements IEnum{
      */
     public static String getNameByIndex(Integer index) {
         if(ObjectTools.isNull(index)){
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         for (SexEnum s : SexEnum.values()) {
             if (ObjectTools.equals(s.getIndex(),index)) {
                 return s.getName();
             }
         }
-        return StringConstants.BLANK;
+        return StringConstants.EMPTY;
     }
 
     /**

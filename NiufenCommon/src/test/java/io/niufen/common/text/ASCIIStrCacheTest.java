@@ -1,8 +1,10 @@
 package io.niufen.common.text;
 
 import io.niufen.common.constant.StringConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+@Slf4j
 public class ASCIIStrCacheTest {
 
     @Test
@@ -174,5 +176,11 @@ public class ASCIIStrCacheTest {
     @Test
     public void print(){
         ASCIIStrCache.print();
+    }
+
+    @Test
+    public void noAscii(){
+        char a = 12312;
+        log.debug(ASCIIStrCache.toString(a));
     }
 }

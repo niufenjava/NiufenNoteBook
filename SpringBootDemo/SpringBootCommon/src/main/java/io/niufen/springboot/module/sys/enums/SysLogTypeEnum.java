@@ -44,14 +44,14 @@ public enum SysLogTypeEnum implements IEnum{
      */
     public static String getNameByIndex(Integer index){
         if(ObjectTools.isNull(index)){
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         for(SysLogTypeEnum s: SysLogTypeEnum.values()){
             if(s.getIndex().equals(index)){
                 return s.getName();
             }
         }
-        return StringConstants.BLANK;
+        return StringConstants.EMPTY;
     }
 
     /**

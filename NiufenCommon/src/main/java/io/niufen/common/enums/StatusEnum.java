@@ -43,14 +43,14 @@ public enum StatusEnum implements IEnum{
      */
     public static String getNameByIndex(Integer index){
         if(ObjectTools.isNull(index)){
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         for(StatusEnum s: StatusEnum.values()){
             if(s.getIndex().equals(index)){
                 return s.getName();
             }
         }
-        return StringConstants.BLANK;
+        return StringConstants.EMPTY;
     }
 
     /**

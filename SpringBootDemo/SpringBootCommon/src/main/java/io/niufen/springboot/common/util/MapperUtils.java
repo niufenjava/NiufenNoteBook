@@ -24,7 +24,7 @@ public class MapperUtils {
         String tablePrefix = SqlConstants.TABLE_DEFAULT_PREFIX;
         if(ObjectTools.isNull(aClass)){
             log.error("tableNameByClass 传入参数null");
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         boolean hasAnnotation = aClass.isAnnotationPresent(TableName.class);
 
@@ -49,7 +49,7 @@ public class MapperUtils {
         String tablePrefix = SqlConstants.TABLE_DEFAULT_PREFIX;
         if(ObjectTools.isNull(entity)){
             log.error("tableNameByClass 传入参数null");
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         Class<?> aClass = entity.getClass();
         boolean hasAnnotation = aClass.isAnnotationPresent(TableName.class);
@@ -71,8 +71,8 @@ public class MapperUtils {
      * @return 下划线
      */
     public static String camelToUnderline(String str) {
-        if (str == null || StringConstants.BLANK.equals(str.trim())) {
-            return StringConstants.BLANK;
+        if (str == null || StringConstants.EMPTY.equals(str.trim())) {
+            return StringConstants.EMPTY;
         }
         int len = str.length();
         StringBuilder sb = new StringBuilder(len);

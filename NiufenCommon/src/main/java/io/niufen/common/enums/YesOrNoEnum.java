@@ -44,14 +44,14 @@ public enum YesOrNoEnum implements IEnum{
      */
     public static String getNameByIndex(Integer index) {
         if(ObjectTools.isNull(index)){
-            return StringConstants.BLANK;
+            return StringConstants.EMPTY;
         }
         for (YesOrNoEnum s : YesOrNoEnum.values()) {
             if (ObjectTools.equals(s.getIndex(),index)) {
                 return s.getName();
             }
         }
-        return StringConstants.BLANK;
+        return StringConstants.EMPTY;
     }
 
     /**
