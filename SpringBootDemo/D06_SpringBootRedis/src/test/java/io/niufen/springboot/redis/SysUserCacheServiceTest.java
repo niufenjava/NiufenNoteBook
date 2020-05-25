@@ -2,8 +2,8 @@ package io.niufen.springboot.redis;
 
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.RedisUtils;
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.redis.utils.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

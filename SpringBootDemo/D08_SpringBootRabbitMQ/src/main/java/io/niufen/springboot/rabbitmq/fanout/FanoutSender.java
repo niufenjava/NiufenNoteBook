@@ -1,6 +1,6 @@
 package io.niufen.springboot.rabbitmq.fanout;
 
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.rabbitmq.conf.FanoutRabbitMqConf;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

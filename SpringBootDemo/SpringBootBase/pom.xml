@@ -218,6 +218,7 @@
             <version>${niufen.common.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

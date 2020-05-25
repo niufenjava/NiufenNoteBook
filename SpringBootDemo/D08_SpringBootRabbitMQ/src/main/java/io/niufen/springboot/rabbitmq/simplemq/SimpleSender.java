@@ -1,6 +1,6 @@
 package io.niufen.springboot.rabbitmq.simplemq;
 
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.rabbitmq.conf.SimpleRabbitMqConf;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;

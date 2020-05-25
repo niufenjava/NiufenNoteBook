@@ -1,7 +1,7 @@
 package io.niufen.springboot.mybatis;
 
-import io.niufen.springboot.common.module.sys.mapper.SysUserMapperByXml;
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.mapper.SysUserMapperByXml;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

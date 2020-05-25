@@ -1,6 +1,6 @@
 package io.niufen.springboot.druid.entity;
 
-import io.niufen.common.entity.BaseEntity;
+import io.niufen.springboot.common.base.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

@@ -1,8 +1,8 @@
 package io.niufen.springboot.aoplog.controller;
 
-import io.niufen.common.annotation.SysLog;
-import io.niufen.common.response.R;
-import io.niufen.springboot.common.module.sys.form.SysUserCreateForm;
+import io.niufen.springboot.common.annotation.SysLog;
+import io.niufen.springboot.common.response.R;
+import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

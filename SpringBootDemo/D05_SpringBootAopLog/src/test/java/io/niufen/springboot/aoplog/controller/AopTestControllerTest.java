@@ -1,9 +1,7 @@
 package io.niufen.springboot.aoplog.controller;
 
-import io.niufen.springboot.common.module.sys.form.SysUserCreateForm;
+import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class AopTestControllerTest extends BaseApiTest{
 

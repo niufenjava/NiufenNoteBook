@@ -1,6 +1,6 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.common.lock.RedisLock;
+import io.niufen.springboot.redis.utils.RedisLock;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

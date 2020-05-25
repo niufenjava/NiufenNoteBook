@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
-import io.niufen.springboot.common.module.sys.mapper.SysUserMapper;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.mapper.SysUserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;

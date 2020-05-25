@@ -1,6 +1,6 @@
 package io.niufen.springboot.druid.multi.mybatis.mapper;
 
-import io.niufen.common.base.mapper.BaseMapperByXml;
+import io.niufen.springboot.common.base.mapper.BaseMapperByXml;
 import io.niufen.springboot.druid.multi.mybatis.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;

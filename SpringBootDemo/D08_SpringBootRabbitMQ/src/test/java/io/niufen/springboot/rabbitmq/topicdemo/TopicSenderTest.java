@@ -1,13 +1,11 @@
 package io.niufen.springboot.rabbitmq.topicdemo;
 
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

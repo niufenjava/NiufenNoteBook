@@ -1,14 +1,14 @@
 package io.niufen.springboot.aoplog.aspect;
 
 import com.alibaba.fastjson.JSONObject;
-import io.niufen.common.annotation.SysLog;
+import io.niufen.springboot.common.annotation.SysLog;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.IPUtils;
 import io.niufen.common.util.JsonUtils;
-import io.niufen.common.util.SpringContextUtils;
-import io.niufen.springboot.common.module.sys.entity.SysLogEntity;
-import io.niufen.springboot.common.module.sys.service.SysLogService;
+import io.niufen.springboot.common.util.SpringContextUtils;
+import io.niufen.springboot.module.sys.entity.SysLogEntity;
+import io.niufen.springboot.module.sys.service.SysLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -36,7 +36,7 @@ public class SysLogAspect {
     @Autowired
     private SysLogService sysLogService;
 
-    @Pointcut("@annotation(io.niufen.common.annotation.SysLog)")
+    @Pointcut("@annotation(io.niufen.springboot.common.annotation.SysLog)")
     private void sysLogPointCut(){}
 
     @Around("sysLogPointCut()")

@@ -3,7 +3,7 @@ package io.niufen.springboot.aoplog.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.niufen.common.constant.SysConstants;
-import io.niufen.common.response.R;
+import io.niufen.springboot.common.response.R;
 import io.niufen.common.util.JsonUtils;
 import io.niufen.springboot.common.SpringBootCommonApplication;
 import org.junit.Assert;

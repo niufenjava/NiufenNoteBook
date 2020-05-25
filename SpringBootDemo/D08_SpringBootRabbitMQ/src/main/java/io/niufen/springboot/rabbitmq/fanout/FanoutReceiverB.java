@@ -1,7 +1,7 @@
 package io.niufen.springboot.rabbitmq.fanout;
 
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
-import io.niufen.springboot.common.module.sys.service.SysUserService;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.service.SysUserService;
 import io.niufen.springboot.rabbitmq.conf.FanoutRabbitMqConf;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

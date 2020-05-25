@@ -2,14 +2,14 @@ package io.niufen.springboot.mybatis.service;
 
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.page.PageResult;
+import io.niufen.springboot.common.page.PageResult;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.ListUtils;
 import io.niufen.common.util.MapUtils;
 import io.niufen.common.util.UUIDUtils;
-import io.niufen.springboot.common.module.sys.bo.SysUserBO;
-import io.niufen.springboot.common.module.sys.entity.SysUserEntity;
-import io.niufen.springboot.common.module.sys.service.SysUserService;
+import io.niufen.springboot.module.sys.bo.SysUserBO;
+import io.niufen.springboot.module.sys.entity.SysUserEntity;
+import io.niufen.springboot.module.sys.service.SysUserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
