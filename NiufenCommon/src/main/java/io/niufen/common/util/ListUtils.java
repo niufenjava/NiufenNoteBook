@@ -9,14 +9,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @Description List 工具类
- * @Author haijun.zhang@luckincoffee.com
- * @Date 2019-06-02 22:55:33
+ * List 工具类
+ * @author niufen
+ * 2019-06-02 22:55:33
  **/
 public class ListUtils {
 
+    /**
+     * 默认 List容量大小
+     */
+    public static final int defaultInitialCapacity = 16;
+
     public static final String SEMICOLON = "；";
     public static final String COMMA = ",";
+
+    /**
+     * 新建一个空的 List
+     * @param <T> 集合元素类型
+     * @return ArrayList 对象
+     */
+    public static <T>  List<T> newList(){
+        return new ArrayList<>();
+    }
+    /**
+     * 根据给定的初始化容量 initialCapacity 新建一个空的 ArrayList
+     * @param <T> 集合元素类型
+     * @return ArrayList 对象
+     */
+    public static <T>  List<T> newList(int initialCapacity){
+        return new ArrayList<>(initialCapacity);
+    }
 
     /**
      * 创建一个 ArrayList() 并返回
@@ -227,6 +249,15 @@ public class ListUtils {
             }
         }
         return list;
+    }
+
+    /**
+     * List转Array
+     * @param list List
+     * @return Array
+     */
+    private static String[] toArray(List<String> list){
+        return list.toArray(new String[0]);
     }
 
 }

@@ -19,6 +19,11 @@ public final class IntConstants {
     public static final Integer ONE = 1;
 
     /**
+     * -1
+     */
+    public static final Integer ONE_MINUS = -1;
+
+    /**
      * 2
      */
     public static final Integer TWO = 2;
@@ -67,11 +72,6 @@ public final class IntConstants {
      * 16
      */
     public static final Integer SIXTEEN = 16;
-
-    /**
-     * -1
-     */
-    public static final Integer ONE_MINUS = -1;
 
     /**
      * 500

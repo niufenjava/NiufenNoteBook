@@ -12,6 +12,26 @@ public final class StringConstants {
     public static final String EMPTY = "";
 
     /**
+     * null 字符串
+     */
+    public static final String NULL = "null";
+
+    /**
+     * get 字符串
+     */
+    public static final String GET = "get";
+
+    /**
+     * set 字符串
+     */
+    public static final String SET = "set";
+
+    /**
+     * undefined 字符串
+     */
+    public static final String UNDEFINED = "undefined";
+
+    /**
      * zh_CN
      */
     public static final String ZH_CN = "zh_CN";
