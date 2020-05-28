@@ -180,7 +180,7 @@ public class TypeUtils {
      * @param method {@link java.lang.reflect.Method} 方法
      * @return {@link Type} 数组，可能为{@code null}
      */
-    public static Class[] getParamClasses(Method method) {
+    public static Class<?>[] getParamClasses(Method method) {
         // method.getParameterTypes() 返回该方法入参的类数组，如果无惨方法，则返回空数组
         return null == method ? null : method.getParameterTypes();
     }
@@ -205,7 +205,7 @@ public class TypeUtils {
      * @param method {@link java.lang.reflect.Method} 方法
      * @return 返回值类型的类
      */
-    public static Type getReturnClass(Method method) {
+    public static Class<?> getReturnClass(Method method) {
         return null == method ? null : method.getReturnType();
     }
 

@@ -23,6 +23,8 @@ public class TypeUtilsTest {
          * class TypeTest<T, V extends @Custom Number & Serializable> {
          *   public T t;
          *   public V v;
+         *   public Integer I;
+         *   public List<T> list = new ArrayList<>();
          * }
          */
         Field v = TypeTest.class.getField("v");
@@ -38,6 +40,226 @@ public class TypeUtilsTest {
         assert Object.class == mapWithWildcardClass;
         Class<?> mapWithWildcardClass2 = TypeUtils.getClass(((ParameterizedType) mapWithWildcard.getGenericType()).getActualTypeArguments()[1]);
         assert Number.class == mapWithWildcardClass2;
+    }
+
+    @Test
+    public void getType() throws NoSuchFieldException {
+        /*
+         * class TypeTest<T, V extends @Custom Number & Serializable> {
+         *   public T t;
+         *   public V v;
+         *   public Integer I;
+         *   public List<T> list = new ArrayList<>();
+         * }
+         */
+        Field tField = TypeTest.class.getField("t");
+        Field vField = TypeTest.class.getField("v");
+        Field iField = TypeTest.class.getField("i");
+        Field listField = TypeTest.class.getField("list");
+        Type tType = TypeUtils.getType(tField);
+        Type vType = TypeUtils.getType(vField);
+        Type iType = TypeUtils.getType(iField);
+        Type listType = TypeUtils.getType(listField);
+
+        assert tType instanceof TypeVariable;
+        assert vType instanceof TypeVariable;
+        assert iType instanceof Class;
+        assert listType instanceof ParameterizedType;
+
+        assert "T".equals(tType.getTypeName());
+        assert "V".equals(vType.getTypeName());
+        assert "java.lang.Integer".equals(iType.getTypeName());
+        assert "java.util.List<T>".equals(listType.getTypeName());
+
+        Field tFieldImpl = TypeTestImpl.class.getField("t");
+        Field vFieldImpl = TypeTestImpl.class.getField("v");
+        Field iFieldImpl = TypeTestImpl.class.getField("i");
+        Field listFieldImpl = TypeTestImpl.class.getField("list");
+        Type tTypeImpl = TypeUtils.getType(tField);
+        Type vTypeImpl = TypeUtils.getType(vField);
+        Type iTypeImpl = TypeUtils.getType(iField);
+        Type listTypeImpl = TypeUtils.getType(listField);
+
+        assert tTypeImpl instanceof TypeVariable;
+        assert vTypeImpl instanceof TypeVariable;
+        assert iTypeImpl instanceof Class;
+        assert listTypeImpl instanceof ParameterizedType;
+
+        assert "T".equals(tTypeImpl.getTypeName());
+        assert "V".equals(vTypeImpl.getTypeName());
+        assert "java.lang.Integer".equals(iTypeImpl.getTypeName());
+        assert "java.util.List<T>".equals(listTypeImpl.getTypeName());
+    }
+
+    @Test
+    public void getClassByField() throws NoSuchFieldException {
+        /*
+         * class TypeTest<T, V extends @Custom Number & Serializable> {
+         *   public T t;
+         *   public V v;
+         *   public Integer I;
+         *   public List<T> list = new ArrayList<>();
+         * }
+         */
+        Field tField = TypeTest.class.getField("t");
+        Field vField = TypeTest.class.getField("v");
+        Field iField = TypeTest.class.getField("i");
+        Field listField = TypeTest.class.getField("list");
+        Class<?> tClass = TypeUtils.getClass(tField);
+        Class<?> vClass = TypeUtils.getClass(vField);
+        Class<?> iClass = TypeUtils.getClass(iField);
+        Class<?> listClass = TypeUtils.getClass(listField);
+
+        assert tClass == Object.class;
+        assert vClass == Number.class;
+        assert iClass == Integer.class;
+        assert listClass == List.class;
+
+        assert "Object".equals(tClass.getSimpleName());
+        assert "Number".equals(vClass.getSimpleName());
+        assert "Integer".equals(iClass.getSimpleName());
+        assert "List".equals(listClass.getSimpleName());
+
+        Field tFieldImpl = TypeTestImpl.class.getField("t");
+        Field vFieldImpl = TypeTestImpl.class.getField("v");
+        Field iFieldImpl = TypeTestImpl.class.getField("i");
+        Field listFieldImpl = TypeTestImpl.class.getField("list");
+        Class<?> tClassImpl = TypeUtils.getClass(tFieldImpl);
+        Class<?> vClassImpl = TypeUtils.getClass(vFieldImpl);
+        Class<?> iClassImpl = TypeUtils.getClass(iFieldImpl);
+        Class<?> listClassImpl = TypeUtils.getClass(listFieldImpl);
+
+        assert tClassImpl == Object.class;
+        assert vClassImpl == Number.class;
+        assert iClassImpl == Integer.class;
+        assert listClassImpl == List.class;
+
+        assert "Object".equals(tClassImpl.getSimpleName());
+        assert "Number".equals(vClassImpl.getSimpleName());
+        assert "Integer".equals(iClassImpl.getSimpleName());
+        assert "List".equals(listClassImpl.getSimpleName());
+    }
+
+
+    @Test
+    public void getParamType() throws NoSuchMethodException {
+        /*
+        class TypeTest<T, V extends @Custom Number & Serializable> {
+            public <Y extends T> T method(Y y,Integer i) {
+                t = y;
+                return t;
+            }
+        }
+         */
+        Method[] method = TypeTest.class.getMethods();
+
+        Type firstParamType = TypeUtils.getFirstParamType(method[0]);
+        assert firstParamType instanceof TypeVariable;
+        assert "Y".equals(firstParamType.getTypeName());
+
+        Type secondParamType = TypeUtils.getParamType(method[0],1);
+        assert secondParamType instanceof Class;
+        assert "Integer".equals(((Class) secondParamType).getSimpleName());
+
+        Type[] types = TypeUtils.getParamTypes(method[0]);
+        assert 2 == types.length;
+        assert types[0] instanceof TypeVariable;
+        assert types[1] instanceof Class;
+    }
+
+
+    @Test
+    public void getParamClass() throws NoSuchMethodException {
+        /*
+        class TypeTest<T, V extends @Custom Number & Serializable> {
+            public <Y extends T> T method(Y y,Integer i) {
+                t = y;
+                return t;
+            }
+        }
+         */
+        Method[] method = TypeTest.class.getMethods();
+
+        Class<?> firstParamType = TypeUtils.getFirstParamClass(method[0]);
+        assert firstParamType == Object.class;
+        assert "Object".equals(firstParamType.getSimpleName());
+
+        Class<?> secondParamClass = TypeUtils.getParamClass(method[0],1);
+        assert secondParamClass instanceof Class;
+        assert "Integer".equals(secondParamClass.getSimpleName());
+
+        Class<?>[] classes = TypeUtils.getParamClasses(method[0]);
+        assert 2 == classes.length;
+        assert classes[0] == Object.class;
+        assert classes[1] == Integer.class;
+    }
+
+    @Test
+    public void getReturnType() {
+        /*
+        class TypeTest<T, V extends @Custom Number & Serializable> {
+            public <Y extends T> T method(Y y,Integer i) {
+                t = y;
+                return t;
+            }
+        }
+         */
+        Method[] method = TypeTest.class.getMethods();
+        Type returnType = TypeUtils.getReturnType(method[0]);
+        assert returnType instanceof TypeVariable;
+    }
+
+
+    @Test
+    public void getReturnClass() {
+        /*
+        class TypeTest<T, V extends @Custom Number & Serializable> {
+            public <Y extends T> T method(Y y,Integer i) {
+                t = y;
+                return t;
+            }
+        }
+         */
+        Method[] method = TypeTest.class.getMethods();
+        Class<?> returnClass = TypeUtils.getReturnClass(method[0]);
+        assert returnClass == Object.class;
+    }
+
+    @Test
+    public void getTypeArgumentTest() throws NoSuchFieldException {
+
+        /*
+        class TypeTestImpl extends TypeTest<String, Integer>{
+            public <X extends Number> TypeTestImpl(X x, String s) {
+                super(x, s);
+            }
+        }
+         */
+        // 被检查的类型，必须是已经确定泛型类型的类型
+        Type typeFirstArgument = TypeUtils.getTypeFirstArgument(TypeTestImpl.class);
+        assert typeFirstArgument instanceof Class;
+        assert typeFirstArgument == String.class;
+
+        Type typeSecondArgument = TypeUtils.getTypeArgument(TypeTestImpl.class,1);
+        assert typeSecondArgument instanceof Class;
+        assert typeSecondArgument == Integer.class;
+
+        Type[] types = TypeUtils.getTypeArguments(TypeTestImpl.class);
+        assert 2 == types.length;
+    }
+
+    @Test
+    public void toParameterizedType() {
+        Type type = TypeUtils.toParameterizedType(TypeTestImpl.class);
+        assert type instanceof ParameterizedType;
+        log.error(type.getTypeName());
+        assert "io.niufen.common.util.TypeTest<java.lang.String, java.lang.Integer>".equals(type.getTypeName());
+        assert 2 == ((ParameterizedType) type).getActualTypeArguments().length;
+    }
+
+    @Test
+    public void getActualType() {
+//        TODO
     }
 
     @Test
@@ -126,8 +348,6 @@ public class TypeUtilsTest {
             GenericArrayType arrayType = (GenericArrayType) tArray.getGenericType();
             System.out.println("数组参数类型3:" + arrayType.getGenericComponentType());//数组参数类型3:T
         }
-
-
     }
 
     @Test
@@ -173,6 +393,12 @@ public class TypeUtilsTest {
     }
 }
 
+class TypeTestImpl extends TypeTest<String, Integer>{
+    public <X extends Number> TypeTestImpl(X x, String s) {
+        super(x, s);
+    }
+}
+
 /**
  * 示例类TypeTest 是一个泛型类，
  * 声明了两个泛型参数T 和 V，一个构造函数和一个泛型方法以及若干属性。
@@ -185,6 +411,7 @@ class TypeTest<T, V extends @Custom Number & Serializable> {
     private Number number;
     public T t;
     public V v;
+    public Integer i;
     public List<T> list = new ArrayList<>();
     public Map<String, T> map = new HashMap<>();
 
@@ -203,9 +430,11 @@ class TypeTest<T, V extends @Custom Number & Serializable> {
     }
 
     // 泛型方法，泛型参数为Y
-    public <Y extends T> void method(Y y) {
+    public <Y extends T> T method(Y y,Integer i) {
         t = y;
+        return t;
     }
+
 
 }
 
