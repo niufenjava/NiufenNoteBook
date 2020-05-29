@@ -3,6 +3,7 @@ package io.niufen.common.lang;
 import io.niufen.common.collection.SetUtils;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.StringConstants;
+import io.niufen.common.util.CharsetUtils;
 import io.niufen.common.util.StringUtils;
 
 import java.io.File;
@@ -64,6 +65,32 @@ public class ClassScanner implements Serializable {
      * 扫描结果集
      */
     private final Set<Class<?>> classes = SetUtils.newSet();
+
+    /**
+     * 构造，默认UTF-8编码，无过滤器
+     */
+    public ClassScanner() {
+        this(null);
+    }
+
+    /**
+     * 构造，默认UTF-8编码，无过滤器
+     *
+     * @param packageName 包名，所有包传入""或者null
+     */
+    public ClassScanner(String packageName) {
+        this(packageName, null);
+    }
+
+    /**
+     * 构造，默认UTF-8编码
+     *
+     * @param packageName 包名，所有包传入""或者null
+     * @param classFilter 过滤器，无需传入null
+     */
+    public ClassScanner(String packageName, Filter<Class<?>> classFilter) {
+        this(packageName, classFilter, CharsetUtils.CHARSET_UTF_8);
+    }
 
     /**
      * 构造
