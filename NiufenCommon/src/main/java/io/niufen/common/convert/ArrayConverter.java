@@ -9,7 +9,7 @@ import io.niufen.common.util.ArrayUtils;
  * @date 2020/5/30
  * @time 09:06
  */
-public class ArrayConverterImpl extends AbstractConverter<Object> {
+public class ArrayConverter extends AbstractConverter<Object> {
 
     private static final long serialVersionUID = -1384809443170566736L;
 
@@ -28,7 +28,7 @@ public class ArrayConverterImpl extends AbstractConverter<Object> {
      *
      * @param targetType 目标数组类型
      */
-    public ArrayConverterImpl(Class<?> targetType) {
+    public ArrayConverter(Class<?> targetType) {
         // 1. 如果目标类型为空，创建一个 Object类型数组
         if (null == targetType) {
             targetType = Object[].class;

@@ -262,18 +262,32 @@ public class ConverterRegistry implements Serializable {
             return (T) value;
         }
 
+        // 枚举转换
+        if (typeClass.isEnum()) {
+            return (T) new EnumConverter(typeClass).convert(value, defaultValue);
+        }
+
+        //数组转换
+        if (typeClass.isArray()) {
+            final ArrayConverter arrayConverter = new ArrayConverter(typeClass);
+            try {
+                return (T) arrayConverter.convert(value, defaultValue);
+            } catch (Exception e) {
+                // 数组转换失败进行下一步
+            }
+
+        }
         return null;
     }
-
 
 
     /**
      * 转换值为指定类型<br>
      * 自定义转换器优先
      *
-     * @param <T> 转换的目标类型（转换器转换到的类型）
-     * @param type 类型
-     * @param value 值
+     * @param <T>          转换的目标类型（转换器转换到的类型）
+     * @param type         类型
+     * @param value        值
      * @param defaultValue 默认值
      * @return 转换后的值
      * @throws ConvertException 转换器不存在
@@ -285,8 +299,8 @@ public class ConverterRegistry implements Serializable {
     /**
      * 转换值为指定类型
      *
-     * @param <T> 转换的目标类型（转换器转换到的类型）
-     * @param type 类型
+     * @param <T>   转换的目标类型（转换器转换到的类型）
+     * @param type  类型
      * @param value 值
      * @return 转换后的值，默认为<code>null</code>
      * @throws ConvertException 转换器不存在
@@ -298,10 +312,10 @@ public class ConverterRegistry implements Serializable {
     /**
      * 转换值为指定类型
      *
-     * @param <T> 转换的目标类型（转换器转换到的类型）
-     * @param type 类型目标
-     * @param value 被转换值
-     * @param defaultValue 默认值
+     * @param <T>           转换的目标类型（转换器转换到的类型）
+     * @param type          类型目标
+     * @param value         被转换值
+     * @param defaultValue  默认值
      * @param isCustomFirst 是否自定义转换器优先
      * @return 转换后的值
      * @throws ConvertException 转换器不存在
@@ -319,8 +333,8 @@ public class ConverterRegistry implements Serializable {
             type = defaultValue.getClass();
         }
 
-        if(type instanceof TypeReference) {
-            type = ((TypeReference<?>)type).getType();
+        if (type instanceof TypeReference) {
+            type = ((TypeReference<?>) type).getType();
         }
 
         // 标准转换器
