@@ -1,6 +1,7 @@
 package io.niufen.common.util;
 
 import io.niufen.common.constant.IntConstants;
+import io.niufen.common.exception.UtilException;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -19,46 +20,327 @@ public class ArrayUtils {
     public static final int INDEX_NOT_FOUND = IntConstants.ONE_MINUS;
 
     /**
-     * 新建一个空数组
-     *
-     * @param componentType 数组元素类型
-     * @param newSize       数组大小
-     * @param <T>           数组元素类型
-     * @return 空数组
+     * 数组中元素起始的下标，值为 0
      */
-    @SuppressWarnings("unchecked")
-    public static <T> T[] newArray(Class<?> componentType, int newSize) {
-        return (T[]) Array.newInstance(componentType, newSize);
-    }
+    public static final int INDEX_START = IntConstants.ZERO;
 
     /**
-     * 是否为空
+     * 空数组的长度
+     */
+    public static final int EMPTY_LENGTH = IntConstants.ZERO;
+
+
+    // -------------------- isEmpty start --------------------
+
+    /**
+     * 判断传入的 泛型数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
      *
      * @param array 数组类型
      * @param <T>   泛型
-     * @return true:为空
+     * @return true-为空；false-不为空
      */
     public static <T> boolean isEmpty(T[] array) {
-        return array == null || array.length == 0;
+        return null == array || array.length == EMPTY_LENGTH;
     }
 
     /**
-     * 是否为空
+     * 判断传入的 泛型数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
      *
      * @param array 数组类型
      * @param <T>   泛型
-     * @return true:为空
+     * @return true-不为空；false-为空
      */
     public static <T> boolean isNotEmpty(T[] array) {
         return !isEmpty(array);
     }
 
     /**
-     * 是否包含{@code null}元素
+     * 如果给定的数组为空，返回默认数组
      *
-     * @param <T> 数组元素类型
+     * @param array        数组
+     * @param defaultArray 默认数组
+     * @param <T>          数组元素类型
+     * @return 非空（empty）的原数组或默认数组
+     */
+    public static <T> T[] defaultIfEmpty(T[] array, T[] defaultArray) {
+        return !isEmpty(array) ? array : defaultArray;
+    }
+
+
+    /**
+     * 传入对象类型数组，判断数组是否为空
+     * <p>
+     * 此方法会匹配单一对象，如果此对象为 null，则返回true
+     * 如果此对象为非数组，理解为此对象为数组的第一个元素，返回false
+     * 如果此对象为数组对象，数组长度大于0情况下返回false，否则返回true
+     *
+     * @param array 数组
+     * @return true-null 或 数组并且长度为0；false-数组长度不为空
+     */
+    public static boolean isEmpty(Object array) {
+        if (null == array) {
+            return true;
+        }
+        if (isArray(array)) {
+            return Array.getLength(array) == EMPTY_LENGTH;
+        }
+        throw new UtilException("Object to provide is not a Array!");
+    }
+
+    /**
+     * 传入对象类型数组，判断数组是否为非空
+     *
+     * @param array 数组
+     * @return true-非空数组；false-空数组
+     */
+    public static boolean isNotEmpty(Object array) {
+        return !isEmpty(array);
+    }
+
+
+    /**
+     * 判断传入的 基本类型字符数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array 字符数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(char[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型字符数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array 字符数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(char[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型布尔数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array 布尔数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(boolean[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型布尔数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array 布尔数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(boolean[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型字节数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array 字节数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(byte[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型字节数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array 字节数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(byte[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型short数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array short数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(short[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型short数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array short数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(short[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型int数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array int数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(int[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型int数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array int数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(int[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型long数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array long数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(long[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型long数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array long数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(long[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型float数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array float数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(float[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型float数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array float数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(float[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
+     * 判断传入的 基本类型double数组 是否为空
+     * empty 空的定义：
+     * 1、传入的数组为 null
+     * 或
+     * 2、数组长度为 0
+     *
+     * @param array double数组
+     * @return true-为空；false-不为空
+     */
+    public static boolean isEmpty(double[] array) {
+        return null == array || array.length == EMPTY_LENGTH;
+    }
+
+    /**
+     * 判断传入的 基本类型double数组 是否为非空
+     * notEmpty 非空定义：
+     * 1、传入的数组不为 null
+     * 并且
+     * 2、数组长度不为 0
+     *
+     * @param array double数组
+     * @return true-非空；false-空
+     */
+    public static boolean isNotEmpty(double[] array) {
+        return !isEmpty(array);
+    }
+
+    // -------------------- isEmpty end --------------------
+
+
+    // -------------------- null element start --------------------
+
+    /**
+     * 是否包含{@code null}元素，如果数组本身为空，则返回false
+     *
+     * @param <T>   数组元素类型
      * @param array 被检查的数组
-     * @return 是否包含{@code null}元素
+     * @return true-包含{@code null}元素;false-不包含null元素
      * @since 3.0.7
      */
     @SuppressWarnings("unchecked")
@@ -72,25 +354,113 @@ public class ArrayUtils {
         }
         return false;
     }
+
     /**
-     * 是否为空
+     * 是否不包含{@code null}元素，如果数组本身为空，则返回true
      *
-     * @param array 数组类型
-     * @return true:为空
+     * @param <T>   数组元素类型
+     * @param array 被检查的数组
+     * @return true-不包含{@code null}元素;false-包含null元素
+     * @since 3.0.7
      */
-    public static boolean isEmpty(char[] array) {
-        return array == null || array.length == 0;
+    @SuppressWarnings("unchecked")
+    public static <T> boolean notHasNull(T... array) {
+        return !hasNull(array);
     }
 
     /**
-     * 是否为空
+     * 返回数组中第一个非空元素
      *
-     * @param array 数组类型
-     * @return true:为空
+     * @param array 数组
+     * @param <T>   数组元素类型
+     * @return 非空元素，如果不存在非空元或数组为空，返回null
      */
-    public static boolean isNotEmpty(char[] array) {
-        return !isEmpty(array);
+    public static <T> T firstNotNull(T... array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        for (T t : array) {
+            if (null != t) {
+                return t;
+            }
+        }
+        return null;
     }
+
+    // -------------------- null element end --------------------
+
+
+    // -------------------- new Array start --------------------
+
+    /**
+     * 根据传入的数组元素类型，初始化大小，新建一个空数组
+     *
+     * @param componentType 数组元素类型
+     * @param newSize       数组大小
+     * @param <T>           数组元素类型
+     * @return 长度确定的数组，所有元素为空
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[] newArray(Class<?> componentType, int newSize) {
+        return (T[]) Array.newInstance(componentType, newSize);
+    }
+
+    /**
+     * 根据传入的初始化大小，新建一个空数组
+     *
+     * @param newSize 数组大小
+     * @return 长度确定的数组，所有元素为空
+     */
+    public static Object[] newArray(int newSize) {
+        return new Object[newSize];
+    }
+
+    // -------------------- new Array end --------------------
+
+
+    // -------------------- Array \ Component Type start --------------------
+
+    /**
+     * 获取数组对象的元素类型
+     * 如果不是数组，那么返回 null
+     *
+     * @param array 数组对象
+     * @return 数组对象的元素类型
+     */
+    public static Class<?> getComponentType(Object array) {
+        return null == array ? null : array.getClass().getComponentType();
+    }
+
+
+    /**
+     * 获取数组对象的元素类型
+     * 如果不是数组，那么返回 null
+     *
+     * @param arrayClass 获取数组对象的元素类型
+     * @return 元素类型
+     */
+    public static Class<?> getComponentType(Class<?> arrayClass) {
+        return null == arrayClass ? null : arrayClass.getComponentType();
+    }
+
+    /**
+     * 根据数组元素类型，获取数组的类型<br/>
+     * 方法是通过创建一个空数组从而获取类型.
+     * 举例：
+     * <code>
+     * Class<?> arrayType = ArrayUtils.getArrayType(int.class);
+     * assert int[].class == arrayType;
+     * </code>
+     *
+     * @param componentType 数组元素类型
+     * @return 数组类型
+     */
+    public static Class<?> getArrayType(Class<?> componentType) {
+        return Array.newInstance(componentType, EMPTY_LENGTH).getClass();
+    }
+
+    // -------------------- Array \ Component Type end --------------------
+
 
     /**
      * 判断数组中是否存在指定元素
@@ -141,27 +511,6 @@ public class ArrayUtils {
         return INDEX_NOT_FOUND;
     }
 
-    /**
-     * 获取数组对象的元素类型
-     *
-     * @param array 获取数组对象的元素类型
-     * @return 元素类型
-     */
-    public static Class<?> getComponentType(Object array) {
-        return null == array ? null : array.getClass().getComponentType();
-    }
-
-    /**
-     * 根据数组元素类型，获取数组的类型<br/>
-     * 方法是通过创建一个空数组从而获取类型
-     *
-     * @param componentType 数组元素类型
-     * @return 数组类型
-     */
-    public static Class<?> getArrayType(Class<?> componentType) {
-        // Array.newInstance(componentType, 0) 可以创建一个 componentType 类型的数组，长度为0
-        return Array.newInstance(componentType, 0).getClass();
-    }
 
     /**
      * 数组对象转String
