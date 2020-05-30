@@ -1,6 +1,6 @@
 package io.niufen.common.comparator;
 
-import io.niufen.common.collection.ListUtils;
+import io.niufen.common.util.ListUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

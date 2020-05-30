@@ -1,13 +1,32 @@
 package io.niufen.common.convert;
 
+import io.niufen.common.util.ExceptionUtils;
+import io.niufen.common.util.StringUtils;
+
 /**
- * TODO
  * 转换异常
- *
- * @author haijun.zhang
- * @date 2020/5/27
- * @time 15:10
+ * @author xiaoleilu
  */
-public class ConvertException extends RuntimeException {
-    private static final long serialVersionUID = -3186187068487237327L;
+public class ConvertException extends RuntimeException{
+    private static final long serialVersionUID = 4730597402855274362L;
+
+    public ConvertException(Throwable e) {
+        super(ExceptionUtils.getMessage(e), e);
+    }
+
+    public ConvertException(String message) {
+        super(message);
+    }
+
+    public ConvertException(String messageTemplate, Object... params) {
+        super(StringUtils.format(messageTemplate, params));
+    }
+
+    public ConvertException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
+
+    public ConvertException(Throwable throwable, String messageTemplate, Object... params) {
+        super(StringUtils.format(messageTemplate, params), throwable);
+    }
 }

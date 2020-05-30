@@ -1,8 +1,8 @@
 package io.niufen.springboot.module.sys.service.impl;
 
-import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.ListUtils;
+import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.springboot.module.sys.bo.SysLogBO;
 import io.niufen.springboot.module.sys.entity.SysLogEntity;
 import io.niufen.springboot.module.sys.enums.SysLogOperateTypeEnum;

@@ -1,10 +1,10 @@
 package io.niufen.springboot.module.sys.service.impl;
 
-import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.common.enums.SexEnum;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.ListUtils;
+import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.springboot.module.sys.bo.SysUserBO;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.module.sys.mapper.SysUserMapper;

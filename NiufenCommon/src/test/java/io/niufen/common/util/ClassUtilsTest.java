@@ -1,9 +1,12 @@
 package io.niufen.common.util;
 
+import io.niufen.common.convert.AbstractConverter;
+import io.niufen.common.convert.IConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.Collection;
+import java.util.List;
 
 @Slf4j
 public class ClassUtilsTest {
@@ -58,6 +61,12 @@ public class ClassUtilsTest {
 
     @Test
     public void getDefaultClassLoader() {
+    }
+
+    @Test
+    public void isAssignable() {
+        assert ClassUtils.isAssignable(IConverter.class, AbstractConverter.class);
+        assert ClassUtils.isAssignable(Collection.class, List.class);
     }
 
     class InnerTestClass{

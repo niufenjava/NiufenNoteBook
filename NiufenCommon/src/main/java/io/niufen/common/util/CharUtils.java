@@ -167,7 +167,7 @@ public class CharUtils {
      * @param object 被检查的对象
      * @return true-表示该对象为字符类对象
      */
-    public static boolean isCharObject(Object object) {
+    public static boolean isChar(Object object) {
         return object instanceof Character || object.getClass() == char.class;
     }
 

@@ -1,263 +1,228 @@
 package io.niufen.common.util;
 
-import io.niufen.common.tool.ObjectTools;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * List 工具类
- * @author niufen
- * 2019-06-02 22:55:33
- **/
+ * List 相关工具类
+ *
+ * @author haijun.zhang
+ * @date 2020/5/12
+ * @time 10:03
+ */
 public class ListUtils {
-
     /**
      * 默认 List容量大小
      */
     public static final int defaultInitialCapacity = 16;
-
-    public static final String SEMICOLON = "；";
-    public static final String COMMA = ",";
+//    ————————————————————————————————— new —————————————————————————————————————
 
     /**
-     * 新建一个空的 List
-     * @param <T> 集合元素类型
-     * @return ArrayList 对象
+     * 创建一个无元素的 ArrayList 并返回
+     *
+     * @param <E> 泛型
+     * @return empty ArrayList
      */
-    public static <T>  List<T> newList(){
-        return new ArrayList<>();
+    public static <E> ArrayList<E> newList() {
+        return newArrayList();
     }
     /**
-     * 根据给定的初始化容量 initialCapacity 新建一个空的 ArrayList
-     * @param <T> 集合元素类型
-     * @return ArrayList 对象
+     * 创建一个无元素的 ArrayList 并返回
+     *
+     * @param <E> 泛型
+     * @return empty ArrayList
      */
-    public static <T>  List<T> newList(int initialCapacity){
+    public static <E> ArrayList<E> newList(int initialCapacity) {
         return new ArrayList<>(initialCapacity);
     }
 
+
     /**
-     * 创建一个 ArrayList() 并返回
+     * 创建一个无元素的 ArrayList 并返回
      *
-     * @return LinkedList
+     * @param <E> 泛型
+     * @return empty ArrayList
      */
-    public static ArrayList newArrayList() {
+    @SafeVarargs
+    public static <E> ArrayList<E> newList(E... elements) {
+        return newArrayList(elements);
+    }
+
+    /**
+     * 新建一个空List
+     *
+     * @param <T>      集合元素类型
+     * @param isLinked 是否新建LinkedList
+     * @return List对象
+     * @since 4.1.2
+     */
+    public static <T> List<T> newList(boolean isLinked) {
+        return isLinked ? new LinkedList<>() : new ArrayList<>();
+    }
+
+    /**
+     * 创建一个无元素的 ArrayList 并返回
+     *
+     * @param <E> 泛型
+     * @return empty ArrayList
+     */
+    public static <E> ArrayList<E> newArrayList() {
         return new ArrayList<>();
     }
 
     /**
-     * 创建一个 ArrayList() 并返回
+     * 创建一个无元素的 LinkedList 并返回
      *
-     * @return LinkedList
+     * @param <E> 泛型
+     * @return empty ArrayList
      */
-    public static ArrayList<String> newStringList() {
-        return new ArrayList<String>();
+    public static <E> LinkedList<E> newLinkedList() {
+        return new LinkedList<>();
     }
 
     /**
-     * 创建一个 newLongList() 并返回
+     * 新建一个 非排序的 ArrayList
      *
-     * @return ArrayList
+     * @param elements 多参数
+     * @param <E>      泛型
+     * @return 返回一个创建好的 ArrayList
      */
-    public static List<Long> newLongList() {
-        return new ArrayList<Long>();
+    @SafeVarargs
+    public static <E> ArrayList<E> newArrayList(E... elements) {
+        return (ArrayList<E>) newList(Boolean.FALSE, elements);
     }
 
     /**
-     * 创建一个 LinkedList() 并返回
+     * 新建一个 非排序的 ArrayList
      *
-     * @return LinkedList
+     * @param collection 集合
+     * @param <E>        泛型
+     * @return 返回一个创建好的 ArrayList
      */
-    public static LinkedList newLinkedList() {
-        return new LinkedList();
+    public static <E> ArrayList<E> newArrayList(Collection<E> collection) {
+        return (ArrayList<E>) newList(Boolean.FALSE, collection);
     }
 
     /**
-     * 多参数添加 Integer 类型
-     * @param values 多参数
-     * @return Integer类型集合
+     * 新建一个 非排序的 ArrayList
+     *
+     * @param iterator 迭代器
+     * @param <E>      泛型
+     * @return 返回一个创建好的 ArrayList
      */
-    public static List<Integer> batchAddInteger(Integer ...values){
-        List<Integer> list = ListUtils.newLinkedList();
-        if(ObjectTools.isNull(values)){
-            return list;
+    public static <E> ArrayList<E> newArrayList(Iterator<E> iterator) {
+        return (ArrayList<E>) newList(Boolean.FALSE, iterator);
+    }
+
+    /**
+     * 新建一个 排序的 LinkedList
+     *
+     * @param elements 多参数
+     * @param <E>      泛型
+     * @return 返回一个创建好的 ArrayList
+     */
+    @SafeVarargs
+    public static <E> LinkedList<E> newLinkedList(E... elements) {
+        return (LinkedList<E>) newList(Boolean.TRUE, elements);
+    }
+
+    /**
+     * 新建一个 排序的 LinkedList
+     *
+     * @param iterator 迭代器
+     * @param <E>      泛型
+     * @return 返回一个创建好的 ArrayList
+     */
+    public static <E> LinkedList<E> newLinkedList(Iterator<E> iterator) {
+        return (LinkedList<E>) newList(Boolean.TRUE, iterator);
+    }
+
+    /**
+     * 新建一个 排序的 LinkedList
+     *
+     * @param collection 集合
+     * @param <E>        泛型
+     * @return 返回一个创建好的 ArrayList
+     */
+    public static <E> LinkedList<E> newLinkedList(Collection<E> collection) {
+        return (LinkedList<E>) newList(Boolean.TRUE, collection);
+    }
+
+    /**
+     * 新建一个ArrayList
+     *
+     * @param <E>      集合元素类型
+     * @param isLinked 是否有序，有序返回 {@link LinkedList}，否则返回{@link ArrayList}
+     * @param iterator     {@link Iterator}
+     * @return ArrayList对象
+     * @since 3.0.8
+     */
+    public static <E> List<E> newList(boolean isLinked, Iterator<E> iterator) {
+        if (null == iterator) {
+            return newList(isLinked);
         }
-        for (Integer value : values) {
-            list.add(value);
+        final List<E> list = isLinked ? new LinkedList<>() : new ArrayList<>();
+        while (iterator.hasNext()) {
+            list.add(iterator.next());
         }
         return list;
     }
 
     /**
-     * 多参数添加 Long 类型
-     * @param values 多参数
-     * @return Integer类型集合
+     * 通过多参数，直接创建一个 ArrayList
+     * 如果 isSorted 是 true，那么创建一个 LinkedList
+     * 如果 isSorted 是 false, 那么创建一个 ArrayList
+     *
+     * @param isLinked 是否按添加顺序有序，有序返回 {@link LinkedList}，否则返回{@link ArrayList}
+     * @param elements 数组
+     * @param <E>      list 中的 <泛型>元素
+     * @return 返回一个创建好的 ArrayList
      */
-    public static List<Long> batchAddLong(Long ...values){
-        List<Long> list = ListUtils.newLinkedList();
-        if(ObjectTools.isNull(values)){
-            return list;
+    @SafeVarargs
+    public static <E> List<E> newList(boolean isLinked, E... elements) {
+        return newList(isLinked, Arrays.asList(elements));
+    }
+
+    /**
+     * 通过多参数，直接创建一个 ArrayList
+     * 如果 isSorted 是 true，那么创建一个 LinkedList
+     * 如果 isSorted 是 false, 那么创建一个 ArrayList
+     *
+     * @param isLinked   是否按添加顺序有序，有序返回 {@link LinkedList}，否则返回{@link ArrayList}
+     * @param collection 集合
+     * @param <E>        list 中的 <泛型>元素
+     * @return 返回一个创建好的 ArrayList
+     */
+    public static <E> List<E> newList(boolean isLinked, Collection<E> collection) {
+        if (null == collection || collection.size() == 0) {
+            return newList(isLinked);
         }
-        for (Long value : values) {
-            list.add(value);
-        }
+        final List<E> list = isLinked ? new LinkedList<>() : new ArrayList<>(collection.size());
+        list.addAll(collection);
         return list;
     }
 
     /**
-     * 多参数添加 String 类型
-     * @param values 多参数
-     * @return Integer类型集合
+     * 新建一个CopyOnWriteArrayList
+     *
+     * @param <T>        集合元素类型
+     * @param collection 集合
+     * @return {@link CopyOnWriteArrayList}
      */
-    public static List<String> batchAddString(String ...values){
-        List<String> list = ListUtils.newLinkedList();
-        if(ObjectTools.isNull(values)){
-            return list;
-        }
-        for (String value : values) {
-            list.add(value);
-        }
-        return list;
-    }
-
-
-    /**
-     * 将 String 类型的list中的String集合转换成以分号隔开的字符串
-     * @param list
-     * @return
-     */
-    public static String toStrBySemicolon(List<String> list){
-        StringBuilder strBuilder = new StringBuilder();
-        if(!CollectionUtils.isEmpty(list)){
-            for (String s : list) {
-                strBuilder.append(s).append(SEMICOLON);
-            }
-        }
-        String retStr = strBuilder.toString();
-        if(retStr.endsWith(SEMICOLON)){
-            retStr = retStr.substring(0,retStr.length()-1);
-        }
-        return retStr;
-    }
-
-
-    /**
-     * 将 String 类型的list中的String集合转换成以分号隔开的字符串
-     * @param list
-     * @return
-     */
-    public static String toStrByComma(List<String> list){
-        StringBuilder strBuilder = new StringBuilder();
-        if(!CollectionUtils.isEmpty(list)){
-            for (String s : list) {
-                strBuilder.append(s).append(COMMA);
-            }
-        }
-        String retStr = strBuilder.toString();
-        if(retStr.endsWith(COMMA)){
-            retStr = retStr.substring(0,retStr.length()-1);
-        }
-        return retStr;
-    }
-
-
-    /**
-     * 对 List<String> 进行去重操作
-     * @param targetList 目标List
-     * @return 去重都的list
-     */
-    public static List<String> duplicateRemoval(List<String> targetList)
-    {
-        if(CollectionUtils.isEmpty(targetList) || targetList.size()==0){
-            return ListUtils.newLinkedList();
-        }
-        LinkedHashSet<String> tmpSet = new LinkedHashSet<>(targetList.size());
-        tmpSet.addAll(targetList);
-        targetList.clear();
-        targetList.addAll(tmpSet);
-        return targetList;
-    }
-
-
-    /**
-     * 将以逗号分隔的字符串转换为List
-     * @param strArray
-     * @return List<String>
-     */
-    public static List<String> strArrayToList(String strArray){
-        List<String> list = ListUtils.newLinkedList();
-        if(StringUtils.isNotBlank(strArray)){
-            String [] array = strArray.split(COMMA);
-            for (String s : array) {
-                list.add(s);
-            }
-        }
-        return list;
-    }
-
-
-    /**
-     * 将以逗号分隔的字符串转换为List
-     * @param strArray
-     * @return Integer
-     */
-    public static Integer strArrayToListSize(String strArray){
-        List<String> list = ListUtils.newLinkedList();
-        if(StringUtils.isNotBlank(strArray)){
-            String [] array = strArray.split(COMMA);
-            for (String s : array) {
-                list.add(s);
-            }
-        }
-        return list.size();
-    }
-
-
-    /**
-     * 将以逗号分隔的字符串转换为List
-     * @param strArray
-     * @return List<Integer>
-     */
-    public static List<Integer> strArrayToIntList(String strArray){
-        List<Integer> list = ListUtils.newLinkedList();
-        if(StringUtils.isNotBlank(strArray)){
-            String [] array = strArray.split(COMMA);
-            for (String s : array) {
-                list.add(Integer.valueOf(s));
-            }
-        }
-        return list;
-    }
-
-
-
-    /**
-     * 将以逗号分隔的字符串转换为List
-     * @param strArray
-     * @return List<Integer>
-     */
-    public static List<Long> strArrayToLongList(String strArray){
-        List<Long> list = ListUtils.newLinkedList();
-        if(StringUtils.isNotBlank(strArray)){
-            String [] array = strArray.split(COMMA);
-            for (String s : array) {
-                list.add(Long.valueOf(s));
-            }
-        }
-        return list;
+    public static <T> CopyOnWriteArrayList<T> newCopyOnWriteArrayList(Collection<T> collection) {
+        return (null == collection) ? (new CopyOnWriteArrayList<>()) : (new CopyOnWriteArrayList<>(collection));
     }
 
     /**
-     * List转Array
-     * @param list List
-     * @return Array
+     * 针对List排序，排序会修改原List
+     *
+     * @param <T>  元素类型
+     * @param list 被排序的List
+     * @param c    {@link Comparator}
+     * @see Collections#sort(List, Comparator)
      */
-    private static String[] toArray(List<String> list){
-        return list.toArray(new String[0]);
+    public static <T> void sort(List<T> list, Comparator<? super T> c) {
+        list.sort(c);
     }
 
 }

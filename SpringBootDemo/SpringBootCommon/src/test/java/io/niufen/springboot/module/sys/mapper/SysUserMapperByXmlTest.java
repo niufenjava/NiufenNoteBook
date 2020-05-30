@@ -5,10 +5,10 @@ import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.ObjectCompareUtils;
 import io.niufen.common.util.DateUtils;
 import io.niufen.common.util.ListUtils;
 import io.niufen.common.util.MapUtils;
+import io.niufen.common.util.ObjectCompareUtils;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -56,7 +56,7 @@ public class SysUserMapperByXmlTest {
 
     @Test
     public void deleteBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -135,7 +135,7 @@ public class SysUserMapperByXmlTest {
 
     @Test
     public void listBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));

@@ -221,6 +221,17 @@ public class TypeUtils {
         return getTypeArgument(type, FIRST_INDEX);
     }
 
+
+    /**
+     * 获得给定类的第一个泛型参数
+     *
+     * @param type 被检查的类型，必须是已经确定泛型类型的类型
+     * @return {@link Type}，可能为{@code null}
+     */
+    public static Type getTypeArgument(Type type) {
+        return getTypeArgument(type, FIRST_INDEX);
+    }
+
     /**
      * 获得给定类的泛型参数
      *
@@ -398,5 +409,16 @@ public class TypeUtils {
         return false;
     }
 
+    /**
+     * 是否未知类型<br>
+     * type为null或者{@link TypeVariable} 都视为未知类型
+     *
+     * @param type Type类型
+     * @return 是否未知类型
+     * @since 4.5.2
+     */
+    public static boolean isUnknow(Type type) {
+        return null == type || type instanceof TypeVariable;
+    }
 
 }

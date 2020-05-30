@@ -95,7 +95,7 @@ public class SysUserMapperTest {
 
     @Test
     public void deleteBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -205,7 +205,7 @@ public class SysUserMapperTest {
 
     @Test
     public void updateSelectiveBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -240,7 +240,7 @@ public class SysUserMapperTest {
 
     @Test
     public void selectBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserMapper.insert(sysUserEntity);

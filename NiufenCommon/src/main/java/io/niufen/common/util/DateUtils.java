@@ -1,9 +1,3 @@
-/**
- * File Name:DateUtils.java
- * Package Name:com.lucky.construction.common.util
- * Date:2018年10月26日上午10:48:02
- * Copyright (c) 2018, 瑞幸咖啡（北京）有限公司   All Rights Reserved.
- */
 package io.niufen.common.util;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,6 +19,43 @@ import java.util.GregorianCalendar;
  * @author 戴
  */
 public class DateUtils {
+
+
+    /**
+     * Date对象转换为{@link Instant}对象
+     *
+     * @param temporalAccessor Date对象
+     * @return {@link Instant}对象
+     * @since 5.0.2
+     */
+    public static Instant toInstant(TemporalAccessor temporalAccessor) {
+        if (null == temporalAccessor) {
+            return null;
+        }
+
+        Instant result;
+        if (temporalAccessor instanceof Instant) {
+            result = (Instant) temporalAccessor;
+        } else if (temporalAccessor instanceof LocalDateTime) {
+            result = ((LocalDateTime) temporalAccessor).atZone(ZoneId.systemDefault()).toInstant();
+        } else if (temporalAccessor instanceof ZonedDateTime) {
+            result = ((ZonedDateTime) temporalAccessor).toInstant();
+        } else if (temporalAccessor instanceof OffsetDateTime) {
+            result = ((OffsetDateTime) temporalAccessor).toInstant();
+        } else if (temporalAccessor instanceof LocalDate) {
+            result = ((LocalDate) temporalAccessor).atStartOfDay(ZoneId.systemDefault()).toInstant();
+        } else if (temporalAccessor instanceof LocalTime) {
+            // 指定本地时间转换 为Instant，取当天日期
+            result = ((LocalTime) temporalAccessor).atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toInstant();
+        } else if (temporalAccessor instanceof OffsetTime) {
+            // 指定本地时间转换 为Instant，取当天日期
+            result = ((OffsetTime) temporalAccessor).atDate(LocalDate.now()).toInstant();
+        } else {
+            result = Instant.from(temporalAccessor);
+        }
+
+        return result;
+    }
 
     /**
      * @return 格式化字符串："yyyy-MM-dd"
@@ -126,7 +159,7 @@ public class DateUtils {
     public static Date curTime() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String format = df.format(new Date());
-        return stringToDate(format,"yyyy-MM-dd HH:mm:ss");
+        return stringToDate(format, "yyyy-MM-dd HH:mm:ss");
     }
 
 
@@ -658,6 +691,7 @@ public class DateUtils {
     public static String nowStrB() {
         return new SimpleDateFormat(PATTERN_B).format(DateUtils.getDate());
     }
+
     /**
      * 取当天日期字符串
      *
@@ -666,6 +700,7 @@ public class DateUtils {
     public static String nowStrYmd() {
         return new SimpleDateFormat(PATTERN_A).format(DateUtils.getDate());
     }
+
     /**
      * 取当天日期字符串
      *
@@ -674,6 +709,7 @@ public class DateUtils {
     public static String nowStrEData() {
         return new SimpleDateFormat(PATTERN_E).format(DateUtils.getDate());
     }
+
     /**
      * 取当天日期字符串
      *
@@ -689,7 +725,7 @@ public class DateUtils {
      * @return 当天日期字符串
      */
     public static String toStrE(Date date) {
-        if(date == null){
+        if (date == null) {
             return "";
         }
         return new SimpleDateFormat(PATTERN_E).format(date);
@@ -708,7 +744,8 @@ public class DateUtils {
 
 
     public static int getDateSpace(Date date1, Date date2) {
-        Calendar calst = Calendar.getInstance();;
+        Calendar calst = Calendar.getInstance();
+        ;
         Calendar caled = Calendar.getInstance();
 
         calst.setTime(date1);
@@ -722,7 +759,7 @@ public class DateUtils {
         caled.set(Calendar.MINUTE, 0);
         caled.set(Calendar.SECOND, 0);
         //得到两个日期相差的天数
-        int days = ((int)(caled.getTime().getTime()/1000)-(int)(calst.getTime().getTime()/1000))/3600/24;
+        int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst.getTime().getTime() / 1000)) / 3600 / 24;
 
         return days;
     }
@@ -736,7 +773,7 @@ public class DateUtils {
      */
     public static long getRemainingTime(Date date) {
         String dateStr = formatSimpleDate(date) + " 23:59:59";
-        Date d = stringToDate(dateStr,PATTERN_D);
+        Date d = stringToDate(dateStr, PATTERN_D);
         return getTimeDelta(d, date);
     }
 
@@ -774,23 +811,25 @@ public class DateUtils {
 
     /**
      * 获取当天的开始时间
+     *
      * @return Date
      */
-    public static Date startTimeToday(){
+    public static Date startTimeToday() {
         Calendar start = Calendar.getInstance();
-        start.set(Calendar.HOUR_OF_DAY,0);
-        start.set(Calendar.MINUTE,0);
-        start.set(Calendar.SECOND,0);
-        start.set(Calendar.MILLISECOND,0);
+        start.set(Calendar.HOUR_OF_DAY, 0);
+        start.set(Calendar.MINUTE, 0);
+        start.set(Calendar.SECOND, 0);
+        start.set(Calendar.MILLISECOND, 0);
         return start.getTime();
     }
 
 
     /**
      * 判断时间是否在时间段内
-     * @param nowTime 当前时间
+     *
+     * @param nowTime   当前时间
      * @param beginTime 开始时间
-     * @param endTime 结束时间
+     * @param endTime   结束时间
      * @return true-在时间段内；false-不在时间段内
      */
     public static boolean belongCalendar(Date nowTime, Date beginTime, Date endTime) {
@@ -813,6 +852,7 @@ public class DateUtils {
 
     /**
      * 通过时间获取当前Date类型时间将指定日期格式化为简单日期格式,
+     *
      * @param time hh:mm:ss
      * @return 格式化后的日期，可能为null.
      */

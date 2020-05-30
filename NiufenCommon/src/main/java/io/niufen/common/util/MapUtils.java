@@ -15,6 +15,34 @@ public class MapUtils {
     public static final int MAP_INITIAL_CAPACITY = 16;
 
     /**
+     * Map是否为非空
+     *
+     * @param map 集合
+     * @return 是否为非空
+     */
+    public static boolean isNotEmpty(Map<?, ?> map) {
+        return null != map && !map.isEmpty();
+    }
+
+    /**
+     * 创建 Map <br>
+     * 传入抽象 Map {@link AbstractMap}和{@link Map}类将默认创建{@link HashMap}
+     *
+     * @param mapType map类型
+     * @param <K>     map键类型
+     * @param <V>     map值类型
+     * @return {@link Map}实例
+     */
+    @SuppressWarnings("unchecked")
+    public static <K, V> Map<K, V> newMap(Class<?> mapType) {
+        if (ClassUtils.isAssignable(mapType, AbstractMap.class)) {
+            return new HashMap<>();
+        } else {
+            return (Map<K, V>) ReflectionUtils.newInstance(mapType);
+        }
+    }
+
+    /**
      * 根据key、value获取唯一的map对象
      *
      * @param key
@@ -76,11 +104,11 @@ public class MapUtils {
      * @param map
      * @return
      */
-    public static Map<Integer,String> sortMapByKey(Map<Integer,String> map) {
+    public static Map<Integer, String> sortMapByKey(Map<Integer, String> map) {
         if (map == null || map.isEmpty()) {
             return null;
         }
-        Map<Integer,String> sortMap = new TreeMap<Integer,String>(
+        Map<Integer, String> sortMap = new TreeMap<Integer, String>(
                 new MapKeyComparator());
 
         sortMap.putAll(map);

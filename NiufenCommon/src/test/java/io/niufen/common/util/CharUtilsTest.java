@@ -174,9 +174,9 @@ public class CharUtilsTest {
         Character b = 'a';
         String s = "s";
 
-        assert CharUtils.isCharObject(a);
-        assert CharUtils.isCharObject(b);
-        assert !CharUtils.isCharObject(s);
+        assert CharUtils.isChar(a);
+        assert CharUtils.isChar(b);
+        assert !CharUtils.isChar(s);
     }
 
     @Test

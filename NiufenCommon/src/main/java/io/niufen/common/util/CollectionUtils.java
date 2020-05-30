@@ -1,20 +1,13 @@
-/*
- * Copyright (c) 2011-2020, baomidou (jobob@qq.com).
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * <p>
- * https://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package io.niufen.common.util;
 
+import io.niufen.common.collection.ArrayIterator;
+import io.niufen.common.collection.EnumerationIterator;
+import io.niufen.common.constant.CharConstants;
+import io.niufen.common.convert.ConverterRegistry;
+import io.niufen.common.exception.UtilException;
+import io.niufen.common.text.StringSpliter;
+
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -80,10 +73,10 @@ public class CollectionUtils {
     /**
      * 根据比较器比较两个collection中哪些是新增的对象以及删除的对象和没有改变的对象
      *
-     * @param newCollection    新list
-     * @param oldCollection    旧list
-     * @param comparator 集合对象比较器
-     * @param <T>        集合元素泛型对象
+     * @param newCollection 新list
+     * @param oldCollection 旧list
+     * @param comparator    集合对象比较器
+     * @param <T>           集合元素泛型对象
      * @return 比较结果 {@link CompareResult}
      */
     public static <T> CompareResult<T> compare(Collection<T> newCollection, Collection<T> oldCollection, Comparator<T> comparator) {
@@ -146,4 +139,92 @@ public class CollectionUtils {
             return unmodifiedValue;
         }
     }
+
+    /**
+     * 创建新的集合对象
+     *
+     * @param collectionType 集合类型
+     * @param <T>            集合类型
+     * @return 集合类型对应的实例
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static <T> Collection<T> newCollection(Class<?> collectionType) {
+
+        // 抽象集合默认使用 ArrayList
+        if (ClassUtils.isAssignable(collectionType, AbstractCollection.class)) {
+            return ListUtils.newArrayList();
+        }
+        // SET
+        if (ClassUtils.isAssignable(collectionType, HashSet.class)) {
+            return SetUtils.newSet();
+        }
+        if (ClassUtils.isAssignable(collectionType, LinkedHashSet.class)) {
+            return SetUtils.newLinkedHashSet();
+        }
+        if (ClassUtils.isAssignable(collectionType, EnumSet.class)) {
+            return (Collection<T>) EnumSet.noneOf((Class<Enum>) ClassUtils.getTypeArgument(collectionType));
+        }
+
+        // List
+        if (ClassUtils.isAssignable(collectionType, ArrayList.class)) {
+            return ListUtils.newArrayList();
+        }
+        if (ClassUtils.isAssignable(collectionType, LinkedList.class)) {
+            return ListUtils.newLinkedList();
+        }
+        // Others，直接实例化
+        try {
+            return (Collection<T>) ReflectionUtils.newInstance(collectionType);
+        } catch (Exception e) {
+            throw new UtilException(e);
+        }
+
+    }
+
+    /**
+     * 将制定对象全部加入到集合中<br>
+     * 提供的对象如果为集合类型，会自动转换为目标原始类型<br>
+     * 如果为String，支持类似[1,2,3,4] 或者 1,2,3,4 这种格式
+     *
+     * @param collection  被加入的集合
+     * @param value       对象，可能为 Iterator、Iterable、Enumeration、Array，或者与集合元素类型一致
+     * @param elementType 元素类型，为空时，使用 Object 类型来接纳所有类型
+     * @param <T>         元素类型
+     * @return 被加入集合
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static <T> Collection<T> addAll(Collection<T> collection, Object value, Type elementType) {
+        if (null == collection || null == value) {
+            return collection;
+        }
+        if (TypeUtils.isUnknownType(elementType)) {
+            elementType = Object.class;
+        }
+
+        Iterator iterator;
+        if (value instanceof Iterator) {
+            iterator = (Iterator) value;
+        } else if (value instanceof Iterable) {
+            iterator = ((Iterable) value).iterator();
+        } else if (value instanceof Enumeration) {
+            iterator = new EnumerationIterator<>((Enumeration) value);
+        } else if (ArrayUtils.isArray(value)) {
+            iterator = new ArrayIterator<>(value);
+        } else if (value instanceof CharSequence) {
+            // String 按照逗号分隔的列表对待
+            final String arrayStr = StringUtils.unWrap((CharSequence) value, '[', ']');
+            // todo iter = StrUtil.splitTrim(ArrayStr, CharUtil.COMMA).iterator();
+            iterator = StringSpliter.splitTrim(arrayStr, CharConstants.COMMA).iterator();
+        } else {
+            // 其它类型按照单一元素处理
+            iterator = ListUtils.newArrayList(value).iterator();
+        }
+        final ConverterRegistry converter = ConverterRegistry.getInstance();
+        while (iterator.hasNext()) {
+            collection.add(converter.convert(elementType, iterator.next()));
+        }
+        return collection;
+    }
+
+
 }

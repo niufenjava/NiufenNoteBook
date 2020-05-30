@@ -1,9 +1,9 @@
 package io.niufen.springboot.common.base.service.impl;
 
-import io.niufen.springboot.common.base.mapper.BaseMapper;
-import io.niufen.springboot.common.base.service.BaseService;
 import io.niufen.common.util.CollectionUtils;
 import io.niufen.common.util.ListUtils;
+import io.niufen.springboot.common.base.mapper.BaseMapper;
+import io.niufen.springboot.common.base.service.BaseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 

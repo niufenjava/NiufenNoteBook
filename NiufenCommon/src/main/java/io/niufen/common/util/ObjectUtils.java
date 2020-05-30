@@ -15,6 +15,23 @@ import java.util.Map;
 public class ObjectUtils {
 
     /**
+     * 检查对象是否为null<br>
+     * 判断标准为：
+     *
+     * <pre>
+     * 1. == null
+     * 2. equals(null)
+     * </pre>
+     *
+     * @param obj 对象
+     * @return 是否为null
+     */
+    public static boolean isNull(Object obj) {
+        //noinspection ConstantConditions
+        return null == obj || obj.equals(null);
+    }
+
+    /**
      * 所有数组元素向上转型
      *
      * @param objs  转换前对象数组

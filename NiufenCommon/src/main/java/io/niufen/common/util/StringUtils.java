@@ -3,6 +3,10 @@ package io.niufen.common.util;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.StringConstants;
+import io.niufen.common.text.StringFormatter;
+
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * 字符串工具类
@@ -11,8 +15,21 @@ import io.niufen.common.constant.StringConstants;
  * @date 2020/6/14 下午3:01
  */
 public class StringUtils {
+    public static final char C_SPACE = CharConstants.SPACE;
+    public static final String EMPTY = "";
+
+    public static final String SPACE = " ";
+    public static final char C_TAB = '	';;
+    public static final char C_CR = CharConstants.CR;
+    public static final char C_LF = CharConstants.LF;
+    public static final char C_SLASH = CharConstants.FORWARD_SLASH;
+    public static final char C_BACKSLASH = CharConstants.BACKWARD_SLASH;
+    public static final char C_LEFT_BRACE = CharConstants.LEFT_BRACE;
 
     public static final int INDEX_NOT_FOUND = IntConstants.ONE_MINUS;
+
+    public static final String EMPTY_JSON = "{}";
+    public static final String NULL = "null";
 
     // --------------------- Blank ---------------------
     // 为null
@@ -1281,6 +1298,58 @@ public class StringUtils {
     }
 
     /**
+     * 指定范围内查找字符串，忽略大小写<br>
+     *
+     * <pre>
+     * StrUtil.indexOfIgnoreCase(null, *, *)          = -1
+     * StrUtil.indexOfIgnoreCase(*, null, *)          = -1
+     * StrUtil.indexOfIgnoreCase("", "", 0)           = 0
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "A", 0)  = 0
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 0)  = 2
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "AB", 0) = 1
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 3)  = 5
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 9)  = -1
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", -1) = 2
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "", 2)   = 2
+     * StrUtil.indexOfIgnoreCase("abc", "", 9)        = -1
+     * </pre>
+     *
+     * @param str       字符串
+     * @param searchStr 需要查找位置的字符串
+     * @return 位置
+     * @since 3.2.1
+     */
+    public static int indexOfIgnoreCase(final CharSequence str, final CharSequence searchStr) {
+        return indexOfIgnoreCase(str, searchStr, 0);
+    }
+
+    /**
+     * 指定范围内查找字符串
+     *
+     * <pre>
+     * StrUtil.indexOfIgnoreCase(null, *, *)          = -1
+     * StrUtil.indexOfIgnoreCase(*, null, *)          = -1
+     * StrUtil.indexOfIgnoreCase("", "", 0)           = 0
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "A", 0)  = 0
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 0)  = 2
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "AB", 0) = 1
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 3)  = 5
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", 9)  = -1
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "B", -1) = 2
+     * StrUtil.indexOfIgnoreCase("aabaabaa", "", 2)   = 2
+     * StrUtil.indexOfIgnoreCase("abc", "", 9)        = -1
+     * </pre>
+     *
+     * @param str       字符串
+     * @param searchStr 需要查找位置的字符串
+     * @param fromIndex 起始位置
+     * @return 位置
+     * @since 3.2.1
+     */
+    public static int indexOfIgnoreCase(final CharSequence str, final CharSequence searchStr, int fromIndex) {
+        return indexOf(str, searchStr, fromIndex, true);
+    }
+    /**
      * 在给定字符串指定范围内查找指定字符的位置
      *
      * @param cs         给定字符串
@@ -1360,6 +1429,48 @@ public class StringUtils {
         return sub(string, IntConstants.ZERO, toIndex);
     }
 
+
+    /**
+     * 截取分隔字符串之前的字符串，不包括分隔字符串<br>
+     * 如果给定的字符串为空串（null或""）或者分隔字符串为null，返回原字符串<br>
+     * 如果分隔字符串为空串""，则返回空串，如果分隔字符串未找到，返回原字符串，举例如下：
+     *
+     * <pre>
+     * StrUtil.subBefore(null, *)      = null
+     * StrUtil.subBefore("", *)        = ""
+     * StrUtil.subBefore("abc", "a")   = ""
+     * StrUtil.subBefore("abcba", "b") = "a"
+     * StrUtil.subBefore("abc", "c")   = "ab"
+     * StrUtil.subBefore("abc", "d")   = "abc"
+     * StrUtil.subBefore("abc", "")    = ""
+     * StrUtil.subBefore("abc", null)  = "abc"
+     * </pre>
+     *
+     * @param string          被查找的字符串
+     * @param separator       分隔字符串（不包括）
+     * @param isLastSeparator 是否查找最后一个分隔字符串（多次出现分隔字符串时选取最后一个），true为选取最后一个
+     * @return 切割后的字符串
+     * @since 3.1.1
+     */
+    public static String subBefore(CharSequence string, CharSequence separator, boolean isLastSeparator) {
+        if (isEmpty(string) || separator == null) {
+            return null == string ? null : string.toString();
+        }
+
+        final String str = string.toString();
+        final String sep = separator.toString();
+        if (sep.isEmpty()) {
+            return StringConstants.EMPTY;
+        }
+        final int pos = isLastSeparator ? str.lastIndexOf(sep) : str.indexOf(sep);
+        if (INDEX_NOT_FOUND == pos) {
+            return str;
+        }
+        if (0 == pos) {
+            return StringConstants.EMPTY;
+        }
+        return str.substring(0, pos);
+    }
     /**
      * 切割指定位置之后部分的字符串
      *
@@ -1439,6 +1550,10 @@ public class StringUtils {
 
     // --------------------- builder ---------------------
 
+    public static StringBuilder builder(){
+        return new StringBuilder();
+    }
+
     /**
      * 创建 StringBuilder 对象
      *
@@ -1513,4 +1628,356 @@ public class StringUtils {
         // 使用 JDK 的 regionMatches 区域匹配方法
         return str1.toString().regionMatches(ignoreCase, start1, str2.toString(), start2, length);
     }
+
+
+
+    /**
+     * 将对象转为字符串<br>
+     * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
+     *
+     * @param obj 对象
+     * @return 字符串
+     */
+    public static String utf8Str(Object obj) {
+        return str(obj, CharsetUtils.CHARSET_UTF_8);
+    }
+
+    /**
+     * 将对象转为字符串
+     *
+     * <pre>
+     * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组
+     * 2、对象数组会调用Arrays.toString方法
+     * </pre>
+     *
+     * @param obj         对象
+     * @param charsetName 字符集
+     * @return 字符串
+     */
+    public static String str(Object obj, String charsetName) {
+        return str(obj, Charset.forName(charsetName));
+    }
+
+    /**
+     * 将对象转为字符串
+     * <pre>
+     * 	 1、Byte数组和ByteBuffer会被转换为对应字符串的数组
+     * 	 2、对象数组会调用Arrays.toString方法
+     * </pre>
+     *
+     * @param obj     对象
+     * @param charset 字符集
+     * @return 字符串
+     */
+    public static String str(Object obj, Charset charset) {
+        if (null == obj) {
+            return null;
+        }
+
+        if (obj instanceof String) {
+            return (String) obj;
+        } else if (obj instanceof byte[]) {
+            return str((byte[]) obj, charset);
+        } else if (obj instanceof Byte[]) {
+            return str((Byte[]) obj, charset);
+        } else if (obj instanceof ByteBuffer) {
+            return str((ByteBuffer) obj, charset);
+        } else if (ArrayUtils.isArray(obj)) {
+            return ArrayUtils.toString(obj);
+        }
+
+        return obj.toString();
+    }
+
+
+    /**
+     * 格式化文本, {} 表示占位符<br>
+     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
+     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
+     * 例：<br>
+     * 通常使用：format("this is {} for {}", "a", "b") =》 this is a for b<br>
+     * 转义{}： format("this is \\{} for {}", "a", "b") =》 this is \{} for a<br>
+     * 转义\： format("this is \\\\{} for {}", "a", "b") =》 this is \a for b<br>
+     *
+     * @param template 文本模板，被替换的部分用 {} 表示
+     * @param params   参数值
+     * @return 格式化后的文本
+     */
+    public static String format(CharSequence template, Object... params) {
+        if (null == template) {
+            return null;
+        }
+        if (ArrayUtils.isEmpty(params) || isBlank(template)) {
+            return template.toString();
+        }
+        return StringFormatter.format(template.toString(), params);
+    }
+
+
+    /**
+     * 编码字符串，编码为UTF-8
+     *
+     * @param str 字符串
+     * @return 编码后的字节码
+     */
+    public static byte[] utf8Bytes(CharSequence str) {
+        return bytes(str, CharsetUtils.CHARSET_UTF_8);
+    }
+
+    /**
+     * 编码字符串<br>
+     * 使用系统默认编码
+     *
+     * @param str 字符串
+     * @return 编码后的字节码
+     */
+    public static byte[] bytes(CharSequence str) {
+        return bytes(str, Charset.defaultCharset());
+    }
+
+    /**
+     * 编码字符串
+     *
+     * @param str     字符串
+     * @param charset 字符集，如果此字段为空，则解码的结果取决于平台
+     * @return 编码后的字节码
+     */
+    public static byte[] bytes(CharSequence str, String charset) {
+        return bytes(str, isBlank(charset) ? Charset.defaultCharset() : Charset.forName(charset));
+    }
+
+    /**
+     * 编码字符串
+     *
+     * @param str     字符串
+     * @param charset 字符集，如果此字段为空，则解码的结果取决于平台
+     * @return 编码后的字节码
+     */
+    public static byte[] bytes(CharSequence str, Charset charset) {
+        if (str == null) {
+            return null;
+        }
+
+        if (null == charset) {
+            return str.toString().getBytes();
+        }
+        return str.toString().getBytes(charset);
+    }
+
+    /**
+     * 包装指定字符串<br>
+     * 当前缀和后缀一致时使用此方法
+     *
+     * @param str             被包装的字符串
+     * @param prefixAndSuffix 前缀和后缀
+     * @return 包装后的字符串
+     * @since 3.1.0
+     */
+    public static String wrap(CharSequence str, CharSequence prefixAndSuffix) {
+        return wrap(str, prefixAndSuffix, prefixAndSuffix);
+    }
+
+    /**
+     * 包装指定字符串
+     *
+     * @param str    被包装的字符串
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @return 包装后的字符串
+     */
+    public static String wrap(CharSequence str, CharSequence prefix, CharSequence suffix) {
+        return nullToEmpty(prefix).concat(nullToEmpty(str)).concat(nullToEmpty(suffix));
+    }
+
+    /**
+     * 包装多个字符串
+     *
+     * @param prefixAndSuffix 前缀和后缀
+     * @param strs            多个字符串
+     * @return 包装的字符串数组
+     * @since 4.0.7
+     */
+    public static String[] wrapAll(CharSequence prefixAndSuffix, CharSequence... strs) {
+        return wrapAll(prefixAndSuffix, prefixAndSuffix, strs);
+    }
+
+    /**
+     * 包装多个字符串
+     *
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @param strs   多个字符串
+     * @return 包装的字符串数组
+     * @since 4.0.7
+     */
+    public static String[] wrapAll(CharSequence prefix, CharSequence suffix, CharSequence... strs) {
+        final String[] results = new String[strs.length];
+        for (int i = 0; i < strs.length; i++) {
+            results[i] = wrap(strs[i], prefix, suffix);
+        }
+        return results;
+    }
+
+    /**
+     * 包装指定字符串，如果前缀或后缀已经包含对应的字符串，则不再包装
+     *
+     * @param str    被包装的字符串
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @return 包装后的字符串
+     */
+    public static String wrapIfMissing(CharSequence str, CharSequence prefix, CharSequence suffix) {
+        int len = 0;
+        if (isNotEmpty(str)) {
+            len += str.length();
+        }
+        if (isNotEmpty(prefix)) {
+            len += str.length();
+        }
+        if (isNotEmpty(suffix)) {
+            len += str.length();
+        }
+        StringBuilder sb = new StringBuilder(len);
+        if (isNotEmpty(prefix) && false == startWith(str, prefix)) {
+            sb.append(prefix);
+        }
+        if (isNotEmpty(str)) {
+            sb.append(str);
+        }
+        if (isNotEmpty(suffix) && false == endWith(str, suffix)) {
+            sb.append(suffix);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 包装多个字符串，如果已经包装，则不再包装
+     *
+     * @param prefixAndSuffix 前缀和后缀
+     * @param strs            多个字符串
+     * @return 包装的字符串数组
+     * @since 4.0.7
+     */
+    public static String[] wrapAllIfMissing(CharSequence prefixAndSuffix, CharSequence... strs) {
+        return wrapAllIfMissing(prefixAndSuffix, prefixAndSuffix, strs);
+    }
+
+    /**
+     * 包装多个字符串，如果已经包装，则不再包装
+     *
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @param strs   多个字符串
+     * @return 包装的字符串数组
+     * @since 4.0.7
+     */
+    public static String[] wrapAllIfMissing(CharSequence prefix, CharSequence suffix, CharSequence... strs) {
+        final String[] results = new String[strs.length];
+        for (int i = 0; i < strs.length; i++) {
+            results[i] = wrapIfMissing(strs[i], prefix, suffix);
+        }
+        return results;
+    }
+
+    /**
+     * 去掉字符包装，如果未被包装则返回原字符串
+     *
+     * @param str    字符串
+     * @param prefix 前置字符串
+     * @param suffix 后置字符串
+     * @return 去掉包装字符的字符串
+     * @since 4.0.1
+     */
+    public static String unWrap(CharSequence str, String prefix, String suffix) {
+        if (isWrap(str, prefix, suffix)) {
+            return sub(str, prefix.length(), str.length() - suffix.length());
+        }
+        return str.toString();
+    }
+
+    /**
+     * 去掉字符包装，如果未被包装则返回原字符串
+     *
+     * @param str    字符串
+     * @param prefix 前置字符
+     * @param suffix 后置字符
+     * @return 去掉包装字符的字符串
+     * @since 4.0.1
+     */
+    public static String unWrap(CharSequence str, char prefix, char suffix) {
+        if (isEmpty(str)) {
+            return str(str);
+        }
+        if (str.charAt(0) == prefix && str.charAt(str.length() - 1) == suffix) {
+            return sub(str, 1, str.length() - 1);
+        }
+        return str.toString();
+    }
+
+    /**
+     * 去掉字符包装，如果未被包装则返回原字符串
+     *
+     * @param str             字符串
+     * @param prefixAndSuffix 前置和后置字符
+     * @return 去掉包装字符的字符串
+     * @since 4.0.1
+     */
+    public static String unWrap(CharSequence str, char prefixAndSuffix) {
+        return unWrap(str, prefixAndSuffix, prefixAndSuffix);
+    }
+
+    /**
+     * 指定字符串是否被包装
+     *
+     * @param str    字符串
+     * @param prefix 前缀
+     * @param suffix 后缀
+     * @return 是否被包装
+     */
+    public static boolean isWrap(CharSequence str, String prefix, String suffix) {
+        if (ArrayUtils.hasNull(str, prefix, suffix)) {
+            return false;
+        }
+        final String str2 = str.toString();
+        return str2.startsWith(prefix) && str2.endsWith(suffix);
+    }
+
+    /**
+     * 指定字符串是否被同一字符包装（前后都有这些字符串）
+     *
+     * @param str     字符串
+     * @param wrapper 包装字符串
+     * @return 是否被包装
+     */
+    public static boolean isWrap(CharSequence str, String wrapper) {
+        return isWrap(str, wrapper, wrapper);
+    }
+
+    /**
+     * 指定字符串是否被同一字符包装（前后都有这些字符串）
+     *
+     * @param str     字符串
+     * @param wrapper 包装字符
+     * @return 是否被包装
+     */
+    public static boolean isWrap(CharSequence str, char wrapper) {
+        return isWrap(str, wrapper, wrapper);
+    }
+
+    /**
+     * 指定字符串是否被包装
+     *
+     * @param str        字符串
+     * @param prefixChar 前缀
+     * @param suffixChar 后缀
+     * @return 是否被包装
+     */
+    public static boolean isWrap(CharSequence str, char prefixChar, char suffixChar) {
+        if (null == str) {
+            return false;
+        }
+
+        return str.charAt(0) == prefixChar && str.charAt(str.length() - 1) == suffixChar;
+    }
+
 }

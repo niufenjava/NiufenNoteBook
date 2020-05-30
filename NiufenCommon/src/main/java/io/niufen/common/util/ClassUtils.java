@@ -1,8 +1,13 @@
 package io.niufen.common.util;
 
 import io.niufen.common.constant.CharConstants;
+import io.niufen.common.constant.IntConstants;
+import io.niufen.common.convert.BasicTypeEnum;
 import io.niufen.common.text.StringSpliter;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -183,6 +188,66 @@ public class ClassUtils {
         return className.equals(clazz.getName()) || className.equals(clazz.getSimpleName());
     }
 
+    /**
+     * 获得给定类的第一个泛型参数
+     *
+     * @param clazz 被检查的类，必须是已经确定泛型类的类
+     * @return {@link Class}
+     */
+    public static Class<?> getTypeArgument(Class<?> clazz) {
+        return getTypeArgument(clazz, IntConstants.ZERO);
+    }
+
+    /**
+     * 获取给定类的泛型参数
+     *
+     * @param clazz 被检查的类，必须是已经确定放行类型的类
+     * @param index 泛型类型的索引号，即第几个泛型类型
+     * @return {@link Class}
+     */
+    public static Class<?> getTypeArgument(Class<?> clazz, int index) {
+        final Type argumentType = TypeUtils.getTypeArgument(clazz, index);
+        if (argumentType instanceof Class) {
+            return (Class<?>) argumentType;
+        }
+        return null;
+    }
+
+    /**
+     * 是否为静态方法
+     *
+     * @param method 方法
+     * @return 是否为静态方法
+     */
+    public static boolean isStatic(Method method) {
+        Assert.notNull(method, "Method to provided is null.");
+        return Modifier.isStatic(method.getModifiers());
+    }
+
+
+    /**
+     * 加载类
+     *
+     * @param <T>           对象类型
+     * @param className     类名
+     * @param isInitialized 是否初始化
+     * @return 类
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Class<T> loadClass(String className, boolean isInitialized) {
+        return (Class<T>) ClassLoaderUtils.loadClass(className, isInitialized);
+    }
+
+    /**
+     * 加载类并初始化
+     *
+     * @param <T>       对象类型
+     * @param className 类名
+     * @return 类
+     */
+    public static <T> Class<T> loadClass(String className) {
+        return loadClass(className, true);
+    }
 
     /**
      * 获取ClassLoader
@@ -224,4 +289,138 @@ public class ClassUtils {
     public static ClassLoader getDefaultClassLoader() {
         return getClassLoader(ClassUtils.class);
     }
+
+    /**
+     * 比较判断 types1 和 types2 两组类
+     * 如果 types1 中所有的类都与types2 对应位置的类相同，或者是其父类或接口返回true
+     *
+     * @param types1 类数组1
+     * @param types2 类数组2
+     * @return true-types1 中所有的类都与types2 对应位置的类相同，或者是其父类或接口返回
+     */
+    public static boolean isAllAssignableFrom(Class<?>[] types1, Class<?>[] types2) {
+        // 如果都为空，则说明相同，返回true
+        if (ArrayUtils.isEmpty(types1) && ArrayUtils.isEmpty(types2)) {
+            return true;
+        }
+        // 任意一个为null不相等，说明不同，返回false
+        if (null == types1 || null == types2) {
+            return false;
+        }
+        if (types1.length != types2.length) {
+            return false;
+        }
+        Class<?> type1;
+        Class<?> type2;
+        for (int i = 0; i < types1.length; i++) {
+            type1 = types1[i];
+            type2 = types2[i];
+            if (isBasicType(type1) && isBasicType(type2)) {
+                // 原始类型和包装类型存在不一致情况，全部转换为原始类型，如果不一样，返回false
+                if (BasicTypeEnum.unWrap(type1) != BasicTypeEnum.unWrap(type2)) {
+                    return false;
+                }
+                // 判断 type1 是不是 type2的父类，或相同类型
+            } else if (!type1.isAssignableFrom(type2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 检查目标类是否可以从原类转化<br/>
+     * 就是targetType 是不是 sourceType他爹。相同也返回true
+     * 转化包括：
+     * 1、原类是对象，目标类型是源类型实现的接口
+     * 2、目标类型是原类型的父类
+     * 3、两者是原始类型或保证类型（相互转换）
+     *
+     * @param targetType 目标类型
+     * @param sourceType 源类型
+     * @return 是否转化
+     */
+    public static boolean isAssignable(Class<?> targetType, Class<?> sourceType) {
+        if (null == targetType || null == sourceType) {
+            return false;
+        }
+        // 对象类型，JDK的 isAssignableFrom 不支持基本类型的判断
+        if (targetType.isAssignableFrom(sourceType)) {
+            return true;
+        }
+        // 基本类型
+        if (targetType.isPrimitive()) {
+            // 原始类型
+            Class<?> resolvedPrimitive = BasicTypeEnum.WRAPPER_PRIMITIVE_MAP.get(sourceType);
+            return targetType.equals(resolvedPrimitive);
+        } else {
+            // 包装类型
+            Class<?> resolvedWrapper = BasicTypeEnum.PRIMITIVE_WRAPPER_MAP.get(sourceType);
+            return resolvedWrapper != null && targetType.isAssignableFrom(resolvedWrapper);
+        }
+    }
+
+    /**
+     * 是否为基本类型（包括包装类和原始类）
+     *
+     * @param clazz 被检查的类
+     * @return true-基本类型\基本类型包装类；false-非基本类型
+     */
+    public static boolean isBasicType(Class<?> clazz) {
+        if (null == clazz) {
+            return false;
+        }
+        return (clazz.isPrimitive() || isPrimitiveWrapper(clazz));
+    }
+
+    /**
+     * 判断传入的类是否为基本类型的包装类型
+     *
+     * @param clazz 被检查的类
+     * @return tue-基本类型包装类；false-非基本类型包装类
+     */
+    public static boolean isPrimitiveWrapper(Class<?> clazz) {
+        if (null == clazz) {
+            return false;
+        }
+        return BasicTypeEnum.WRAPPER_PRIMITIVE_MAP.containsKey(clazz);
+    }
+
+    /**
+     * 获取指定类型分的默认值<br>
+     * 默认值规则为：
+     *
+     * <pre>
+     * 1、如果为原始类型，返回0
+     * 2、非原始类型返回{@code null}
+     * </pre>
+     *
+     * @param clazz 类
+     * @return 默认值
+     * @since 3.0.8
+     */
+    public static Object getDefaultValue(Class<?> clazz) {
+        if (clazz.isPrimitive()) {
+            if (long.class == clazz) {
+                return 0L;
+            } else if (int.class == clazz) {
+                return 0;
+            } else if (short.class == clazz) {
+                return (short) 0;
+            } else if (char.class == clazz) {
+                return (char) 0;
+            } else if (byte.class == clazz) {
+                return (byte) 0;
+            } else if (double.class == clazz) {
+                return 0D;
+            } else if (float.class == clazz) {
+                return 0f;
+            } else if (boolean.class == clazz) {
+                return false;
+            }
+        }
+
+        return null;
+    }
+
 }

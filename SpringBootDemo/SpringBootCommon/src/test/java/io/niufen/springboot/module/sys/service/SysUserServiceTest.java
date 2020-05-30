@@ -2,11 +2,11 @@ package io.niufen.springboot.module.sys.service;
 
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
-import io.niufen.springboot.common.page.PageResult;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.ListUtils;
 import io.niufen.common.util.MapUtils;
 import io.niufen.common.util.UUIDUtils;
+import io.niufen.springboot.common.page.PageResult;
 import io.niufen.springboot.module.sys.bo.SysUserBO;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Assert;
@@ -98,7 +98,7 @@ public class SysUserServiceTest {
 
     @Test
     public void removeByIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 100; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserService.save(sysUserEntity);
@@ -109,7 +109,7 @@ public class SysUserServiceTest {
 
     @Test
     public void removeLogicByIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 100; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserService.save(sysUserEntity);
@@ -180,7 +180,7 @@ public class SysUserServiceTest {
 
     @Test
     public void updateSelectiveBatchIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(sysUserService.save(sysUserEntity));
@@ -234,7 +234,7 @@ public class SysUserServiceTest {
 
     @Test
     public void listByIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(sysUserService.save(sysUserEntity));
@@ -247,7 +247,7 @@ public class SysUserServiceTest {
 
     @Test
     public void mapByIds() {
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(sysUserService.save(sysUserEntity));
@@ -261,7 +261,7 @@ public class SysUserServiceTest {
     @Test
     public void listByMap() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -281,7 +281,7 @@ public class SysUserServiceTest {
     @Test
     public void mapByMap() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -301,7 +301,7 @@ public class SysUserServiceTest {
     @Test
     public void listByCriteria() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -321,7 +321,7 @@ public class SysUserServiceTest {
     @Test
     public void mapByCriteria() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -342,7 +342,7 @@ public class SysUserServiceTest {
     @Test
     public void countByMap() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -362,7 +362,7 @@ public class SysUserServiceTest {
     @Test
     public void countByCriteria() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -384,7 +384,7 @@ public class SysUserServiceTest {
     @Test
     public void pageByMap() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -405,7 +405,7 @@ public class SysUserServiceTest {
     @Test
     public void pageByCriteria() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -427,7 +427,7 @@ public class SysUserServiceTest {
     @Test
     public void list() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -449,7 +449,7 @@ public class SysUserServiceTest {
     @Test
     public void count() {
         String password = UUIDUtils.generateUUID();
-        List<Long> idList = ListUtils.newLongList();
+        List<Long> idList = ListUtils.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
