@@ -1,10 +1,10 @@
 package io.niufen.common.lang;
 
-import io.niufen.common.util.SetUtils;
+import io.niufen.common.util.SetUtil;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.StringConstants;
-import io.niufen.common.util.CharsetUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.CharsetUtil;
+import io.niufen.common.util.StrUtil;
 
 import java.io.File;
 import java.io.Serializable;
@@ -64,7 +64,7 @@ public class ClassScanner implements Serializable {
     /**
      * 扫描结果集
      */
-    private final Set<Class<?>> classes = SetUtils.newSet();
+    private final Set<Class<?>> classes = SetUtil.newSet();
 
     /**
      * 构造，默认UTF-8编码，无过滤器
@@ -89,7 +89,7 @@ public class ClassScanner implements Serializable {
      * @param classFilter 过滤器，无需传入null
      */
     public ClassScanner(String packageName, Filter<Class<?>> classFilter) {
-        this(packageName, classFilter, CharsetUtils.CHARSET_UTF_8);
+        this(packageName, classFilter, CharsetUtil.CHARSET_UTF_8);
     }
 
     /**
@@ -100,9 +100,9 @@ public class ClassScanner implements Serializable {
      * @param charset     编码
      */
     public ClassScanner(String packageName, Filter<Class<?>> classFilter, Charset charset) {
-        packageName = StringUtils.nullToEmpty(packageName);
+        packageName = StrUtil.nullToEmpty(packageName);
         this.packageName = packageName;
-        this.packageNameEndWithDot = StringUtils.addSuffixIfNot(packageName, StringConstants.Mark.DOT);
+        this.packageNameEndWithDot = StrUtil.addSuffixIfNot(packageName, StringConstants.Mark.DOT);
         this.packageDirName = packageName.replace(StringConstants.Mark.DOT, File.separator);
         this.packagePath = packageName.replace(CharConstants.DOT, CharConstants.FORWARD_SLASH);
         this.classFilter = classFilter;

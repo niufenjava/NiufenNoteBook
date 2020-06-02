@@ -1,7 +1,7 @@
 package io.niufen.springboot.module.sys.controller;
 
 import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.util.FakerUtils;
+import io.niufen.common.util.FakerUtil;
 import io.niufen.springboot.common.BaseApiTest;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import io.niufen.springboot.module.sys.form.SysUserPageQueryForm;
@@ -33,10 +33,10 @@ public class SysUserControllerTest extends BaseApiTest {
     public void save() throws Exception {
         String uri = "/sysUser/save";
         SysUserCreateForm sysUserCreateForm = new SysUserCreateForm();
-        sysUserCreateForm.setUsername(FakerUtils.nameEN());
-        sysUserCreateForm.setPassword(FakerUtils.password());
-        sysUserCreateForm.setSex(FakerUtils.sex());
-        sysUserCreateForm.setPhone(FakerUtils.cellPhone());
+        sysUserCreateForm.setUsername(FakerUtil.nameEN());
+        sysUserCreateForm.setPassword(FakerUtil.password());
+        sysUserCreateForm.setSex(FakerUtil.sex());
+        sysUserCreateForm.setPhone(FakerUtil.cellPhone());
 
         MockHttpServletResponse response = postTest(uri, sysUserCreateForm);
         assertSuccess(response);
@@ -47,10 +47,10 @@ public class SysUserControllerTest extends BaseApiTest {
 
         String uri = "/sysUser/save";
         SysUserCreateForm sysUserCreateForm = new SysUserCreateForm();
-        sysUserCreateForm.setUsername(FakerUtils.nameEN());
-        sysUserCreateForm.setPassword(FakerUtils.password());
-        sysUserCreateForm.setSex(FakerUtils.sex());
-        sysUserCreateForm.setPhone(FakerUtils.cellPhone());
+        sysUserCreateForm.setUsername(FakerUtil.nameEN());
+        sysUserCreateForm.setPassword(FakerUtil.password());
+        sysUserCreateForm.setSex(FakerUtil.sex());
+        sysUserCreateForm.setPhone(FakerUtil.cellPhone());
 
         post(uri, sysUserCreateForm);
 
@@ -83,10 +83,10 @@ public class SysUserControllerTest extends BaseApiTest {
         String update = "/sysUser/update";
         SysUserUpdateForm sysUserUpdateForm = new SysUserUpdateForm();
         sysUserUpdateForm.setId(101L);
-        sysUserUpdateForm.setUsername(FakerUtils.nameEN());
-        sysUserUpdateForm.setPassword(FakerUtils.password());
-        sysUserUpdateForm.setSex(FakerUtils.sex());
-        sysUserUpdateForm.setPhone(FakerUtils.cellPhone());
+        sysUserUpdateForm.setUsername(FakerUtil.nameEN());
+        sysUserUpdateForm.setPassword(FakerUtil.password());
+        sysUserUpdateForm.setSex(FakerUtil.sex());
+        sysUserUpdateForm.setPhone(FakerUtil.cellPhone());
         sysUserUpdateForm.setStatus(StatusEnum.INVALID.getIndex());
 
         MockHttpServletResponse response = postTest(update, sysUserUpdateForm);

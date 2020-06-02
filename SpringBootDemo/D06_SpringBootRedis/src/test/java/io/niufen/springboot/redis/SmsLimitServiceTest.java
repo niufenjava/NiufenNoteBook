@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
 import io.niufen.springboot.common.util.SpringContextUtils;
-import io.niufen.common.util.ThreadUtils;
+import io.niufen.common.util.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,7 +45,7 @@ public class SmsLimitServiceTest {
         }catch (IllegalArgumentException e){
             assert SmsLimitService.SMS_LIMIT_PHONE_LIMIT_MSG.equals(e.getMessage());
         }
-        ThreadUtils.sleep(SmsLimitService.SMS_LIMIT_PHONE_LIMIT_MIN);
+        ThreadUtil.sleep(SmsLimitService.SMS_LIMIT_PHONE_LIMIT_MIN);
         smsLimitService.smsSendLimitVerify("18522131265");
     }
 
@@ -62,7 +62,7 @@ public class SmsLimitServiceTest {
         for (ConcurrenceTest test : testList) {
             executor.execute(test);
         }
-        ThreadUtils.sleep(4);
+        ThreadUtil.sleep(4);
         smsLimitService.smsSendLimitVerify("18522131265");
     }
 }

@@ -1,6 +1,6 @@
 package io.niufen.common.lang;
 
-import io.niufen.common.util.TypeUtils;
+import io.niufen.common.util.TypeUtil;
 
 import java.lang.reflect.Type;
 
@@ -32,7 +32,7 @@ public abstract class TypeReference<T> implements Type {
 	 * 构造
 	 */
 	public TypeReference() {
-		this.type = TypeUtils.getTypeArgument(getClass());
+		this.type = TypeUtil.getTypeArgument(getClass());
 	}
 
 	/**

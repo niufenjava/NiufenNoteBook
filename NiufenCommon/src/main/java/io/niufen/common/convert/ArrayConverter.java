@@ -1,6 +1,6 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.ArrayUtils;
+import io.niufen.common.util.ArrayUtil;
 
 /**
  * 数组转换器，包括原始类型数组
@@ -40,12 +40,12 @@ public class ArrayConverter extends AbstractConverter<Object> {
             this.targetType = targetType;
             // Class.getComponentType() 获取这个数组中元素的Class对象
             // @see ClassTest.getComponentType()
-            this.targetComponentType = ArrayUtils.getComponentType(targetType);
+            this.targetComponentType = ArrayUtil.getComponentType(targetType);
         } else {
             // 用户传入类为非数组时，按照数组元素类型对象
             this.targetComponentType = targetType;
             // 可以创建一个 componentType 类型的数组，长度为0
-            this.targetType = ArrayUtils.getArrayType(targetType);
+            this.targetType = ArrayUtil.getArrayType(targetType);
         }
     }
 
@@ -61,14 +61,14 @@ public class ArrayConverter extends AbstractConverter<Object> {
      * @return 转换后的数组
      */
     private Object convertArrayToArray(Object array) {
-        final Class<?> valueComponentType = ArrayUtils.getComponentType(array);
+        final Class<?> valueComponentType = ArrayUtil.getComponentType(array);
         // 如果被转换的数组元素类型 与 目标数组元素类型相同，那还转个屁啊
         if (valueComponentType == targetComponentType) {
             return array;
         }
-        final int valueArrayLen = ArrayUtils.length(array);
+        final int valueArrayLen = ArrayUtil.length(array);
         // 根据目标类型，创建一个传入数组长度的新数组
-        final Object targetArray = ArrayUtils.newArray(targetComponentType, valueArrayLen);
+        final Object targetArray = ArrayUtil.newArray(targetComponentType, valueArrayLen);
 
         // TODO
         return null;

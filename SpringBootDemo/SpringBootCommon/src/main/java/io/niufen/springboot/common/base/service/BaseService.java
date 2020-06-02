@@ -1,9 +1,9 @@
 package io.niufen.springboot.common.base.service;
 
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.CollectionUtils;
-import io.niufen.common.util.MapUtils;
-import io.niufen.common.util.ReflectionUtils;
+import io.niufen.common.util.CollectionUtil;
+import io.niufen.common.util.MapUtil;
+import io.niufen.common.util.ReflectionUtil;
 import io.niufen.springboot.common.base.mapper.BaseMapper;
 import io.niufen.springboot.common.metadata.TableInfo;
 import io.niufen.springboot.common.metadata.TableInfoHelper;
@@ -71,7 +71,7 @@ public interface BaseService<T,B> {
      */
     @Transactional(rollbackFor = Exception.class)
     default boolean saveBatch(List<T> entityList, int batchSize) {
-        if (CollectionUtils.isEmpty(entityList)) {
+        if (CollectionUtil.isEmpty(entityList)) {
             return Boolean.FALSE;
         }
         int executeSize = 0;
@@ -96,7 +96,7 @@ public interface BaseService<T,B> {
      */
     @Transactional(rollbackFor = Exception.class)
     default boolean executeInsertBatch(List<T> entityList) {
-        if (CollectionUtils.isEmpty(entityList)) {
+        if (CollectionUtil.isEmpty(entityList)) {
             return Boolean.FALSE;
         }
         return SqlHelper.retBool(getBaseMapper().batchInsert(entityList));
@@ -210,7 +210,7 @@ public interface BaseService<T,B> {
      * @param entity 实体对象
      */
     default boolean updateSelectiveByMap(T entity, Map<String,Object> params) {
-        if(CollectionUtils.isEmpty(params) || ObjectTools.isNull(entity)){
+        if(CollectionUtil.isEmpty(params) || ObjectTools.isNull(entity)){
             return Boolean.FALSE;
         }
         return SqlHelper.retBool(getBaseMapper().updateSelectiveByMap(entity,params));
@@ -249,7 +249,7 @@ public interface BaseService<T,B> {
             TableInfo tableInfo = TableInfoHelper.tableInfo(cls);
             Assert.notNull(tableInfo, "error: can not execute. because can not find cache of TableInfo for entity!");
             String keyProperty = tableInfo.getPrimaryKeyColumn();
-            Object idVal = ReflectionUtils.getFieldValue(entity, tableInfo.getPrimaryKeyColumn());
+            Object idVal = ReflectionUtil.getFieldValue(entity, tableInfo.getPrimaryKeyColumn());
             return ObjectTools.isNull(idVal) || Objects.isNull(getById((Serializable) idVal)) ? save(entity) : updateById(entity);
         }
         return Boolean.FALSE;
@@ -344,7 +344,7 @@ public interface BaseService<T,B> {
             for (T t : entityList) {
                 TableInfo tableInfo = TableInfoHelper.tableInfo(t.getClass());
                 String primaryKeyColumn = tableInfo.getPrimaryKeyColumn();
-                Long fieldValue = (Long)ReflectionUtils.getFieldValue(t, primaryKeyColumn);
+                Long fieldValue = (Long) ReflectionUtil.getFieldValue(t, primaryKeyColumn);
                 maps.put(fieldValue,t);
             }
         }
@@ -439,12 +439,12 @@ public interface BaseService<T,B> {
      * 查询所有
      */
     default List<T> list() {
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         return listByMap(params);
     }
 
     default Long count() {
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         return countByMap(params);
     }
 

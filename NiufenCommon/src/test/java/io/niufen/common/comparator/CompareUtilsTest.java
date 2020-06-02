@@ -1,6 +1,6 @@
 package io.niufen.common.comparator;
 
-import io.niufen.common.util.ListUtils;
+import io.niufen.common.util.ListUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class CompareUtilsTest {
     public void compareByUser() {
 
         // this.compareTo(o) 正序 1-2 = -1 进行位置替换
-        List<Integer> list = ListUtils.newArrayList(2,1,3);
+        List<Integer> list = ListUtil.newArrayList(2,1,3);
         Collections.sort(list);
         for (Integer integer : list) {
             log.error("list.sort:{}", integer);

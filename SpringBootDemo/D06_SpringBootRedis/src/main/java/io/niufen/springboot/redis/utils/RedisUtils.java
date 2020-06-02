@@ -1,6 +1,6 @@
 package io.niufen.springboot.redis.utils;
 
-import io.niufen.common.util.JsonUtils;
+import io.niufen.common.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -52,7 +52,7 @@ public class RedisUtils {
 			e.printStackTrace();
 			result = Boolean.FALSE;
 		} finally {
-			log.debug("set -> redisStaticTemplate.opsForValue().set(key, value) -> key:{}, value:{}",key,JsonUtils.toJSONString(value));
+			log.debug("set -> redisStaticTemplate.opsForValue().set(key, value) -> key:{}, value:{}",key, JsonUtil.toJSONString(value));
 		}
 		return result;
 	}
@@ -70,7 +70,7 @@ public class RedisUtils {
 		try {
 			if (time > 0) {
 				redisStaticTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
-				log.debug("set -> redisStaticTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS) -> key:{}, value:{}, time:{}",key,JsonUtils.toJSONString(value),time);
+				log.debug("set -> redisStaticTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS) -> key:{}, value:{}, time:{}",key, JsonUtil.toJSONString(value),time);
 			} else {
 				set(key, value);
 			}
@@ -89,7 +89,7 @@ public class RedisUtils {
 	 */
 	public static Object get(String key) {
 		Object result =redisStaticTemplate.opsForValue().get(key);
-		log.debug("get -> redisStaticTemplate.opsForValue().get(key) -> key:{}, value:{}", key, JsonUtils.toJSONString(result));
+		log.debug("get -> redisStaticTemplate.opsForValue().get(key) -> key:{}, value:{}", key, JsonUtil.toJSONString(result));
 		return result;
 	}
 
@@ -160,7 +160,7 @@ public class RedisUtils {
 				redisStaticTemplate.delete(CollectionUtils.arrayToList(key));
 			}
 		}
-		log.debug("delByKeys -> redisStaticTemplate.delete(keys); -> key:{}", JsonUtils.toJSONString(key));
+		log.debug("delByKeys -> redisStaticTemplate.delete(keys); -> key:{}", JsonUtil.toJSONString(key));
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class RedisUtils {
 			e.printStackTrace();
 			result = Boolean.FALSE;
 		} finally {
-			log.debug("setHashMap -> redisStaticTemplate.opsForHash().putAll(key, map); -> key:{}, map:{} -> result:{}", key, JsonUtils.toJSONString(map), result);
+			log.debug("setHashMap -> redisStaticTemplate.opsForHash().putAll(key, map); -> key:{}, map:{} -> result:{}", key, JsonUtil.toJSONString(map), result);
 		}
 		return result;
 	}
@@ -221,7 +221,7 @@ public class RedisUtils {
 	 */
 	public static Map<Object, Object> getHashMap(String key) {
 		Map<Object, Object> entries = redisStaticTemplate.opsForHash().entries(key);
-		log.debug("getHashMap -> redisStaticTemplate.opsForHash().entries(key) -> key:{}-> result:{}", key, JsonUtils.toJSONString(entries));
+		log.debug("getHashMap -> redisStaticTemplate.opsForHash().entries(key) -> key:{}-> result:{}", key, JsonUtil.toJSONString(entries));
 
 		return entries;
 	}
@@ -237,7 +237,7 @@ public class RedisUtils {
 	public static Boolean setHashMap(String key, Map<String, Object> map, long time) {
 		try {
 			redisStaticTemplate.opsForHash().putAll(key, map);
-			log.debug("setHashMap -> redisStaticTemplate.opsForHash().putAll(key, map); -> key:{}, map:{}", key, JsonUtils.toJSONString(map));
+			log.debug("setHashMap -> redisStaticTemplate.opsForHash().putAll(key, map); -> key:{}, map:{}", key, JsonUtil.toJSONString(map));
 			if (time > 0) {
 				expire(key, time);
 			}
@@ -259,7 +259,7 @@ public class RedisUtils {
 	public static Boolean setHashItem(String key, String item, Object value) {
 		try {
 			redisStaticTemplate.opsForHash().put(key, item, value);
-			log.debug("setHashItem -> redisStaticTemplate.opsForHash().put(key, item, value); -> key:{}, item:{}, value:{}", key, item, JsonUtils.toJSONString(value));
+			log.debug("setHashItem -> redisStaticTemplate.opsForHash().put(key, item, value); -> key:{}, item:{}, value:{}", key, item, JsonUtil.toJSONString(value));
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -278,7 +278,7 @@ public class RedisUtils {
 	 */
 	public static Boolean setHashItem(String key, String item, Object value, long time) {
 		try {
-			log.debug("setHashItem -> redisStaticTemplate.opsForHash().put(key, item, value); -> key:{}, item:{}, value:{}", key, item, JsonUtils.toJSONString(value));
+			log.debug("setHashItem -> redisStaticTemplate.opsForHash().put(key, item, value); -> key:{}, item:{}, value:{}", key, item, JsonUtil.toJSONString(value));
 			redisStaticTemplate.opsForHash().put(key, item, value);
 			if (time > 0) {
 				expire(key, time);
@@ -299,7 +299,7 @@ public class RedisUtils {
 	 */
 	public static Object getHashItem(String key, String item) {
 		Object result = redisStaticTemplate.opsForHash().get(key, item);
-		log.debug("getHashItem -> redisStaticTemplate.opsForHash().get(key, item); -> key:{}, item:{}, itemValue:{}", key, item, JsonUtils.toJSONString(result));
+		log.debug("getHashItem -> redisStaticTemplate.opsForHash().get(key, item); -> key:{}, item:{}, itemValue:{}", key, item, JsonUtil.toJSONString(result));
 		return result;
 	}
 
@@ -310,7 +310,7 @@ public class RedisUtils {
 	 * @param items 项 可以使多个 不能为null
 	 */
 	public static void delHashItems(String key, Object... items) {
-		log.debug("delHashItems -> redisStaticTemplate.opsForHash().delete(key, item); -> key:{}, item:{}", key, JsonUtils.toJSONString(items));
+		log.debug("delHashItems -> redisStaticTemplate.opsForHash().delete(key, item); -> key:{}, item:{}", key, JsonUtil.toJSONString(items));
 		redisStaticTemplate.opsForHash().delete(key, items);
 	}
 
@@ -371,7 +371,7 @@ public class RedisUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("setSets -> redisStaticTemplate.opsForSet().add(key, values); -> key:{}, values:{}-> setSize:{}", key, JsonUtils.toJSONString(values), setSize);
+		log.debug("setSets -> redisStaticTemplate.opsForSet().add(key, values); -> key:{}, values:{}-> setSize:{}", key, JsonUtil.toJSONString(values), setSize);
 		return setSize;
 	}
 
@@ -387,7 +387,7 @@ public class RedisUtils {
 		Long setSize = 0L;
 		try {
 			setSize = redisStaticTemplate.opsForSet().add(key, values);
-			log.debug("setSets -> redisStaticTemplate.opsForSet().add(key, values); -> key:{}, values:{}-> setSize:{}", key, JsonUtils.toJSONString(values), setSize);
+			log.debug("setSets -> redisStaticTemplate.opsForSet().add(key, values); -> key:{}, values:{}-> setSize:{}", key, JsonUtil.toJSONString(values), setSize);
 
 			if (time > 0) {
 				expire(key, time);
@@ -407,7 +407,7 @@ public class RedisUtils {
 	public static Set<Object> getSets(String key) {
 		try {
 			Set<Object> members = redisStaticTemplate.opsForSet().members(key);
-			log.debug("getSets -> redisStaticTemplate.opsForSet().members(key); -> key:{}-> members:{}", key, JsonUtils.toJSONString(members));
+			log.debug("getSets -> redisStaticTemplate.opsForSet().members(key); -> key:{}-> members:{}", key, JsonUtil.toJSONString(members));
 			return members;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -426,7 +426,7 @@ public class RedisUtils {
 		Boolean hasValue = Boolean.FALSE;
 		try {
 			hasValue = redisStaticTemplate.opsForSet().isMember(key, value);
-			log.debug("hasValueInSet -> redisStaticTemplate.opsForSet().isMember(key, value); -> key:{}, value:{} -> hasValue:{}", key, JsonUtils.toJSONString(value), hasValue);
+			log.debug("hasValueInSet -> redisStaticTemplate.opsForSet().isMember(key, value); -> key:{}, value:{} -> hasValue:{}", key, JsonUtil.toJSONString(value), hasValue);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -465,7 +465,7 @@ public class RedisUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("delValueInSet -> redisStaticTemplate.opsForSet().remove(key, values); -> key:{}, values:{}  -> removeSize:{}", key, JsonUtils.toJSONString(values), removeSize);
+		log.debug("delValueInSet -> redisStaticTemplate.opsForSet().remove(key, values); -> key:{}, values:{}  -> removeSize:{}", key, JsonUtil.toJSONString(values), removeSize);
 		return removeSize;
 
 	}
@@ -479,7 +479,7 @@ public class RedisUtils {
 	 */
 	public static Boolean setList(String key, Object value) {
 		try {
-			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtils.toJSONString(value));
+			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtil.toJSONString(value));
 			redisStaticTemplate.opsForList().rightPush(key, value);
 			return true;
 		} catch (Exception e) {
@@ -498,7 +498,7 @@ public class RedisUtils {
 	 */
 	public static Boolean setList(String key, Object value, long time) {
 		try {
-			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtils.toJSONString(value));
+			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtil.toJSONString(value));
 			redisStaticTemplate.opsForList().rightPush(key, value);
 			if (time > 0) {
 				expire(key, time);
@@ -515,7 +515,7 @@ public class RedisUtils {
 	 */
 	public static Boolean setList(String key, List<Object> value) {
 		try {
-			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtils.toJSONString(value));
+			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtil.toJSONString(value));
 			redisStaticTemplate.opsForList().rightPushAll(key, value);
 			return true;
 		} catch (Exception e) {
@@ -534,7 +534,7 @@ public class RedisUtils {
 	 */
 	public static Boolean setList(String key, List<Object> value, long time) {
 		try {
-			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtils.toJSONString(value));
+			log.debug("setList -> redisStaticTemplate.opsForList().rightPushAll(key,value; -> key:{}, value:{}", key, JsonUtil.toJSONString(value));
 			redisStaticTemplate.opsForList().rightPushAll(key, value);
 			if (time > 0) {
 				expire(key, time);
@@ -561,7 +561,7 @@ public class RedisUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("getList -> redisStaticTemplate.opsForList().range(key, start, end); -> key:{}, start:{}, end:{}  -> rangeList:{}", key, start, end, JsonUtils.toJSONString(rangeList));
+		log.debug("getList -> redisStaticTemplate.opsForList().range(key, start, end); -> key:{}, start:{}, end:{}  -> rangeList:{}", key, start, end, JsonUtil.toJSONString(rangeList));
 		return rangeList;
 	}
 
@@ -596,7 +596,7 @@ public class RedisUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("getListItemByIndex -> redisStaticTemplate.opsForList().index(key, index); -> key:{}, index:{}  -> value:{}", key, index, JsonUtils.toJSONString(value));
+		log.debug("getListItemByIndex -> redisStaticTemplate.opsForList().index(key, index); -> key:{}, index:{}  -> value:{}", key, index, JsonUtil.toJSONString(value));
 		return value;
 	}
 
@@ -611,7 +611,7 @@ public class RedisUtils {
 	public static Boolean updateListItemValueByIndex(String key, long index, Object value) {
 		try {
 			redisStaticTemplate.opsForList().set(key, index, value);
-			log.debug("updateListItemValueByIndex -> redisStaticTemplate.opsForList().set(key, index, value); -> key:{}, index:{}, value:{}", key, index, JsonUtils.toJSONString(value));
+			log.debug("updateListItemValueByIndex -> redisStaticTemplate.opsForList().set(key, index, value); -> key:{}, index:{}, value:{}", key, index, JsonUtil.toJSONString(value));
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -634,7 +634,7 @@ public class RedisUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.debug("delListCount -> redisStaticTemplate.opsForList().remove(key, count, value); -> key:{}, count:{}, value:{}", key, count, JsonUtils.toJSONString(value));
+		log.debug("delListCount -> redisStaticTemplate.opsForList().remove(key, count, value); -> key:{}, count:{}, value:{}", key, count, JsonUtil.toJSONString(value));
 		return removeSize;
 	}
 }

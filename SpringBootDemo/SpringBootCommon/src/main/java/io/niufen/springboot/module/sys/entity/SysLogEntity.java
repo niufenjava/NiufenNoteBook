@@ -2,7 +2,7 @@ package io.niufen.springboot.module.sys.entity;
 
 import io.niufen.common.constant.SysConstants;
 import io.niufen.springboot.common.response.R;
-import io.niufen.common.util.FakerUtils;
+import io.niufen.common.util.FakerUtil;
 import io.niufen.springboot.module.sys.enums.SysLogOperateTypeEnum;
 import io.niufen.springboot.module.sys.enums.SysLogTypeEnum;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;
@@ -54,16 +54,16 @@ public class SysLogEntity implements Serializable {
     public static SysLogEntity testNewEntity(){
         SysLogEntity sysLogEntity = new SysLogEntity();
         sysLogEntity.setType(SysLogTypeEnum.randomIndex());
-        sysLogEntity.setContent(FakerUtils.sysLogContent());
+        sysLogEntity.setContent(FakerUtil.sysLogContent());
         sysLogEntity.setOperateType(SysLogOperateTypeEnum.randomIndex());
-        sysLogEntity.setIp(FakerUtils.ip());
-        sysLogEntity.setMethod(FakerUtils.javaMethodName());
-        sysLogEntity.setRequestType(FakerUtils.httpRequestType());
-        sysLogEntity.setRequestUrl(FakerUtils.uri());
+        sysLogEntity.setIp(FakerUtil.ip());
+        sysLogEntity.setMethod(FakerUtil.javaMethodName());
+        sysLogEntity.setRequestType(FakerUtil.httpRequestType());
+        sysLogEntity.setRequestUrl(FakerUtil.uri());
         sysLogEntity.setRequestParam(SysUserCreateForm.testNewEntity().toString());
         sysLogEntity.setResponseStatus(200);
         sysLogEntity.setResponseContent(R.ok().toString());
-        sysLogEntity.setCostTime(FakerUtils.costTime());
+        sysLogEntity.setCostTime(FakerUtil.costTime());
         sysLogEntity.setUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         sysLogEntity.setUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         sysLogEntity.setCreateTime(new Date());

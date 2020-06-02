@@ -2,9 +2,9 @@ package io.niufen.springboot.redis;
 
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.LongConstants;
-import io.niufen.common.util.FakerUtils;
-import io.niufen.common.util.MapUtils;
-import io.niufen.common.util.ThreadUtils;
+import io.niufen.common.util.FakerUtil;
+import io.niufen.common.util.MapUtil;
+import io.niufen.common.util.ThreadUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +27,12 @@ public class RedisUtilsTest {
 
     @Test
     public void set() {
-        String key = "redis-utils-key-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redis-utils-key-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value));
         Assert.assertEquals(value, RedisUtils.get(key));
 
-        String newValue = FakerUtils.nameEN();
+        String newValue = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, newValue));
         Assert.assertEquals(newValue, RedisUtils.get(key));
 
@@ -46,13 +46,13 @@ public class RedisUtilsTest {
         Assert.assertTrue(RedisUtils.set(key, entity));
         Assert.assertEquals(entity, (SysUserEntity) RedisUtils.get(key));
 
-        key = "redis-utils-key-"+ FakerUtils.uuid();
+        key = "redis-utils-key-"+ FakerUtil.uuid();
         Long longValue = 10000000000L;
         Assert.assertTrue(RedisUtils.set(key, longValue));
         // 如果小于INT的最大值，即使(Long) 强转也会异常。尽量都用String存储
         Assert.assertEquals(longValue, (Long) RedisUtils.get(key));
 
-        key = "redis-utils-key-"+ FakerUtils.uuid();
+        key = "redis-utils-key-"+ FakerUtil.uuid();
         String strValue = "10000000000";
         Assert.assertTrue(RedisUtils.set(key, strValue));
         // 如果小于INT的最大值，即使(Long) 强转也会异常。尽量都用String存储
@@ -61,8 +61,8 @@ public class RedisUtilsTest {
 
     @Test
     public void setByExpire() {
-        String key = "redis-utils-key-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redis-utils-key-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value, 1));
         Assert.assertEquals(value, RedisUtils.get(key));
         try {
@@ -76,8 +76,8 @@ public class RedisUtilsTest {
 
     @Test
     public void get() {
-        String key = "redis-utils-key-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redis-utils-key-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value));
         Assert.assertEquals(value, RedisUtils.get(key));
 
@@ -89,8 +89,8 @@ public class RedisUtilsTest {
     @Test
     public void expire() {
 
-        String key = "redis-utils-key-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redis-utils-key-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value));
         Assert.assertEquals(value, (String) RedisUtils.get(key));
         Assert.assertTrue(RedisUtils.expire(key,1));
@@ -105,38 +105,38 @@ public class RedisUtilsTest {
 
     @Test
     public void getExpire() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value, 2));
         Assert.assertTrue(RedisUtils.getExpire(key) <= 2);
     }
 
     @Test
     public void hasKey() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value, IntConstants.ONE));
         Assert.assertTrue(RedisUtils.hasKey(key));
-        ThreadUtils.sleep(IntConstants.ONE);
+        ThreadUtil.sleep(IntConstants.ONE);
         Assert.assertFalse(RedisUtils.hasKey(key));
     }
 
     @Test
     public void del() {
         // case 1 删除1个
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String value = FakerUtils.nameEN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String value = FakerUtil.nameEN();
         Assert.assertTrue(RedisUtils.set(key, value));
         Assert.assertTrue(RedisUtils.hasKey(key));
         RedisUtils.del(key);
         Assert.assertFalse(RedisUtils.hasKey(key));
 
         // case 2 删除多个
-        String key2 = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        RedisUtils.set(key2, FakerUtils.nameEN());
+        String key2 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        RedisUtils.set(key2, FakerUtil.nameEN());
         Assert.assertTrue(RedisUtils.hasKey(key2));
-        String key3 = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        RedisUtils.set(key3, FakerUtils.nameEN());
+        String key3 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        RedisUtils.set(key3, FakerUtil.nameEN());
         Assert.assertTrue(RedisUtils.hasKey(key3));
         RedisUtils.del(key2,key3);
         Assert.assertFalse(RedisUtils.hasKey(key2));
@@ -145,7 +145,7 @@ public class RedisUtilsTest {
 
     @Test
     public void increment() {
-        String key1 = "redisUtilsTest-"+ FakerUtils.idNumberCN();
+        String key1 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
         RedisUtils.set(key1, 1);
         Assert.assertTrue((RedisUtils.increment(key1, LongConstants.ONE) == 2));
         Assert.assertTrue(((Integer) RedisUtils.get(key1) == 2));
@@ -156,7 +156,7 @@ public class RedisUtilsTest {
 
     @Test
     public void decrement() {
-        String key1 = "redisUtilsTest-"+ FakerUtils.idNumberCN();
+        String key1 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
         RedisUtils.set(key1, 1);
         Assert.assertTrue((RedisUtils.decrement(key1, LongConstants.ONE) == 0));
         Assert.assertTrue(((Integer) RedisUtils.get(key1) == 0));
@@ -168,10 +168,10 @@ public class RedisUtilsTest {
 
     @Test
     public void setHashMap() {
-        String key1 = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
-        map.put("key1",FakerUtils.idNumberCN());
-        map.put("key2",FakerUtils.idNumberCN());
+        String key1 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
+        map.put("key1", FakerUtil.idNumberCN());
+        map.put("key2", FakerUtil.idNumberCN());
 
         Assert.assertTrue(RedisUtils.setHashMap(key1,map));
         Assert.assertTrue(RedisUtils.hasKey(key1));
@@ -179,12 +179,12 @@ public class RedisUtilsTest {
 
     @Test
     public void getHashMap() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
 
@@ -196,12 +196,12 @@ public class RedisUtilsTest {
 
     @Test
     public void setHashMapByExpire() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
 
@@ -209,19 +209,19 @@ public class RedisUtilsTest {
         Assert.assertEquals(itemValue1,RedisUtils.getHashMap(key).get(itemKey1));
         Assert.assertEquals(itemValue2,RedisUtils.getHashMap(key).get(itemKey2));
 
-        ThreadUtils.sleep(LongConstants.ONE);
+        ThreadUtil.sleep(LongConstants.ONE);
         Assert.assertFalse(RedisUtils.hasKey(key));
 
     }
 
     @Test
     public void setHashItem() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
 
@@ -229,7 +229,7 @@ public class RedisUtilsTest {
         Assert.assertEquals(itemValue1,RedisUtils.getHashMap(key).get(itemKey1));
         Assert.assertEquals(itemValue2,RedisUtils.getHashMap(key).get(itemKey2));
 
-        String itemValue3 = FakerUtils.idNumberCN();
+        String itemValue3 = FakerUtil.idNumberCN();
         Assert.assertTrue(RedisUtils.setHashItem(key,itemKey2,itemValue3));
         Assert.assertEquals(itemValue3,RedisUtils.getHashMap(key).get(itemKey2));
 
@@ -237,12 +237,12 @@ public class RedisUtilsTest {
 
     @Test
     public void setHashItemByExpire() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
 
@@ -250,22 +250,22 @@ public class RedisUtilsTest {
         Assert.assertEquals(itemValue1,RedisUtils.getHashMap(key).get(itemKey1));
         Assert.assertEquals(itemValue2,RedisUtils.getHashMap(key).get(itemKey2));
 
-        String itemValue3 = FakerUtils.idNumberCN();
+        String itemValue3 = FakerUtil.idNumberCN();
         Assert.assertTrue(RedisUtils.setHashItem(key,itemKey2,itemValue3,LongConstants.ONE));
         Assert.assertEquals(itemValue3,RedisUtils.getHashMap(key).get(itemKey2));
 
-        ThreadUtils.sleep(LongConstants.ONE);
+        ThreadUtil.sleep(LongConstants.ONE);
         Assert.assertFalse(RedisUtils.hasKey(key));
     }
 
     @Test
     public void getHashItem() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
 
@@ -277,14 +277,14 @@ public class RedisUtilsTest {
 
     @Test
     public void delHashItems() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
-        String itemValue3 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
+        String itemValue3 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
         map.put(itemKey3,itemValue3);
@@ -302,14 +302,14 @@ public class RedisUtilsTest {
 
     @Test
     public void hasHashItemByKey() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
-        String itemValue1 = FakerUtils.idNumberCN();
-        String itemValue2 = FakerUtils.idNumberCN();
-        String itemValue3 = FakerUtils.idNumberCN();
+        String itemValue1 = FakerUtil.idNumberCN();
+        String itemValue2 = FakerUtil.idNumberCN();
+        String itemValue3 = FakerUtil.idNumberCN();
         map.put(itemKey1,itemValue1);
         map.put(itemKey2,itemValue2);
         map.put(itemKey3,itemValue3);
@@ -327,8 +327,8 @@ public class RedisUtilsTest {
 
     @Test
     public void incrementHashItem() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
@@ -351,8 +351,8 @@ public class RedisUtilsTest {
 
     @Test
     public void decrementHashItem() {
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        Map<String, Object> map = MapUtils.newMap();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        Map<String, Object> map = MapUtil.newMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
@@ -375,10 +375,10 @@ public class RedisUtilsTest {
 
     @Test
     public void setSets(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         Long result = RedisUtils.setSets(key, set1, set2, set3, set1, set2, set3);
         assert LongConstants.THREE.equals(result);
 
@@ -391,10 +391,10 @@ public class RedisUtilsTest {
 
     @Test
     public void setSetsExpire(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         Long result = RedisUtils.setSets(key, LongConstants.TWO, set1, set2, set3, set1, set2, set3);
         assert LongConstants.THREE.equals(result);
 
@@ -404,7 +404,7 @@ public class RedisUtilsTest {
         assert sets.contains(set2);
         assert sets.contains(set3);
 
-        ThreadUtils.sleep(LongConstants.TWO);
+        ThreadUtil.sleep(LongConstants.TWO);
 
         sets = RedisUtils.getSets(key);
         assert sets != null;
@@ -416,10 +416,10 @@ public class RedisUtilsTest {
 
     @Test
     public void getSets(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         RedisUtils.setSets(key, set1, set2, set3);
 
         Set<Object> sets = RedisUtils.getSets(key);
@@ -431,10 +431,10 @@ public class RedisUtilsTest {
 
     @Test
     public void hasValueInSet(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         RedisUtils.setSets(key, set1, set2, set3);
 
         assert RedisUtils.hasValueInSet(key,set1);
@@ -445,10 +445,10 @@ public class RedisUtilsTest {
 
     @Test
     public void getSetSize(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         RedisUtils.setSets(key, set1, set2, set3, set3);
 
         assert 3 ==RedisUtils.getSetSize(key);
@@ -456,10 +456,10 @@ public class RedisUtilsTest {
 
     @Test
     public void delValueInSet(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String set1 = FakerUtils.nameCN();
-        String set2 = FakerUtils.nameCN();
-        String set3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String set1 = FakerUtil.nameCN();
+        String set2 = FakerUtil.nameCN();
+        String set3 = FakerUtil.nameCN();
         RedisUtils.setSets(key, set1, set2, set3, set3);
 
         assert 3 == RedisUtils.getSetSize(key);
@@ -470,10 +470,10 @@ public class RedisUtilsTest {
     @Test
     public void setList(){
 
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         assert RedisUtils.setList(key,item1);
         assert RedisUtils.setList(key,item2);
         assert RedisUtils.setList(key,item3);
@@ -484,26 +484,26 @@ public class RedisUtilsTest {
 
     @Test
     public void setListByExpire(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         assert RedisUtils.setList(key,item1);
         assert RedisUtils.setList(key,item2);
         assert RedisUtils.setList(key,item3);
         assert RedisUtils.setList(key,item3,LongConstants.ONE);
 
         assert 4 == RedisUtils.getListSize(key);
-        ThreadUtils.sleep(LongConstants.ONE);
+        ThreadUtil.sleep(LongConstants.ONE);
         assert 0 == RedisUtils.getListSize(key);
     }
 
     @Test
     public void setListByList(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -515,10 +515,10 @@ public class RedisUtilsTest {
 
     @Test
     public void setListByListExpire(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -526,17 +526,17 @@ public class RedisUtilsTest {
         list.add(item3);
         assert RedisUtils.setList(key,list,LongConstants.ONE);
         assert 4 == RedisUtils.getListSize(key);
-        ThreadUtils.sleep(LongConstants.ONE);
+        ThreadUtil.sleep(LongConstants.ONE);
         assert 0 == RedisUtils.getListSize(key);
 
     }
 
     @Test
     public void getList(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -559,10 +559,10 @@ public class RedisUtilsTest {
 
     @Test
     public void getListSize(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -574,10 +574,10 @@ public class RedisUtilsTest {
     }
     @Test
     public void getListItemByIndex(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -598,10 +598,10 @@ public class RedisUtilsTest {
 
     @Test
     public void updateListItemValueByIndex(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);
@@ -627,10 +627,10 @@ public class RedisUtilsTest {
 
     @Test
     public void delListCount(){
-        String key = "redisUtilsTest-"+ FakerUtils.idNumberCN();
-        String item1 = FakerUtils.nameCN();
-        String item2 = FakerUtils.nameCN();
-        String item3 = FakerUtils.nameCN();
+        String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
+        String item1 = FakerUtil.nameCN();
+        String item2 = FakerUtil.nameCN();
+        String item3 = FakerUtil.nameCN();
         List<Object> list = new ArrayList<>();
         list.add(item1);
         list.add(item2);

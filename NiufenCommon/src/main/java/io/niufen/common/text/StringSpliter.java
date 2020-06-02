@@ -2,10 +2,10 @@ package io.niufen.common.text;
 
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.lang.PatternPool;
-import io.niufen.common.util.CharUtils;
-import io.niufen.common.util.ListUtils;
-import io.niufen.common.util.NumberUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.CharUtil;
+import io.niufen.common.util.ListUtil;
+import io.niufen.common.util.NumberUtil;
+import io.niufen.common.util.StrUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,18 +165,18 @@ public class StringSpliter {
      * @return 切分后的集合
      */
     public static List<String> split(String str, char separator, int limit, boolean isTrim, boolean ignoreEmpty, boolean ignoreCase) {
-        if (StringUtils.isEmpty(str)) {
-            return ListUtils.newList(IntConstants.ZERO);
+        if (StrUtil.isEmpty(str)) {
+            return ListUtil.newList(IntConstants.ZERO);
         }
 
         // 如果限制分片数为 1 ，那么直接把字符串放进去，不进行切分
         if (limit == IntConstants.ONE) {
-            return addToList(ListUtils.newList(IntConstants.ONE), str, isTrim, ignoreEmpty);
+            return addToList(ListUtil.newList(IntConstants.ONE), str, isTrim, ignoreEmpty);
         }
-        int initialCapacity = (limit > 0 ? limit : ListUtils.defaultInitialCapacity);
+        int initialCapacity = (limit > 0 ? limit : ListUtil.defaultInitialCapacity);
         // 使用final关键字修饰一个变量时，是指引用变量不能指向别的对象了，
         // 引用变量所指向的对象中的内容还是可以改变的。
-        final List<String> list = ListUtils.newList(initialCapacity);
+        final List<String> list = ListUtil.newList(initialCapacity);
 
         int strLength = str.length();
 
@@ -184,8 +184,8 @@ public class StringSpliter {
         int start = IntConstants.ZERO;
         for (int i = 0; i < strLength; i++) {
             // 对每一个字符串字符进行遍历，如果与 分隔符字符 separator 相同，则进行切割，并且加入 list 中
-            if (NumberUtils.equals(separator, str.charAt(i), ignoreCase)) {
-                addToList(list, StringUtils.sub(str, start, i), isTrim, ignoreEmpty);
+            if (NumberUtil.equals(separator, str.charAt(i), ignoreCase)) {
+                addToList(list, StrUtil.sub(str, start, i), isTrim, ignoreEmpty);
                 // i+1 同时将start与i保持一致，下次开始的起始位置
                 start = i + 1;
 
@@ -309,21 +309,21 @@ public class StringSpliter {
      * @return 切分后的集合
      */
     public static List<String> split(String str, String separator, int limit, boolean isTrim, boolean ignoreEmpty, boolean ignoreCase) {
-        if (StringUtils.isEmpty(str)) {
-            return ListUtils.newList(IntConstants.ZERO);
+        if (StrUtil.isEmpty(str)) {
+            return ListUtil.newList(IntConstants.ZERO);
         }
 
         if (limit == IntConstants.ONE) {
-            return addToList(ListUtils.newList(IntConstants.ONE), str, isTrim, ignoreEmpty);
+            return addToList(ListUtil.newList(IntConstants.ONE), str, isTrim, ignoreEmpty);
         }
 
-        if (StringUtils.isEmpty(separator)) {
+        if (StrUtil.isEmpty(separator)) {
             return splitByWhitespace(str, limit);
         } else if (separator.length() == 1) {
             return split(str, separator.charAt(0), limit, isTrim, ignoreEmpty, ignoreCase);
         }
 
-        final List<String> list = ListUtils.newList();
+        final List<String> list = ListUtil.newList();
 
         int separatorLen = separator.length();
         int strLength = str.length();
@@ -331,7 +331,7 @@ public class StringSpliter {
         int i = 0;
 
         while (i < strLength) {
-            i = StringUtils.indexOf(str, separator, start, ignoreCase);
+            i = StrUtil.indexOf(str, separator, start, ignoreCase);
             if (i > -1) {
                 addToList(list, str.substring(start, i), isTrim, ignoreEmpty);
                 start = i + separatorLen;
@@ -371,16 +371,16 @@ public class StringSpliter {
      * @param limit 限制分片数
      */
     public static List<String> splitByWhitespace(String str, int limit) {
-        if (StringUtils.isEmpty(str)) {
-            return ListUtils.newList(IntConstants.ZERO);
+        if (StrUtil.isEmpty(str)) {
+            return ListUtil.newList(IntConstants.ZERO);
         }
 
         // 如果限制分片数为 1 ，那么直接把字符串放进去，不进行切分
         if (limit == 1) {
-            return addToList(ListUtils.newList(IntConstants.ONE), str, Boolean.TRUE, Boolean.TRUE);
+            return addToList(ListUtil.newList(IntConstants.ONE), str, Boolean.TRUE, Boolean.TRUE);
         }
         int initialCapacity = str.length();
-        final List<String> list = ListUtils.newList(initialCapacity);
+        final List<String> list = ListUtil.newList(initialCapacity);
 
         int strLength = str.length();
 
@@ -388,8 +388,8 @@ public class StringSpliter {
         int start = IntConstants.ZERO;
         for (int i = 0; i < strLength; i++) {
             // 对每一个字符串字符进行遍历，如果与 分隔符字符 separator 相同，则进行切割，并且加入 list 中
-            if (CharUtils.isBlankChar(str.charAt(i))) {
-                addToList(list, StringUtils.sub(str, start, i), Boolean.TRUE, Boolean.TRUE);
+            if (CharUtil.isBlankChar(str.charAt(i))) {
+                addToList(list, StrUtil.sub(str, start, i), Boolean.TRUE, Boolean.TRUE);
                 // i+1 同时将start与i保持一致，下次开始的起始位置
                 start = i + 1;
                 // 检查是否超出范围（最大运行 limit-1个，剩下一个留给末尾字符串)
@@ -435,7 +435,7 @@ public class StringSpliter {
      * @since 3.0.8
      */
     public static List<String> split(String str, Pattern separatorPattern, int limit, boolean isTrim, boolean ignoreEmpty) {
-        if (StringUtils.isEmpty(str)) {
+        if (StrUtil.isEmpty(str)) {
             return new ArrayList<>(0);
         }
         if (limit == 1) {
@@ -475,9 +475,9 @@ public class StringSpliter {
      */
     private static List<String> addToList(List<String> list, String part, boolean isTrim, boolean ignoreEmpty) {
         if (isTrim) {
-            part = StringUtils.trim(part);
+            part = StrUtil.trim(part);
         }
-        if (ignoreEmpty && StringUtils.isEmpty(part)) {
+        if (ignoreEmpty && StrUtil.isEmpty(part)) {
             return list;
         }
         list.add(part);

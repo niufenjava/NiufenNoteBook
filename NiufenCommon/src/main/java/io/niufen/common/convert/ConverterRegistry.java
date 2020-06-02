@@ -2,10 +2,10 @@ package io.niufen.common.convert;
 
 import io.niufen.common.convert.impl.PrimitiveConverter;
 import io.niufen.common.lang.TypeReference;
-import io.niufen.common.util.ClassUtils;
-import io.niufen.common.util.ObjectUtils;
-import io.niufen.common.util.ReflectionUtils;
-import io.niufen.common.util.TypeUtils;
+import io.niufen.common.util.ClassUtil;
+import io.niufen.common.util.ObjectUtil;
+import io.niufen.common.util.ReflectionUtil;
+import io.niufen.common.util.TypeUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -150,7 +150,7 @@ public class ConverterRegistry implements Serializable {
      * @return {@link ConverterRegistry}
      */
     public ConverterRegistry registry(Type type, Class<? extends IConverter<?>> converterImplClass) {
-        return registry(type, ReflectionUtils.newInstance(converterImplClass));
+        return registry(type, ReflectionUtil.newInstance(converterImplClass));
     }
 
     /**
@@ -246,13 +246,13 @@ public class ConverterRegistry implements Serializable {
         }
         //集合转换（不可以默认强转） Collection集合 是不是 typeClass 目标类型的Class 的父类或接口
         // 就是说，目标类是不是 集合
-        if (ClassUtils.isAssignable(Collection.class, typeClass)) {
+        if (ClassUtil.isAssignable(Collection.class, typeClass)) {
             final CollectionConverter collectionConverter = new CollectionConverter(type);
             return (T) collectionConverter.convert(value, (Collection<?>) defaultValue);
         }
 
         //Map类型（不可以默认强转）
-        if (ClassUtils.isAssignable(Map.class, typeClass)) {
+        if (ClassUtil.isAssignable(Map.class, typeClass)) {
             final MapConverter mapConverter = new MapConverter(type);
             return (T) mapConverter.convert(value, (Map<?, ?>) defaultValue);
         }
@@ -322,14 +322,14 @@ public class ConverterRegistry implements Serializable {
      */
     @SuppressWarnings("unchecked")
     public <T> T convert(Type type, Object value, T defaultValue, boolean isCustomFirst) throws ConvertException {
-        if (TypeUtils.isUnknow(type) && null == defaultValue) {
+        if (TypeUtil.isUnknow(type) && null == defaultValue) {
             // 对于用户不指定目标类型的情况，返回原值
             return (T) value;
         }
-        if (ObjectUtils.isNull(value)) {
+        if (ObjectUtil.isNull(value)) {
             return defaultValue;
         }
-        if (TypeUtils.isUnknow(type)) {
+        if (TypeUtil.isUnknow(type)) {
             type = defaultValue.getClass();
         }
 
@@ -343,7 +343,7 @@ public class ConverterRegistry implements Serializable {
             return converter.convert(value, defaultValue);
         }
 
-        Class<T> rowType = (Class<T>) TypeUtils.getClass(type);
+        Class<T> rowType = (Class<T>) TypeUtil.getClass(type);
         if (null == rowType) {
             if (null != defaultValue) {
                 rowType = (Class<T>) defaultValue.getClass();

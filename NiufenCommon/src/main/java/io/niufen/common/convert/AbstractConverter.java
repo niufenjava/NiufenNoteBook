@@ -1,8 +1,8 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.ArrayUtils;
-import io.niufen.common.util.CharUtils;
-import io.niufen.common.util.ClassUtils;
+import io.niufen.common.util.ArrayUtil;
+import io.niufen.common.util.CharUtil;
+import io.niufen.common.util.ClassUtil;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -65,11 +65,11 @@ public abstract class AbstractConverter<T> implements IConverter<T>, Serializabl
         if (value instanceof CharSequence) {
             return value.toString();
         }
-        if (ArrayUtils.isArray(value)) {
-            return ArrayUtils.toString(value);
+        if (ArrayUtil.isArray(value)) {
+            return ArrayUtil.toString(value);
         }
-        if (CharUtils.isChar(value)) {
-            return CharUtils.toString((char) value);
+        if (CharUtil.isChar(value)) {
+            return CharUtil.toString((char) value);
         }
         return value.toString();
     }
@@ -110,6 +110,6 @@ public abstract class AbstractConverter<T> implements IConverter<T>, Serializabl
      */
     @SuppressWarnings("unchecked")
     public Class<T> getTargetType() {
-        return (Class<T>) ClassUtils.getTypeArgument(getClass());
+        return (Class<T>) ClassUtil.getTypeArgument(getClass());
     }
 }

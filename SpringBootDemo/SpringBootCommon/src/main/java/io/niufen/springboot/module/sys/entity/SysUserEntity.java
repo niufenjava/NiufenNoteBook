@@ -4,8 +4,8 @@ import io.niufen.springboot.common.base.entity.BaseEntity;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtils;
-import io.niufen.common.util.FakerUtils;
+import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.FakerUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -38,15 +38,15 @@ public class SysUserEntity extends BaseEntity implements Serializable {
 
     public static SysUserEntity testNewEntity(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername(FakerUtils.firstNameEN()+FakerUtils.idNumberCN());
-        sysUserEntity.setPassword(FakerUtils.password());
-        sysUserEntity.setSex(FakerUtils.sex());
-        sysUserEntity.setPhone(FakerUtils.cellPhone());
+        sysUserEntity.setUsername(FakerUtil.firstNameEN()+ FakerUtil.idNumberCN());
+        sysUserEntity.setPassword(FakerUtil.password());
+        sysUserEntity.setSex(FakerUtil.sex());
+        sysUserEntity.setPhone(FakerUtil.cellPhone());
         sysUserEntity.setStatus(StatusEnum.VALID.getIndex());
         sysUserEntity.setDelFlag(YesOrNoEnum.NO.getIndex());
         sysUserEntity.setCreateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         sysUserEntity.setCreateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
-        sysUserEntity.setCreateTime(DateUtils.curTime());
+        sysUserEntity.setCreateTime(DateUtil.curTime());
         return sysUserEntity;
     }
 }

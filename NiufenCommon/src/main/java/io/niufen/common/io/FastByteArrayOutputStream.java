@@ -1,7 +1,6 @@
 package io.niufen.common.io;
 
-import io.niufen.common.exception.IORuntimeException;
-import io.niufen.common.util.CharsetUtils;
+import io.niufen.common.util.CharsetUtil;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -100,7 +99,7 @@ public class FastByteArrayOutputStream extends OutputStream {
      * @return 字符串
      */
     public String toString(String charsetName) {
-        return toString(CharsetUtils.charset(charsetName));
+        return toString(CharsetUtil.charset(charsetName));
     }
 
     /**

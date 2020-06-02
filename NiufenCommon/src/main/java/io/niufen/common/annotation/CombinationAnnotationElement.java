@@ -1,6 +1,6 @@
 package io.niufen.common.annotation;
 
-import io.niufen.common.util.SetUtils;
+import io.niufen.common.util.SetUtil;
 
 import java.io.Serializable;
 import java.lang.annotation.*;
@@ -23,7 +23,7 @@ public class CombinationAnnotationElement implements AnnotatedElement, Serializa
     /**
      * 元注解 Set集合
      */
-    private static final Set<Class<? extends Annotation>> META_ANNOTATION_SET = SetUtils.newSet();
+    private static final Set<Class<? extends Annotation>> META_ANNOTATION_SET = SetUtil.newSet();
 
     /*
      * 类初始化时，将 JDK 默认的元注解设置到 META_ANNOTATION_SET 中
@@ -47,7 +47,7 @@ public class CombinationAnnotationElement implements AnnotatedElement, Serializa
     /**
      * 直接注解类型与注解对象 Map
      */
-    private Map<Class<? extends Annotation>, Annotation> declaredAnnotationMap= new HashMap<>();
+    private Map<Class<? extends Annotation>, Annotation> declaredAnnotationMap = new HashMap<>();
 
     /**
      * 构造方法
@@ -62,31 +62,33 @@ public class CombinationAnnotationElement implements AnnotatedElement, Serializa
 
     /**
      * 初始化方法，用于简化构造方法的代码
+     *
      * @param element 需要解析注解的元素
      */
-    private void init(AnnotatedElement element){
+    private void init(AnnotatedElement element) {
         final Annotation[] declaredAnnotations = element.getDeclaredAnnotations();
         parseDeclaredAnnotations(declaredAnnotations);
 
         final Annotation[] annotations = element.getAnnotations();
-        if(Arrays.equals(declaredAnnotations,annotations)){
+        if (Arrays.equals(declaredAnnotations, annotations)) {
             this.annotationMap = this.declaredAnnotationMap;
-        }else {
+        } else {
             paresAnnotations(annotations);
         }
     }
 
     /**
      * 递归解析全部注解，知道全部是元注解位置
+     *
      * @param annotations 元素上贴的注解集合
      */
-    private void parseDeclaredAnnotations(Annotation[] annotations){
+    private void parseDeclaredAnnotations(Annotation[] annotations) {
         Class<? extends Annotation> annotationType;
         //
         for (Annotation annotation : annotations) {
             annotationType = annotation.annotationType();
-            if(!META_ANNOTATION_SET.contains(annotationType)){
-                declaredAnnotationMap.put(annotationType,annotation);
+            if (!META_ANNOTATION_SET.contains(annotationType)) {
+                declaredAnnotationMap.put(annotationType, annotation);
                 parseDeclaredAnnotations(annotationType.getAnnotations());
             }
         }
@@ -94,14 +96,15 @@ public class CombinationAnnotationElement implements AnnotatedElement, Serializa
 
     /**
      * 递归解析注解，知道全部都是元注解
+     *
      * @param annotations 元素上贴的注解集合
      */
-    private void paresAnnotations(Annotation[] annotations){
+    private void paresAnnotations(Annotation[] annotations) {
         Class<? extends Annotation> annotationType;
         for (Annotation annotation : annotations) {
             annotationType = annotation.annotationType();
-            if(!META_ANNOTATION_SET.contains(annotationType)){
-                declaredAnnotationMap.put(annotationType,annotation);
+            if (!META_ANNOTATION_SET.contains(annotationType)) {
+                declaredAnnotationMap.put(annotationType, annotation);
                 paresAnnotations(annotationType.getDeclaredAnnotations());
             }
         }

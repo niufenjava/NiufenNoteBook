@@ -1,7 +1,7 @@
 package io.niufen.common.exception;
 
-import io.niufen.common.util.ExceptionUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.ExceptionUtil;
+import io.niufen.common.util.StrUtil;
 
 /**
  * TODO
@@ -17,7 +17,7 @@ public class UtilException extends RuntimeException {
     private static final long serialVersionUID = 4162103625207009164L;
 
     public UtilException(Throwable e) {
-        super(ExceptionUtils.getMessage(e), e);
+        super(ExceptionUtil.getMessage(e), e);
     }
 
     public UtilException(String message) {
@@ -25,7 +25,7 @@ public class UtilException extends RuntimeException {
     }
 
     public UtilException(String messageTemplate, Object... params) {
-        super(StringUtils.format(messageTemplate, params));
+        super(StrUtil.format(messageTemplate, params));
     }
 
     public UtilException(String message, Throwable throwable) {
@@ -33,6 +33,6 @@ public class UtilException extends RuntimeException {
     }
 
     public UtilException(Throwable throwable, String messageTemplate, Object... params) {
-        super(StringUtils.format(messageTemplate, params), throwable);
+        super(StrUtil.format(messageTemplate, params), throwable);
     }
 }

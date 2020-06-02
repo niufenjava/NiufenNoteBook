@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
 import io.niufen.springboot.common.util.SpringContextUtils;
-import io.niufen.common.util.ThreadUtils;
+import io.niufen.common.util.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +50,7 @@ public class LoginLimitServiceTest {
         }catch (IllegalArgumentException e){
             assert LoginLimitService.LOGIN_LIMIT_ACCOUNT_LIMIT_MSG.equals(e.getMessage());
         }
-        ThreadUtils.sleep(LoginLimitService.LOGIN_LIMIT_ACCOUNT_LIMIT_MIN);
+        ThreadUtil.sleep(LoginLimitService.LOGIN_LIMIT_ACCOUNT_LIMIT_MIN);
         loginLimitService.userLoginLimitVerify("18522131265");
     }
 
@@ -67,7 +67,7 @@ public class LoginLimitServiceTest {
         for (ConcurrenceTest test : testList) {
             executor.execute(test);
         }
-        ThreadUtils.sleep(6);
+        ThreadUtil.sleep(6);
         loginLimitService.userLoginLimitVerify("18522131265");
     }
 }

@@ -47,14 +47,14 @@ public class SysUserMapperByXmlTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertNotNull(sysUserMapper.getById(sysUserEntity.getId()));
 
-        Map<String,Object> deleteParams = MapUtils.getOneItemMap("username",sysUserEntity.getUsername());
+        Map<String,Object> deleteParams = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteByMap(deleteParams)));
         Assert.assertNull(sysUserMapper.getById(sysUserEntity.getId()));
     }
 
     @Test
     public void deleteBatchIds() {
-        List<Long> idList = ListUtils.newList();
+        List<Long> idList = ListUtil.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -94,12 +94,12 @@ public class SysUserMapperByXmlTest {
             sysUserEntity.setPassword("-----");
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("status",1);
         params.put("delFlag",0);
         params.put("password","-----");
-        params.put("startCreateTime",DateUtils.getDate(2018,10,10));
-        params.put("endCreateTime",DateUtils.curTime());
+        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtil.curTime());
         Assert.assertTrue(10 <= sysUserMapper.update(updateSysUserEntity,params));
     }
 
@@ -109,7 +109,7 @@ public class SysUserMapperByXmlTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapper.getById(sysUserEntity.getId());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
@@ -118,7 +118,7 @@ public class SysUserMapperByXmlTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapper.getById(sysUserEntity.getId());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
@@ -126,14 +126,14 @@ public class SysUserMapperByXmlTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Map params = MapUtils.getOneItemMap("username",sysUserEntity.getUsername());
+        Map params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
         SysUserEntity querySysUserEntity = sysUserMapper.getOne(params);
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
     public void listBatchIds() {
-        List<Long> idList = ListUtils.newList();
+        List<Long> idList = ListUtil.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -149,11 +149,11 @@ public class SysUserMapperByXmlTest {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime",DateUtils.getDate(2018,10,10));
-        params.put("endCreateTime",DateUtils.curTime());
+        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtil.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);
@@ -168,7 +168,7 @@ public class SysUserMapperByXmlTest {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("status",1);
         params.put("delFlag",0);
         params.put("pageSortOrder","id desc");

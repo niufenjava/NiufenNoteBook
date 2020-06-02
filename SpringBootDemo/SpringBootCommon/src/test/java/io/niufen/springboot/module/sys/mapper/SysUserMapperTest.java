@@ -43,7 +43,7 @@ public class SysUserMapperTest {
 
     @Test
     public void batchInsert() {
-        List<SysUserEntity> sysUserEntityList = ListUtils.newLinkedList();
+        List<SysUserEntity> sysUserEntityList = ListUtil.newLinkedList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntityList.add(sysUserEntity);
@@ -88,14 +88,14 @@ public class SysUserMapperTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Map<String, Object> params = MapUtils.getOneItemMap("username",sysUserEntity.getUsername());
+        Map<String, Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
         params.put("password",sysUserEntity.getPassword());
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteByMap(params)));
     }
 
     @Test
     public void deleteBatchIds() {
-        List<Long> idList = ListUtils.newList();
+        List<Long> idList = ListUtil.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -165,7 +165,7 @@ public class SysUserMapperTest {
         updateSysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         updateSysUserEntity.setUpdateTime(new Date());
 
-        Map<String,Object> params = MapUtils.getOneItemMap("username",sysUserEntity.getUsername());
+        Map<String,Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
         params.put("phone",sysUserEntity.getPhone());
 
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateSelectiveByMap(updateSysUserEntity,params)));
@@ -205,7 +205,7 @@ public class SysUserMapperTest {
 
     @Test
     public void updateSelectiveBatchIds() {
-        List<Long> idList = ListUtils.newList();
+        List<Long> idList = ListUtil.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
@@ -235,12 +235,12 @@ public class SysUserMapperTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
     public void selectBatchIds() {
-        List<Long> idList = ListUtils.newList();
+        List<Long> idList = ListUtil.newList();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserMapper.insert(sysUserEntity);
@@ -257,7 +257,7 @@ public class SysUserMapperTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapper.insert(sysUserEntity);
 
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("username",sysUserEntity.getUsername());
         SysUserEntity selectSysUserEntity = sysUserMapper.selectOneByMap(params);
         Assert.assertNotNull(selectSysUserEntity);
@@ -275,18 +275,18 @@ public class SysUserMapperTest {
 
     @Test
     public void selectByMap() {
-        String password = UUIDUtils.generateUUID();
+        String password = UUIDUtil.generateUUID();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime",DateUtils.getDate(2018,10,10));
-        params.put("endCreateTime",DateUtils.curTime());
+        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtil.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);
@@ -297,7 +297,7 @@ public class SysUserMapperTest {
 
     @Test
     public void selectByCriteria() {
-        String password = UUIDUtils.generateUUID();
+        String password = UUIDUtil.generateUUID();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
@@ -314,18 +314,18 @@ public class SysUserMapperTest {
 
     @Test
     public void selectCountByMap() {
-        String password = UUIDUtils.generateUUID();
+        String password = UUIDUtil.generateUUID();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime",DateUtils.getDate(2018,10,10));
-        params.put("endCreateTime",DateUtils.curTime());
+        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtil.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);
@@ -336,7 +336,7 @@ public class SysUserMapperTest {
 
     @Test
     public void selectCountByCriteria() {
-        String password = UUIDUtils.generateUUID();
+        String password = UUIDUtil.generateUUID();
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntity.setPassword(password);

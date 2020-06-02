@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import io.niufen.springboot.common.annotation.SysLog;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.IPUtils;
-import io.niufen.common.util.JsonUtils;
+import io.niufen.common.util.IPUtil;
+import io.niufen.common.util.JsonUtil;
 import io.niufen.springboot.common.util.SpringContextUtils;
 import io.niufen.springboot.module.sys.entity.SysLogEntity;
 import io.niufen.springboot.module.sys.service.SysLogService;
@@ -72,7 +72,7 @@ public class SysLogAspect {
         }
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
         if(ObjectTools.isNotNull(request)){
-            sysLogEntity.setIp(IPUtils.getIpAddr(request));
+            sysLogEntity.setIp(IPUtil.getIpAddr(request));
             sysLogEntity.setRequestType(request.getMethod());
             sysLogEntity.setRequestUrl(request.getRequestURI());
             sysLogEntity.setRequestParam(getRequestParams(request,point));
@@ -80,7 +80,7 @@ public class SysLogAspect {
         HttpServletResponse response = SpringContextUtils.getHttpServletResponse();
         if(ObjectTools.isNotNull(response)){
             sysLogEntity.setResponseStatus(response.getStatus());
-            sysLogEntity.setResponseContent(JsonUtils.toJSONString(result));
+            sysLogEntity.setResponseContent(JsonUtil.toJSONString(result));
         }
         sysLogEntity.setCostTime(costTime);
         //todo 获取当前登录用户

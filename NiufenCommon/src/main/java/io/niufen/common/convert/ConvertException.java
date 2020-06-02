@@ -1,7 +1,7 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.ExceptionUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.ExceptionUtil;
+import io.niufen.common.util.StrUtil;
 
 /**
  * 转换异常
@@ -11,7 +11,7 @@ public class ConvertException extends RuntimeException{
     private static final long serialVersionUID = 4730597402855274362L;
 
     public ConvertException(Throwable e) {
-        super(ExceptionUtils.getMessage(e), e);
+        super(ExceptionUtil.getMessage(e), e);
     }
 
     public ConvertException(String message) {
@@ -19,7 +19,7 @@ public class ConvertException extends RuntimeException{
     }
 
     public ConvertException(String messageTemplate, Object... params) {
-        super(StringUtils.format(messageTemplate, params));
+        super(StrUtil.format(messageTemplate, params));
     }
 
     public ConvertException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class ConvertException extends RuntimeException{
     }
 
     public ConvertException(Throwable throwable, String messageTemplate, Object... params) {
-        super(StringUtils.format(messageTemplate, params), throwable);
+        super(StrUtil.format(messageTemplate, params), throwable);
     }
 }

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.springboot.common.response.R;
-import io.niufen.common.util.JsonUtils;
+import io.niufen.common.util.JsonUtil;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -59,7 +59,7 @@ public class BaseApiTest {
     public void post(String uri, Object ao) {
         String aoJson = JSON.toJSONString(ao);
         LOGGER.error("请求URI：" + uri);
-        LOGGER.error("请求内容：" + JsonUtils.format(aoJson));
+        LOGGER.error("请求内容：" + JsonUtil.format(aoJson));
         try {
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
                     .contentType(MediaType.APPLICATION_JSON)
@@ -73,7 +73,7 @@ public class BaseApiTest {
             String contentAsString = response.getContentAsString();
             R result = JSONObject.parseObject(contentAsString, R.class);
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
             Assert.assertEquals(R.CODE_SUCCESS,result.getCode());
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class BaseApiTest {
         MockHttpServletResponse response = null;
         String aoJson = JSON.toJSONString(ao);
         LOGGER.error("请求URI：" + uri);
-        LOGGER.error("请求内容：" + JsonUtils.format(aoJson));
+        LOGGER.error("请求内容：" + JsonUtil.format(aoJson));
         try {
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
                     .contentType(MediaType.APPLICATION_JSON)
@@ -103,7 +103,7 @@ public class BaseApiTest {
             int status = response.getStatus();
             String contentAsString = response.getContentAsString();
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class BaseApiTest {
             String contentAsString = response.getContentAsString();
             R result = JSONObject.parseObject(contentAsString, R.class);
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
             Assert.assertEquals(R.CODE_SUCCESS,result.getCode());
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +145,7 @@ public class BaseApiTest {
     public void export(String uri, Object ao, String filename) {
         String aoJson = JSON.toJSONString(ao);
         LOGGER.error("请求URI：" + uri);
-        LOGGER.error("请求内容：" + JsonUtils.format(aoJson));
+        LOGGER.error("请求内容：" + JsonUtil.format(aoJson));
         try {
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -178,7 +178,7 @@ public class BaseApiTest {
             String contentAsString = response.getContentAsString();
             R result = JSONObject.parseObject(contentAsString, R.class);
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
             Assert.assertEquals(R.CODE_SUCCESS,result.getCode());
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,7 +205,7 @@ public class BaseApiTest {
             String contentAsString = response.getContentAsString();
             R result = JSONObject.parseObject(contentAsString, R.class);
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
             Assert.assertEquals(R.CODE_SUCCESS,result.getCode());
         } catch (Exception e) {
             e.printStackTrace();
@@ -232,7 +232,7 @@ public class BaseApiTest {
             String contentAsString = response.getContentAsString();
             R result = JSONObject.parseObject(contentAsString, R.class);
             LOGGER.error("状态码：" + status);
-            LOGGER.error("返回结果：" + JsonUtils.format(contentAsString));
+            LOGGER.error("返回结果：" + JsonUtil.format(contentAsString));
             Assert.assertEquals(R.CODE_SUCCESS,result.getCode());
         } catch (Exception e) {
             e.printStackTrace();

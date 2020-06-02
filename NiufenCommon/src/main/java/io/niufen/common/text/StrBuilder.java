@@ -1,8 +1,8 @@
 package io.niufen.common.text;
 
-import io.niufen.common.util.ArrayUtils;
-import io.niufen.common.util.ConvertUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.ArrayUtil;
+import io.niufen.common.util.ConvertUtil;
+import io.niufen.common.util.StrUtil;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -85,7 +85,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 * @since 4.0.1
 	 */
 	public StrBuilder(CharSequence... strs) {
-		this(ArrayUtils.isEmpty(strs) ? DEFAULT_CAPACITY : (totalLength(strs) + DEFAULT_CAPACITY));
+		this(ArrayUtil.isEmpty(strs) ? DEFAULT_CAPACITY : (totalLength(strs) + DEFAULT_CAPACITY));
 		for (CharSequence str : strs) {
 			append(str);
 		}
@@ -122,7 +122,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 * @return this
 	 */
 	public StrBuilder append(char[] src) {
-		if (ArrayUtils.isEmpty(src)) {
+		if (ArrayUtil.isEmpty(src)) {
 			return this;
 		}
 		return append(src, 0, src.length);
@@ -163,7 +163,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 		if (obj instanceof CharSequence) {
 			return insert(index, (CharSequence) obj);
 		}
-		return insert(index, ConvertUtils.toStr(obj));
+		return insert(index, ConvertUtil.toStr(obj));
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 * @return this
 	 */
 	public StrBuilder insert(int index, char[] src) {
-		if (ArrayUtils.isEmpty(src)) {
+		if (ArrayUtil.isEmpty(src)) {
 			return this;
 		}
 		return insert(index, src, 0, src.length);
@@ -208,7 +208,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 * @return this
 	 */
 	public StrBuilder insert(int index, char[] src, int srcPos, int length) {
-		if (ArrayUtils.isEmpty(src) || srcPos > src.length || length <= 0) {
+		if (ArrayUtil.isEmpty(src) || srcPos > src.length || length <= 0) {
 			return this;
 		}
 		if (index < 0) {
@@ -434,7 +434,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 			}
 			return s;
 		}
-		return StringUtils.EMPTY;
+		return StrUtil.EMPTY;
 	}
 
 	/**
@@ -509,7 +509,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 			System.arraycopy(this.value, index, this.value, index + length, this.position - index);
 		} else if (index > this.position) {
 			// 插入位置超出范围，则当前位置到index清除为空格
-			Arrays.fill(this.value, this.position, index, StringUtils.C_SPACE);
+			Arrays.fill(this.value, this.position, index, StrUtil.C_SPACE);
 		}
 		// 不位移
 	}

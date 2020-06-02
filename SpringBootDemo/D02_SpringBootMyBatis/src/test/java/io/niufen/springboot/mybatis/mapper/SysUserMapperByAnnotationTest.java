@@ -3,8 +3,8 @@ package io.niufen.springboot.mybatis.mapper;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.ObjectCompareUtils;
-import io.niufen.common.util.MapUtils;
+import io.niufen.common.util.ObjectCompareUtil;
+import io.niufen.common.util.MapUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.module.sys.mapper.SysUserMapperByAnnotation;
 import org.junit.Assert;
@@ -65,7 +65,7 @@ public class SysUserMapperByAnnotationTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.getById(sysUserEntity.getId());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class SysUserMapperByAnnotationTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.selectById(sysUserEntity.getId());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class SysUserMapperByAnnotationTest {
         Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.getByUsername(sysUserEntity.getUsername());
-        Assert.assertTrue(ObjectCompareUtils.equals(sysUserEntity,querySysUserEntity));
+        Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class SysUserMapperByAnnotationTest {
     public void listByMap() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapperByAnnotation.insert(sysUserEntity);
-        Map<String, Object> params = MapUtils.newMap();
+        Map<String, Object> params = MapUtil.newMap();
         params.put("status",1);
         params.put("delFlag",0);
         params.put("orderCols","id");

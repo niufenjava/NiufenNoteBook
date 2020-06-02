@@ -59,7 +59,7 @@ public class EnumConverter extends AbstractConverter<Object> {
     protected static Enum tryConvertEnum(Object value, Class enumClass) {
         Enum enumResult = null;
         if (value instanceof Integer) {
-            enumResult = EnumUtils.getEnumAt(enumClass, (Integer) value);
+            enumResult = EnumUtil.getEnumAt(enumClass, (Integer) value);
         } else if (value instanceof String) {
             try {
                 enumResult = Enum.valueOf(enumClass, (String) value);
@@ -71,11 +71,11 @@ public class EnumConverter extends AbstractConverter<Object> {
         // 尝试查找其它用户自定义方法
         if (null == enumResult) {
             final Map<Class<?>, Method> valueOfMethods = getValueOfMethods(enumClass);
-            if (MapUtils.isNotEmpty(valueOfMethods)) {
+            if (MapUtil.isNotEmpty(valueOfMethods)) {
                 final Class<?> valueClass = value.getClass();
                 for (Map.Entry<Class<?>, Method> entry : valueOfMethods.entrySet()) {
-                    if (ClassUtils.isAssignable(entry.getKey(), valueClass)) {
-                        enumResult = ReflectionUtils.invokeStatic(entry.getValue(), value);
+                    if (ClassUtil.isAssignable(entry.getKey(), valueClass)) {
+                        enumResult = ReflectionUtil.invokeStatic(entry.getValue(), value);
                     }
                 }
             }
@@ -94,7 +94,7 @@ public class EnumConverter extends AbstractConverter<Object> {
         Map<Class<?>, Method> valueOfMethods = VALUE_OF_METHOD_CACHE.get(enumClass);
         if (null == valueOfMethods) {
             valueOfMethods = Arrays.stream(enumClass.getMethods())
-                    .filter(ModifierUtils::isStatic)
+                    .filter(ModifierUtil::isStatic)
                     .filter(m -> m.getReturnType() == enumClass)
                     .filter(m -> m.getParameterCount() == 1)
                     .filter(m -> false == "valueOf".equals(m.getName()))

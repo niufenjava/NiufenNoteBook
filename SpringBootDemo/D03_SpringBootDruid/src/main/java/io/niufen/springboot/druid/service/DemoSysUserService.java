@@ -3,8 +3,8 @@ package io.niufen.springboot.druid.service;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtils;
-import io.niufen.common.util.FakerUtils;
+import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.FakerUtil;
 import io.niufen.springboot.druid.entity.SysUserEntity;
 import io.niufen.springboot.druid.repository.SysUserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -59,15 +59,15 @@ public class DemoSysUserService {
 
     public SysUserEntity newSysUserEntity(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername(FakerUtils.firstNameEN()+FakerUtils.cellPhone());
-        sysUserEntity.setPassword(FakerUtils.password());
-        sysUserEntity.setSex(FakerUtils.sex());
-        sysUserEntity.setPhone(FakerUtils.cellPhone());
+        sysUserEntity.setUsername(FakerUtil.firstNameEN()+ FakerUtil.cellPhone());
+        sysUserEntity.setPassword(FakerUtil.password());
+        sysUserEntity.setSex(FakerUtil.sex());
+        sysUserEntity.setPhone(FakerUtil.cellPhone());
         sysUserEntity.setStatus(StatusEnum.VALID.getIndex());
         sysUserEntity.setDelFlag(YesOrNoEnum.NO.getIndex());
         sysUserEntity.setCreateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         sysUserEntity.setCreateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
-        sysUserEntity.setCreateTime(DateUtils.curTime());
+        sysUserEntity.setCreateTime(DateUtil.curTime());
         return sysUserEntity;
     }
 

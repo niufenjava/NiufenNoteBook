@@ -1,6 +1,6 @@
 package io.niufen.springboot.module.sys.form;
 
-import io.niufen.common.util.FakerUtils;
+import io.niufen.common.util.FakerUtil;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -27,10 +27,10 @@ public class SysUserCreateForm {
 
     public static SysUserCreateForm testNewEntity(){
         SysUserCreateForm sysUserCreateForm = new SysUserCreateForm();
-        sysUserCreateForm.setUsername(FakerUtils.firstNameEN()+FakerUtils.idNumberCN());
-        sysUserCreateForm.setPassword(FakerUtils.password());
-        sysUserCreateForm.setSex(FakerUtils.sex());
-        sysUserCreateForm.setPhone(FakerUtils.cellPhone());
+        sysUserCreateForm.setUsername(FakerUtil.firstNameEN()+ FakerUtil.idNumberCN());
+        sysUserCreateForm.setPassword(FakerUtil.password());
+        sysUserCreateForm.setSex(FakerUtil.sex());
+        sysUserCreateForm.setPhone(FakerUtil.cellPhone());
         return sysUserCreateForm;
     }
 }

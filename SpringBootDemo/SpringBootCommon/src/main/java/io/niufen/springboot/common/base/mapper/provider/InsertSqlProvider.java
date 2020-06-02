@@ -1,7 +1,7 @@
 package io.niufen.springboot.common.base.mapper.provider;
 
 import io.niufen.common.util.PlaceholderResolver;
-import io.niufen.common.util.ReflectionUtils;
+import io.niufen.common.util.ReflectionUtil;
 import io.niufen.springboot.common.base.mapper.BaseProvider;
 import io.niufen.springboot.common.metadata.TableInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class InsertSqlProvider extends BaseProvider {
     public String insertSelective(Object entity, ProviderContext context) {
         TableInfo table = tableInfo(context);
         Field[] notNullFields = Stream.of(table.getFields())
-                .filter(field -> ReflectionUtils.getFieldValue(field, entity) != null && !table.getPrimaryKeyColumn().equals(TableInfo.columnName(field)))
+                .filter(field -> ReflectionUtil.getFieldValue(field, entity) != null && !table.getPrimaryKeyColumn().equals(TableInfo.columnName(field)))
                 .toArray(Field[]::new);
 
         return new SQL()

@@ -1,8 +1,8 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.MapUtils;
-import io.niufen.common.util.StringUtils;
-import io.niufen.common.util.TypeUtils;
+import io.niufen.common.util.MapUtil;
+import io.niufen.common.util.StrUtil;
+import io.niufen.common.util.TypeUtil;
 
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -36,8 +36,8 @@ public class MapConverter extends AbstractConverter<Map<?, ?>> {
 
     public MapConverter(Type mapType) {
         this.mapType = mapType;
-        this.keyType = TypeUtils.getTypeArgument(mapType, 0);
-        this.valueType = TypeUtils.getTypeArgument(mapType, 1);
+        this.keyType = TypeUtil.getTypeArgument(mapType, 0);
+        this.valueType = TypeUtil.getTypeArgument(mapType, 1);
     }
 
     /**
@@ -58,19 +58,19 @@ public class MapConverter extends AbstractConverter<Map<?, ?>> {
     protected Map<?, ?> convertInternal(Object value) {
         Map map = null;
         if (value instanceof Map) {
-            final Type[] typeArguments = TypeUtils.getTypeArguments(value.getClass());
+            final Type[] typeArguments = TypeUtil.getTypeArguments(value.getClass());
             if (null != typeArguments && 2 == typeArguments.length
                     && Objects.equals(this.keyType, typeArguments[0])
                     && Objects.equals(this.valueType, typeArguments[1])
             ) {
                 return (Map) value;
             }
-            map = MapUtils.newMap(TypeUtils.getClass(this.mapType));
+            map = MapUtil.newMap(TypeUtil.getClass(this.mapType));
             convertMapToMap((Map) value, map);
         } else if (Boolean.FALSE) {
             // todo Bean to map
         } else {
-            throw new UnsupportedOperationException(StringUtils.format("Unsupport toMap value type: {}", value.getClass().getName()));
+            throw new UnsupportedOperationException(StrUtil.format("Unsupport toMap value type: {}", value.getClass().getName()));
         }
         return map;
     }
@@ -86,8 +86,8 @@ public class MapConverter extends AbstractConverter<Map<?, ?>> {
         Object key;
         Object value;
         for (Map.Entry<?, ?> entry : srcMap.entrySet()) {
-            key = TypeUtils.isUnknownType(this.keyType) ? entry.getKey() : converter.convert(this.keyType, entry.getKey());
-            value = TypeUtils.isUnknownType(this.valueType) ? entry.getValue() : converter.convert(this.valueType, entry.getValue());
+            key = TypeUtil.isUnknownType(this.keyType) ? entry.getKey() : converter.convert(this.keyType, entry.getKey());
+            value = TypeUtil.isUnknownType(this.valueType) ? entry.getValue() : converter.convert(this.valueType, entry.getValue());
             targetMap.put(key, value);
         }
     }
@@ -96,6 +96,6 @@ public class MapConverter extends AbstractConverter<Map<?, ?>> {
     @Override
     @SuppressWarnings("unchecked")
     public Class<Map<?, ?>> getTargetType() {
-        return (Class<Map<?, ?>>) TypeUtils.getClass(this.mapType);
+        return (Class<Map<?, ?>>) TypeUtil.getClass(this.mapType);
     }
 }

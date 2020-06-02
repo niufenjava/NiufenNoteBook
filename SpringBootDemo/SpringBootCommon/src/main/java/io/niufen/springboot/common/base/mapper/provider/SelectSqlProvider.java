@@ -1,7 +1,7 @@
 package io.niufen.springboot.common.base.mapper.provider;
 
-import io.niufen.common.util.ReflectionUtils;
-import io.niufen.common.util.StringUtils;
+import io.niufen.common.util.ReflectionUtil;
+import io.niufen.common.util.StrUtil;
 import io.niufen.springboot.common.base.mapper.BaseProvider;
 import io.niufen.springboot.common.constant.SqlConstants;
 import io.niufen.springboot.common.metadata.TableInfo;
@@ -51,7 +51,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getMapValue(field, params) != null)
+                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1000)
@@ -64,7 +64,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -77,7 +77,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getMapValue(field, params) != null)
+                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -91,7 +91,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -106,7 +106,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(SqlConstants.COUNT)
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getMapValue(field, params) != null)
+                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -120,7 +120,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(SqlConstants.COUNT)
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtils.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -132,7 +132,7 @@ public class SelectSqlProvider extends BaseProvider {
         SQL sql = new SQL()
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName());
-        if (StringUtils.isEmpty(orderBy)) {
+        if (StrUtil.isEmpty(orderBy)) {
             orderBy = table.getPrimaryKeyColumn() + " DESC";
         }
         return sql.ORDER_BY(orderBy).LIMIT(5000).toString();
