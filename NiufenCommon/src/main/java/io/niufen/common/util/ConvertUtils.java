@@ -2,6 +2,7 @@ package io.niufen.common.util;
 
 
 import io.niufen.common.convert.*;
+import io.niufen.common.lang.Assert;
 import io.niufen.common.lang.TypeReference;
 
 import java.lang.reflect.Type;

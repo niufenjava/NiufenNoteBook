@@ -1,5 +1,7 @@
 package io.niufen.common.util;
 
+import io.niufen.common.lang.Assert;
+
 import java.math.BigDecimal;
 
 /**

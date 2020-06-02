@@ -3,9 +3,7 @@ package io.niufen.common.util;
 
 import java.lang.reflect.Array;
 import java.time.temporal.TemporalAccessor;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author meilin.huang
@@ -13,6 +11,60 @@ import java.util.Map;
  * @date 2019-04-18 09:47
  */
 public class ObjectUtils {
+
+    /**
+     * 比较两个对象是否相等。<br>
+     * 相同的条件有两个，满足其一即可：<br>
+     * <ol>
+     * <li>obj1 == null &amp;&amp; obj2 == null</li>
+     * <li>obj1.equals(obj2)</li>
+     * </ol>
+     * 1. obj1 == null &amp;&amp; obj2 == null 2. obj1.equals(obj2)
+     *
+     * @param obj1 对象1
+     * @param obj2 对象2
+     * @return 是否相等
+     * @see Objects#equals(Object, Object)
+     */
+    public static boolean equals(Object obj1, Object obj2) {
+        // return (obj1 != null) ? (obj1.equals(obj2)) : (obj2 == null);
+        return Objects.equals(obj1, obj2);
+    }
+    /**
+     * 判断指定对象是否为空，支持：
+     *
+     * <pre>
+     * 1. CharSequence
+     * 2. Map
+     * 3. Iterable
+     * 4. Iterator
+     * 5. Array
+     * </pre>
+     *
+     * @param obj 被判断的对象
+     * @return 是否为空，如果类型不支持，返回false
+     * @since 4.5.7
+     */
+    @SuppressWarnings("rawtypes")
+    public static boolean isEmpty(Object obj) {
+        if (null == obj) {
+            return true;
+        }
+
+        if (obj instanceof CharSequence) {
+            return StringUtils.isEmpty((CharSequence) obj);
+        } else if (obj instanceof Map) {
+            return MapUtils.isEmpty((Map) obj);
+        } else if (obj instanceof Iterable) {
+            return IteratorUtils.isEmpty((Iterable) obj);
+        } else if (obj instanceof Iterator) {
+            return IteratorUtils.isEmpty((Iterator) obj);
+        } else if (ArrayUtils.isArray(obj)) {
+            return ArrayUtils.isEmpty(obj);
+        }
+
+        return false;
+    }
 
     /**
      * 检查对象是否为null<br>
@@ -29,6 +81,26 @@ public class ObjectUtils {
     public static boolean isNull(Object obj) {
         //noinspection ConstantConditions
         return null == obj || obj.equals(null);
+    }
+    /**
+     * 如果给定对象为{@code null}返回默认值
+     *
+     * <pre>
+     * ObjectUtil.defaultIfNull(null, null)      = null
+     * ObjectUtil.defaultIfNull(null, "")        = ""
+     * ObjectUtil.defaultIfNull(null, "zz")      = "zz"
+     * ObjectUtil.defaultIfNull("abc", *)        = "abc"
+     * ObjectUtil.defaultIfNull(Boolean.TRUE, *) = Boolean.TRUE
+     * </pre>
+     *
+     * @param <T>          对象类型
+     * @param object       被检查对象，可能为{@code null}
+     * @param defaultValue 被检查对象为{@code null}返回的默认值，可以为{@code null}
+     * @return 被检查对象为{@code null}返回默认值，否则返回原值
+     * @since 3.0.7
+     */
+    public static <T> T defaultIfNull(final T object, final T defaultValue) {
+        return (null != object) ? object : defaultValue;
     }
 
     /**

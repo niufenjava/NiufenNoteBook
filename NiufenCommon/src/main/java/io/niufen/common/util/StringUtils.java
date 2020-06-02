@@ -210,6 +210,17 @@ public class StringUtils {
         return (str == null) ? defaultStr : str.toString();
     }
 
+
+    /**
+     * 调用对象的toString方法，null会返回“null”
+     *
+     * @param obj 对象
+     * @return 字符串
+     * @since 4.1.3
+     */
+    public static String toString(Object obj) {
+        return null == obj ? NULL : obj.toString();
+    }
     /**
      * 如果字符串是 null 或者 ""，则返回指定的默认字符串，否则返回本身
      *
@@ -1608,6 +1619,26 @@ public class StringUtils {
         } else {
             return str1.toString().contentEquals(str2);
         }
+    }
+
+
+    /**
+     * 比较两个字符串（大小写不敏感）。
+     *
+     * <pre>
+     * equalsIgnoreCase(null, null)   = true
+     * equalsIgnoreCase(null, &quot;abc&quot;)  = false
+     * equalsIgnoreCase(&quot;abc&quot;, null)  = false
+     * equalsIgnoreCase(&quot;abc&quot;, &quot;abc&quot;) = true
+     * equalsIgnoreCase(&quot;abc&quot;, &quot;ABC&quot;) = true
+     * </pre>
+     *
+     * @param str1 要比较的字符串1
+     * @param str2 要比较的字符串2
+     * @return 如果两个字符串相同，或者都是<code>null</code>，则返回<code>true</code>
+     */
+    public static boolean equalsIgnoreCase(CharSequence str1, CharSequence str2) {
+        return equals(str1, str2, true);
     }
 
     /**

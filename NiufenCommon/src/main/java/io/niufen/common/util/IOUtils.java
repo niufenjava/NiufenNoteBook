@@ -1,6 +1,8 @@
 package io.niufen.common.util;
 
 
+import io.niufen.common.lang.Assert;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;

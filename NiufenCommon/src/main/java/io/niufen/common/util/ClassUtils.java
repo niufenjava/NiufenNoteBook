@@ -3,6 +3,7 @@ package io.niufen.common.util;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.convert.BasicTypeEnum;
+import io.niufen.common.lang.Assert;
 import io.niufen.common.text.StringSpliter;
 
 import java.lang.reflect.Method;

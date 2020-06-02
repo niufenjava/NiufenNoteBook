@@ -1,6 +1,7 @@
 package io.niufen.common.util;
 
 import io.niufen.common.exception.UtilException;
+import io.niufen.common.lang.Assert;
 import io.niufen.common.lang.SimpleCache;
 import io.niufen.common.tool.ObjectTools;
 import lombok.extern.slf4j.Slf4j;

@@ -227,4 +227,66 @@ public class CollectionUtils {
     }
 
 
+    /**
+     * 以 conjunction 为分隔符将集合转换为字符串<br>
+     * 如果集合元素为数组、{@link Iterable}或{@link Iterator}，则递归组合其为字符串
+     *
+     * @param <T>         集合元素类型
+     * @param iterable    {@link Iterable}
+     * @param conjunction 分隔符
+     * @return 连接后的字符串
+     * @see IteratorUtils#join(Iterator, CharSequence)
+     */
+    public static <T> String join(Iterable<T> iterable, CharSequence conjunction) {
+        if (null == iterable) {
+            return null;
+        }
+        return IteratorUtils.join(iterable.iterator(), conjunction);
+    }
+
+    /**
+     * 以 conjunction 为分隔符将集合转换为字符串
+     *
+     * @param <T>         集合元素类型
+     * @param iterable    {@link Iterable}
+     * @param conjunction 分隔符
+     * @param prefix      每个元素添加的前缀，null表示不添加
+     * @param suffix      每个元素添加的后缀，null表示不添加
+     * @return 连接后的字符串
+     * @since 5.3.0
+     */
+    public static <T> String join(Iterable<T> iterable, CharSequence conjunction, String prefix, String suffix) {
+        if (null == iterable) {
+            return null;
+        }
+        return IteratorUtils.join(iterable.iterator(), conjunction, prefix, suffix);
+    }
+
+    /**
+     * 以 conjunction 为分隔符将集合转换为字符串<br>
+     * 如果集合元素为数组、{@link Iterable}或{@link Iterator}，则递归组合其为字符串
+     *
+     * @param <T>         集合元素类型
+     * @param iterator    集合
+     * @param conjunction 分隔符
+     * @return 连接后的字符串
+     * @deprecated 请使用IteratorUtils#join(Iterator, CharSequence)
+     */
+    @Deprecated
+    public static <T> String join(Iterator<T> iterator, CharSequence conjunction) {
+        return IteratorUtils.join(iterator, conjunction);
+    }
+
+    /**
+     * {@link Iterable}转为{@link Collection}<br>
+     * 首先尝试强转，强转失败则构建一个新的{@link ArrayList}
+     *
+     * @param <E>      集合元素类型
+     * @param iterable {@link Iterable}
+     * @return {@link Collection} 或者 {@link ArrayList}
+     * @since 3.0.9
+     */
+    public static <E> Collection<E> toCollection(Iterable<E> iterable) {
+        return (iterable instanceof Collection) ? (Collection<E>) iterable : ListUtils.newArrayList(iterable.iterator());
+    }
 }

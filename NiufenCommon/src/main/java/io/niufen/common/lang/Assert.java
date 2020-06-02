@@ -1,4 +1,8 @@
-package io.niufen.common.util;
+package io.niufen.common.lang;
+
+import io.niufen.common.util.ArrayUtils;
+import io.niufen.common.util.CollectionUtils;
+import io.niufen.common.util.StringUtils;
 
 import java.util.Collection;
 import java.util.Map;
