@@ -5,6 +5,7 @@ import io.niufen.common.io.IORuntimeException;
 import io.niufen.common.io.LineHandler;
 import io.niufen.common.io.file.FileMode;
 import io.niufen.common.io.file.FileReader;
+import io.niufen.common.io.file.FileWriter;
 import io.niufen.common.lang.Assert;
 import io.niufen.common.text.StringSpliter;
 
@@ -1232,4 +1233,167 @@ public class FileUtil {
             return StrUtil.containsAny(ext, UNIX_SEPARATOR, WINDOWS_SEPARATOR) ? StrUtil.EMPTY : ext;
         }
     }
+
+
+    // -------------------------------------------------------------------------------------------- in end
+
+    /**
+     * 读取文件所有数据<br>
+     * 文件的长度不能超过Integer.MAX_VALUE
+     *
+     * @param file 文件
+     * @return 字节码
+     * @throws IORuntimeException IO异常
+     */
+    public static byte[] readBytes(File file) throws IORuntimeException {
+        return FileReader.create(file).readBytes();
+    }
+
+    /**
+     * 读取文件所有数据<br>
+     * 文件的长度不能超过Integer.MAX_VALUE
+     *
+     * @param filePath 文件路径
+     * @return 字节码
+     * @throws IORuntimeException IO异常
+     * @since 3.2.0
+     */
+    public static byte[] readBytes(String filePath) throws IORuntimeException {
+        return readBytes(file(filePath));
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param file 文件
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readUtf8String(File file) throws IORuntimeException {
+        return readString(file, CharsetUtil.CHARSET_UTF_8);
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param path 文件路径
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readUtf8String(String path) throws IORuntimeException {
+        return readString(path, CharsetUtil.CHARSET_UTF_8);
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param file        文件
+     * @param charsetName 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readString(File file, String charsetName) throws IORuntimeException {
+        return readString(file, CharsetUtil.charset(charsetName));
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param file    文件
+     * @param charset 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readString(File file, Charset charset) throws IORuntimeException {
+        return FileReader.create(file, charset).readString();
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param path        文件路径
+     * @param charsetName 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readString(String path, String charsetName) throws IORuntimeException {
+        return readString(file(path), charsetName);
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param path    文件路径
+     * @param charset 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readString(String path, Charset charset) throws IORuntimeException {
+        return readString(file(path), charset);
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param url     文件URL
+     * @param charset 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String readString(URL url, String charset) throws IORuntimeException {
+        if (url == null) {
+            throw new NullPointerException("Empty url provided!");
+        }
+
+        InputStream in = null;
+        try {
+            in = url.openStream();
+            return IoUtil.read(in, charset);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        } finally {
+            IoUtil.close(in);
+        }
+    }
+
+
+    /**
+     * 写数据到文件中
+     *
+     * @param data 数据
+     * @param path 目标文件
+     * @return 目标文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File writeBytes(byte[] data, String path) throws IORuntimeException {
+        return writeBytes(data, touch(path));
+    }
+
+    /**
+     * 写数据到文件中
+     *
+     * @param dest 目标文件
+     * @param data 数据
+     * @return 目标文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File writeBytes(byte[] data, File dest) throws IORuntimeException {
+        return writeBytes(data, dest, 0, data.length, false);
+    }
+
+    /**
+     * 写入数据到文件
+     *
+     * @param data     数据
+     * @param dest     目标文件
+     * @param off      数据开始位置
+     * @param len      数据长度
+     * @param isAppend 是否追加模式
+     * @return 目标文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File writeBytes(byte[] data, File dest, int off, int len, boolean isAppend) throws IORuntimeException {
+        return FileWriter.create(dest).write(data, off, len, isAppend);
+    }
+
 }

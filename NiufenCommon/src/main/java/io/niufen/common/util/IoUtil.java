@@ -420,6 +420,32 @@ public class IoUtil {
     }
 
     /**
+     * 从流中读取内容
+     *
+     * @param in          输入流
+     * @param charsetName 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String read(InputStream in, String charsetName) throws IORuntimeException {
+        FastByteArrayOutputStream out = read(in);
+        return StrUtil.isBlank(charsetName) ? out.toString() : out.toString(charsetName);
+    }
+    /**
+     * 从流中读取内容，读到输出流中，读取完毕后并不关闭流
+     *
+     * @param in 输入流
+     * @return 输出流
+     * @throws IORuntimeException IO异常
+     */
+    public static FastByteArrayOutputStream read(InputStream in) throws IORuntimeException {
+        final FastByteArrayOutputStream out = new FastByteArrayOutputStream();
+        copy(in, out);
+        return out;
+    }
+
+
+    /**
      * 读取16进制字符串
      *
      * @param in          {@link InputStream}
@@ -512,6 +538,26 @@ public class IoUtil {
             return b2;
         } else {
             return b;
+        }
+    }
+
+    /**
+     * 将byte[]写到流中
+     *
+     * @param out        输出流
+     * @param isCloseOut 写入完毕是否关闭输出流
+     * @param content    写入的内容
+     * @throws IORuntimeException IO异常
+     */
+    public static void write(OutputStream out, boolean isCloseOut, byte[] content) throws IORuntimeException {
+        try {
+            out.write(content);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        } finally {
+            if (isCloseOut) {
+                close(out);
+            }
         }
     }
 
