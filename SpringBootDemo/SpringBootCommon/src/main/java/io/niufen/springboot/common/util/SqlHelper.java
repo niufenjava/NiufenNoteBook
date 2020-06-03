@@ -15,7 +15,7 @@
  */
 package io.niufen.springboot.common.util;
 
-import io.niufen.common.util.CollUtil;
+import io.niufen.common.core.util.CollUtil;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.session.SqlSessionFactory;
 

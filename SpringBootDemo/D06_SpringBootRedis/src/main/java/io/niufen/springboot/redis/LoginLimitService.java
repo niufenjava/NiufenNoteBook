@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.common.constant.LongConstants;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.LongConstants;
+import io.niufen.common.core.util.StrUtil;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,7 @@ public class LoginLimitService {
      */
     public void userLoginLimitVerify(String userAccount){
         Long increment = 0L;
-        if(ObjectTools.isBlank(userAccount)){
+        if(StrUtil.isBlank(userAccount)){
             throw new IllegalArgumentException(LOGIN_LIMIT_ACCOUNT_VERIFY_MSG);
         }
         String key = LOGIN_LIMIT_REDIS_KEY_PREFIX + userAccount;

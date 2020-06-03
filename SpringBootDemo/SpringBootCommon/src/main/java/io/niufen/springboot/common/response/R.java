@@ -1,6 +1,6 @@
 package io.niufen.springboot.common.response;
 
-import io.niufen.common.constant.IntConstants;
+import io.niufen.common.core.constant.IntConstants;
 
 import java.util.HashMap;
 import java.util.Map;

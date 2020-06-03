@@ -1,7 +1,7 @@
 package io.niufen.springboot.module.sys.mapper;
 
+import io.niufen.common.core.util.ObjectUtil;
 import io.niufen.springboot.common.constant.SqlConstants;
-import io.niufen.common.tool.ObjectTools;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
@@ -135,10 +135,10 @@ public interface SysUserMapperByAnnotation {
                 {
                     SELECT(SqlConstants.ASTERISK);
                     FROM(TABLE_NAME);
-                    if(ObjectTools.isNotNull(map.get("status"))){
+                    if(ObjectUtil.isNotNull(map.get("status"))){
                         WHERE("status="+ map.get("status"));
                     }
-                    if(ObjectTools.isNotNull(map.get("delFlag"))){
+                    if(ObjectUtil.isNotNull(map.get("delFlag"))){
                         WHERE("del_flag="+ map.get("delFlag"));
                     }
                     ORDER_BY((String)map.get("orderCols"));

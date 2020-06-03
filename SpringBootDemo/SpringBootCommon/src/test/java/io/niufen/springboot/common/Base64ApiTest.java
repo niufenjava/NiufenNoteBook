@@ -2,7 +2,7 @@ package io.niufen.springboot.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import io.niufen.common.constant.SysConstants;
+import io.niufen.common.core.constant.SysConstants;
 import io.niufen.springboot.common.response.R;
 import io.niufen.springboot.util.JsonUtil;
 import org.junit.Assert;

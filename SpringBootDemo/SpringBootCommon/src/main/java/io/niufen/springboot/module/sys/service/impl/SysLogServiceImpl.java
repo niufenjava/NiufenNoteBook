@@ -1,7 +1,7 @@
 package io.niufen.springboot.module.sys.service.impl;
 
-import io.niufen.common.collection.ListUtil;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.collection.ListUtil;
+import io.niufen.common.core.util.ObjectUtil;
 import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.springboot.module.sys.bo.SysLogBO;
 import io.niufen.springboot.module.sys.entity.SysLogEntity;
@@ -34,8 +34,8 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLogMapper, SysLogEntit
 
     @Override
     public Collection<SysLogBO> entityListToBOList(Collection<SysLogEntity> entityList) {
-        List<SysLogBO> boList = ListUtil.newLinkedList();
-        if(ObjectTools.isNotEmpty(entityList)){
+        List<SysLogBO> boList = ListUtil.list(true);
+        if(ObjectUtil.isNotEmpty(entityList)){
             for (SysLogEntity sysLogEntity : entityList) {
                 boList.add(entityToBO(sysLogEntity));
             }

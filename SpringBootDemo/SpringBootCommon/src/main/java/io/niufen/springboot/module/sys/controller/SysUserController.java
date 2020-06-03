@@ -1,8 +1,8 @@
 package io.niufen.springboot.module.sys.controller;
 
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.enums.YesOrNoEnum;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.enums.StatusEnum;
+import io.niufen.common.core.enums.YesOrNoEnum;
 import io.niufen.springboot.common.response.R;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;

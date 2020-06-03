@@ -1,8 +1,8 @@
 package io.niufen.springboot.module.sys.enums;
 
-import io.niufen.common.constant.StringConstants;
-import io.niufen.common.enums.IEnum;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.StringConstants;
+import io.niufen.common.core.enums.IEnum;
+import io.niufen.common.core.util.ObjectUtil;
 
 /**
  * 系统日志类型枚举
@@ -43,7 +43,7 @@ public enum SysLogTypeEnum implements IEnum{
      * @return String 名字
      */
     public static String getNameByIndex(Integer index){
-        if(ObjectTools.isNull(index)){
+        if(ObjectUtil.isNull(index)){
             return StringConstants.EMPTY;
         }
         for(SysLogTypeEnum s: SysLogTypeEnum.values()){

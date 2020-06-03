@@ -1,9 +1,9 @@
 package io.niufen.springboot.common.base.service;
 
-import io.niufen.common.collection.MapUtil;
-import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.CollUtil;
-import io.niufen.common.util.ReflectUtil;
+import io.niufen.common.core.map.MapUtil;
+import io.niufen.common.core.util.CollUtil;
+import io.niufen.common.core.util.ObjectUtil;
+import io.niufen.common.core.util.ReflectUtil;
 import io.niufen.springboot.common.base.mapper.BaseMapper;
 import io.niufen.springboot.common.metadata.TableInfo;
 import io.niufen.springboot.common.metadata.TableInfoHelper;
@@ -45,7 +45,7 @@ public interface BaseService<T,B> {
      * @return TRUE-执行成功；FALSE-执行失败
      */
     default boolean saveWithNull(T entity) {
-        if (ObjectTools.isNull(entity)) {
+        if (ObjectUtil.isNull(entity)) {
             return Boolean.FALSE;
         }
         return SqlHelper.retBool(getBaseMapper().insert(entity));
@@ -168,7 +168,7 @@ public interface BaseService<T,B> {
      * @param idList 主键ID列表
      */
     default boolean removeByIds(Collection<? extends Serializable> idList) {
-        if (ObjectTools.isEmpty(idList)) {
+        if (ObjectUtil.isEmpty(idList)) {
             return false;
         }
         return SqlHelper.retBool(getBaseMapper().deleteBatchIds(idList));
@@ -180,7 +180,7 @@ public interface BaseService<T,B> {
      * @param idList 主键ID列表
      */
     default boolean removeLogicByIds(Collection<? extends Serializable> idList) {
-        if (ObjectTools.isEmpty(idList)) {
+        if (ObjectUtil.isEmpty(idList)) {
             return false;
         }
         return SqlHelper.retBool(getBaseMapper().deleteLogicBatchIds(idList));
@@ -210,7 +210,7 @@ public interface BaseService<T,B> {
      * @param entity 实体对象
      */
     default boolean updateSelectiveByMap(T entity, Map<String,Object> params) {
-        if(CollUtil.isEmpty(params) || ObjectTools.isNull(entity)){
+        if(CollUtil.isEmpty(params) || ObjectUtil.isNull(entity)){
             return Boolean.FALSE;
         }
         return SqlHelper.retBool(getBaseMapper().updateSelectiveByMap(entity,params));
@@ -222,7 +222,7 @@ public interface BaseService<T,B> {
      * @param entity 实体对象
      */
     default boolean updateSelectiveByCriteria(T entity, Object criteria) {
-        if(ObjectTools.isNull(criteria) || ObjectTools.isNull(entity)){
+        if(ObjectUtil.isNull(criteria) || ObjectUtil.isNull(entity)){
             return Boolean.FALSE;
         }
         return SqlHelper.retBool(getBaseMapper().updateSelectiveByCriteria(entity,criteria));
@@ -250,7 +250,7 @@ public interface BaseService<T,B> {
             Assert.notNull(tableInfo, "error: can not execute. because can not find cache of TableInfo for entity!");
             String keyProperty = tableInfo.getPrimaryKeyColumn();
             Object idVal = ReflectUtil.getFieldValue(entity, tableInfo.getPrimaryKeyColumn());
-            return ObjectTools.isNull(idVal) || Objects.isNull(getById((Serializable) idVal)) ? save(entity) : updateById(entity);
+            return ObjectUtil.isNull(idVal) || Objects.isNull(getById((Serializable) idVal)) ? save(entity) : updateById(entity);
         }
         return Boolean.FALSE;
     }
@@ -264,7 +264,7 @@ public interface BaseService<T,B> {
      */
     @Transactional(rollbackFor = Exception.class)
     default boolean saveOrUpdateBatch(Collection<T> entityList) {
-        if(ObjectTools.isEmpty(entityList)){
+        if(ObjectUtil.isEmpty(entityList)){
             return Boolean.FALSE;
         }
         for (T t : entityList) {
@@ -340,7 +340,7 @@ public interface BaseService<T,B> {
     default Map<Long,T> entityListToMap(List<T> entityList){
         Map<Long,T> maps = new HashMap<>();
 
-        if(ObjectTools.isNotEmpty(entityList)){
+        if(ObjectUtil.isNotEmpty(entityList)){
             for (T t : entityList) {
                 TableInfo tableInfo = TableInfoHelper.tableInfo(t.getClass());
                 String primaryKeyColumn = tableInfo.getPrimaryKeyColumn();
@@ -439,12 +439,12 @@ public interface BaseService<T,B> {
      * 查询所有
      */
     default List<T> list() {
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         return listByMap(params);
     }
 
     default Long count() {
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         return countByMap(params);
     }
 

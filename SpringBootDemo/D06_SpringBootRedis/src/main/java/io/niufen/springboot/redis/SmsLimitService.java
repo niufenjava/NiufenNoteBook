@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.common.constant.LongConstants;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.LongConstants;
+import io.niufen.common.core.util.StrUtil;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class SmsLimitService {
      */
     public void smsSendLimitVerify(String phone){
         Long increment = 0L;
-        if(ObjectTools.isBlank(phone)){
+        if(StrUtil.isBlank(phone)){
             throw new IllegalArgumentException(SMS_LIMIT_PHONE_VERIFY_MSG);
         }
         String key = SMS_LIMIT_REDIS_KEY_PREFIX + phone;

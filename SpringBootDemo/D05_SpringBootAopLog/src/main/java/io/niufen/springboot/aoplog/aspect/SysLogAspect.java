@@ -1,8 +1,8 @@
 package io.niufen.springboot.aoplog.aspect;
 
 import com.alibaba.fastjson.JSONObject;
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.util.ObjectUtil;
 import io.niufen.springboot.common.annotation.SysLog;
 import io.niufen.springboot.common.util.SpringContextUtils;
 import io.niufen.springboot.module.sys.entity.SysLogEntity;
@@ -65,20 +65,20 @@ public class SysLogAspect {
         String methodName = signature.getName();
         sysLogEntity.setMethod(className + "." + methodName + "()");
 
-        if(ObjectTools.isNotNull(sysLogAnnotation)){
+        if(ObjectUtil.isNotNull(sysLogAnnotation)){
             sysLogEntity.setContent(sysLogAnnotation.value());
             sysLogEntity.setOperateType(sysLogAnnotation.operateType());
             sysLogEntity.setType(sysLogAnnotation.type());
         }
         HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
-        if(ObjectTools.isNotNull(request)){
+        if(ObjectUtil.isNotNull(request)){
             sysLogEntity.setIp(IPUtil.getIpAddr(request));
             sysLogEntity.setRequestType(request.getMethod());
             sysLogEntity.setRequestUrl(request.getRequestURI());
             sysLogEntity.setRequestParam(getRequestParams(request,point));
         }
         HttpServletResponse response = SpringContextUtils.getHttpServletResponse();
-        if(ObjectTools.isNotNull(response)){
+        if(ObjectUtil.isNotNull(response)){
             sysLogEntity.setResponseStatus(response.getStatus());
             sysLogEntity.setResponseContent(JsonUtil.toJSONString(result));
         }

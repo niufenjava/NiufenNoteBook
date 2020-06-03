@@ -1,9 +1,9 @@
 package io.niufen.springboot.module.sys.service.impl;
 
-import io.niufen.common.collection.ListUtil;
-import io.niufen.common.enums.SexEnum;
-import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.collection.ListUtil;
+import io.niufen.common.core.enums.SexEnum;
+import io.niufen.common.core.enums.StatusEnum;
+import io.niufen.common.core.util.ObjectUtil;
 import io.niufen.springboot.common.base.service.impl.BaseServiceImpl;
 import io.niufen.springboot.module.sys.bo.SysUserBO;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
@@ -34,8 +34,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper,SysUserEnt
 
     @Override
     public Collection<SysUserBO> entityListToBOList(Collection<SysUserEntity> entityList) {
-        List<SysUserBO> boList = ListUtil.newLinkedList();
-        if(ObjectTools.isNotEmpty(entityList)){
+        List<SysUserBO> boList = ListUtil.list(true);
+        if(ObjectUtil.isNotEmpty(entityList)){
             for (SysUserEntity sysUserEntity : entityList) {
                 boList.add(entityToBO(sysUserEntity));
             }

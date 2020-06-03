@@ -1,10 +1,10 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.common.collection.MapUtil;
-import io.niufen.common.constant.IntConstants;
-import io.niufen.common.constant.LongConstants;
-import io.niufen.common.thread.ThreadUtil;
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.constant.IntConstants;
+import io.niufen.common.core.constant.LongConstants;
+import io.niufen.common.core.map.MapUtil;
+import io.niufen.common.core.thread.ThreadUtil;
+import io.niufen.common.core.util.FakerUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -169,7 +169,7 @@ public class RedisUtilsTest {
     @Test
     public void setHashMap() {
         String key1 = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         map.put("key1", FakerUtil.idNumberCN());
         map.put("key2", FakerUtil.idNumberCN());
 
@@ -180,7 +180,7 @@ public class RedisUtilsTest {
     @Test
     public void getHashMap() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemValue1 = FakerUtil.idNumberCN();
@@ -197,7 +197,7 @@ public class RedisUtilsTest {
     @Test
     public void setHashMapByExpire() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemValue1 = FakerUtil.idNumberCN();
@@ -217,7 +217,7 @@ public class RedisUtilsTest {
     @Test
     public void setHashItem() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemValue1 = FakerUtil.idNumberCN();
@@ -238,7 +238,7 @@ public class RedisUtilsTest {
     @Test
     public void setHashItemByExpire() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemValue1 = FakerUtil.idNumberCN();
@@ -261,7 +261,7 @@ public class RedisUtilsTest {
     @Test
     public void getHashItem() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemValue1 = FakerUtil.idNumberCN();
@@ -278,7 +278,7 @@ public class RedisUtilsTest {
     @Test
     public void delHashItems() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
@@ -303,7 +303,7 @@ public class RedisUtilsTest {
     @Test
     public void hasHashItemByKey() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
@@ -328,7 +328,7 @@ public class RedisUtilsTest {
     @Test
     public void incrementHashItem() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";
@@ -352,7 +352,7 @@ public class RedisUtilsTest {
     @Test
     public void decrementHashItem() {
         String key = "redisUtilsTest-"+ FakerUtil.idNumberCN();
-        Map<String, Object> map = MapUtil.newMap();
+        Map<String, Object> map = MapUtil.newHashMap();
         String itemKey1 = "item1";
         String itemKey2 = "item2";
         String itemKey3 = "item3";

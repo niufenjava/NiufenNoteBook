@@ -1,6 +1,6 @@
 package io.niufen.springboot.module.sys.form;
 
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.util.FakerUtil;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

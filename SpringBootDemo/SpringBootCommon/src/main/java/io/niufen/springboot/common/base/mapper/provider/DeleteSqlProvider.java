@@ -1,7 +1,7 @@
 package io.niufen.springboot.common.base.mapper.provider;
 
-import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.ReflectUtil;
+import io.niufen.common.core.enums.YesOrNoEnum;
+import io.niufen.common.core.util.ReflectUtil;
 import io.niufen.springboot.common.base.mapper.BaseProvider;
 import io.niufen.springboot.common.constant.SqlConstants;
 import io.niufen.springboot.common.metadata.TableInfo;
@@ -45,7 +45,7 @@ public class DeleteSqlProvider extends BaseProvider {
         return new SQL()
                 .DELETE_FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectUtil.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(criteria,field ) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -57,7 +57,7 @@ public class DeleteSqlProvider extends BaseProvider {
                 .UPDATE(table.getTableName())
                 .SET("del_flag = "+ YesOrNoEnum.YES.getIndex())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectUtil.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(criteria, field) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -68,7 +68,7 @@ public class DeleteSqlProvider extends BaseProvider {
         return new SQL()
                 .DELETE_FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectUtil.getMapValue(field, params) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(params,field ) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -80,7 +80,7 @@ public class DeleteSqlProvider extends BaseProvider {
                 .UPDATE(table.getTableName())
                 .SET("del_flag = "+ YesOrNoEnum.YES.getIndex())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectUtil.getMapValue(field, params) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(params,field ) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();

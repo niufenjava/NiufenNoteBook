@@ -1,6 +1,6 @@
 package io.niufen.springboot.config.exception;
 
-import io.niufen.common.exception.NiufenException;
+import io.niufen.common.core.exception.NiufenException;
 import io.niufen.springboot.common.response.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;

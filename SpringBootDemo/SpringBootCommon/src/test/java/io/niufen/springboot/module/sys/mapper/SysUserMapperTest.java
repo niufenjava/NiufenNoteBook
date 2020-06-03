@@ -1,13 +1,13 @@
 package io.niufen.springboot.module.sys.mapper;
 
-import io.niufen.common.collection.ListUtil;
-import io.niufen.common.collection.MapUtil;
-import io.niufen.common.constant.IntConstants;
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.DateUtils;
-import io.niufen.common.util.ObjectCompareUtil;
-import io.niufen.common.util.UUIDUtil;
+import io.niufen.common.core.collection.ListUtil;
+import io.niufen.common.core.constant.IntConstants;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.map.MapUtil;
+import io.niufen.common.core.util.DateUtils;
+import io.niufen.common.core.util.ObjectCompareUtil;
+import io.niufen.common.core.util.ObjectUtil;
+import io.niufen.common.core.util.UUIDUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -32,27 +32,25 @@ public class SysUserMapperTest {
     @Test
     public void insert() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
     }
 
 
     @Test
     public void insertSelective() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insertSelective(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insertSelective(sysUserEntity)));
     }
 
 
     @Test
     public void batchInsert() {
-        List<SysUserEntity> sysUserEntityList = ListUtil.newLinkedList();
+        List<SysUserEntity> sysUserEntityList = ListUtil.list(true);
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserEntityList.add(sysUserEntity);
         }
-        Assert.assertTrue(ObjectTools.equals(IntConstants.TEN, sysUserMapper.batchInsert(sysUserEntityList)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.TEN, sysUserMapper.batchInsert(sysUserEntityList)));
     }
 
 
@@ -60,53 +58,49 @@ public class SysUserMapperTest {
     public void insertBySql() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         String sql = "insert into t_sys_user (username) value ('"+sysUserEntity.getUsername()+"')";
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insertBySql(sql)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insertBySql(sql)));
     }
 
     @Test
     public void deleteById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteById(sysUserEntity.getId())));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.deleteById(sysUserEntity.getId())));
     }
 
     @Test
     public void deleteLogicById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteLogicById(sysUserEntity.getId())));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.deleteLogicById(sysUserEntity.getId())));
     }
 
     @Test
     public void deleteByCriteria() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteByCriteria(sysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.deleteByCriteria(sysUserEntity)));
     }
 
     @Test
     public void deleteByMap() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Map<String, Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
-        params.put("password",sysUserEntity.getPassword());
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteByMap(params)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+//        Map<String, Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
+//        params.put("password",sysUserEntity.getPassword());
+//        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.deleteByMap(params)));
     }
 
     @Test
     public void deleteBatchIds() {
-        List<Long> idList = ListUtil.newList();
+        List<Long> idList = ListUtil.list(true);
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-            Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+            Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
             idList.add(sysUserEntity.getId());
         }
         Assert.assertTrue((10 == idList.size()));
-        Assert.assertTrue(ObjectTools.equals(IntConstants.TEN, sysUserMapper.deleteBatchIds(idList)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.TEN, sysUserMapper.deleteBatchIds(idList)));
     }
 
 
@@ -115,20 +109,19 @@ public class SysUserMapperTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapper.insert(sysUserEntity);
         String sql = "delete from t_sys_user where id =" + sysUserEntity.getId();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.deleteBySql(sql)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.deleteBySql(sql)));
     }
 
     @Test
     public void updateById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         querySysUserEntity.setPassword("password");
         querySysUserEntity.setUpdateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         querySysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         querySysUserEntity.setUpdateTime(new Date());
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateById(querySysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.updateById(querySysUserEntity)));
         SysUserEntity updateSysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         Assert.assertEquals("password",updateSysUserEntity.getPassword());
         Assert.assertNotNull(updateSysUserEntity.getUpdateUserId());
@@ -140,15 +133,14 @@ public class SysUserMapperTest {
     @Test
     public void updateSelectiveById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         SysUserEntity updateSysUserEntity = new SysUserEntity();
         updateSysUserEntity.setId(sysUserEntity.getId());
         updateSysUserEntity.setPassword("password");
         updateSysUserEntity.setUpdateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         updateSysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         updateSysUserEntity.setUpdateTime(new Date());
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateSelectiveById(updateSysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.updateSelectiveById(updateSysUserEntity)));
         SysUserEntity selectSysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         Assert.assertEquals("password",selectSysUserEntity.getPassword());
         Assert.assertNotNull(selectSysUserEntity.getUpdateUserId());
@@ -160,8 +152,7 @@ public class SysUserMapperTest {
     @Test
     public void updateSelectiveByMap() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         SysUserEntity updateSysUserEntity = new SysUserEntity();
         updateSysUserEntity.setId(sysUserEntity.getId());
         updateSysUserEntity.setPassword("password");
@@ -169,10 +160,10 @@ public class SysUserMapperTest {
         updateSysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         updateSysUserEntity.setUpdateTime(new Date());
 
-        Map<String,Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
-        params.put("phone",sysUserEntity.getPhone());
+//        Map<String,Object> params = MapUtil.getOneItemMap("username",sysUserEntity.getUsername());
+//        params.put("phone",sysUserEntity.getPhone());
 
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateSelectiveByMap(updateSysUserEntity,params)));
+//        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.updateSelectiveByMap(updateSysUserEntity,params)));
         SysUserEntity selectSysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         Assert.assertEquals("password",selectSysUserEntity.getPassword());
         Assert.assertNotNull(selectSysUserEntity.getUpdateUserId());
@@ -185,8 +176,7 @@ public class SysUserMapperTest {
     @Test
     public void updateSelectiveByCriteria() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         SysUserEntity updateSysUserEntity = new SysUserEntity();
         updateSysUserEntity.setId(sysUserEntity.getId());
         updateSysUserEntity.setPassword("password");
@@ -198,7 +188,7 @@ public class SysUserMapperTest {
         criteria.setUsername(sysUserEntity.getUsername());
         criteria.setPassword(sysUserEntity.getPassword());
 
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateSelectiveByCriteria(updateSysUserEntity,criteria)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.updateSelectiveByCriteria(updateSysUserEntity,criteria)));
         SysUserEntity selectSysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         Assert.assertEquals("password",selectSysUserEntity.getPassword());
         Assert.assertNotNull(selectSysUserEntity.getUpdateUserId());
@@ -209,10 +199,10 @@ public class SysUserMapperTest {
 
     @Test
     public void updateSelectiveBatchIds() {
-        List<Long> idList = ListUtil.newList();
+        List<Long> idList = ListUtil.list(true);
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-            Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
+            Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
             idList.add(sysUserEntity.getId());
         }
         Assert.assertTrue((10 == idList.size()));
@@ -222,7 +212,7 @@ public class SysUserMapperTest {
         updateSysUserEntity.setUpdateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         updateSysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         updateSysUserEntity.setUpdateTime(new Date());
-        Assert.assertTrue(ObjectTools.equals(IntConstants.TEN, sysUserMapper.updateSelectiveBatchIds(updateSysUserEntity,idList)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.TEN, sysUserMapper.updateSelectiveBatchIds(updateSysUserEntity,idList)));
     }
 
     @Test
@@ -230,21 +220,20 @@ public class SysUserMapperTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapper.insert(sysUserEntity);
         String sql = "update t_sys_user set status = 0 where id =" + sysUserEntity.getId();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.updateBySql(sql)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.updateBySql(sql)));
     }
 
     @Test
     public void selectById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapper.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapper.selectById(sysUserEntity.getId());
         Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
 
     @Test
     public void selectBatchIds() {
-        List<Long> idList = ListUtil.newList();
+        List<Long> idList = ListUtil.list(true);
         for (int i = 0; i < 10; i++) {
             SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
             sysUserMapper.insert(sysUserEntity);
@@ -261,7 +250,7 @@ public class SysUserMapperTest {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapper.insert(sysUserEntity);
 
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("username",sysUserEntity.getUsername());
         SysUserEntity selectSysUserEntity = sysUserMapper.selectOneByMap(params);
         Assert.assertNotNull(selectSysUserEntity);
@@ -285,7 +274,7 @@ public class SysUserMapperTest {
             sysUserEntity.setPassword(password);
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);
@@ -324,7 +313,7 @@ public class SysUserMapperTest {
             sysUserEntity.setPassword(password);
             sysUserMapper.insert(sysUserEntity);
         }
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);

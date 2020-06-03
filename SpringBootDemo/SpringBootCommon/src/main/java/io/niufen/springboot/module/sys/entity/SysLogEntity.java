@@ -1,8 +1,8 @@
 package io.niufen.springboot.module.sys.entity;
 
-import io.niufen.common.constant.SysConstants;
+import io.niufen.common.core.constant.SysConstants;
 import io.niufen.springboot.common.response.R;
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.util.FakerUtil;
 import io.niufen.springboot.module.sys.enums.SysLogOperateTypeEnum;
 import io.niufen.springboot.module.sys.enums.SysLogTypeEnum;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;

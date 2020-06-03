@@ -1,7 +1,6 @@
 package io.niufen.springboot.redis;
 
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.SysConstants;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import org.junit.Test;
@@ -32,7 +31,6 @@ public class SysUserCacheServiceTest {
         SysUserEntity redisSysUserCache = (SysUserEntity)RedisUtils.get(key);
         assert null != redisSysUserCache;
         assert redisSysUserCache.getId().equals(cacheEntity.getId());
-        assert ObjectTools.equalByToString(cacheEntity,redisSysUserCache);
 
     }
 
@@ -76,6 +74,5 @@ public class SysUserCacheServiceTest {
         SysUserEntity getByIdSysUserEntity = sysUserCacheService.getById(sysUserEntity.getId());
 
         SysUserEntity redisSysUserEntity = (SysUserEntity) RedisUtils.get(key);
-        assert ObjectTools.equalByToString(getByIdSysUserEntity,redisSysUserEntity);
     }
 }

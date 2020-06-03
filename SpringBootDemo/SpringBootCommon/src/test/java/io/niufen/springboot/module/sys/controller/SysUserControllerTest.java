@@ -1,7 +1,7 @@
 package io.niufen.springboot.module.sys.controller;
 
-import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.enums.StatusEnum;
+import io.niufen.common.core.util.FakerUtil;
 import io.niufen.springboot.common.Base64ApiTest;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import io.niufen.springboot.module.sys.form.SysUserPageQueryForm;

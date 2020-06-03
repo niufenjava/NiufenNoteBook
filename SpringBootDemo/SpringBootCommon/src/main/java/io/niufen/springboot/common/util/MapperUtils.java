@@ -1,9 +1,10 @@
 package io.niufen.springboot.common.util;
 
-import io.niufen.springboot.common.constant.SqlConstants;
-import io.niufen.common.constant.StringConstants;
-import io.niufen.common.tool.ObjectTools;
+import io.niufen.common.core.constant.StringConstants;
+import io.niufen.common.core.util.ObjectUtil;
+import io.niufen.common.core.util.StrUtil;
 import io.niufen.springboot.common.annotation.TableName;
+import io.niufen.springboot.common.constant.SqlConstants;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -22,7 +23,7 @@ public class MapperUtils {
      */
     public static String tableNameByClass(Class<?> aClass){
         String tablePrefix = SqlConstants.TABLE_DEFAULT_PREFIX;
-        if(ObjectTools.isNull(aClass)){
+        if(ObjectUtil.isNull(aClass)){
             log.error("tableNameByClass 传入参数null");
             return StringConstants.EMPTY;
         }
@@ -31,7 +32,7 @@ public class MapperUtils {
         if ( hasAnnotation ) {
             TableName testAnnotation = aClass.getAnnotation(TableName.class);
             String annotationTablePrefix = testAnnotation.value();
-            if(ObjectTools.isNotNull(annotationTablePrefix)){
+            if(ObjectUtil.isNotNull(annotationTablePrefix)){
                 tablePrefix = annotationTablePrefix;
             }
         }
@@ -47,7 +48,7 @@ public class MapperUtils {
      */
     public static String tableNameByEntity(Object entity){
         String tablePrefix = SqlConstants.TABLE_DEFAULT_PREFIX;
-        if(ObjectTools.isNull(entity)){
+        if(ObjectUtil.isNull(entity)){
             log.error("tableNameByClass 传入参数null");
             return StringConstants.EMPTY;
         }
@@ -57,7 +58,7 @@ public class MapperUtils {
         if ( hasAnnotation ) {
             TableName testAnnotation = aClass.getAnnotation(TableName.class);
             String annotationTablePrefix = testAnnotation.value();
-            if(ObjectTools.isNotNull(annotationTablePrefix)){
+            if(ObjectUtil.isNotNull(annotationTablePrefix)){
                 tablePrefix = annotationTablePrefix;
             }
         }
@@ -97,7 +98,7 @@ public class MapperUtils {
     }
 
     public static String removeEntityStr(String str){
-        if(ObjectTools.isNotBlank(str) && str.endsWith(SqlConstants.ENTITY)){
+        if(StrUtil.isNotBlank(str) && str.endsWith(SqlConstants.ENTITY)){
             return str.substring(0,str.length()-6);
         }
         return str;

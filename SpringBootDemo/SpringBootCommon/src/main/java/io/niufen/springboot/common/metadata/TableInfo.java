@@ -1,9 +1,9 @@
 package io.niufen.springboot.common.metadata;
 
-import io.niufen.common.constant.StringConstants;
-import io.niufen.common.util.CollUtil;
-import io.niufen.common.util.ReflectUtil;
-import io.niufen.common.util.StrUtil;
+import io.niufen.common.core.constant.StringConstants;
+import io.niufen.common.core.util.CollUtil;
+import io.niufen.common.core.util.ReflectUtil;
+import io.niufen.common.core.util.StrUtil;
 import io.niufen.springboot.common.util.MapperUtils;
 import io.niufen.springboot.common.annotation.NoColumn;
 import io.niufen.springboot.common.annotation.PrimaryKey;
@@ -138,7 +138,7 @@ public class TableInfo {
      */
     public static String tableName(Class<?> entityType) {
         TableName table = entityType.getAnnotation(TableName.class);
-        return table == null ? TABLE_PREFIX + StrUtil.camel2Underscore(MapperUtils.removeEntityStr(entityType.getSimpleName())) : table.value();
+        return table == null ? TABLE_PREFIX + StrUtil.toUnderlineCase(MapperUtils.removeEntityStr(entityType.getSimpleName())) : table.value();
     }
 
     /**
@@ -212,7 +212,7 @@ public class TableInfo {
      * @return 带有下划线字段将其转换为"字段 AS pojo属性名"形式
      */
     public static String selectColumnName(Field field) {
-        String camel = StrUtil.camel2Underscore(field.getName());
+        String camel = StrUtil.toUnderlineCase(field.getName());
         return camel.contains("_") ? camel + " AS " + field.getName() : camel;
     }
 
@@ -223,7 +223,7 @@ public class TableInfo {
      * @return 字段对应的column
      */
     public static String columnName(Field field) {
-        return StrUtil.camel2Underscore(field.getName());
+        return StrUtil.toUnderlineCase(field.getName());
     }
 
     /**

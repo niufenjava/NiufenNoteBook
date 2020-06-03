@@ -1,11 +1,11 @@
 package io.niufen.springboot.module.sys.entity;
 
 import io.niufen.springboot.common.base.entity.BaseEntity;
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtils;
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.enums.StatusEnum;
+import io.niufen.common.core.enums.YesOrNoEnum;
+import io.niufen.common.core.util.DateUtils;
+import io.niufen.common.core.util.FakerUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

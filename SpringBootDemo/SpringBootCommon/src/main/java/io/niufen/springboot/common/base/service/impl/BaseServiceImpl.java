@@ -1,7 +1,7 @@
 package io.niufen.springboot.common.base.service.impl;
 
-import io.niufen.common.collection.ListUtil;
-import io.niufen.common.util.CollUtil;
+import io.niufen.common.core.collection.ListUtil;
+import io.niufen.common.core.util.CollUtil;
 import io.niufen.springboot.common.base.mapper.BaseMapper;
 import io.niufen.springboot.common.base.service.BaseService;
 import org.springframework.beans.BeanUtils;
@@ -29,7 +29,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T, B> implements BaseServi
 
     @Override
     public Collection<B> entityListToBOList(Collection<T> entityList) {
-        List<B> boList = ListUtil.newLinkedList();
+        List<B> boList = ListUtil.list(true);
         if(CollUtil.isNotEmpty(entityList)){
             for (T t : entityList) {
                 boList.add(entityToBO(t));

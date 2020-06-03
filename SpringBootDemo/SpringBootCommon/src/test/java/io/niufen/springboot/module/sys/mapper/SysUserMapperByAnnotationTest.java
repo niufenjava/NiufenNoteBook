@@ -1,10 +1,10 @@
 package io.niufen.springboot.module.sys.mapper;
 
-import io.niufen.common.collection.MapUtil;
-import io.niufen.common.constant.IntConstants;
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.ObjectCompareUtil;
+import io.niufen.common.core.constant.IntConstants;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.map.MapUtil;
+import io.niufen.common.core.util.ObjectCompareUtil;
+import io.niufen.common.core.util.ObjectUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,29 +27,26 @@ public class SysUserMapperByAnnotationTest {
     @Test
     public void insert() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
     }
 
     @Test
     public void deleteById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.deleteById(sysUserEntity.getId())));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.deleteById(sysUserEntity.getId())));
     }
 
     @Test
     public void updateById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.getById(sysUserEntity.getId());
         querySysUserEntity.setPassword("password");
         querySysUserEntity.setUpdateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         querySysUserEntity.setUpdateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
         querySysUserEntity.setUpdateTime(new Date());
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.updateById(querySysUserEntity)));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.updateById(querySysUserEntity)));
         SysUserEntity updateSysUserEntity = sysUserMapperByAnnotation.getById(sysUserEntity.getId());
         Assert.assertEquals("password",updateSysUserEntity.getPassword());
         Assert.assertNotNull(updateSysUserEntity.getUpdateUserId());
@@ -61,8 +58,7 @@ public class SysUserMapperByAnnotationTest {
     @Test
     public void getById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.getById(sysUserEntity.getId());
         Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
@@ -70,8 +66,7 @@ public class SysUserMapperByAnnotationTest {
     @Test
     public void selectById() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.selectById(sysUserEntity.getId());
         Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
@@ -79,8 +74,7 @@ public class SysUserMapperByAnnotationTest {
     @Test
     public void getByUsername() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
-        Assert.assertTrue(ObjectTools.equals(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
-        Assert.assertTrue(ObjectTools.isNotNullAndZero(sysUserEntity.getId()));
+        Assert.assertTrue(ObjectUtil.equal(IntConstants.ONE, sysUserMapperByAnnotation.insert(sysUserEntity)));
         SysUserEntity querySysUserEntity = sysUserMapperByAnnotation.getByUsername(sysUserEntity.getUsername());
         Assert.assertTrue(ObjectCompareUtil.equals(sysUserEntity,querySysUserEntity));
     }
@@ -107,7 +101,7 @@ public class SysUserMapperByAnnotationTest {
     public void listByMap() {
         SysUserEntity sysUserEntity = SysUserEntity.testNewEntity();
         sysUserMapperByAnnotation.insert(sysUserEntity);
-        Map<String, Object> params = MapUtil.newMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("status",1);
         params.put("delFlag",0);
         params.put("orderCols","id");

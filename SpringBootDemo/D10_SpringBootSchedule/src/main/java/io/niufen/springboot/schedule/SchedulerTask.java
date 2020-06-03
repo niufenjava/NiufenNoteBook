@@ -1,6 +1,6 @@
 package io.niufen.springboot.schedule;
 
-import io.niufen.common.util.DateUtils;
+import io.niufen.common.core.util.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

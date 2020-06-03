@@ -1,6 +1,6 @@
 package io.niufen.springboot.util;
 
-import io.niufen.common.util.StrUtil;
+import io.niufen.common.core.util.StrUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

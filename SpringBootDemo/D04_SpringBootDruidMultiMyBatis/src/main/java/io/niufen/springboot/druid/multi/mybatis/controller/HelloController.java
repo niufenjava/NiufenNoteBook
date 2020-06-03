@@ -1,10 +1,10 @@
 package io.niufen.springboot.druid.multi.mybatis.controller;
 
-import io.niufen.common.constant.SysConstants;
-import io.niufen.common.enums.StatusEnum;
-import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtils;
-import io.niufen.common.util.FakerUtil;
+import io.niufen.common.core.constant.SysConstants;
+import io.niufen.common.core.enums.StatusEnum;
+import io.niufen.common.core.enums.YesOrNoEnum;
+import io.niufen.common.core.util.DateUtils;
+import io.niufen.common.core.util.FakerUtil;
 import io.niufen.springboot.druid.multi.mybatis.entity.SysUserEntity;
 import io.niufen.springboot.druid.multi.mybatis.mapper.SysUserMapperByXml;
 import io.niufen.springboot.druid.multi.mybatis.mapper2.SysUserMapper2ByXml;
