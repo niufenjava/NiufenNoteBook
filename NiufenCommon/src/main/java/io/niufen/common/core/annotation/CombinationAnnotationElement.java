@@ -1,6 +1,6 @@
 package io.niufen.common.core.annotation;
 
-import io.niufen.common.core.collection.SetUtil;
+import io.niufen.common.core.util.CollUtil;
 
 import java.io.Serializable;
 import java.lang.annotation.*;
@@ -17,97 +17,31 @@ import java.util.*;
  * @time 16:05
  */
 public class CombinationAnnotationElement implements AnnotatedElement, Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 8990713020674605450L;
+    /** 元注解 */
+    private static final Set<Class<? extends Annotation>> META_ANNOTATIONS = CollUtil.newHashSet(
+            Target.class,
+            Retention.class,
+            Inherited.class,
+            Documented.class,
+            SuppressWarnings.class,
+            Override.class,
+            Deprecated.class
+    );
 
-    /**
-     * 元注解 Set集合
-     */
-    private static final Set<Class<? extends Annotation>> META_ANNOTATION_SET = SetUtil.newSet();
-
-    /*
-     * 类初始化时，将 JDK 默认的元注解设置到 META_ANNOTATION_SET 中
-     */
-    static {
-        META_ANNOTATION_SET.add(Target.class);
-        META_ANNOTATION_SET.add(Retention.class);
-        META_ANNOTATION_SET.add(Inherited.class);
-        META_ANNOTATION_SET.add(Documented.class);
-        META_ANNOTATION_SET.add(Native.class);
-        META_ANNOTATION_SET.add(Repeatable.class);
-        META_ANNOTATION_SET.add(SuppressWarnings.class);
-        META_ANNOTATION_SET.add(Override.class);
-    }
+    /** 注解类型与注解对象对应表 */
+    private Map<Class<? extends Annotation>, Annotation> annotationMap;
+    /** 直接注解类型与注解对象对应表 */
+    private Map<Class<? extends Annotation>, Annotation> declaredAnnotationMap;
 
     /**
-     * 注解类型与注解对象 Map
-     */
-    private Map<Class<? extends Annotation>, Annotation> annotationMap = new HashMap<>();
-
-    /**
-     * 直接注解类型与注解对象 Map
-     */
-    private Map<Class<? extends Annotation>, Annotation> declaredAnnotationMap = new HashMap<>();
-
-    /**
-     * 构造方法
+     * 构造
      *
-     * @param element 需要解析注解的元素
-     *                可以是 Class、Method、Field、Constructor、ReflectPermission
-     *                这些都实现了 AnnotatedElement 接口
+     * @param element 需要解析注解的元素：可以是Class、Method、Field、Constructor、ReflectPermission
      */
     public CombinationAnnotationElement(AnnotatedElement element) {
         init(element);
-    }
-
-    /**
-     * 初始化方法，用于简化构造方法的代码
-     *
-     * @param element 需要解析注解的元素
-     */
-    private void init(AnnotatedElement element) {
-        final Annotation[] declaredAnnotations = element.getDeclaredAnnotations();
-        parseDeclaredAnnotations(declaredAnnotations);
-
-        final Annotation[] annotations = element.getAnnotations();
-        if (Arrays.equals(declaredAnnotations, annotations)) {
-            this.annotationMap = this.declaredAnnotationMap;
-        } else {
-            paresAnnotations(annotations);
-        }
-    }
-
-    /**
-     * 递归解析全部注解，知道全部是元注解位置
-     *
-     * @param annotations 元素上贴的注解集合
-     */
-    private void parseDeclaredAnnotations(Annotation[] annotations) {
-        Class<? extends Annotation> annotationType;
-        //
-        for (Annotation annotation : annotations) {
-            annotationType = annotation.annotationType();
-            if (!META_ANNOTATION_SET.contains(annotationType)) {
-                declaredAnnotationMap.put(annotationType, annotation);
-                parseDeclaredAnnotations(annotationType.getAnnotations());
-            }
-        }
-    }
-
-    /**
-     * 递归解析注解，知道全部都是元注解
-     *
-     * @param annotations 元素上贴的注解集合
-     */
-    private void paresAnnotations(Annotation[] annotations) {
-        Class<? extends Annotation> annotationType;
-        for (Annotation annotation : annotations) {
-            annotationType = annotation.annotationType();
-            if (!META_ANNOTATION_SET.contains(annotationType)) {
-                declaredAnnotationMap.put(annotationType, annotation);
-                paresAnnotations(annotationType.getDeclaredAnnotations());
-            }
-        }
     }
 
     @Override
@@ -132,5 +66,57 @@ public class CombinationAnnotationElement implements AnnotatedElement, Serializa
     public Annotation[] getDeclaredAnnotations() {
         final Collection<Annotation> annotations = this.declaredAnnotationMap.values();
         return annotations.toArray(new Annotation[0]);
+    }
+
+    /**
+     * 初始化
+     *
+     * @param element 元素
+     */
+    private void init(AnnotatedElement element) {
+        final Annotation[] declaredAnnotations = element.getDeclaredAnnotations();
+        this.declaredAnnotationMap = new HashMap<>();
+        parseDeclared(declaredAnnotations);
+
+        final Annotation[] annotations = element.getAnnotations();
+        if(Arrays.equals(declaredAnnotations, annotations)) {
+            this.annotationMap = this.declaredAnnotationMap;
+        }else {
+            this.annotationMap = new HashMap<>();
+            parse(annotations);
+        }
+    }
+
+    /**
+     * 进行递归解析注解，直到全部都是元注解为止
+     *
+     * @param annotations Class, Method, Field等
+     */
+    private void parseDeclared(Annotation[] annotations) {
+        Class<? extends Annotation> annotationType;
+        // 直接注解
+        for (Annotation annotation : annotations) {
+            annotationType = annotation.annotationType();
+            if (false == META_ANNOTATIONS.contains(annotationType)) {
+                declaredAnnotationMap.put(annotationType, annotation);
+                parseDeclared(annotationType.getDeclaredAnnotations());
+            }
+        }
+    }
+
+    /**
+     * 进行递归解析注解，直到全部都是元注解为止
+     *
+     * @param annotations Class, Method, Field等
+     */
+    private void parse(Annotation[] annotations) {
+        Class<? extends Annotation> annotationType;
+        for (Annotation annotation : annotations) {
+            annotationType = annotation.annotationType();
+            if (false == META_ANNOTATIONS.contains(annotationType)) {
+                annotationMap.put(annotationType, annotation);
+                parse(annotationType.getAnnotations());
+            }
+        }
     }
 }
