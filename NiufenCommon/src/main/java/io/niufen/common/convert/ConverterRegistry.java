@@ -4,7 +4,7 @@ import io.niufen.common.convert.impl.PrimitiveConverter;
 import io.niufen.common.lang.TypeReference;
 import io.niufen.common.util.ClassUtil;
 import io.niufen.common.util.ObjectUtil;
-import io.niufen.common.util.ReflectionUtil;
+import io.niufen.common.util.ReflectUtil;
 import io.niufen.common.util.TypeUtil;
 
 import java.io.Serializable;
@@ -150,7 +150,7 @@ public class ConverterRegistry implements Serializable {
      * @return {@link ConverterRegistry}
      */
     public ConverterRegistry registry(Type type, Class<? extends IConverter<?>> converterImplClass) {
-        return registry(type, ReflectionUtil.newInstance(converterImplClass));
+        return registry(type, ReflectUtil.newInstance(converterImplClass));
     }
 
     /**

@@ -1,7 +1,6 @@
 package io.niufen.common.io;
 
 import io.niufen.common.util.FileUtil;
-import io.niufen.common.util.IoUtil;
 import io.niufen.common.util.StrUtil;
 
 import java.io.File;

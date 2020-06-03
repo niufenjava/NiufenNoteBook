@@ -1,8 +1,8 @@
 package io.niufen.springboot.common.metadata;
 
 import io.niufen.common.constant.StringConstants;
-import io.niufen.common.util.CollectionUtil;
-import io.niufen.common.util.ReflectionUtil;
+import io.niufen.common.util.CollUtil;
+import io.niufen.common.util.ReflectUtil;
 import io.niufen.common.util.StrUtil;
 import io.niufen.springboot.common.util.MapperUtils;
 import io.niufen.springboot.common.annotation.NoColumn;
@@ -148,11 +148,11 @@ public class TableInfo {
      * @return 不包含@NoColumn注解的fields
      */
     public static Field[] excludeNoColumnField(Class<?> entityClass) {
-        Field[] allFields = ReflectionUtil.getFields(entityClass);
+        Field[] allFields = ReflectUtil.getFields(entityClass);
         List<String> excludeColumns = getClassExcludeColumns(entityClass);
         return Stream.of(allFields)
                 //过滤掉类上指定的@NoCloumn注解的字段和字段上@NoColumn注解或者是静态的field
-                .filter(field -> !CollectionUtil.contains(excludeColumns, field.getName())
+                .filter(field -> !CollUtil.contains(excludeColumns, field.getName())
                         && (!field.isAnnotationPresent(NoColumn.class) && !Modifier.isStatic(field.getModifiers())))
                 .toArray(Field[]::new);
     }

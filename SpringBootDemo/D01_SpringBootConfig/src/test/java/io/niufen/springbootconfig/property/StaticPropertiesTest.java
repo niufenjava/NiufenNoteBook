@@ -1,10 +1,10 @@
 package io.niufen.springbootconfig.property;
 
-import io.niufen.springbootconfig.BaseTest;
+import io.niufen.springbootconfig.Base64Test;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class StaticPropertiesTest extends BaseTest {
+public class StaticPropertiesTest extends Base64Test {
 
     @Test
     public void configTest(){

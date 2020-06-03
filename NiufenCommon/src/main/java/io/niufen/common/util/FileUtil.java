@@ -2,19 +2,22 @@ package io.niufen.common.util;
 
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.io.IORuntimeException;
+import io.niufen.common.io.IoUtil;
 import io.niufen.common.io.LineHandler;
+import io.niufen.common.io.file.FileCopier;
 import io.niufen.common.io.file.FileMode;
 import io.niufen.common.io.file.FileReader;
 import io.niufen.common.io.file.FileWriter;
+import io.niufen.common.io.resource.ResourceUtil;
 import io.niufen.common.lang.Assert;
-import io.niufen.common.text.StringSpliter;
+import io.niufen.common.text.StrSpliter;
 
 import java.io.*;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -333,7 +336,7 @@ public class FileUtil {
             pathToUse = pathToUse.substring(1);
         }
 
-        List<String> pathList = StringSpliter.split(pathToUse, StrUtil.C_SLASH);
+        List<String> pathList = StrSpliter.split(pathToUse, StrUtil.C_SLASH);
         List<String> pathElements = new LinkedList<>();
         int tops = 0;
 
@@ -356,7 +359,7 @@ public class FileUtil {
             }
         }
 
-        return prefix + CollectionUtil.join(pathElements, StrUtil.SLASH);
+        return prefix + CollUtil.join(pathElements, StrUtil.SLASH);
     }
 
     /**
@@ -1396,4 +1399,845 @@ public class FileUtil {
         return FileWriter.create(dest).write(data, off, len, isAppend);
     }
 
+    /**
+     * 获取当前系统的换行分隔符
+     *
+     * <pre>
+     * Windows: \r\n
+     * Mac: \r
+     * Linux: \n
+     * </pre>
+     *
+     * @return 换行符
+     * @since 4.0.5
+     */
+    public static String getLineSeparator() {
+        return System.lineSeparator();
+        // return System.getProperty("line.separator");
+    }
+
+
+    /**
+     * 通过JDK7+的 {@link Files#copy(Path, Path, CopyOption...)} 方法拷贝文件
+     *
+     * @param src     源文件路径
+     * @param dest    目标文件或目录路径，如果为目录使用与源文件相同的文件名
+     * @param options {@link StandardCopyOption}
+     * @return File
+     * @throws IORuntimeException IO异常
+     */
+    public static File copyFile(String src, String dest, StandardCopyOption... options) throws IORuntimeException {
+        Assert.notBlank(src, "Source File path is blank !");
+        Assert.notNull(src, "Destination File path is null !");
+        return copyFile(Paths.get(src), Paths.get(dest), options).toFile();
+    }
+
+    /**
+     * 通过JDK7+的 {@link Files#copy(Path, Path, CopyOption...)} 方法拷贝文件
+     *
+     * @param src     源文件
+     * @param dest    目标文件或目录，如果为目录使用与源文件相同的文件名
+     * @param options {@link StandardCopyOption}
+     * @return 目标文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File copyFile(File src, File dest, StandardCopyOption... options) throws IORuntimeException {
+        // check
+        Assert.notNull(src, "Source File is null !");
+        if (false == src.exists()) {
+            throw new IORuntimeException("File not exist: " + src);
+        }
+        Assert.notNull(dest, "Destination File or directiory is null !");
+        if (equals(src, dest)) {
+            throw new IORuntimeException("Files '{}' and '{}' are equal", src, dest);
+        }
+        return copyFile(src.toPath(), dest.toPath(), options).toFile();
+    }
+
+    /**
+     * 通过JDK7+的 {@link Files#copy(Path, Path, CopyOption...)} 方法拷贝文件
+     *
+     * @param src     源文件路径
+     * @param dest    目标文件或目录，如果为目录使用与源文件相同的文件名
+     * @param options {@link StandardCopyOption}
+     * @return Path
+     * @throws IORuntimeException IO异常
+     */
+    public static Path copyFile(Path src, Path dest, StandardCopyOption... options) throws IORuntimeException {
+        Assert.notNull(src, "Source File is null !");
+        Assert.notNull(dest, "Destination File or directiory is null !");
+
+        Path destPath = dest.toFile().isDirectory() ? dest.resolve(src.getFileName()) : dest;
+        try {
+            return Files.copy(src, destPath, options);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 复制文件或目录<br>
+     * 如果目标文件为目录，则将源文件以相同文件名拷贝到目标目录
+     *
+     * @param srcPath    源文件或目录
+     * @param destPath   目标文件或目录，目标不存在会自动创建（目录、文件都创建）
+     * @param isOverride 是否覆盖目标文件
+     * @return 目标目录或文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File copy(String srcPath, String destPath, boolean isOverride) throws IORuntimeException {
+        return copy(file(srcPath), file(destPath), isOverride);
+    }
+
+    /**
+     * 复制文件或目录<br>
+     * 情况如下：
+     *
+     * <pre>
+     * 1、src和dest都为目录，则将src目录及其目录下所有文件目录拷贝到dest下
+     * 2、src和dest都为文件，直接复制，名字为dest
+     * 3、src为文件，dest为目录，将src拷贝到dest目录下
+     * </pre>
+     *
+     * @param src        源文件
+     * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
+     * @param isOverride 是否覆盖目标文件
+     * @return 目标目录或文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File copy(File src, File dest, boolean isOverride) throws IORuntimeException {
+        return FileCopier.create(src, dest).setOverride(isOverride).copy();
+    }
+
+    /**
+     * 复制文件或目录<br>
+     * 情况如下：
+     *
+     * <pre>
+     * 1、src和dest都为目录，则讲src下所有文件目录拷贝到dest下
+     * 2、src和dest都为文件，直接复制，名字为dest
+     * 3、src为文件，dest为目录，将src拷贝到dest目录下
+     * </pre>
+     *
+     * @param src        源文件
+     * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
+     * @param isOverride 是否覆盖目标文件
+     * @return 目标目录或文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File copyContent(File src, File dest, boolean isOverride) throws IORuntimeException {
+        return FileCopier.create(src, dest).setCopyContentIfDir(true).setOverride(isOverride).copy();
+    }
+
+    /**
+     * 复制文件或目录<br>
+     * 情况如下：
+     *
+     * <pre>
+     * 1、src和dest都为目录，则讲src下所有文件（包括子目录）拷贝到dest下
+     * 2、src和dest都为文件，直接复制，名字为dest
+     * 3、src为文件，dest为目录，将src拷贝到dest目录下
+     * </pre>
+     *
+     * @param src        源文件
+     * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
+     * @param isOverride 是否覆盖目标文件
+     * @return 目标目录或文件
+     * @throws IORuntimeException IO异常
+     * @since 4.1.5
+     */
+    public static File copyFilesFromDir(File src, File dest, boolean isOverride) throws IORuntimeException {
+        return FileCopier.create(src, dest).setCopyContentIfDir(true).setOnlyCopyFile(true).setOverride(isOverride).copy();
+    }
+
+
+    // -------------------------------------------------------------------------------------------- name start
+
+    /**
+     * 返回文件名
+     *
+     * @param file 文件
+     * @return 文件名
+     * @since 4.1.13
+     */
+    public static String getName(File file) {
+        return (null != file) ? file.getName() : null;
+    }
+
+    /**
+     * 返回文件名
+     *
+     * @param filePath 文件
+     * @return 文件名
+     * @since 4.1.13
+     */
+    public static String getName(String filePath) {
+        if (null == filePath) {
+            return null;
+        }
+        int len = filePath.length();
+        if (0 == len) {
+            return filePath;
+        }
+        if (CharUtil.isFileSeparator(filePath.charAt(len - 1))) {
+            // 以分隔符结尾的去掉结尾分隔符
+            len--;
+        }
+
+        int begin = 0;
+        char c;
+        for (int i = len - 1; i > -1; i--) {
+            c = filePath.charAt(i);
+            if (CharUtil.isFileSeparator(c)) {
+                // 查找最后一个路径分隔符（/或者\）
+                begin = i + 1;
+                break;
+            }
+        }
+
+        return filePath.substring(begin, len);
+    }
+
+    /**
+     * 返回主文件名
+     *
+     * @param file 文件
+     * @return 主文件名
+     */
+    public static String mainName(File file) {
+        if (file.isDirectory()) {
+            return file.getName();
+        }
+        return mainName(file.getName());
+    }
+
+    /**
+     * 返回主文件名
+     *
+     * @param fileName 完整文件名
+     * @return 主文件名
+     */
+    public static String mainName(String fileName) {
+        if (null == fileName) {
+            return null;
+        }
+        int len = fileName.length();
+        if (0 == len) {
+            return fileName;
+        }
+        if (CharUtil.isFileSeparator(fileName.charAt(len - 1))) {
+            len--;
+        }
+
+        int begin = 0;
+        int end = len;
+        char c;
+        for (int i = len - 1; i >= 0; i--) {
+            c = fileName.charAt(i);
+            if (len == end && CharUtil.DOT == c) {
+                // 查找最后一个文件名和扩展名的分隔符：.
+                end = i;
+            }
+            // 查找最后一个路径分隔符（/或者\），如果这个分隔符在.之后，则继续查找，否则结束
+            if (CharUtil.isFileSeparator(c)) {
+                begin = i + 1;
+                break;
+            }
+        }
+
+        return fileName.substring(begin, end);
+    }
+
+    /**
+     * 递归遍历目录以及子目录中的所有文件<br>
+     * 如果提供file为文件，直接返回过滤结果
+     *
+     * @param path       当前遍历文件或目录的路径
+     * @param fileFilter 文件过滤规则对象，选择要保留的文件，只对文件有效，不过滤目录
+     * @return 文件列表
+     * @since 3.2.0
+     */
+    public static List<File> loopFiles(String path, FileFilter fileFilter) {
+        return loopFiles(file(path), fileFilter);
+    }
+
+    /**
+     * 递归遍历目录以及子目录中的所有文件<br>
+     * 如果提供file为文件，直接返回过滤结果
+     *
+     * @param file       当前遍历文件或目录
+     * @param fileFilter 文件过滤规则对象，选择要保留的文件，只对文件有效，不过滤目录
+     * @return 文件列表
+     */
+    public static List<File> loopFiles(File file, FileFilter fileFilter) {
+        final List<File> fileList = new ArrayList<>();
+        if (null == file || false == file.exists()) {
+            return fileList;
+        }
+
+        if (file.isDirectory()) {
+            final File[] subFiles = file.listFiles();
+            if (ArrayUtil.isNotEmpty(subFiles)) {
+                for (File tmp : subFiles) {
+                    fileList.addAll(loopFiles(tmp, fileFilter));
+                }
+            }
+        } else {
+            if (null == fileFilter || fileFilter.accept(file)) {
+                fileList.add(file);
+            }
+        }
+
+        return fileList;
+    }
+
+    /**
+     * 递归遍历目录以及子目录中的所有文件<br>
+     * 如果提供file为文件，直接返回过滤结果
+     *
+     * @param file       当前遍历文件或目录
+     * @param maxDepth   遍历最大深度，-1表示遍历到没有目录为止
+     * @param fileFilter 文件过滤规则对象，选择要保留的文件，只对文件有效，不过滤目录，null表示接收全部文件
+     * @return 文件列表
+     * @since 4.6.3
+     */
+    public static List<File> loopFiles(File file, int maxDepth, final FileFilter fileFilter) {
+        final List<File> fileList = new ArrayList<>();
+        if (null == file || false == file.exists()) {
+            return fileList;
+        } else if (false == file.isDirectory()) {
+            if (null == fileFilter || fileFilter.accept(file)) {
+                fileList.add(file);
+            }
+            return fileList;
+        }
+
+        walkFiles(file.toPath(), maxDepth, new SimpleFileVisitor<Path>() {
+
+            @Override
+            public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+                final File file = path.toFile();
+                if (null == fileFilter || fileFilter.accept(file)) {
+                    fileList.add(file);
+                }
+                return FileVisitResult.CONTINUE;
+            }
+        });
+
+        return fileList;
+    }
+
+    /**
+     * 遍历指定path下的文件并做处理
+     *
+     * @param start    起始路径，必须为目录
+     * @param maxDepth 最大遍历深度，-1表示不限制深度
+     * @param visitor  {@link FileVisitor} 接口，用于自定义在访问文件时，访问目录前后等节点做的操作
+     * @see Files#walkFileTree(Path, java.util.Set, int, FileVisitor)
+     * @since 4.6.3
+     */
+    public static void walkFiles(Path start, int maxDepth, FileVisitor<? super Path> visitor) {
+        if (maxDepth < 0) {
+            // < 0 表示遍历到最底层
+            maxDepth = Integer.MAX_VALUE;
+        }
+
+        try {
+            Files.walkFileTree(start, EnumSet.noneOf(FileVisitOption.class), maxDepth, visitor);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 递归遍历目录以及子目录中的所有文件
+     *
+     * @param path 当前遍历文件或目录的路径
+     * @return 文件列表
+     * @since 3.2.0
+     */
+    public static List<File> loopFiles(String path) {
+        return loopFiles(file(path));
+    }
+
+    /**
+     * 递归遍历目录以及子目录中的所有文件
+     *
+     * @param file 当前遍历文件
+     * @return 文件列表
+     */
+    public static List<File> loopFiles(File file) {
+        return loopFiles(file, null);
+    }
+
+    /**
+     * 判断是否为文件，如果path为null，则返回false
+     *
+     * @param path 文件路径
+     * @return 如果为文件true
+     */
+    public static boolean isFile(String path) {
+        return (null != path) && file(path).isFile();
+    }
+
+    /**
+     * 判断是否为文件，如果file为null，则返回false
+     *
+     * @param file 文件
+     * @return 如果为文件true
+     */
+    public static boolean isFile(File file) {
+        return (null != file) && file.isFile();
+    }
+
+    /**
+     * 判断是否为文件，如果file为null，则返回false
+     *
+     * @param path          文件
+     * @param isFollowLinks 是否跟踪软链（快捷方式）
+     * @return 如果为文件true
+     */
+    public static boolean isFile(Path path, boolean isFollowLinks) {
+        if (null == path) {
+            return false;
+        }
+        final LinkOption[] options = isFollowLinks ? new LinkOption[0] : new LinkOption[]{LinkOption.NOFOLLOW_LINKS};
+        return Files.isRegularFile(path, options);
+    }
+
+    /**
+     * 创建临时文件<br>
+     * 创建后的文件名为 prefix[Randon].tmp
+     *
+     * @param dir 临时文件创建的所在目录
+     * @return 临时文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File createTempFile(File dir) throws IORuntimeException {
+        return createTempFile("hutool", null, dir, true);
+    }
+
+    /**
+     * 创建临时文件<br>
+     * 创建后的文件名为 prefix[Randon].tmp
+     *
+     * @param dir       临时文件创建的所在目录
+     * @param isReCreat 是否重新创建文件（删掉原来的，创建新的）
+     * @return 临时文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File createTempFile(File dir, boolean isReCreat) throws IORuntimeException {
+        return createTempFile("hutool", null, dir, isReCreat);
+    }
+
+    /**
+     * 创建临时文件<br>
+     * 创建后的文件名为 prefix[Randon].suffix From com.jodd.io.FileUtil
+     *
+     * @param prefix    前缀，至少3个字符
+     * @param suffix    后缀，如果null则使用默认.tmp
+     * @param dir       临时文件创建的所在目录
+     * @param isReCreat 是否重新创建文件（删掉原来的，创建新的）
+     * @return 临时文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File createTempFile(String prefix, String suffix, File dir, boolean isReCreat) throws IORuntimeException {
+        int exceptionsCount = 0;
+        while (true) {
+            try {
+                File file = File.createTempFile(prefix, suffix, dir).getCanonicalFile();
+                if (isReCreat) {
+                    //noinspection ResultOfMethodCallIgnored
+                    file.delete();
+                    //noinspection ResultOfMethodCallIgnored
+                    file.createNewFile();
+                }
+                return file;
+            } catch (IOException ioex) { // fixes java.io.WinNTFileSystem.createFileExclusively access denied
+                if (++exceptionsCount >= 50) {
+                    throw new IORuntimeException(ioex);
+                }
+            }
+        }
+    }
+
+    /**
+     * 移动文件或者目录
+     *
+     * @param src        源文件或者目录
+     * @param dest       目标文件或者目录
+     * @param isOverride 是否覆盖目标，只有目标为文件才覆盖
+     * @throws IORuntimeException IO异常
+     */
+    public static void move(File src, File dest, boolean isOverride) throws IORuntimeException {
+        // check
+        if (false == src.exists()) {
+            throw new IORuntimeException("File not found: " + src);
+        }
+
+        // 来源为文件夹，目标为文件
+        if (src.isDirectory() && dest.isFile()) {
+            throw new IORuntimeException(StrUtil.format("Can not move directory [{}] to file [{}]", src, dest));
+        }
+
+        if (isOverride && dest.isFile()) {// 只有目标为文件的情况下覆盖之
+            //noinspection ResultOfMethodCallIgnored
+            dest.delete();
+        }
+
+        // 来源为文件，目标为文件夹
+        if (src.isFile() && dest.isDirectory()) {
+            dest = new File(dest, src.getName());
+        }
+
+        if (false == src.renameTo(dest)) {
+            // 在文件系统不同的情况下，renameTo会失败，此时使用copy，然后删除原文件
+            try {
+                copy(src, dest, isOverride);
+            } catch (Exception e) {
+                throw new IORuntimeException(StrUtil.format("Move [{}] to [{}] failed!", src, dest), e);
+            }
+            // 复制后删除源
+            del(src);
+        }
+    }
+
+    /**
+     * 删除文件或者文件夹<br>
+     * 路径如果为相对路径，会转换为ClassPath路径！ 注意：删除文件夹时不会判断文件夹是否为空，如果不空则递归删除子文件或文件夹<br>
+     * 某个文件删除失败会终止删除操作
+     *
+     * @param fullFileOrDirPath 文件或者目录的路径
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     */
+    public static boolean del(String fullFileOrDirPath) throws IORuntimeException {
+        return del(file(fullFileOrDirPath));
+    }
+
+    /**
+     * 删除文件或者文件夹<br>
+     * 注意：删除文件夹时不会判断文件夹是否为空，如果不空则递归删除子文件或文件夹<br>
+     * 某个文件删除失败会终止删除操作
+     *
+     * @param file 文件对象
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     */
+    public static boolean del(File file) throws IORuntimeException {
+        if (file == null || false == file.exists()) {
+            // 如果文件不存在或已被删除，此处返回true表示删除成功
+            return true;
+        }
+
+        if (file.isDirectory()) {
+            // 清空目录下所有文件和目录
+            boolean isOk = clean(file);
+            if (false == isOk) {
+                return false;
+            }
+        }
+
+        // 删除文件或清空后的目录
+        return file.delete();
+    }
+
+    /**
+     * 删除文件或者文件夹<br>
+     * 注意：删除文件夹时不会判断文件夹是否为空，如果不空则递归删除子文件或文件夹<br>
+     * 某个文件删除失败会终止删除操作
+     *
+     * @param path 文件对象
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     * @since 4.4.2
+     */
+    public static boolean del(Path path) throws IORuntimeException {
+        if (Files.notExists(path)) {
+            return true;
+        }
+
+        try {
+            if (Files.isDirectory(path)) {
+                Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+
+                    @Override
+                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                        Files.delete(file);
+                        return FileVisitResult.CONTINUE;
+                    }
+
+                    @Override
+                    public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
+                        if (e == null) {
+                            Files.delete(dir);
+                            return FileVisitResult.CONTINUE;
+                        } else {
+                            throw e;
+                        }
+                    }
+                });
+            } else {
+                Files.delete(path);
+            }
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+        return true;
+    }
+
+    /**
+     * 清空文件夹<br>
+     * 注意：清空文件夹时不会判断文件夹是否为空，如果不空则递归删除子文件或文件夹<br>
+     * 某个文件删除失败会终止删除操作
+     *
+     * @param dirPath 文件夹路径
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     * @since 4.0.8
+     */
+    public static boolean clean(String dirPath) throws IORuntimeException {
+        return clean(file(dirPath));
+    }
+
+    /**
+     * 清空文件夹<br>
+     * 注意：清空文件夹时不会判断文件夹是否为空，如果不空则递归删除子文件或文件夹<br>
+     * 某个文件删除失败会终止删除操作
+     *
+     * @param directory 文件夹
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     * @since 3.0.6
+     */
+    public static boolean clean(File directory) throws IORuntimeException {
+        if (directory == null || directory.exists() == false || false == directory.isDirectory()) {
+            return true;
+        }
+
+        final File[] files = directory.listFiles();
+        if (null != files) {
+            boolean isOk;
+            for (File childFile : files) {
+                isOk = del(childFile);
+                if (isOk == false) {
+                    // 删除一个出错则本次删除任务失败
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 清理空文件夹<br>
+     * 此方法用于递归删除空的文件夹，不删除文件<br>
+     * 如果传入的文件夹本身就是空的，删除这个文件夹
+     *
+     * @param directory 文件夹
+     * @return 成功与否
+     * @throws IORuntimeException IO异常
+     * @since 4.5.5
+     */
+    public static boolean cleanEmpty(File directory) throws IORuntimeException {
+        if (directory == null || false == directory.exists() || false == directory.isDirectory()) {
+            return true;
+        }
+
+        final File[] files = directory.listFiles();
+        if (ArrayUtil.isEmpty(files)) {
+            // 空文件夹则删除之
+            //noinspection ResultOfMethodCallIgnored
+            directory.delete();
+        } else {
+            for (File childFile : files) {
+                cleanEmpty(childFile);
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 获得最后一个文件路径分隔符的位置
+     *
+     * @param filePath 文件路径
+     * @return 最后一个文件路径分隔符的位置
+     */
+    public static int lastIndexOfSeparator(String filePath) {
+        if (StrUtil.isNotEmpty(filePath)) {
+            int i = filePath.length();
+            char c;
+            while (--i >= 0) {
+                c = filePath.charAt(i);
+                if (CharUtil.isFileSeparator(c)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+
+    /**
+     * 获得一个带缓存的写入对象
+     *
+     * @param path        输出路径，绝对路径
+     * @param charsetName 字符集
+     * @param isAppend    是否追加
+     * @return BufferedReader对象
+     * @throws IORuntimeException IO异常
+     */
+    public static BufferedWriter getWriter(String path, String charsetName, boolean isAppend) throws IORuntimeException {
+        return getWriter(touch(path), Charset.forName(charsetName), isAppend);
+    }
+
+    /**
+     * 获得一个带缓存的写入对象
+     *
+     * @param path     输出路径，绝对路径
+     * @param charset  字符集
+     * @param isAppend 是否追加
+     * @return BufferedReader对象
+     * @throws IORuntimeException IO异常
+     */
+    public static BufferedWriter getWriter(String path, Charset charset, boolean isAppend) throws IORuntimeException {
+        return getWriter(touch(path), charset, isAppend);
+    }
+
+    /**
+     * 获得一个带缓存的写入对象
+     *
+     * @param file        输出文件
+     * @param charsetName 字符集
+     * @param isAppend    是否追加
+     * @return BufferedReader对象
+     * @throws IORuntimeException IO异常
+     */
+    public static BufferedWriter getWriter(File file, String charsetName, boolean isAppend) throws IORuntimeException {
+        return getWriter(file, Charset.forName(charsetName), isAppend);
+    }
+
+    /**
+     * 获得一个带缓存的写入对象
+     *
+     * @param file     输出文件
+     * @param charset  字符集
+     * @param isAppend 是否追加
+     * @return BufferedReader对象
+     * @throws IORuntimeException IO异常
+     */
+    public static BufferedWriter getWriter(File file, Charset charset, boolean isAppend) throws IORuntimeException {
+        return FileWriter.create(file, charset).getWriter(isAppend);
+    }
+
+    /**
+     * 获得一个打印写入对象，可以有print
+     *
+     * @param path     输出路径，绝对路径
+     * @param charset  字符集
+     * @param isAppend 是否追加
+     * @return 打印对象
+     * @throws IORuntimeException IO异常
+     */
+    public static PrintWriter getPrintWriter(String path, String charset, boolean isAppend) throws IORuntimeException {
+        return new PrintWriter(getWriter(path, charset, isAppend));
+    }
+
+    /**
+     * 获得一个打印写入对象，可以有print
+     *
+     * @param path     输出路径，绝对路径
+     * @param charset  字符集
+     * @param isAppend 是否追加
+     * @return 打印对象
+     * @throws IORuntimeException IO异常
+     * @since 4.1.1
+     */
+    public static PrintWriter getPrintWriter(String path, Charset charset, boolean isAppend) throws IORuntimeException {
+        return new PrintWriter(getWriter(path, charset, isAppend));
+    }
+
+    /**
+     * 获得一个打印写入对象，可以有print
+     *
+     * @param file     文件
+     * @param charset  字符集
+     * @param isAppend 是否追加
+     * @return 打印对象
+     * @throws IORuntimeException IO异常
+     */
+    public static PrintWriter getPrintWriter(File file, String charset, boolean isAppend) throws IORuntimeException {
+        return new PrintWriter(getWriter(file, charset, isAppend));
+    }
+
+    /**
+     * 获取Web项目下的web root路径<br>
+     * 原理是首先获取ClassPath路径，由于在web项目中ClassPath位于 WEB-INF/classes/下，故向上获取两级目录即可。
+     *
+     * @return web root路径
+     * @since 4.0.13
+     */
+    public static File getWebRoot() {
+        final String classPath = ClassUtil.getClassPath();
+        if (StrUtil.isNotBlank(classPath)) {
+            return getParent(file(classPath), 2);
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定层级的父路径
+     *
+     * <pre>
+     * getParent("d:/aaa/bbb/cc/ddd", 0) -》 "d:/aaa/bbb/cc/ddd"
+     * getParent("d:/aaa/bbb/cc/ddd", 2) -》 "d:/aaa/bbb"
+     * getParent("d:/aaa/bbb/cc/ddd", 4) -》 "d:/"
+     * getParent("d:/aaa/bbb/cc/ddd", 5) -》 null
+     * </pre>
+     *
+     * @param filePath 目录或文件路径
+     * @param level    层级
+     * @return 路径File，如果不存在返回null
+     * @since 4.1.2
+     */
+    public static String getParent(String filePath, int level) {
+        final File parent = getParent(file(filePath), level);
+        try {
+            return null == parent ? null : parent.getCanonicalPath();
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 获取指定层级的父路径
+     *
+     * <pre>
+     * getParent(file("d:/aaa/bbb/cc/ddd", 0)) -》 "d:/aaa/bbb/cc/ddd"
+     * getParent(file("d:/aaa/bbb/cc/ddd", 2)) -》 "d:/aaa/bbb"
+     * getParent(file("d:/aaa/bbb/cc/ddd", 4)) -》 "d:/"
+     * getParent(file("d:/aaa/bbb/cc/ddd", 5)) -》 null
+     * </pre>
+     *
+     * @param file  目录或文件
+     * @param level 层级
+     * @return 路径File，如果不存在返回null
+     * @since 4.1.2
+     */
+    public static File getParent(File file, int level) {
+        if (level < 1 || null == file) {
+            return file;
+        }
+
+        File parentFile;
+        try {
+            parentFile = file.getCanonicalFile().getParentFile();
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+        if (1 == level) {
+            return parentFile;
+        }
+        return getParent(parentFile, level - 1);
+    }
 }

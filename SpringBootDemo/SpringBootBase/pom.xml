@@ -20,7 +20,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <niufen.common.version>0.0.1-SNAPSHOT</niufen.common.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.10</lombok.version>
         <springboot.version>2.2.7.RELEASE</springboot.version>
         <mybatis.starter.version>2.1.1</mybatis.starter.version>
         <mysql.version>5.1.47</mysql.version>

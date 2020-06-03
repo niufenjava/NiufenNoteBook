@@ -1,6 +1,6 @@
 package io.niufen.springboot.common.base.mapper.provider;
 
-import io.niufen.common.util.ReflectionUtil;
+import io.niufen.common.util.ReflectUtil;
 import io.niufen.common.util.StrUtil;
 import io.niufen.springboot.common.base.mapper.BaseProvider;
 import io.niufen.springboot.common.constant.SqlConstants;
@@ -51,7 +51,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
+                        .filter(field -> ReflectUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1000)
@@ -64,7 +64,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();
@@ -77,7 +77,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
+                        .filter(field -> ReflectUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -91,7 +91,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(table.getSelectColumns())
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -106,7 +106,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(SqlConstants.COUNT)
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getMapValue(field, params) != null)
+                        .filter(field -> ReflectUtil.getMapValue(field, params) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .LIMIT(1)
@@ -120,7 +120,7 @@ public class SelectSqlProvider extends BaseProvider {
                 .SELECT(SqlConstants.COUNT)
                 .FROM(table.getTableName())
                 .WHERE(Stream.of(table.getFields())
-                        .filter(field -> ReflectionUtil.getFieldValue(field, criteria) != null)
+                        .filter(field -> ReflectUtil.getFieldValue(field, criteria) != null)
                         .map(TableInfo::assignParameter)
                         .toArray(String[]::new))
                 .toString();

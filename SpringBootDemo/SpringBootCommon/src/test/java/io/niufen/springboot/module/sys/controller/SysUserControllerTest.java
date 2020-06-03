@@ -2,7 +2,7 @@ package io.niufen.springboot.module.sys.controller;
 
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.util.FakerUtil;
-import io.niufen.springboot.common.BaseApiTest;
+import io.niufen.springboot.common.Base64ApiTest;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import io.niufen.springboot.module.sys.form.SysUserPageQueryForm;
 import io.niufen.springboot.module.sys.form.SysUserUpdateForm;
@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class SysUserControllerTest extends BaseApiTest {
+public class SysUserControllerTest extends Base64ApiTest {
 
     @Test
     public void index() throws Exception {

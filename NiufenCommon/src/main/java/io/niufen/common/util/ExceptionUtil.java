@@ -70,7 +70,7 @@ public class ExceptionUtil {
         if (wrapThrowable.isInstance(throwable)) {
             return (T) throwable;
         }
-        return ReflectionUtil.newInstance(wrapThrowable, throwable);
+        return ReflectUtil.newInstance(wrapThrowable, throwable);
     }
 
     /**
@@ -204,7 +204,7 @@ public class ExceptionUtil {
             length = limit;
         }
 
-        if (CollectionUtil.isNotEmpty(replaceCharToStrMap)) {
+        if (CollUtil.isNotEmpty(replaceCharToStrMap)) {
             final StringBuilder sb = StrUtil.builder();
             char c;
             String value;

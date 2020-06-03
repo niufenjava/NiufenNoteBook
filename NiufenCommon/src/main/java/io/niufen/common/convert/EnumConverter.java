@@ -75,7 +75,7 @@ public class EnumConverter extends AbstractConverter<Object> {
                 final Class<?> valueClass = value.getClass();
                 for (Map.Entry<Class<?>, Method> entry : valueOfMethods.entrySet()) {
                     if (ClassUtil.isAssignable(entry.getKey(), valueClass)) {
-                        enumResult = ReflectionUtil.invokeStatic(entry.getValue(), value);
+                        enumResult = ReflectUtil.invokeStatic(entry.getValue(), value);
                     }
                 }
             }

@@ -2,7 +2,7 @@ package io.niufen.common.convert.impl;
 
 import io.niufen.common.convert.AbstractConverter;
 import io.niufen.common.util.BooleanUtil;
-import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.DateUtils;
 import io.niufen.common.util.NumberUtil;
 import io.niufen.common.util.StrUtil;
 
@@ -155,7 +155,7 @@ public class PrimitiveConverter extends AbstractConverter<Object> {
             }
             if (value instanceof TemporalAccessor) {
                 //TODO
-                return (int) DateUtil.toInstant((TemporalAccessor) value).toEpochMilli();
+                return (int) DateUtils.toInstant((TemporalAccessor) value).toEpochMilli();
             }
             final String strValue = convertToStr(value);
             if (StrUtil.isBlank(strValue)) {
@@ -192,7 +192,7 @@ public class PrimitiveConverter extends AbstractConverter<Object> {
             }
             if (value instanceof TemporalAccessor) {
                 //TODO
-                return (int) DateUtil.toInstant((TemporalAccessor) value).toEpochMilli();
+                return (int) DateUtils.toInstant((TemporalAccessor) value).toEpochMilli();
             }
             final String strValue = convertToStr(value);
             if (StrUtil.isBlank(strValue)) {

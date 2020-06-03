@@ -3,7 +3,7 @@ package io.niufen.springboot.druid.multi.mybatis;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.DateUtils;
 import io.niufen.common.util.FakerUtil;
 import io.niufen.springboot.druid.multi.mybatis.entity.SysUserEntity;
 import io.niufen.springboot.druid.multi.mybatis.mapper.SysUserMapperByXml;
@@ -42,7 +42,7 @@ class SpringBootDruidMultiMybatisApplicationTests {
         sysUserEntity.setDelFlag(YesOrNoEnum.NO.getIndex());
         sysUserEntity.setCreateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         sysUserEntity.setCreateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
-        sysUserEntity.setCreateTime(DateUtil.curTime());
+        sysUserEntity.setCreateTime(DateUtils.curTime());
         return sysUserEntity;
     }
 

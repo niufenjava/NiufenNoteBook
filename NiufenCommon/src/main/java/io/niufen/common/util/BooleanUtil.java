@@ -357,7 +357,7 @@ public class BooleanUtil {
         if (ArrayUtil.isEmpty(array)) {
             throw new IllegalArgumentException("The Array must not be empty !");
         }
-        final boolean[] primitive = ConvertUtil.convert(boolean[].class, array);
+        final boolean[] primitive = Convert.convert(boolean[].class, array);
         return and(primitive);
     }
 
@@ -408,7 +408,7 @@ public class BooleanUtil {
         if (ArrayUtil.isEmpty(array)) {
             throw new IllegalArgumentException("The Array must not be empty !");
         }
-        final boolean[] primitive = ConvertUtil.convert(boolean[].class, array);
+        final boolean[] primitive = Convert.convert(boolean[].class, array);
         return or(primitive);
     }
 
@@ -456,7 +456,7 @@ public class BooleanUtil {
         if (ArrayUtil.isEmpty(array)) {
             throw new IllegalArgumentException("The Array must not be empty !");
         }
-        final boolean[] primitive = ConvertUtil.convert(boolean[].class, array);
+        final boolean[] primitive = Convert.convert(boolean[].class, array);
         return xor(primitive);
     }
 

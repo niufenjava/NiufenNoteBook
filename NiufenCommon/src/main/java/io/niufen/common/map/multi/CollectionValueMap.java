@@ -2,7 +2,7 @@ package io.niufen.common.map.multi;
 
 
 import io.niufen.common.map.MapWrapper;
-import io.niufen.common.util.CollectionUtil;
+import io.niufen.common.util.CollUtil;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -97,7 +97,7 @@ public abstract class CollectionValueMap<K, V> extends MapWrapper<K, Collection<
 	 */
 	public V get(K key, int index) {
 		final Collection<V> collection = get(key);
-		return CollectionUtil.get(collection, index);
+		return CollUtil.get(collection, index);
 	}
 
 	/**

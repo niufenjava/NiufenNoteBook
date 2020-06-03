@@ -1,6 +1,6 @@
 package io.niufen.common.util;
 
-import io.niufen.common.comparator.CompareUtils;
+import io.niufen.common.comparator.CompareUtil;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.exception.UtilException;
 import io.niufen.common.lang.Editor;
@@ -1174,7 +1174,7 @@ public class ArrayUtil {
     public static <T> int indexOf(T[] array, Object value) {
         if (null != array) {
             for (int i = 0; i < array.length; i++) {
-                if (ObjectUtil.equals(value, array[i])) {
+                if (ObjectUtil.equal(value, array[i])) {
                     return i;
                 }
             }
@@ -1339,7 +1339,7 @@ public class ArrayUtil {
     public static <T> int lastIndexOf(T[] array, Object value) {
         if (null != array) {
             for (int i = array.length - 1; i >= 0; i--) {
-                if (ObjectUtil.equals(value, array[i])) {
+                if (ObjectUtil.equal(value, array[i])) {
                     return i;
                 }
             }
@@ -2663,9 +2663,9 @@ public class ArrayUtil {
             if (isArray(item)) {
                 sb.append(join(wrap(item), conjunction, prefix, suffix));
             } else if (item instanceof Iterable<?>) {
-                sb.append(CollectionUtil.join((Iterable<?>) item, conjunction, prefix, suffix));
+                sb.append(CollUtil.join((Iterable<?>) item, conjunction, prefix, suffix));
             } else if (item instanceof Iterator<?>) {
-                sb.append(IteratorUtil.join((Iterator<?>) item, conjunction, prefix, suffix));
+                sb.append(IterUtil.join((Iterator<?>) item, conjunction, prefix, suffix));
             } else {
                 sb.append(StrUtil.wrap(StrUtil.toString(item), prefix, suffix));
             }
@@ -2993,7 +2993,7 @@ public class ArrayUtil {
      * @since 3.0.9
      */
     public static <T> T[] toArray(Iterable<T> iterable, Class<T> componentType) {
-        return toArray(CollectionUtil.toCollection(iterable), componentType);
+        return toArray(CollUtil.toCollection(iterable), componentType);
     }
 
     /**
@@ -3676,7 +3676,7 @@ public class ArrayUtil {
         }
         T min = numberArray[0];
         for (T t : numberArray) {
-            if (CompareUtils.compare(min, t, comparator) > 0) {
+            if (CompareUtil.compare(min, t, comparator) > 0) {
                 min = t;
             }
         }
@@ -3854,7 +3854,7 @@ public class ArrayUtil {
         }
         T max = numberArray[0];
         for (int i = 1; i < numberArray.length; i++) {
-            if (CompareUtils.compare(max, numberArray[i], comparator) < 0) {
+            if (CompareUtil.compare(max, numberArray[i], comparator) < 0) {
                 max = numberArray[i];
             }
         }

@@ -286,8 +286,8 @@ public class SysUserMapperTest {
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
-        params.put("endCreateTime", DateUtil.curTime());
+        params.put("startCreateTime", DateUtils.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtils.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);
@@ -325,8 +325,8 @@ public class SysUserMapperTest {
         params.put("password",password);
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
-        params.put("endCreateTime", DateUtil.curTime());
+        params.put("startCreateTime", DateUtils.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtils.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);

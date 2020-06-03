@@ -420,5 +420,19 @@ public class TypeUtil {
     public static boolean isUnknow(Type type) {
         return null == type || type instanceof TypeVariable;
     }
+    /**
+     * 指定泛型数组中是否含有泛型变量
+     * @param types 泛型数组
+     * @return 是否含有泛型变量
+     * @since 4.5.7
+     */
+    public static boolean hasTypeVeriable(Type... types) {
+        for (Type type : types) {
+            if(type instanceof TypeVariable) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

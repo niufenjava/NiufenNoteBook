@@ -4,14 +4,18 @@ import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.convert.BasicTypeEnum;
 import io.niufen.common.io.IORuntimeException;
+import io.niufen.common.io.resource.ResourceUtil;
 import io.niufen.common.lang.Assert;
-import io.niufen.common.text.StringSpliter;
+import io.niufen.common.lang.Filter;
+import io.niufen.common.text.StrSpliter;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class 类工具类
@@ -21,6 +25,42 @@ import java.util.List;
 public class ClassUtil {
 
     // ------------ 获取 Class 相关 ------------
+    /**
+     * 是否为标准的类<br>
+     * 这个类必须：
+     *
+     * <pre>
+     * 1、非接口
+     * 2、非抽象类
+     * 3、非Enum枚举
+     * 4、非数组
+     * 5、非注解
+     * 6、非原始类型（int, long等）
+     * </pre>
+     *
+     * @param clazz 类
+     * @return 是否为标准类
+     */
+    public static boolean isNormalClass(Class<?> clazz) {
+        return null != clazz //
+                && false == clazz.isInterface() //
+                && false == isAbstract(clazz) //
+                && false == clazz.isEnum() //
+                && false == clazz.isArray() //
+                && false == clazz.isAnnotation() //
+                && false == clazz.isSynthetic() //
+                && false == clazz.isPrimitive();//
+    }
+
+    /**
+     * 是否为抽象类
+     *
+     * @param clazz 类
+     * @return 是否为抽象类
+     */
+    public static boolean isAbstract(Class<?> clazz) {
+        return Modifier.isAbstract(clazz.getModifiers());
+    }
 
     /**
      * 安全的获取对象类型
@@ -50,6 +90,19 @@ public class ClassUtil {
         return classes;
     }
 
+
+    /**
+     * 设置方法为可访问
+     *
+     * @param method 方法
+     * @return 方法
+     */
+    public static Method setAccessible(Method method) {
+        if (null != method && false == method.isAccessible()) {
+            method.setAccessible(true);
+        }
+        return method;
+    }
     /**
      * 获得定义当前类的类（外围类）
      * 举例：
@@ -158,7 +211,7 @@ public class ClassUtil {
         if (null == className) {
             return null;
         }
-        final List<String> packages = StringSpliter.split(className, CharConstants.DOT);
+        final List<String> packages = StrSpliter.split(className, CharConstants.DOT);
         if (null == packages || packages.size() < 2) {
             return className;
         }
@@ -261,6 +314,21 @@ public class ClassUtil {
      */
     public static <T> Class<T> loadClass(String className) {
         return loadClass(className, true);
+    }
+    /**
+     * 获取{@link ClassLoader}<br>
+     * 获取顺序如下：<br>
+     *
+     * <pre>
+     * 1、获取当前线程的ContextClassLoader
+     * 2、获取{@link ClassUtil}类对应的ClassLoader
+     * 3、获取系统ClassLoader（{@link ClassLoader#getSystemClassLoader()}）
+     * </pre>
+     *
+     * @return 类加载器
+     */
+    public static ClassLoader getClassLoader() {
+        return ClassLoaderUtil.getClassLoader();
     }
 
     /**
@@ -485,4 +553,174 @@ public class ClassUtil {
     public static URL getResourceURL(String resource) throws IORuntimeException {
         return ResourceUtil.getResource(resource);
     }
+
+
+    // ----------------------------------------------------------------------------------------- Field
+
+    /**
+     * 查找指定类中的所有字段（包括非public字段）， 字段不存在则返回<code>null</code>
+     *
+     * @param clazz     被查找字段的类
+     * @param fieldName 字段名
+     * @return 字段
+     * @throws SecurityException 安全异常
+     */
+    public static Field getDeclaredField(Class<?> clazz, String fieldName) throws SecurityException {
+        if (null == clazz || StrUtil.isBlank(fieldName)) {
+            return null;
+        }
+        try {
+            return clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            // e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 查找指定类中的所有字段（包括非public字段)
+     *
+     * @param clazz 被查找字段的类
+     * @return 字段
+     * @throws SecurityException 安全异常
+     */
+    public static Field[] getDeclaredFields(Class<?> clazz) throws SecurityException {
+        if (null == clazz) {
+            return null;
+        }
+        return clazz.getDeclaredFields();
+    }
+
+
+    // ----------------------------------------------------------------------------------------- Method
+
+    /**
+     * 获得指定类中的Public方法名<br>
+     * 去重重载的方法
+     *
+     * @param clazz 类
+     * @return 方法名Set
+     */
+    public static Set<String> getPublicMethodNames(Class<?> clazz) {
+        return ReflectUtil.getPublicMethodNames(clazz);
+    }
+
+    /**
+     * 获得本类及其父类所有Public方法
+     *
+     * @param clazz 查找方法的类
+     * @return 过滤后的方法列表
+     */
+    public static Method[] getPublicMethods(Class<?> clazz) {
+        return ReflectUtil.getPublicMethods(clazz);
+    }
+
+    /**
+     * 获得指定类过滤后的Public方法列表
+     *
+     * @param clazz  查找方法的类
+     * @param filter 过滤器
+     * @return 过滤后的方法列表
+     */
+    public static List<Method> getPublicMethods(Class<?> clazz, Filter<Method> filter) {
+        return ReflectUtil.getPublicMethods(clazz, filter);
+    }
+
+    /**
+     * 获得指定类过滤后的Public方法列表
+     *
+     * @param clazz          查找方法的类
+     * @param excludeMethods 不包括的方法
+     * @return 过滤后的方法列表
+     */
+    public static List<Method> getPublicMethods(Class<?> clazz, Method... excludeMethods) {
+        return ReflectUtil.getPublicMethods(clazz, excludeMethods);
+    }
+
+    /**
+     * 获得指定类过滤后的Public方法列表
+     *
+     * @param clazz              查找方法的类
+     * @param excludeMethodNames 不包括的方法名列表
+     * @return 过滤后的方法列表
+     */
+    public static List<Method> getPublicMethods(Class<?> clazz, String... excludeMethodNames) {
+        return ReflectUtil.getPublicMethods(clazz, excludeMethodNames);
+    }
+
+    /**
+     * 查找指定Public方法 如果找不到对应的方法或方法不为public的则返回<code>null</code>
+     *
+     * @param clazz      类
+     * @param methodName 方法名
+     * @param paramTypes 参数类型
+     * @return 方法
+     * @throws SecurityException 无权访问抛出异常
+     */
+    public static Method getPublicMethod(Class<?> clazz, String methodName, Class<?>... paramTypes) throws SecurityException {
+        return ReflectUtil.getPublicMethod(clazz, methodName, paramTypes);
+    }
+
+    /**
+     * 获得指定类中的Public方法名<br>
+     * 去重重载的方法
+     *
+     * @param clazz 类
+     * @return 方法名Set
+     */
+    public static Set<String> getDeclaredMethodNames(Class<?> clazz) {
+        return ReflectUtil.getMethodNames(clazz);
+    }
+
+    /**
+     * 获得声明的所有方法，包括本类及其父类和接口的所有方法和Object类的方法
+     *
+     * @param clazz 类
+     * @return 方法数组
+     */
+    public static Method[] getDeclaredMethods(Class<?> clazz) {
+        return ReflectUtil.getMethods(clazz);
+    }
+
+    /**
+     * 查找指定对象中的所有方法（包括非public方法），也包括父对象和Object类的方法
+     *
+     * @param obj        被查找的对象
+     * @param methodName 方法名
+     * @param args       参数
+     * @return 方法
+     * @throws SecurityException 无访问权限抛出异常
+     */
+    public static Method getDeclaredMethodOfObj(Object obj, String methodName, Object... args) throws SecurityException {
+        return getDeclaredMethod(obj.getClass(), methodName, getClasses(args));
+    }
+
+    /**
+     * 查找指定类中的所有方法（包括非public方法），也包括父类和Object类的方法 找不到方法会返回<code>null</code>
+     *
+     * @param clazz          被查找的类
+     * @param methodName     方法名
+     * @param parameterTypes 参数类型
+     * @return 方法
+     * @throws SecurityException 无访问权限抛出异常
+     */
+    public static Method getDeclaredMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws SecurityException {
+        return ReflectUtil.getMethod(clazz, methodName, parameterTypes);
+    }
+
+    /**
+     * 获得默认值列表
+     *
+     * @param classes 值类型
+     * @return 默认值列表
+     * @since 3.0.9
+     */
+    public static Object[] getDefaultValues(Class<?>... classes) {
+        final Object[] values = new Object[classes.length];
+        for (int i = 0; i < classes.length; i++) {
+            values[i] = getDefaultValue(classes[i]);
+        }
+        return values;
+    }
+
 }

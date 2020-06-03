@@ -1,11 +1,15 @@
 package io.niufen.common.util;
 
 import io.niufen.common.exception.UtilException;
+import io.niufen.common.io.IORuntimeException;
+import io.niufen.common.io.IoUtil;
+import io.niufen.common.io.resource.ResourceUtil;
+import io.niufen.common.lang.Assert;
+import io.niufen.common.net.URLDecoder;
 import io.niufen.common.net.URLEncoder;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.nio.charset.Charset;
 
 /**
@@ -79,6 +83,45 @@ public class URLUtil {
      */
     public static final String WAR_URL_SEPARATOR = "*/";
 
+
+    /**
+     * 通过一个字符串形式的URL地址创建URL对象
+     *
+     * @param url URL
+     * @return URL对象
+     */
+    public static URL url(String url) {
+        return url(url, null);
+    }
+
+    /**
+     * 通过一个字符串形式的URL地址创建URL对象
+     *
+     * @param url     URL
+     * @param handler {@link URLStreamHandler}
+     * @return URL对象
+     * @since 4.1.1
+     */
+    public static URL url(String url, URLStreamHandler handler) {
+        Assert.notNull(url, "URL must not be null");
+
+        // 兼容Spring的ClassPath路径
+        if (url.startsWith(CLASSPATH_URL_PREFIX)) {
+            url = url.substring(CLASSPATH_URL_PREFIX.length());
+            return ClassLoaderUtil.getClassLoader().getResource(url);
+        }
+
+        try {
+            return new URL(null, url, handler);
+        } catch (MalformedURLException e) {
+            // 尝试文件路径
+            try {
+                return new File(url).toURI().toURL();
+            } catch (MalformedURLException ex2) {
+                throw new UtilException(e);
+            }
+        }
+    }
 
 
     /**
@@ -197,5 +240,220 @@ public class URLUtil {
             charset = CharsetUtil.defaultCharset();
         }
         return URLEncoder.DEFAULT.encode(url, charset);
+    }
+
+
+    /**
+     * Data URI Scheme封装。data URI scheme 允许我们使用内联（inline-code）的方式在网页中包含数据，<br>
+     * 目的是将一些小的数据，直接嵌入到网页中，从而不用再从外部文件载入。常用于将图片嵌入网页。
+     *
+     * <p>
+     * Data URI的格式规范：
+     * <pre>
+     *     data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;&lt;encoding&gt;],&lt;encoded data&gt;
+     * </pre>
+     *
+     * @param mimeType 可选项（null表示无），数据类型（image/png、text/plain等）
+     * @param encoding 数据编码方式（US-ASCII，BASE64等）
+     * @param data     编码后的数据
+     * @return Data URI字符串
+     * @since 5.3.6
+     */
+    public static String getDataUri(String mimeType, String encoding, String data) {
+        return getDataUri(mimeType, null, encoding, data);
+    }
+
+    /**
+     * Data URI Scheme封装。data URI scheme 允许我们使用内联（inline-code）的方式在网页中包含数据，<br>
+     * 目的是将一些小的数据，直接嵌入到网页中，从而不用再从外部文件载入。常用于将图片嵌入网页。
+     *
+     * <p>
+     * Data URI的格式规范：
+     * <pre>
+     *     data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;&lt;encoding&gt;],&lt;encoded data&gt;
+     * </pre>
+     *
+     * @param mimeType 可选项（null表示无），数据类型（image/png、text/plain等）
+     * @param charset  可选项（null表示无），源文本的字符集编码方式
+     * @param encoding 数据编码方式（US-ASCII，BASE64等）
+     * @param data     编码后的数据
+     * @return Data URI字符串
+     * @since 5.3.6
+     */
+    public static String getDataUri(String mimeType, Charset charset, String encoding, String data) {
+        final StringBuilder builder = StrUtil.builder("data:");
+        if (StrUtil.isNotBlank(mimeType)) {
+            builder.append(mimeType);
+        }
+        if (null != charset) {
+            builder.append(";charset=").append(charset.name());
+        }
+        if (StrUtil.isNotBlank(encoding)) {
+            builder.append(';').append(encoding);
+        }
+        builder.append(',').append(data);
+
+        return builder.toString();
+    }
+
+    /**
+     * 从URL中获取流
+     *
+     * @param url {@link URL}
+     * @return InputStream流
+     * @since 3.2.1
+     */
+    public static InputStream getStream(URL url) {
+        Assert.notNull(url);
+        try {
+            return url.openStream();
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 获得Reader
+     *
+     * @param url     {@link URL}
+     * @param charset 编码
+     * @return {@link BufferedReader}
+     * @since 3.2.1
+     */
+    public static BufferedReader getReader(URL url, Charset charset) {
+        return IoUtil.getReader(getStream(url), charset);
+    }
+
+    /**
+     * 获得URL
+     *
+     * @param pathBaseClassLoader 相对路径（相对于classes）
+     * @return URL
+     * @see ResourceUtil#getResource(String)
+     */
+    public static URL getURL(String pathBaseClassLoader) {
+        return ResourceUtil.getResource(pathBaseClassLoader);
+    }
+
+    /**
+     * 获得URL
+     *
+     * @param path  相对给定 class所在的路径
+     * @param clazz 指定class
+     * @return URL
+     * @see ResourceUtil#getResource(String, Class)
+     */
+    public static URL getURL(String path, Class<?> clazz) {
+        return ResourceUtil.getResource(path, clazz);
+    }
+
+    /**
+     * 获得URL，常用于使用绝对路径时的情况
+     *
+     * @param file URL对应的文件对象
+     * @return URL
+     * @throws UtilException MalformedURLException
+     */
+    public static URL getURL(File file) {
+        Assert.notNull(file, "File is null !");
+        try {
+            return file.toURI().toURL();
+        } catch (MalformedURLException e) {
+            throw new UtilException(e, "Error occured when get URL!");
+        }
+    }
+
+    /**
+     * 获得URL，常用于使用绝对路径时的情况
+     *
+     * @param files URL对应的文件对象
+     * @return URL
+     * @throws UtilException MalformedURLException
+     */
+    public static URL[] getURLs(File... files) {
+        final URL[] urls = new URL[files.length];
+        try {
+            for (int i = 0; i < files.length; i++) {
+                urls[i] = files[i].toURI().toURL();
+            }
+        } catch (MalformedURLException e) {
+            throw new UtilException(e, "Error occured when get URL!");
+        }
+
+        return urls;
+    }
+
+    /**
+     * 编码URL，默认使用UTF-8编码<br>
+     * 将需要转换的内容（ASCII码形式之外的内容），用十六进制表示法转换出来，并在之前加上%开头。
+     *
+     * @param url URL
+     * @return 编码后的URL
+     * @throws UtilException UnsupportedEncodingException
+     */
+    public static String encodeAll(String url) {
+        return encodeAll(url, CharsetUtil.CHARSET_UTF_8);
+    }
+
+    /**
+     * 编码URL<br>
+     * 将需要转换的内容（ASCII码形式之外的内容），用十六进制表示法转换出来，并在之前加上%开头。
+     *
+     * @param url     URL
+     * @param charset 编码，为null表示不编码
+     * @return 编码后的URL
+     * @throws UtilException UnsupportedEncodingException
+     */
+    public static String encodeAll(String url, Charset charset) throws UtilException {
+        if (null == charset) {
+            return url;
+        }
+        try {
+            return java.net.URLEncoder.encode(url, charset.toString());
+        } catch (UnsupportedEncodingException e) {
+            throw new UtilException(e);
+        }
+    }
+
+    /**
+     * 解码URL<br>
+     * 将%开头的16进制表示的内容解码。
+     *
+     * @param url URL
+     * @return 解码后的URL
+     * @throws UtilException UnsupportedEncodingException
+     * @since 3.1.2
+     */
+    public static String decode(String url) throws UtilException {
+        return decode(url, CharsetUtil.UTF_8);
+    }
+
+    /**
+     * 解码application/x-www-form-urlencoded字符<br>
+     * 将%开头的16进制表示的内容解码。
+     *
+     * @param content 被解码内容
+     * @param charset 编码，null表示不解码
+     * @return 编码后的字符
+     * @since 4.4.1
+     */
+    public static String decode(String content, Charset charset) {
+        if (null == charset) {
+            return content;
+        }
+        return URLDecoder.decode(content, charset);
+    }
+
+    /**
+     * 解码application/x-www-form-urlencoded字符<br>
+     * 将%开头的16进制表示的内容解码。
+     *
+     * @param content URL
+     * @param charset 编码
+     * @return 解码后的URL
+     * @throws UtilException UnsupportedEncodingException
+     */
+    public static String decode(String content, String charset) throws UtilException {
+        return decode(content, CharsetUtil.charset(charset));
     }
 }

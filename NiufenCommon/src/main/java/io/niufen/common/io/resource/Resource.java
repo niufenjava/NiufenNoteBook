@@ -1,8 +1,8 @@
 package io.niufen.common.io.resource;
 
 import io.niufen.common.io.IORuntimeException;
+import io.niufen.common.io.IoUtil;
 import io.niufen.common.util.CharsetUtil;
-import io.niufen.common.util.IoUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;

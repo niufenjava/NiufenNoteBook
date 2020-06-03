@@ -3,7 +3,7 @@ package io.niufen.common.io.watch.watchers;
 import io.niufen.common.collection.ConcurrentHashSet;
 import io.niufen.common.io.watch.Watcher;
 import io.niufen.common.lang.Assert;
-import io.niufen.common.util.ThreadUtil;
+import io.niufen.common.thread.ThreadUtil;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

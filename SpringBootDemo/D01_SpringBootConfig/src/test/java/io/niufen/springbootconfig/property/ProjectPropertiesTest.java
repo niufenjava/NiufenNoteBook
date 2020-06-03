@@ -1,14 +1,11 @@
 package io.niufen.springbootconfig.property;
 
-import io.niufen.springbootconfig.BaseTest;
+import io.niufen.springbootconfig.Base64Test;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-public class ProjectPropertiesTest extends BaseTest {
+public class ProjectPropertiesTest extends Base64Test {
 
     @Autowired
     private ProjectProperties projectProperties;

@@ -1,7 +1,7 @@
 package io.niufen.common.text;
 
 import io.niufen.common.util.ArrayUtil;
-import io.niufen.common.util.ConvertUtil;
+import io.niufen.common.util.Convert;
 import io.niufen.common.util.StrUtil;
 
 import java.io.Serializable;
@@ -163,7 +163,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 		if (obj instanceof CharSequence) {
 			return insert(index, (CharSequence) obj);
 		}
-		return insert(index, ConvertUtil.toStr(obj));
+		return insert(index, Convert.toStr(obj));
 	}
 
 	/**

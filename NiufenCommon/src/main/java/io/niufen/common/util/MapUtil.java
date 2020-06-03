@@ -1,5 +1,10 @@
 package io.niufen.common.util;
 
+import io.niufen.common.lang.Editor;
+import io.niufen.common.lang.Filter;
+import io.niufen.common.map.CamelCaseLinkedMap;
+import io.niufen.common.map.CamelCaseMap;
+
 import java.util.*;
 
 /**
@@ -18,6 +23,43 @@ public class MapUtil {
      * 默认增长因子，当Map的size达到 容量*增长因子时，开始扩充Map
      */
     public static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+    /**
+     * 获取Map指定key的值，并转换为字符串
+     *
+     * @param map Map
+     * @param key 键
+     * @return 值
+     * @since 4.0.6
+     */
+    public static String getStr(Map<?, ?> map, Object key) {
+        return get(map, key, String.class);
+    }
+    /**
+     * 获取Map指定key的值，并转换为Integer
+     *
+     * @param map Map
+     * @param key 键
+     * @return 值
+     * @since 4.0.6
+     */
+    public static Integer getInt(Map<?, ?> map, Object key) {
+        return get(map, key, Integer.class);
+    }
+
+    /**
+     * 获取Map指定key的值，并转换为指定类型
+     *
+     * @param <T>  目标值类型
+     * @param map  Map
+     * @param key  键
+     * @param type 值类型
+     * @return 值
+     * @since 4.0.6
+     */
+    public static <T> T get(Map<?, ?> map, Object key, Class<T> type) {
+        return null == map ? null : Convert.convert(type, map.get(key));
+    }
 
     /**
      * Map是否为空
@@ -52,7 +94,7 @@ public class MapUtil {
         if (ClassUtil.isAssignable(mapType, AbstractMap.class)) {
             return new HashMap<>();
         } else {
-            return (Map<K, V>) ReflectionUtil.newInstance(mapType);
+            return (Map<K, V>) ReflectUtil.newInstance(mapType);
         }
     }
 
@@ -200,7 +242,7 @@ public class MapUtil {
         if (mapType.isAssignableFrom(AbstractMap.class)) {
             return new HashMap<>();
         } else {
-            return (Map<K, V>) ReflectionUtil.newInstance(mapType);
+            return (Map<K, V>) ReflectUtil.newInstance(mapType);
         }
     }
 
@@ -295,7 +337,7 @@ public class MapUtil {
                     } else {
                         strBuilder.append(separator);
                     }
-                    strBuilder.append(ConvertUtil.toStr(entry.getKey())).append(keyValueSeparator).append(ConvertUtil.toStr(entry.getValue()));
+                    strBuilder.append(Convert.toStr(entry.getKey())).append(keyValueSeparator).append(Convert.toStr(entry.getValue()));
                 }
             }
         }
@@ -351,6 +393,176 @@ public class MapUtil {
         }
 
         return result;
+    }
+
+    /**
+     * 获取Map的部分key生成新的Map
+     *
+     * @param <K>  Key类型
+     * @param <V>  Value类型
+     * @param map  Map
+     * @param keys 键列表
+     * @return 新Map，只包含指定的key
+     * @since 4.0.6
+     */
+    @SuppressWarnings("unchecked")
+    public static <K, V> Map<K, V> getAny(Map<K, V> map, final K... keys) {
+        return filter(map, (Filter<Map.Entry<K, V>>) entry -> ArrayUtil.contains(keys, entry.getKey()));
+    }
+// ----------------------------------------------------------------------------------------------- filter
+
+    /**
+     * 过滤<br>
+     * 过滤过程通过传入的Editor实现来返回需要的元素内容，这个Editor实现可以实现以下功能：
+     *
+     * <pre>
+     * 1、过滤出需要的对象，如果返回null表示这个元素对象抛弃
+     * 2、修改元素对象，返回集合中为修改后的对象
+     * </pre>
+     *
+     * @param <K>    Key类型
+     * @param <V>    Value类型
+     * @param map    Map
+     * @param editor 编辑器接口
+     * @return 过滤后的Map
+     */
+    public static <K, V> Map<K, V> filter(Map<K, V> map, Editor<Map.Entry<K, V>> editor) {
+        if (null == map || null == editor) {
+            return map;
+        }
+
+        final Map<K, V> map2 = ObjectUtil.clone(map);
+        if (isEmpty(map2)) {
+            return map2;
+        }
+
+        map2.clear();
+        Map.Entry<K, V> modified;
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            modified = editor.edit(entry);
+            if (null != modified) {
+                map2.put(modified.getKey(), modified.getValue());
+            }
+        }
+        return map2;
+    }
+
+
+    /**
+     * 过滤<br>
+     * 过滤过程通过传入的Editor实现来返回需要的元素内容，这个Filter实现可以实现以下功能：
+     *
+     * <pre>
+     * 1、过滤出需要的对象，如果返回null表示这个元素对象抛弃
+     * </pre>
+     *
+     * @param <K>    Key类型
+     * @param <V>    Value类型
+     * @param map    Map
+     * @param filter 编辑器接口
+     * @return 过滤后的Map
+     * @since 3.1.0
+     */
+    public static <K, V> Map<K, V> filter(Map<K, V> map, Filter<Map.Entry<K, V>> filter) {
+        if (null == map || null == filter) {
+            return map;
+        }
+
+        final Map<K, V> map2 = ObjectUtil.clone(map);
+        if (isEmpty(map2)) {
+            return map2;
+        }
+
+        map2.clear();
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (filter.accept(entry)) {
+                map2.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return map2;
+    }
+
+    /**
+     * 过滤Map保留指定键值对，如果键不存在跳过
+     *
+     * @param <K>  Key类型
+     * @param <V>  Value类型
+     * @param map  原始Map
+     * @param keys 键列表
+     * @return Map 结果，结果的Map类型与原Map保持一致
+     * @since 4.0.10
+     */
+    @SuppressWarnings("unchecked")
+    public static <K, V> Map<K, V> filter(Map<K, V> map, K... keys) {
+        final Map<K, V> map2 = ObjectUtil.clone(map);
+        if (isEmpty(map2)) {
+            return map2;
+        }
+
+        map2.clear();
+        for (K key : keys) {
+            if (map.containsKey(key)) {
+                map2.put(key, map.get(key));
+            }
+        }
+        return map2;
+    }
+    /**
+     * Map的键和值互换
+     * 互换键值对不检查值是否有重复，如果有则后加入的元素替换先加入的元素<br>
+     * 值的顺序在HashMap中不确定，所以谁覆盖谁也不确定，在有序的Map中按照先后顺序覆盖，保留最后的值
+     *
+     * @param <T> 键和值类型
+     * @param map Map对象，键值类型必须一致
+     * @return 互换后的Map
+     * @see #inverse(Map)
+     * @since 3.2.2
+     */
+    public static <T> Map<T, T> reverse(Map<T, T> map) {
+        return filter(map, (Editor<Map.Entry<T, T>>) t -> new Map.Entry<T, T>() {
+
+            @Override
+            public T getKey() {
+                return t.getValue();
+            }
+
+            @Override
+            public T getValue() {
+                return t.getKey();
+            }
+
+            @Override
+            public T setValue(T value) {
+                throw new UnsupportedOperationException("Unsupported setValue method !");
+            }
+        });
+    }
+    /**
+     * 将已知Map转换为key为驼峰风格的Map<br>
+     * 如果KEY为非String类型，保留原值
+     *
+     * @param <K> key的类型
+     * @param <V> value的类型
+     * @param map 原Map
+     * @return 驼峰风格Map
+     * @since 3.3.1
+     */
+    public static <K, V> Map<K, V> toCamelCaseMap(Map<K, V> map) {
+        return (map instanceof LinkedHashMap) ? new CamelCaseLinkedMap<>(map) : new CamelCaseMap<>(map);
+    }
+
+
+    /**
+     * 将对应Map转换为不可修改的Map
+     *
+     * @param map Map
+     * @param <K> 键类型
+     * @param <V> 值类型
+     * @return 不修改Map
+     * @since 5.2.6
+     */
+    public static <K, V> Map<K, V> unmodifiable(Map<K, V> map) {
+        return Collections.unmodifiableMap(map);
     }
 
 }

@@ -1,7 +1,7 @@
 package io.niufen.common.codec;
 
 import io.niufen.common.lang.Assert;
-import io.niufen.common.text.StringSpliter;
+import io.niufen.common.text.StrSpliter;
 import io.niufen.common.util.CharUtil;
 import io.niufen.common.util.StrUtil;
 
@@ -155,7 +155,7 @@ public class Morse {
             throw new IllegalArgumentException("Incorrect morse.");
         }
         // todo string.split(morse,split)
-        final List<String> words = StringSpliter.split(morse, split);
+        final List<String> words = StrSpliter.split(morse, split);
         final StringBuilder textBuilder = new StringBuilder();
         Integer codePoint;
         for (String word : words) {

@@ -294,4 +294,34 @@ public class CharUtil {
     public static int getDigit16(int b) {
         return Character.digit(b, IntConstants.SIXTEEN);
     }
+
+
+    /**
+     * 获取给定字符的16进制数值
+     *
+     * @param b 字符
+     * @return 16进制字符
+     * @since 5.3.1
+     */
+    public static int digit16(int b) {
+        return Character.digit(b, 16);
+    }
+
+
+    /**
+     * 是否为16进制规范的字符，判断是否为如下字符
+     * <pre>
+     * 1. 0~9
+     * 2. a~f
+     * 4. A~F
+     * </pre>
+     *
+     * @param c 字符
+     * @return 是否为16进制规范的字符
+     * @since 4.1.5
+     */
+    public static boolean isHexChar(char c) {
+        return isNumber(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+    }
+
 }

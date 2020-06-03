@@ -1,6 +1,6 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.CollectionUtil;
+import io.niufen.common.util.CollUtil;
 import io.niufen.common.util.TypeUtil;
 
 import java.lang.reflect.Type;
@@ -83,7 +83,7 @@ public class CollectionConverter implements IConverter<Collection<?>> {
      * @return 转换后的结合对象
      */
     protected Collection<?> convertInternal(Object value) {
-        final Collection<Object> collection = CollectionUtil.newCollection(TypeUtil.getClass(this.collectionType));
-        return CollectionUtil.addAll(collection, value, this.elementType);
+        final Collection<Object> collection = CollUtil.newCollection(TypeUtil.getClass(this.collectionType));
+        return CollUtil.addAll(collection, value, this.elementType);
     }
 }

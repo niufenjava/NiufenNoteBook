@@ -3,7 +3,7 @@ package io.niufen.springboot.aoplog.controller;
 import io.niufen.springboot.module.sys.form.SysUserCreateForm;
 import org.junit.Test;
 
-public class AopTestControllerTest extends BaseApiTest{
+public class AopTestControllerTest extends Base64ApiTest {
 
     @Test
     public void index() {

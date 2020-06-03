@@ -3,10 +3,15 @@ package io.niufen.common.util;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.StringConstants;
+import io.niufen.common.lang.Matcher;
+import io.niufen.common.text.StrBuilder;
 import io.niufen.common.text.StringFormatter;
+import io.niufen.common.text.StrSpliter;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 字符串工具类
@@ -18,6 +23,7 @@ public class StrUtil {
     public static final char C_SPACE = CharConstants.SPACE;
     public static final String EMPTY = "";
     public static final String UNDERLINE = "_";
+    public static final char C_DELIM_START = CharUtil.DELIM_START;
     public static final String SPACE = " ";
     public static final char C_TAB = '	';;
     public static final char C_CR = CharConstants.CR;
@@ -46,7 +52,7 @@ public class StrUtil {
     public static final String BRACKET_START = "[";
     public static final String BRACKET_END = "]";
     public static final String COLON = ":";
-
+    public static final char C_COLON = ':';
     public static final String HTML_NBSP = "&nbsp;";
     public static final String HTML_AMP = "&amp;";
     public static final String HTML_QUOTE = "&quot;";
@@ -1598,6 +1604,29 @@ public class StrUtil {
     public static StringBuilder builder(int capacity) {
         return new StringBuilder(capacity);
     }
+    /**
+     * 创建StringBuilder对象
+     *
+     * @param strs 初始字符串列表
+     * @return StringBuilder对象
+     */
+    public static StringBuilder builder(CharSequence... strs) {
+        final StringBuilder sb = new StringBuilder();
+        for (CharSequence str : strs) {
+            sb.append(str);
+        }
+        return sb;
+    }
+
+    /**
+     * 创建StrBuilder对象
+     *
+     * @return StrBuilder对象
+     * @since 4.0.1
+     */
+    public static StrBuilder strBuilder() {
+        return StrBuilder.create();
+    }
 
     // --------------------- equals ---------------------
 
@@ -2121,6 +2150,353 @@ public class StrUtil {
         }
         System.arraycopy(array, 0, array, n, size - n);
         return new String(array);
+    }
+
+    /**
+     * 将驼峰式命名的字符串转换为下划线方式。如果转换前的驼峰式命名的字符串为空，则返回空字符串。<br>
+     * 例如：
+     *
+     * <pre>
+     * HelloWorld=》hello_world
+     * Hello_World=》hello_world
+     * HelloWorld_test=》hello_world_test
+     * </pre>
+     *
+     * @param str 转换前的驼峰式命名的字符串，也可以为下划线形式
+     * @return 转换后下划线方式命名的字符串
+     */
+    public static String toUnderlineCase(CharSequence str) {
+        return toSymbolCase(str, CharUtil.UNDERLINE);
+    }
+
+    /**
+     * 将驼峰式命名的字符串转换为使用符号连接方式。如果转换前的驼峰式命名的字符串为空，则返回空字符串。<br>
+     *
+     * @param str    转换前的驼峰式命名的字符串，也可以为符号连接形式
+     * @param symbol 连接符
+     * @return 转换后符号连接方式命名的字符串
+     * @since 4.0.10
+     */
+    public static String toSymbolCase(CharSequence str, char symbol) {
+        if (str == null) {
+            return null;
+        }
+
+        final int length = str.length();
+        final StringBuilder sb = new StringBuilder();
+        char c;
+        for (int i = 0; i < length; i++) {
+            c = str.charAt(i);
+            final Character preChar = (i > 0) ? str.charAt(i - 1) : null;
+            if (Character.isUpperCase(c)) {
+                // 遇到大写字母处理
+                final Character nextChar = (i < str.length() - 1) ? str.charAt(i + 1) : null;
+                if (null != preChar && Character.isUpperCase(preChar)) {
+                    // 前一个字符为大写，则按照一个词对待
+                    sb.append(c);
+                } else if (null != nextChar && Character.isUpperCase(nextChar)) {
+                    // 后一个为大写字母，按照一个词对待
+                    if (null != preChar && symbol != preChar) {
+                        // 前一个是非大写时按照新词对待，加连接符
+                        sb.append(symbol);
+                    }
+                    sb.append(c);
+                } else {
+                    // 前后都为非大写按照新词对待
+                    if (null != preChar && symbol != preChar) {
+                        // 前一个非连接符，补充连接符
+                        sb.append(symbol);
+                    }
+                    sb.append(Character.toLowerCase(c));
+                }
+            } else {
+                if (sb.length() > 0 && Character.isUpperCase(sb.charAt(sb.length() - 1)) && symbol != c) {
+                    // 当结果中前一个字母为大写，当前为小写，说明此字符为新词开始（连接符也表示新词）
+                    sb.append(symbol);
+                }
+                // 小写或符号
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 以 conjunction 为分隔符将多个对象转换为字符串
+     *
+     * @param conjunction 分隔符
+     * @param objs        数组
+     * @return 连接后的字符串
+     * @see ArrayUtil#join(Object, CharSequence)
+     */
+    public static String join(CharSequence conjunction, Object... objs) {
+        return ArrayUtil.join(objs, conjunction);
+    }
+    /**
+     * 字符串的每一个字符是否都与定义的匹配器匹配
+     *
+     * @param value   字符串
+     * @param matcher 匹配器
+     * @return 是否全部匹配
+     * @since 3.2.3
+     */
+    public static boolean isAllCharMatch(CharSequence value, Matcher<Character> matcher) {
+        if (StrUtil.isBlank(value)) {
+            return false;
+        }
+        int len = value.length();
+        boolean isAllMatch = true;
+        for (int i = 0; i < len; i++) {
+            isAllMatch &= matcher.match(value.charAt(i));
+        }
+        return isAllMatch;
+    }
+    /**
+     * 统计指定内容中包含指定字符串的数量<br>
+     * 参数为 {@code null} 或者 "" 返回 {@code 0}.
+     *
+     * <pre>
+     * StrUtil.count(null, *)       = 0
+     * StrUtil.count("", *)         = 0
+     * StrUtil.count("abba", null)  = 0
+     * StrUtil.count("abba", "")    = 0
+     * StrUtil.count("abba", "a")   = 2
+     * StrUtil.count("abba", "ab")  = 1
+     * StrUtil.count("abba", "xxx") = 0
+     * </pre>
+     *
+     * @param content      被查找的字符串
+     * @param strForSearch 需要查找的字符串
+     * @return 查找到的个数
+     */
+    public static int count(CharSequence content, CharSequence strForSearch) {
+        if (hasEmpty(content, strForSearch) || strForSearch.length() > content.length()) {
+            return 0;
+        }
+
+        int count = 0;
+        int idx = 0;
+        final String content2 = content.toString();
+        final String strForSearch2 = strForSearch.toString();
+        while ((idx = content2.indexOf(strForSearch2, idx)) > -1) {
+            count++;
+            idx += strForSearch.length();
+        }
+        return count;
+    }
+    /**
+     * 统计指定内容中包含指定字符的数量
+     *
+     * @param content       内容
+     * @param charForSearch 被统计的字符
+     * @return 包含数量
+     */
+    public static int count(CharSequence content, char charForSearch) {
+        int count = 0;
+        if (isEmpty(content)) {
+            return 0;
+        }
+        int contentLength = content.length();
+        for (int i = 0; i < contentLength; i++) {
+            if (charForSearch == content.charAt(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * 切分字符串，去除切分后每个元素两边的空白符，去除空白项
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @return 切分后的集合
+     * @since 3.1.2
+     */
+    public static List<String> splitTrim(CharSequence str, char separator) {
+        return splitTrim(str, separator, -1);
+    }
+
+    /**
+     * 切分字符串，去除切分后每个元素两边的空白符，去除空白项
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @return 切分后的集合
+     * @since 3.2.0
+     */
+    public static List<String> splitTrim(CharSequence str, CharSequence separator) {
+        return splitTrim(str, separator, -1);
+    }
+
+    /**
+     * 切分字符串，去除切分后每个元素两边的空白符，去除空白项
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @param limit     限制分片数，-1不限制
+     * @return 切分后的集合
+     * @since 3.1.0
+     */
+    public static List<String> splitTrim(CharSequence str, char separator, int limit) {
+        return split(str, separator, limit, true, true);
+    }
+
+    /**
+     * 切分字符串，去除切分后每个元素两边的空白符，去除空白项
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @param limit     限制分片数，-1不限制
+     * @return 切分后的集合
+     * @since 3.2.0
+     */
+    public static List<String> splitTrim(CharSequence str, CharSequence separator, int limit) {
+        return split(str, separator, limit, true, true);
+    }
+
+    /**
+     * 切分字符串，不限制分片数量
+     *
+     * @param str         被切分的字符串
+     * @param separator   分隔符字符
+     * @param isTrim      是否去除切分字符串后每个元素两边的空格
+     * @param ignoreEmpty 是否忽略空串
+     * @return 切分后的集合
+     * @since 3.0.8
+     */
+    public static List<String> split(CharSequence str, char separator, boolean isTrim, boolean ignoreEmpty) {
+        return split(str, separator, 0, isTrim, ignoreEmpty);
+    }
+
+    /**
+     * 切分字符串
+     *
+     * @param str         被切分的字符串
+     * @param separator   分隔符字符
+     * @param limit       限制分片数，-1不限制
+     * @param isTrim      是否去除切分字符串后每个元素两边的空格
+     * @param ignoreEmpty 是否忽略空串
+     * @return 切分后的集合
+     * @since 3.0.8
+     */
+    public static List<String> split(CharSequence str, char separator, int limit, boolean isTrim, boolean ignoreEmpty) {
+        if (null == str) {
+            return new ArrayList<>(0);
+        }
+        return StrSpliter.split(str.toString(), separator, limit, isTrim, ignoreEmpty);
+    }
+
+    /**
+     * 切分字符串
+     *
+     * @param str         被切分的字符串
+     * @param separator   分隔符字符
+     * @param limit       限制分片数，-1不限制
+     * @param isTrim      是否去除切分字符串后每个元素两边的空格
+     * @param ignoreEmpty 是否忽略空串
+     * @return 切分后的集合
+     * @since 3.2.0
+     */
+    public static List<String> split(CharSequence str, CharSequence separator, int limit, boolean isTrim, boolean ignoreEmpty) {
+        if (null == str) {
+            return new ArrayList<>(0);
+        }
+        final String separatorStr = (null == separator) ? null : separator.toString();
+        return StrSpliter.split(str.toString(), separatorStr, limit, isTrim, ignoreEmpty);
+    }
+
+    /**
+     * 切分字符串，如果分隔符不存在则返回原字符串
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符
+     * @return 字符串
+     */
+    public static String[] split(CharSequence str, CharSequence separator) {
+        if (str == null) {
+            return new String[]{};
+        }
+
+        final String separatorStr = (null == separator) ? null : separator.toString();
+        return StrSpliter.splitToArray(str.toString(), separatorStr, 0, false, false);
+    }
+
+    /**
+     * 切分字符串
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @return 切分后的数组
+     */
+    public static String[] splitToArray(CharSequence str, char separator) {
+        return splitToArray(str, separator, 0);
+    }
+    /**
+     * 切分字符串
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @param limit     限制分片数
+     * @return 切分后的数组
+     */
+    public static String[] splitToArray(CharSequence str, char separator, int limit) {
+        if (null == str) {
+            return new String[]{};
+        }
+        return StrSpliter.splitToArray(str.toString(), separator, limit, false, false);
+    }
+
+    /**
+     * 根据给定长度，将给定字符串截取为多个部分
+     *
+     * @param str 字符串
+     * @param len 每一个小节的长度
+     * @return 截取后的字符串数组
+     * @see StrSpliter#splitByLength(String, int)
+     */
+    public static String[] split(CharSequence str, int len) {
+        if (null == str) {
+            return new String[]{};
+        }
+        return StrSpliter.splitByLength(str.toString(), len);
+    }
+
+    /**
+     * 切分字符串<br>
+     * a#b#c =》 [a,b,c] <br>
+     * a##b#c =》 [a,"",b,c]
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @return 切分后的集合
+     */
+    public static List<String> split(CharSequence str, char separator) {
+        return split(str, separator, 0);
+    }
+    /**
+     * 切分字符串，不去除切分后每个元素两边的空白符，不去除空白项
+     *
+     * @param str       被切分的字符串
+     * @param separator 分隔符字符
+     * @param limit     限制分片数，-1不限制
+     * @return 切分后的集合
+     */
+    public static List<String> split(CharSequence str, char separator, int limit) {
+        return split(str, separator, limit, false, false);
+    }
+    /**
+     * 原字符串首字母大写并在其首部添加指定字符串 例如：str=name, preString=get =》 return getName
+     *
+     * @param str       被处理的字符串
+     * @param preString 添加的首部
+     * @return 处理后的字符串
+     */
+    public static String upperFirstAndAddPre(CharSequence str, String preString) {
+        if (str == null || preString == null) {
+            return null;
+        }
+        return preString + upperFirst(str);
     }
 
 }

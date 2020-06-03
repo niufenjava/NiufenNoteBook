@@ -1,8 +1,8 @@
 package io.niufen.common.io.watch;
 
+import io.niufen.common.io.IoUtil;
 import io.niufen.common.lang.Filter;
 import io.niufen.common.util.ArrayUtil;
-import io.niufen.common.util.IoUtil;
 
 import java.io.Closeable;
 import java.io.IOException;

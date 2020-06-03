@@ -1,7 +1,7 @@
 package io.niufen.common.lang;
 
 import io.niufen.common.util.ArrayUtil;
-import io.niufen.common.util.CollectionUtil;
+import io.niufen.common.util.CollUtil;
 import io.niufen.common.util.StrUtil;
 
 import java.util.Collection;
@@ -354,7 +354,7 @@ public class Assert {
      * @throws IllegalArgumentException if the collection is {@code null} or has no elements
      */
     public static <T> Collection<T> notEmpty(Collection<T> collection, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
-        if (CollectionUtil.isEmpty(collection)) {
+        if (CollUtil.isEmpty(collection)) {
             throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
         }
         return collection;
@@ -392,7 +392,7 @@ public class Assert {
      * @throws IllegalArgumentException if the map is {@code null} or has no entries
      */
     public static <K, V> Map<K, V> notEmpty(Map<K, V> map, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
-        if (CollectionUtil.isEmpty(map)) {
+        if (CollUtil.isEmpty(map)) {
             throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
         }
         return map;

@@ -166,6 +166,6 @@ public class PlaceholderResolver {
         if (obj instanceof Map) {
             return resolveByMap(content, (Map<String, Object>) obj);
         }
-        return resolveByRule(content, placeholderValue -> String.valueOf(ReflectionUtil.getValueByFieldPath(obj, placeholderValue)));
+        return resolveByRule(content, placeholderValue -> String.valueOf(ReflectUtil.getValueByFieldPath(obj, placeholderValue)));
     }
 }

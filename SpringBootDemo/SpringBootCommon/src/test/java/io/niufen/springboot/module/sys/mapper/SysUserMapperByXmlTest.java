@@ -5,7 +5,7 @@ import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.DateUtils;
 import io.niufen.common.util.ListUtil;
 import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.ObjectCompareUtil;
@@ -100,8 +100,8 @@ public class SysUserMapperByXmlTest {
         params.put("status",1);
         params.put("delFlag",0);
         params.put("password","-----");
-        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
-        params.put("endCreateTime", DateUtil.curTime());
+        params.put("startCreateTime", DateUtils.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtils.curTime());
         Assert.assertTrue(10 <= sysUserMapper.update(updateSysUserEntity,params));
     }
 
@@ -154,8 +154,8 @@ public class SysUserMapperByXmlTest {
         Map<String, Object> params = MapUtil.newMap();
         params.put("status",1);
         params.put("delFlag",0);
-        params.put("startCreateTime", DateUtil.getDate(2018,10,10));
-        params.put("endCreateTime", DateUtil.curTime());
+        params.put("startCreateTime", DateUtils.getDate(2018,10,10));
+        params.put("endCreateTime", DateUtils.curTime());
         params.put("pageSortOrder","id desc");
         params.put("pageStartIndex",0);
         params.put("pageLimit",10);

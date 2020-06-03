@@ -1,6 +1,15 @@
 package io.niufen.common.util;
 
 
+import io.niufen.common.comparator.CompareUtil;
+import io.niufen.common.exception.UtilException;
+import io.niufen.common.io.FastByteArrayOutputStream;
+import io.niufen.common.io.IoUtil;
+
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.time.temporal.TemporalAccessor;
 import java.util.*;
@@ -26,7 +35,7 @@ public class ObjectUtil {
      * @return 是否相等
      * @see Objects#equals(Object, Object)
      */
-    public static boolean equals(Object obj1, Object obj2) {
+    public static boolean equal(Object obj1, Object obj2) {
         // return (obj1 != null) ? (obj1.equals(obj2)) : (obj2 == null);
         return Objects.equals(obj1, obj2);
     }
@@ -56,9 +65,9 @@ public class ObjectUtil {
         } else if (obj instanceof Map) {
             return MapUtil.isEmpty((Map) obj);
         } else if (obj instanceof Iterable) {
-            return IteratorUtil.isEmpty((Iterable) obj);
+            return IterUtil.isEmpty((Iterable) obj);
         } else if (obj instanceof Iterator) {
-            return IteratorUtil.isEmpty((Iterator) obj);
+            return IterUtil.isEmpty((Iterator) obj);
         } else if (ArrayUtil.isArray(obj)) {
             return ArrayUtil.isEmpty(obj);
         }
@@ -196,4 +205,133 @@ public class ObjectUtil {
     public static boolean isPrimitiveArray(Object obj) {
         return isArray(obj) && obj.getClass().getComponentType().isPrimitive();
     }
+
+    /**
+     * {@code null}安全的对象比较
+     *
+     * @param <T>         被比较对象类型
+     * @param c1          对象1，可以为{@code null}
+     * @param c2          对象2，可以为{@code null}
+     * @param nullGreater 当被比较对象为null时是否排在前面
+     * @return 比较结果，如果c1 &lt; c2，返回数小于0，c1==c2返回0，c1 &gt; c2 大于0
+     * @see java.util.Comparator#compare(Object, Object)
+     * @since 3.0.7
+     */
+    public static <T extends Comparable<? super T>> int compare(T c1, T c2, boolean nullGreater) {
+        return CompareUtil.compare(c1, c2, nullGreater);
+    }
+
+
+    /**
+     * {@code null}安全的对象比较，{@code null}对象排在末尾
+     *
+     * @param <T> 被比较对象类型
+     * @param c1  对象1，可以为{@code null}
+     * @param c2  对象2，可以为{@code null}
+     * @return 比较结果，如果c1 &lt; c2，返回数小于0，c1==c2返回0，c1 &gt; c2 大于0
+     * @see java.util.Comparator#compare(Object, Object)
+     * @since 3.0.7
+     */
+    public static <T extends Comparable<? super T>> int compare(T c1, T c2) {
+        return CompareUtil.compare(c1, c2);
+    }
+
+    /**
+     * 克隆对象<br>
+     * 如果对象实现Cloneable接口，调用其clone方法<br>
+     * 如果实现Serializable接口，执行深度克隆<br>
+     * 否则返回<code>null</code>
+     *
+     * @param <T> 对象类型
+     * @param obj 被克隆对象
+     * @return 克隆后的对象
+     */
+    public static <T> T clone(T obj) {
+        T result = ArrayUtil.clone(obj);
+        if (null == result) {
+            if (obj instanceof Cloneable) {
+                result = ReflectUtil.invoke(obj, "clone");
+            } else {
+                result = cloneByStream(obj);
+            }
+        }
+        return result;
+    }
+    /**
+     * 序列化后拷贝流的方式克隆<br>
+     * 对象必须实现Serializable接口
+     *
+     * @param <T> 对象类型
+     * @param obj 被克隆对象
+     * @return 克隆后的对象
+     * @throws UtilException IO异常和ClassNotFoundException封装
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T cloneByStream(T obj) {
+        if (false == (obj instanceof Serializable)) {
+            return null;
+        }
+        final FastByteArrayOutputStream byteOut = new FastByteArrayOutputStream();
+        ObjectOutputStream out = null;
+        try {
+            out = new ObjectOutputStream(byteOut);
+            out.writeObject(obj);
+            out.flush();
+            final ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(byteOut.toByteArray()));
+            return (T) in.readObject();
+        } catch (Exception e) {
+            throw new UtilException(e);
+        } finally {
+            IoUtil.close(out);
+        }
+    }
+
+    /**
+     * 序列化<br>
+     * 对象必须实现Serializable接口
+     *
+     * @param <T> 对象类型
+     * @param obj 要被序列化的对象
+     * @return 序列化后的字节码
+     */
+    public static <T> byte[] serialize(T obj) {
+        if (false == (obj instanceof Serializable)) {
+            return null;
+        }
+        final FastByteArrayOutputStream byteOut = new FastByteArrayOutputStream();
+        IoUtil.writeObjects(byteOut, false, (Serializable) obj);
+        return byteOut.toByteArray();
+    }
+
+    /**
+     * 反序列化<br>
+     * 对象必须实现Serializable接口
+     *
+     * <p>
+     * 注意！！！ 此方法不会检查反序列化安全，可能存在反序列化漏洞风险！！！
+     * </p>
+     *
+     * @param <T>   对象类型
+     * @param bytes 反序列化的字节码
+     * @return 反序列化后的对象
+     */
+    public static <T> T deserialize(byte[] bytes) {
+        return IoUtil.readObj(new ByteArrayInputStream(bytes));
+    }
+
+    /**
+     * 反序列化<br>
+     * 对象必须实现Serializable接口
+     *
+     * @param <T>   对象类型
+     * @param bytes 反序列化的字节码
+     * @return 反序列化后的对象
+     * @see #deserialize(byte[])
+     * @deprecated 请使用 {@link #deserialize(byte[])}
+     */
+    @Deprecated
+    public static <T> T unserialize(byte[] bytes) {
+        return deserialize(bytes);
+    }
+
 }

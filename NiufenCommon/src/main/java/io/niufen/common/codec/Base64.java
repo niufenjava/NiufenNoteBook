@@ -1,8 +1,8 @@
 package io.niufen.common.codec;
 
+import io.niufen.common.io.IoUtil;
 import io.niufen.common.util.CharsetUtil;
 import io.niufen.common.util.FileUtil;
-import io.niufen.common.util.IoUtil;
 
 import java.io.File;
 import java.io.InputStream;

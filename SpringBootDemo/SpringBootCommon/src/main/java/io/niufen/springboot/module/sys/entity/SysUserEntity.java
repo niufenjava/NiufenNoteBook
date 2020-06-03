@@ -4,7 +4,7 @@ import io.niufen.springboot.common.base.entity.BaseEntity;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.enums.YesOrNoEnum;
-import io.niufen.common.util.DateUtil;
+import io.niufen.common.util.DateUtils;
 import io.niufen.common.util.FakerUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,7 +46,7 @@ public class SysUserEntity extends BaseEntity implements Serializable {
         sysUserEntity.setDelFlag(YesOrNoEnum.NO.getIndex());
         sysUserEntity.setCreateUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
         sysUserEntity.setCreateUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
-        sysUserEntity.setCreateTime(DateUtil.curTime());
+        sysUserEntity.setCreateTime(DateUtils.curTime());
         return sysUserEntity;
     }
 }
