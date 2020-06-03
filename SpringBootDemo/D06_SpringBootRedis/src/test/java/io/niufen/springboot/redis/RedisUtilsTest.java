@@ -1,10 +1,10 @@
 package io.niufen.springboot.redis;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.LongConstants;
+import io.niufen.common.thread.ThreadUtil;
 import io.niufen.common.util.FakerUtil;
-import io.niufen.common.util.MapUtil;
-import io.niufen.common.util.ThreadUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import io.niufen.springboot.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;

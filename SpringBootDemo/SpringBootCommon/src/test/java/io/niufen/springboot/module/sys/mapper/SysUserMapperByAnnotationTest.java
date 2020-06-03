@@ -1,10 +1,10 @@
 package io.niufen.springboot.module.sys.mapper;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.ObjectCompareUtil;
-import io.niufen.common.util.MapUtil;
 import io.niufen.springboot.module.sys.entity.SysUserEntity;
 import org.junit.Assert;
 import org.junit.Test;

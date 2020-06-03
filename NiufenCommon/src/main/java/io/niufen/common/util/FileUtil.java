@@ -48,6 +48,20 @@ public class FileUtil {
     public static boolean isWindowsSystem() {
         return WINDOWS_SEPARATOR == File.separatorChar;
     }
+    /**
+     * 获得一个输出流对象
+     *
+     * @param file 文件
+     * @return 输出流对象
+     * @throws IORuntimeException IO异常
+     */
+    public static BufferedOutputStream getOutputStream(File file) throws IORuntimeException {
+        try {
+            return new BufferedOutputStream(new FileOutputStream(touch(file)));
+        } catch (Exception e) {
+            throw new IORuntimeException(e);
+        }
+    }
 
 
     /**
@@ -676,6 +690,56 @@ public class FileUtil {
      */
     public static Path getLastPathEle(Path path) {
         return getPathEle(path, path.getNameCount() - 1);
+    }
+
+
+    /**
+     * 获得相对子路径
+     * <p>
+     * 栗子：
+     *
+     * <pre>
+     * dirPath: d:/aaa/bbb    filePath: d:/aaa/bbb/ccc     =》    ccc
+     * dirPath: d:/Aaa/bbb    filePath: d:/aaa/bbb/ccc.txt     =》    ccc.txt
+     * </pre>
+     *
+     * @param rootDir 绝对父路径
+     * @param file    文件
+     * @return 相对子路径
+     */
+    public static String subPath(String rootDir, File file) {
+        try {
+            return subPath(rootDir, file.getCanonicalPath());
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 获得相对子路径，忽略大小写
+     * <p>
+     * 栗子：
+     *
+     * <pre>
+     * dirPath: d:/aaa/bbb    filePath: d:/aaa/bbb/ccc     =》    ccc
+     * dirPath: d:/Aaa/bbb    filePath: d:/aaa/bbb/ccc.txt     =》    ccc.txt
+     * dirPath: d:/Aaa/bbb    filePath: d:/aaa/bbb/     =》    ""
+     * </pre>
+     *
+     * @param dirPath  父路径
+     * @param filePath 文件路径
+     * @return 相对子路径
+     */
+    public static String subPath(String dirPath, String filePath) {
+        if (StrUtil.isNotEmpty(dirPath) && StrUtil.isNotEmpty(filePath)) {
+
+            dirPath = StrUtil.removeSuffix(normalize(dirPath), "/");
+            filePath = normalize(filePath);
+
+            final String result = StrUtil.removePrefixIgnoreCase(filePath, dirPath);
+            return StrUtil.removePrefix(result, "/");
+        }
+        return filePath;
     }
 
 
@@ -2239,5 +2303,54 @@ public class FileUtil {
             return parentFile;
         }
         return getParent(parentFile, level - 1);
+    }
+
+
+    /**
+     * 将流的内容写入文件<br>
+     *
+     * @param dest 目标文件
+     * @param in   输入流
+     * @return dest
+     * @throws IORuntimeException IO异常
+     */
+    public static File writeFromStream(InputStream in, File dest) throws IORuntimeException {
+        return FileWriter.create(dest).writeFromStream(in);
+    }
+
+    /**
+     * 将流的内容写入文件<br>
+     *
+     * @param in           输入流
+     * @param fullFilePath 文件绝对路径
+     * @return 目标文件
+     * @throws IORuntimeException IO异常
+     */
+    public static File writeFromStream(InputStream in, String fullFilePath) throws IORuntimeException {
+        return writeFromStream(in, touch(fullFilePath));
+    }
+
+    /**
+     * 将文件写入流中
+     *
+     * @param file 文件
+     * @param out  流
+     * @return 写出的流byte数
+     * @throws IORuntimeException IO异常
+     */
+    public static long writeToStream(File file, OutputStream out) throws IORuntimeException {
+        return FileReader.create(file).writeToStream(out);
+    }
+
+    /**
+     * 将流的内容写入文件<br>
+     *
+     * @param fullFilePath 文件绝对路径
+     * @param out          输出流
+     * @return 写出的流byte数
+     * @throws IORuntimeException IO异常
+     */
+    public static long writeToStream(String fullFilePath, OutputStream out) throws IORuntimeException {
+        return writeToStream(touch(fullFilePath), out);
     }
 }

@@ -1,7 +1,7 @@
 package io.niufen.springboot.redis;
 
+import io.niufen.common.thread.ThreadUtil;
 import io.niufen.springboot.common.util.SpringContextUtils;
-import io.niufen.common.util.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

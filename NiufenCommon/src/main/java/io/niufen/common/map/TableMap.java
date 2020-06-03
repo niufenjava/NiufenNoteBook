@@ -1,7 +1,7 @@
 package io.niufen.common.map;
 
+import io.niufen.common.collection.ListUtil;
 import io.niufen.common.util.CollUtil;
-import io.niufen.common.util.ListUtil;
 import io.niufen.common.util.ObjectUtil;
 
 import java.io.Serializable;

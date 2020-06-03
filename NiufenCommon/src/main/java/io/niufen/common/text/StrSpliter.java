@@ -1,9 +1,9 @@
 package io.niufen.common.text;
 
+import io.niufen.common.collection.ListUtil;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.lang.PatternPool;
 import io.niufen.common.util.CharUtil;
-import io.niufen.common.util.ListUtil;
 import io.niufen.common.util.NumberUtil;
 import io.niufen.common.util.StrUtil;
 

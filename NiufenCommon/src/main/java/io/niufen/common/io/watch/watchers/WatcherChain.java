@@ -1,8 +1,8 @@
 package io.niufen.common.io.watch.watchers;
 
+import io.niufen.common.collection.ListUtil;
 import io.niufen.common.io.watch.Watcher;
 import io.niufen.common.lang.Chain;
-import io.niufen.common.util.ListUtil;
 
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;

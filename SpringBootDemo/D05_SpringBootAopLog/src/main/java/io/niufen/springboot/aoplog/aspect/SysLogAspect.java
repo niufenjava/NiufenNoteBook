@@ -1,14 +1,14 @@
 package io.niufen.springboot.aoplog.aspect;
 
 import com.alibaba.fastjson.JSONObject;
-import io.niufen.springboot.common.annotation.SysLog;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.IPUtil;
-import io.niufen.common.util.JsonUtil;
+import io.niufen.springboot.common.annotation.SysLog;
 import io.niufen.springboot.common.util.SpringContextUtils;
 import io.niufen.springboot.module.sys.entity.SysLogEntity;
 import io.niufen.springboot.module.sys.service.SysLogService;
+import io.niufen.springboot.util.IPUtil;
+import io.niufen.springboot.util.JsonUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -1,8 +1,8 @@
 package io.niufen.common.lang.tree.parser;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.lang.tree.Tree;
 import io.niufen.common.lang.tree.TreeNode;
-import io.niufen.common.util.MapUtil;
 
 import java.util.Map;
 

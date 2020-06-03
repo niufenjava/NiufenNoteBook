@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.springboot.common.response.R;
-import io.niufen.common.util.JsonUtil;
+import io.niufen.springboot.util.JsonUtil;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

@@ -1,6 +1,8 @@
-package io.niufen.common.util;
+package io.niufen.common.collection;
 
 import io.niufen.common.lang.Matcher;
+import io.niufen.common.util.ArrayUtil;
+import io.niufen.common.util.Convert;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;

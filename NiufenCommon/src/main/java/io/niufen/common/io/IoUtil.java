@@ -395,6 +395,18 @@ public class IoUtil {
     public static void readLines(InputStream in, Charset charset, LineHandler lineHandler) throws IORuntimeException {
         readLines(getReader(in, charset), lineHandler);
     }
+    /**
+     * 从流中读取内容，读取完毕后并不关闭流
+     *
+     * @param in      输入流，读取完毕后并不关闭流
+     * @param charset 字符集
+     * @return 内容
+     * @throws IORuntimeException IO异常
+     */
+    public static String read(InputStream in, Charset charset) throws IORuntimeException {
+        FastByteArrayOutputStream out = read(in);
+        return null == charset ? out.toString() : out.toString(charset);
+    }
 
     /**
      * 按行读取数据，针对每行的数据做处理<br>

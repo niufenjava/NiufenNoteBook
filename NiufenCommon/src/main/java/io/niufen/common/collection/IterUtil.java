@@ -1,5 +1,8 @@
-package io.niufen.common.util;
+package io.niufen.common.collection;
 
+
+import io.niufen.common.util.ArrayUtil;
+import io.niufen.common.util.StrUtil;
 
 import java.util.*;
 

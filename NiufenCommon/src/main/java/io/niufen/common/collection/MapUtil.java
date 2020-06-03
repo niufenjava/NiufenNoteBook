@@ -1,9 +1,10 @@
-package io.niufen.common.util;
+package io.niufen.common.collection;
 
 import io.niufen.common.lang.Editor;
 import io.niufen.common.lang.Filter;
 import io.niufen.common.map.CamelCaseLinkedMap;
 import io.niufen.common.map.CamelCaseMap;
+import io.niufen.common.util.*;
 
 import java.util.*;
 

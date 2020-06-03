@@ -1,7 +1,5 @@
 package io.niufen.common.collection;
 
-import io.niufen.common.util.ListUtil;
-import io.niufen.common.util.SetUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

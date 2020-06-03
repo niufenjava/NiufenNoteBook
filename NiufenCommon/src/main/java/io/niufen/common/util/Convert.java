@@ -4,6 +4,7 @@ package io.niufen.common.util;
 import io.niufen.common.convert.*;
 import io.niufen.common.lang.Assert;
 import io.niufen.common.lang.TypeReference;
+import io.niufen.common.text.UnicodeUtil;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;

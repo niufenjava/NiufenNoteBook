@@ -1,4 +1,4 @@
-package io.niufen.common.util;
+package io.niufen.common.collection;
 
 import java.util.Collection;
 import java.util.HashSet;

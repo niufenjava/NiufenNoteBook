@@ -1,6 +1,9 @@
 package io.niufen.common.util;
 
 import io.niufen.common.annotation.Alias;
+import io.niufen.common.collection.ListUtil;
+import io.niufen.common.collection.MapUtil;
+import io.niufen.common.collection.SetUtil;
 import io.niufen.common.exception.UtilException;
 import io.niufen.common.lang.Assert;
 import io.niufen.common.lang.Filter;

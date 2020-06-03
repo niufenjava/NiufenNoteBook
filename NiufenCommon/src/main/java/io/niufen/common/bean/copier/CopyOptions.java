@@ -1,6 +1,6 @@
 package io.niufen.common.bean.copier;
 
-import io.niufen.common.util.MapUtil;
+import io.niufen.common.collection.MapUtil;
 
 import java.io.Serializable;
 import java.util.Map;

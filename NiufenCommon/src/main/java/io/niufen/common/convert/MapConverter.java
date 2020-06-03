@@ -1,6 +1,6 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.MapUtil;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.util.StrUtil;
 import io.niufen.common.util.TypeUtil;
 

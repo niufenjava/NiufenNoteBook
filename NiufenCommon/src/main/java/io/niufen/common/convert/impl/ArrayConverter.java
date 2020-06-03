@@ -1,9 +1,9 @@
 package io.niufen.common.convert.impl;
 
+import io.niufen.common.collection.IterUtil;
 import io.niufen.common.convert.AbstractConverter;
 import io.niufen.common.convert.ConverterRegistry;
 import io.niufen.common.util.ArrayUtil;
-import io.niufen.common.util.IterUtil;
 import io.niufen.common.util.ObjectUtil;
 import io.niufen.common.util.StrUtil;
 

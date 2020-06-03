@@ -1,9 +1,9 @@
 package io.niufen.common.convert.impl;
 
 import io.niufen.common.bean.BeanUtil;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.convert.AbstractConverter;
 import io.niufen.common.convert.ConverterRegistry;
-import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.StrUtil;
 import io.niufen.common.util.TypeUtil;
 

@@ -3,6 +3,8 @@ package io.niufen.common.bean;
 import io.niufen.common.bean.BeanDesc.PropDesc;
 import io.niufen.common.bean.copier.BeanCopier;
 import io.niufen.common.bean.copier.CopyOptions;
+import io.niufen.common.bean.copier.ValueProvider;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.lang.Editor;
 import io.niufen.common.util.*;
 
@@ -19,6 +21,80 @@ import java.util.Map;
  * @time 21:45
  */
 public class BeanUtil {
+
+    // --------------------------------------------------------------------------------------------- fillBean
+
+    /**
+     * 对象或Map转Bean
+     *
+     * @param <T>    转换的Bean类型
+     * @param source Bean对象或Map
+     * @param clazz  目标的Bean类型
+     * @return Bean对象
+     * @since 4.1.20
+     */
+    public static <T> T toBean(Object source, Class<T> clazz) {
+        return toBean(source, clazz, null);
+    }
+
+    /**
+     * 对象或Map转Bean
+     *
+     * @param <T>     转换的Bean类型
+     * @param source  Bean对象或Map
+     * @param clazz   目标的Bean类型
+     * @param options 属性拷贝选项
+     * @return Bean对象
+     * @since 5.2.4
+     */
+    public static <T> T toBean(Object source, Class<T> clazz, CopyOptions options) {
+        final T target = ReflectUtil.newInstanceIfPossible(clazz);
+        copyProperties(source, target, options);
+        return target;
+    }
+    /**
+     * 复制Bean对象属性<br>
+     * 限制类用于限制拷贝的属性，例如一个类我只想复制其父类的一些属性，就可以将editable设置为父类
+     *
+     * @param source      源Bean对象
+     * @param target      目标Bean对象
+     * @param copyOptions 拷贝选项，见 {@link CopyOptions}
+     */
+    public static void copyProperties(Object source, Object target, CopyOptions copyOptions) {
+        if (null == copyOptions) {
+            copyOptions = new CopyOptions();
+        }
+        BeanCopier.create(source, target, copyOptions).copy();
+    }
+
+    /**
+     * ServletRequest 参数转Bean
+     *
+     * @param <T>           Bean类型
+     * @param beanClass     Bean Class
+     * @param valueProvider 值提供者
+     * @param copyOptions   拷贝选项，见 {@link CopyOptions}
+     * @return Bean
+     */
+    public static <T> T toBean(Class<T> beanClass, ValueProvider<String> valueProvider, CopyOptions copyOptions) {
+        return fillBean(ReflectUtil.newInstance(beanClass), valueProvider, copyOptions);
+    }
+    /**
+     * 填充Bean的核心方法
+     *
+     * @param <T>           Bean类型
+     * @param bean          Bean
+     * @param valueProvider 值提供者
+     * @param copyOptions   拷贝选项，见 {@link CopyOptions}
+     * @return Bean
+     */
+    public static <T> T fillBean(T bean, ValueProvider<String> valueProvider, CopyOptions copyOptions) {
+        if (null == valueProvider) {
+            return bean;
+        }
+
+        return BeanCopier.create(valueProvider, bean, copyOptions).copy();
+    }
 
     /**
      * 判断是否为Bean对象，判定方法是：

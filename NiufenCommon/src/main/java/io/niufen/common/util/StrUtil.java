@@ -4,14 +4,18 @@ import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.IntConstants;
 import io.niufen.common.constant.StringConstants;
 import io.niufen.common.lang.Matcher;
+import io.niufen.common.lang.func.Func1;
 import io.niufen.common.text.StrBuilder;
-import io.niufen.common.text.StringFormatter;
 import io.niufen.common.text.StrSpliter;
+import io.niufen.common.text.StringFormatter;
 
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 字符串工具类
@@ -2497,6 +2501,101 @@ public class StrUtil {
             return null;
         }
         return preString + upperFirst(str);
+    }
+
+    /**
+     * 获得StringWriter
+     *
+     * @return StringWriter
+     */
+    public static StringWriter getWriter() {
+        return new StringWriter();
+    }
+    /**
+     * 获得StringReader
+     *
+     * @param str 字符串
+     * @return StringReader
+     */
+    public static StringReader getReader(CharSequence str) {
+        if (null == str) {
+            return null;
+        }
+        return new StringReader(str.toString());
+    }
+    /**
+     * 替换指定字符串的指定区间内字符为"*"
+     *
+     * @param str          字符串
+     * @param startInclude 开始位置（包含）
+     * @param endExclude   结束位置（不包含）
+     * @return 替换后的字符串
+     * @since 4.1.14
+     */
+    public static String hide(CharSequence str, int startInclude, int endExclude) {
+        return replace(str, startInclude, endExclude, '*');
+    }
+    /**
+     * 替换所有正则匹配的文本，并使用自定义函数决定如何替换
+     *
+     * @param str        要替换的字符串
+     * @param regex      用于匹配的正则式
+     * @param replaceFun 决定如何替换的函数
+     * @return 替换后的字符串
+     * @see ReUtil#replaceAll(CharSequence, String, Func1)
+     * @since 4.2.2
+     */
+    public static String replace(CharSequence str, String regex, Func1<java.util.regex.Matcher, String> replaceFun) {
+        return ReUtil.replaceAll(str, regex, replaceFun);
+    }
+    /**
+     * 替换所有正则匹配的文本，并使用自定义函数决定如何替换
+     *
+     * @param str        要替换的字符串
+     * @param pattern    用于匹配的正则式
+     * @param replaceFun 决定如何替换的函数
+     * @return 替换后的字符串
+     * @see ReUtil#replaceAll(CharSequence, Pattern, Func1)
+     * @since 4.2.2
+     */
+    public static String replace(CharSequence str, Pattern pattern, Func1<java.util.regex.Matcher, String> replaceFun) {
+        return ReUtil.replaceAll(str, pattern, replaceFun);
+    }
+    /**
+     * 替换指定字符串的指定区间内字符为固定字符
+     *
+     * @param str          字符串
+     * @param startInclude 开始位置（包含）
+     * @param endExclude   结束位置（不包含）
+     * @param replacedChar 被替换的字符
+     * @return 替换后的字符串
+     * @since 3.2.1
+     */
+    public static String replace(CharSequence str, int startInclude, int endExclude, char replacedChar) {
+        if (isEmpty(str)) {
+            return str(str);
+        }
+        final int strLength = str.length();
+        if (startInclude > strLength) {
+            return str(str);
+        }
+        if (endExclude > strLength) {
+            endExclude = strLength;
+        }
+        if (startInclude > endExclude) {
+            // 如果起始位置大于结束位置，不替换
+            return str(str);
+        }
+
+        final char[] chars = new char[strLength];
+        for (int i = 0; i < strLength; i++) {
+            if (i >= startInclude && i < endExclude) {
+                chars[i] = replacedChar;
+            } else {
+                chars[i] = str.charAt(i);
+            }
+        }
+        return new String(chars);
     }
 
 }

@@ -1,5 +1,6 @@
 package io.niufen.common.util;
 
+import io.niufen.common.collection.SetUtil;
 import io.niufen.common.exception.UtilException;
 import io.niufen.common.lang.Holder;
 import io.niufen.common.lang.PatternPool;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  * 正则相关工具类<br>
- * 常用正则请见 {@link Validator}
+ * 常用正则请见
  *
  * @author xiaoleilu
  */

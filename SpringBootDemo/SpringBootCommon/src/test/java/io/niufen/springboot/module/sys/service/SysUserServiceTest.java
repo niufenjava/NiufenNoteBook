@@ -1,10 +1,10 @@
 package io.niufen.springboot.module.sys.service;
 
+import io.niufen.common.collection.ListUtil;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.constant.SysConstants;
 import io.niufen.common.enums.StatusEnum;
 import io.niufen.common.tool.ObjectTools;
-import io.niufen.common.util.ListUtil;
-import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.UUIDUtil;
 import io.niufen.springboot.common.page.PageResult;
 import io.niufen.springboot.module.sys.bo.SysUserBO;

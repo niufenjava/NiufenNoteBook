@@ -1,6 +1,6 @@
 package io.niufen.common.map;
 
-import io.niufen.common.util.MapUtil;
+import io.niufen.common.collection.MapUtil;
 
 import java.util.Map;
 

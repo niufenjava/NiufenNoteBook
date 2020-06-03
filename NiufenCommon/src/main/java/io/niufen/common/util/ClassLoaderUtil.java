@@ -1,5 +1,6 @@
 package io.niufen.common.util;
 
+import io.niufen.common.collection.ListUtil;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.StringConstants;
 import io.niufen.common.convert.BasicTypeEnum;

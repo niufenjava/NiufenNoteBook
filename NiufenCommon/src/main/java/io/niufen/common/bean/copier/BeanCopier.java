@@ -4,6 +4,7 @@ import io.niufen.common.bean.BeanDesc.PropDesc;
 import io.niufen.common.bean.BeanUtil;
 import io.niufen.common.bean.copier.provider.BeanValueProvider;
 import io.niufen.common.bean.copier.provider.MapValueProvider;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.exception.UtilException;
 import io.niufen.common.lang.ParameterizedTypeImpl;
 import io.niufen.common.lang.copier.Copier;

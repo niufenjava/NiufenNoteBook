@@ -1,7 +1,12 @@
 package io.niufen.common.net.url;
 
+import io.niufen.common.collection.IterUtil;
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.map.TableMap;
-import io.niufen.common.util.*;
+import io.niufen.common.util.CollUtil;
+import io.niufen.common.util.Convert;
+import io.niufen.common.util.StrUtil;
+import io.niufen.common.util.URLUtil;
 
 import java.nio.charset.Charset;
 import java.util.Iterator;

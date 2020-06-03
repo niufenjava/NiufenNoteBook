@@ -1,6 +1,10 @@
 package io.niufen.common.convert;
 
-import io.niufen.common.util.*;
+import io.niufen.common.collection.MapUtil;
+import io.niufen.common.util.ClassUtil;
+import io.niufen.common.util.EnumUtil;
+import io.niufen.common.util.ModifierUtil;
+import io.niufen.common.util.ReflectUtil;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

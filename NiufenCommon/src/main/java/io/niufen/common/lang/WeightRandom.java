@@ -1,7 +1,7 @@
 package io.niufen.common.lang;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.util.CollUtil;
-import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.RandomUtil;
 
 import java.io.Serializable;

@@ -1,7 +1,7 @@
 package io.niufen.common.convert.impl;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.convert.AbstractConverter;
-import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.ObjectUtil;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package io.niufen.common.lang;
 
-import io.niufen.common.util.SetUtil;
+import io.niufen.common.collection.SetUtil;
 import io.niufen.common.constant.CharConstants;
 import io.niufen.common.constant.StringConstants;
 import io.niufen.common.util.CharsetUtil;

@@ -1,8 +1,8 @@
 package io.niufen.springboot.common.base.service;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.tool.ObjectTools;
 import io.niufen.common.util.CollUtil;
-import io.niufen.common.util.MapUtil;
 import io.niufen.common.util.ReflectUtil;
 import io.niufen.springboot.common.base.mapper.BaseMapper;
 import io.niufen.springboot.common.metadata.TableInfo;

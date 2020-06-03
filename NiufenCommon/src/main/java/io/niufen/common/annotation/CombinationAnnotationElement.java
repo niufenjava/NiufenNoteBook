@@ -1,6 +1,6 @@
 package io.niufen.common.annotation;
 
-import io.niufen.common.util.SetUtil;
+import io.niufen.common.collection.SetUtil;
 
 import java.io.Serializable;
 import java.lang.annotation.*;

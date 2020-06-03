@@ -1,5 +1,6 @@
 package io.niufen.common.bean;
 
+import io.niufen.common.collection.MapUtil;
 import io.niufen.common.text.StrBuilder;
 import io.niufen.common.text.StrSpliter;
 import io.niufen.common.util.*;

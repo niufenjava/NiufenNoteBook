@@ -1,4 +1,4 @@
-package io.niufen.common.util;
+package io.niufen.springboot.util;
 
 import com.alibaba.fastjson.JSON;
 
