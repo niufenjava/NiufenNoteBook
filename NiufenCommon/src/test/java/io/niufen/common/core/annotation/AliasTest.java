@@ -13,7 +13,16 @@ import java.lang.reflect.Parameter;
  * @time 14:15
  */
 @Slf4j
+@Alias(value = "aliasTest")
 public class AliasTest {
+
+    @Test
+    public void aliasClass() {
+        // 用反射方式获得注解对应的实例对象后
+        Alias alias = (Alias) AliasTest.class.getAnnotation(Alias.class);
+        // 在通过该对象调用属性对应的方法
+        assert "aliasTest".equals(alias.value());
+    }
 
     @Test
     public void aliasFieldTest(){
@@ -70,6 +79,7 @@ public class AliasTest {
     }
 }
 
+@Alias("className")
 class TestClass {
     @Alias("testName")
     private String name;
