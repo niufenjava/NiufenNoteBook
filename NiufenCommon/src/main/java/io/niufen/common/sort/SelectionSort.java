@@ -44,7 +44,7 @@ public class SelectionSort {
                 array[i] = array[minIndex];
                 array[minIndex] = temp;
             }
-            System.out.println("第" + i + "轮：" + ArrayUtil.toString(array));
+            System.out.println("第" + (i+1) + "轮后：" + ArrayUtil.toString(array));
         }
     }
 

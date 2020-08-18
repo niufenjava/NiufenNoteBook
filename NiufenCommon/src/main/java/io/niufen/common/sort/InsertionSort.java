@@ -53,7 +53,7 @@ public class InsertionSort {
             }
             // 在已排数据中合适的地方插入数据
             array[j + 1] = value;
-            System.out.println("第"+i+"轮："+ ArrayUtil.toString(array));
+            System.out.println("第" + (i) + "轮后：" + ArrayUtil.toString(array)+"; 插入位置:"+(j+1));
         }
     }
 

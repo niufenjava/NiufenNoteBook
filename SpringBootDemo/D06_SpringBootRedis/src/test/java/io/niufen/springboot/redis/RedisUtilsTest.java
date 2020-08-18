@@ -24,7 +24,6 @@ import java.util.Set;
 @RunWith(SpringRunner.class)
 public class RedisUtilsTest {
 
-
     @Test
     public void set() {
         String key = "redis-utils-key-"+ FakerUtil.idNumberCN();

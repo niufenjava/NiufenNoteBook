@@ -752,6 +752,11 @@ public class DateUtil extends CalendarUtil {
 		return parse(timeString, DatePattern.NORM_TIME_FORMAT);
 	}
 
+	public static void main(String[] args) {
+		Date date = parseTime("0000-00-00 00:00:00");
+		System.out.println(date);
+	}
+
 	/**
 	 * 解析时间，格式HH:mm 或 HH:mm:ss，日期默认为今天
 	 *
