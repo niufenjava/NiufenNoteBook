@@ -1,7 +1,7 @@
 oos:
   ali:
-    accessKey: LTAIQERc5QHfZeBt
-    accessKeySecret: 6MxAtmOToVLw7rfUq53XWlT2eZdp9H
+    accessKey: xxxxxxx
+    accessKeySecret: xxxxxxxxxx
     endPoint: niufen-mcp.oss-cn-beijing.aliyuncs.com
     bucketName: niufen-mcp
 
