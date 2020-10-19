@@ -1,7 +1,7 @@
 oos:
   ali:
     accessKey: xxxxxxx
-    accessKeySecret: xxxxxxxxxx
+    accessKeySecret: xxxxxxxxxx1
     endPoint: niufen-mcp.oss-cn-beijing.aliyuncs.com
     bucketName: niufen-mcp
 
