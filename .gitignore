@@ -26,6 +26,7 @@ hs_err_pid*
 .idea/
 rebel.xml
 HELP.md
+SpringBootDemo/.DS_Store
 NiufenCommon/.mvn/wrapper/MavenWrapperDownloader.java
 NiufenCommon/.mvn/wrapper/maven-wrapper.properties
 NiufenCommon/NiufenCommon.iml
@@ -39,6 +40,7 @@ NiufenCommon/target/maven-archiver/
 NiufenCommon/target/maven-status/
 NiufenCommon/target/surefire-reports/
 NiufenCommon/target/test-classes/
+SpringBootDemo/D01_SpringBootConfig/target/.DS_Store
 SpringBootDemo/D01_SpringBootConfig/target/generated-sources/
 SpringBootDemo/D01_SpringBootConfig/target/generated-test-sources/
 SpringBootDemo/D01_SpringBootConfig/target/test-classes/
