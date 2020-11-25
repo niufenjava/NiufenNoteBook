@@ -120,3 +120,10 @@ alias zklog='tail -f /usr/local/var/log/zookeeper/zookeeper.log -n 200'
 # deerkids
 alias deerkidstestssh='ssh root@test.it.deerkids.com'
 alias deerkidsmngtestscp='scp /Users/niufen/code/Git-Deerkids/deerKidsMng/deploy/deerKidsMng.war root@test.it.deerkids.com:/root/tomcat9/webapps/'
+
+alias cdhadoop='cd /usr/local/Cellar/hadoop/3.2.1_1'
+alias cdhive='cd /usr/local/Cellar/hive/3.1.2_1'
+alias cdhbase='/usr/local/Cellar/hbase/1.3.5'
+alias cdsqoop='/usr/local/Cellar/sqoop/1.4.7'
+
+alias sb='source ~/.bash_profile'
