@@ -1,0 +1,83 @@
+package ${modulePackage}.ao;
+
+import ${basePackage}.ao.BaseAo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+/**
+ * ${comments} 更新操作Ao对象
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class ${ClassName}UpdateAo extends BaseAo {
+
+    #foreach ($column in $columns)
+        #if($column.attrname != "id"
+        && $column.attrname != "deletedAt"
+        && $column.attrname != "creatorName"
+        && $column.attrname != "creatorId"
+        && $column.attrname != "createdAt"
+        && $column.attrname != "modifiedAt"
+        && $column.attrname != "modifierName"
+        && $column.attrname != "modifierId"
+        && $column.attrname != "name"
+        && $column.attrname != "encoding"
+        && $column.attrname != "keyPath"
+        && $column.attrname != "description"
+        && $column.attrname != "dataType"
+        && $column.attrname != "status"
+        )
+            /**
+             * $column.comments
+             */
+            private $column.attrType $column.attrname;
+
+        #end
+    #end
+
+    /**
+     * ${comments}id
+     */
+    @NotNull(message = "${comments}id不能为空")
+    private Long id;
+
+    /**
+     * ${comments}名称
+     */
+    @NotBlank(message = "${comments}名称不能为空")
+    @Size(max = 64, message = "${comments}名称长度不能超过64个字符")
+    private String name;
+
+    /**
+     * ${comments}key
+     */
+    @NotBlank(message = "${comments}key不能为空")
+    @Size(max = 128, message = "${comments}key长度不能超过128个字符")
+    private String keyPath;
+
+    /**
+     * ${comments}编码
+     */
+    @NotBlank(message = "${comments}编码不能为空")
+    @Size(min = 9, max = 9, message = "${comments}编码长度不符合要求")
+    private String encoding;
+
+    /**
+     * ${comments}描述
+     */
+    @Size(max = 512, message = "${comments}描述长度不能超过512个字符")
+    private String description;
+
+    /**
+     * 数据类型, 1-String;2-Boolean;3-Integer;4-Double;5-Arrays;6-Date;7-Timestamp
+     */
+    @NotNull(message = "${comments}数据类型不能为空")
+    private Integer dataType;
+}

@@ -1,0 +1,79 @@
+package ${modulePackage}.controller;
+
+import ${commonPackage}.enums.CommonStatusEnum;
+import ${utilsPackage}.FakerUtils;
+import ${mainPath}.BaseApiTest;
+
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}UpdateAo;
+import ${modulePackage}.qo.${ClassName}PageQo;
+import ${modulePackage}.qo.${ClassName}ListQo;
+
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.springframework.mock.web.MockHttpServletResponse;
+
+
+/**
+ * ${ClassName} 接口测试类
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@Slf4j
+public class ${ClassName}ControllerTest extends BaseApiTest {
+
+    @Test
+    public void create() {
+        String uri = "${uri}/create";
+        ${ClassName}CreateAo createAo = new ${ClassName}CreateAo();
+        //todo set
+        MockHttpServletResponse response = postTest(uri, createAo);
+        assertSuccess(response);
+    }
+
+    @Test
+    public void delete() {
+        String delete = "${uri}/delete/"+30;
+        post(delete);
+    }
+
+    @Test
+    public void update() {
+        String update = "${uri}/update";
+
+        ${ClassName}UpdateAo updateAo = new ${ClassName}UpdateAo();
+        //todo set
+
+        MockHttpServletResponse response = postTest(update, updateAo);
+        assertSuccess(response);
+    }
+
+    @Test
+    public void info() {
+        String detail = "${uri}/info/"+4;
+        get(detail);
+    }
+
+    @Test
+    public void page() {
+        String page = "${uri}/page";
+        ${ClassName}PageQo pageQo = new ${ClassName}PageQo();
+        pageQo.setPageNum(1);
+        pageQo.setPageSize(10);
+        //todo set
+
+        MockHttpServletResponse response = postTest(page, pageQo);
+        assertSuccess(response);
+    }
+
+    @Test
+    public void list() {
+        String list = "${uri}/list";
+        ${ClassName}ListQo listQo = new ${ClassName}ListQo();
+        listQo.setId(10L);
+
+        MockHttpServletResponse response = postTest(list, listQo);
+        assertSuccess(response);
+    }
+}

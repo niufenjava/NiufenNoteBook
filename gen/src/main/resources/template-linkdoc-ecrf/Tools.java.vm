@@ -1,0 +1,177 @@
+package ${modulePackage}.tools;
+
+import ${commonPackage}.enums.DataTypeEnum;
+import ${commonPackage}.enums.EcrfStatusEnum;
+import ${commonPackage}.enums.IsLatestEnum;
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}PageAo;
+import ${modulePackage}.bo.${ClassName}Bo;
+import ${modulePackage}.entity.${ClassName}Entity;
+import ${modulePackage}.qo.${ClassName}Qo;
+import org.springframework.beans.BeanUtils;
+
+import java.util.Objects;
+
+/**
+ * ${comments} 相关工具类
+ *
+ * @author haijun.zhang
+ * @date 2020/7/14 17:00
+ */
+public class ${ClassName}Tools {
+
+    /**
+     * ${comments} Entity 转 Bo
+     *
+     * @param entity ${comments}实体对象
+     * @return ${ClassName}Bo ${comments}业务对象
+     */
+    public static ${ClassName}Bo entityToBo(${ClassName}Entity entity) {
+        ${ClassName}Bo bo = new ${ClassName}Bo();
+        BeanUtils.copyProperties(entity, bo);
+        bo.setVersionDesc("V" + entity.getVersion());
+        bo.setStatusDesc(EcrfStatusEnum.getNameByIndex(entity.getStatus()));
+        bo.setDataTypeDesc(DataTypeEnum.getNameByIndex(entity.getDataType()));
+        bo.setDeleteAuth(deleteAuth(entity));
+        bo.setEditAuth(editAuth(entity));
+        bo.setUpdateAuth(updateAuth(entity));
+        bo.setOnlineAuth(onlineAuth(entity));
+        bo.setLockAuth(lockAuth(entity));
+        bo.setUnlockAuth(unlockAuth(entity));
+        return bo;
+    }
+
+    /**
+     * ${comments} 分页查询Ao 转 Qo
+     *
+     * @param pageAo ${comments} 分页查询 Ao对象
+     * @return ${ClassName}Qo ${comments} Qo对象
+     */
+    public static ${ClassName}Qo pageAoToQo(${ClassName}PageAo pageAo) {
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setId(pageAo.getId());
+        qo.setIds(pageAo.getIds());
+        qo.setEncodingLike(pageAo.getEncodingLike());
+        qo.setDataType(pageAo.getDataType());
+        qo.setStatus(pageAo.getStatus());
+        qo.setSortConditionSql("modified_at desc");
+        qo.setPageNum(pageAo.getPageNum());
+        qo.setPageSize(pageAo.getPageSize());
+        return qo;
+    }
+
+    /**
+     * ${comments} 新增Ao 转 Entity
+     *
+     * @param createAo ${comments}新增Ao对象
+     * @return ${ClassName}Entity ${comments}实体对象
+     */
+    public static ${ClassName}Entity createAoToEntity(${ClassName}CreateAo createAo) {
+        ${ClassName}Entity entity = new ${ClassName}Entity();
+        entity.setName(createAo.getName());
+        entity.setKeyPath(createAo.getKeyPath());
+        entity.setDescription(createAo.getDescription());
+        entity.setDataType(createAo.getDataType());
+        return entity;
+    }
+
+    /**
+     * ${comments} 判断是否有删除权限
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean deleteAuth(${ClassName}Entity entity) {
+        // 只有草稿状态的才可删除
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isDraft(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    /**
+     * ${comments} 判断是否有更新权限
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean updateAuth(${ClassName}Entity entity) {
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isDraft(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    /**
+     * ${comments} 判断是否有编辑权限
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean editAuth(${ClassName}Entity entity) {
+        if (Objects.isNull(entity)) {
+            return Boolean.FALSE;
+        }
+        // 只有草稿 或 在线状态下可编辑
+        if (EcrfStatusEnum.isDraft(entity.getStatus()) || EcrfStatusEnum.isOnline(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+
+    /**
+     * ${comments} 判断是否有上线权限
+     * 草稿状态 && 当前是最新版本
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean onlineAuth(${ClassName}Entity entity) {
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isDraft(entity.getStatus()) && IsLatestEnum.isTrue(entity.getIsLatest())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    /**
+     * ${comments} 判断是否有下线权限
+     * 1、草稿状态 && 当前是最新版本
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean offlineAuth(${ClassName}Entity entity) {
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isOnline(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    /**
+     * ${comments} 判断是否有冻结权限
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean lockAuth(${ClassName}Entity entity) {
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isOnline(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+
+    /**
+     * ${comments} 判断是否有解冻权限
+     *
+     * @param entity ${comments}实体对象
+     * @return TRUE-有权限；FALSE-无权限
+     */
+    public static Boolean unlockAuth(${ClassName}Entity entity) {
+        if (Objects.nonNull(entity) && EcrfStatusEnum.isLocked(entity.getStatus())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+}

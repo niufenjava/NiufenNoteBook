@@ -1,0 +1,277 @@
+package ${modulePackage}.controller;
+
+import com.linkdoc.common.vo.Result;
+import ${basePackage}.ao.IdsAo;
+import ${basePackage}.bo.OptionBo;
+import ${basePackage}.controller.BaseController;
+import ${commonPackage}.annotation.PermissionCheck;
+import ${commonPackage}.annotation.SysLog;
+import ${commonPackage}.enums.DataTypeEnum;
+import ${commonPackage}.enums.EcrfStatusEnum;
+import ${commonPackage}.enums.IsLatestEnum;
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}ListAo;
+import ${modulePackage}.ao.${ClassName}PageAo;
+import ${modulePackage}.ao.${ClassName}UpdateAo;
+import ${modulePackage}.bo.${ClassName}Bo;
+import ${modulePackage}.qo.${ClassName}Qo;
+import ${modulePackage}.service.${ClassName}Service;
+import ${modulePackage}.tools.${ClassName}Tools;
+import ${utilsPackage}.ParamValidUtils;
+import com.linkdoc.pagehelper.PageData;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+/**
+ * ${comments} Web接口
+ *
+ * @author haijunzhang@linkdoc.com
+ * @date 2020-12-07 23:28:13
+ */
+@RestController
+@RequestMapping("/web-api/model/${className}")
+@Slf4j
+public class ${ClassName}Controller extends BaseController {
+
+    public final ${ClassName}Service ${className}Service;
+
+    public ${ClassName}Controller(${ClassName}Service ${className}Service) {
+        this.${className}Service = ${className}Service;
+    }
+
+    /**
+     * ${comments}-新增接口
+     *
+     * @param createAo 新增${comments}Ao对象
+     * @return ${comments}id
+     */
+    @SysLog
+    @PostMapping("/create")
+    @PermissionCheck("basic:${className}:create")
+    public Result<Long> create(@Valid @RequestBody ${ClassName}CreateAo createAo) {
+        // 特殊规则校验
+        ParamValidUtils.checkArgument(DataTypeEnum.isExist(createAo.getDataType()), "数据类型不在合法范围内!");
+
+        // 新增并返回ID
+        return Result.success(${className}Service.create(createAo));
+    }
+
+    /**
+     * ${comments}-删除接口
+     *
+     * @param id ${comments}ID
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/delete/{id}")
+    @PermissionCheck("basic:${className}:delete")
+    public Result<?> delete(@PathVariable("id") Long id) {
+        ${className}Service.delete(id);
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-获取可编辑ID接口
+     *
+     * @param id 编辑${comments}的ID
+     * @return 跳转到编辑页的${comments}ID
+     */
+    @SysLog
+    @PostMapping("/to-edit/{id}")
+    @PermissionCheck("basic:${className}:toEdit")
+    public Result<?> toEdit(@PathVariable("id") Long id) {
+        return Result.success(${className}Service.toEdit(id));
+    }
+
+    /**
+     * ${comments}-更新接口
+     *
+     * @param updateAo 更新${comments}Ao对象
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/update")
+    @PermissionCheck("basic:${className}:update")
+    public Result<?> update(@Valid @RequestBody ${ClassName}UpdateAo updateAo) {
+        ${className}Service.update(updateAo);
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-批量上线接口
+     *
+     * @param idsAo ${comments}ID数组Ao对象
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/batch-online")
+    @PermissionCheck("basic:${className}:batch-online")
+    public Result<?> batchOnline(@Valid @RequestBody IdsAo idsAo) {
+        ${className}Service.batchOnline(idsAo.getIds());
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-上线接口
+     *
+     * @param id ${comments}ID
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/online/{id}")
+    @PermissionCheck("basic:${className}:online")
+    public Result<?> online(@PathVariable("id") Long id) {
+        ${className}Service.online(id);
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-批量冻结接口
+     *
+     * @param idsAo ${comments}ID数组Ao对象
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/batch-lock")
+    @PermissionCheck("basic:${className}:batch-lock")
+    public Result<?> batchLock(@Valid @RequestBody IdsAo idsAo) {
+        ${className}Service.batchLock(idsAo.getIds());
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-冻结接口
+     *
+     * @param id ${comments}ID
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/lock/{id}")
+    @PermissionCheck("basic:${className}:lock")
+    public Result<?> lock(@PathVariable("id") Long id) {
+        ${className}Service.lock(id);
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-批量解冻接口
+     * 幂等
+     *
+     * @param idsAo ${comments}ID数组Ao对象
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/batch-unlock")
+    @PermissionCheck("basic:${className}:batch-unlock")
+    public Result<?> batchUnlock(@Valid @RequestBody IdsAo idsAo) {
+        ${className}Service.batchUnlock(idsAo.getIds());
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-解冻接口
+     *
+     * @param id ${comments}ID
+     * @return null
+     */
+    @SysLog
+    @PostMapping("/unlock/{id}")
+    @PermissionCheck("basic:${className}:unlock")
+    public Result<?> unlock(@PathVariable("id") Long id) {
+        ${className}Service.unlock(id);
+        return Result.successWithoutData();
+    }
+
+    /**
+     * ${comments}-详情接口
+     *
+     * @param id ${comments}ID
+     * @return ${ClassName}Bo ${comments}详情对象
+     */
+    @GetMapping("/info/{id}")
+    public Result<${ClassName}Bo> info(@PathVariable("id") Long id) {
+        return Result.success(${className}Service.info(id));
+    }
+
+    /**
+     * ${comments}-分页查询接口
+     *
+     * @param pageAo ${comments}分页查询Ao对象
+     * @return ${comments}BO分页数据对象
+     */
+    @PostMapping("/page")
+    @PermissionCheck("basic:${className}:page")
+    public Result<PageData<${ClassName}Bo>> page(@RequestBody ${ClassName}PageAo pageAo) {
+        ${ClassName}Qo qo = ${ClassName}Tools.pageAoToQo(pageAo);
+        qo.setIsLatest(IsLatestEnum.YES.getIndex());
+        return Result.success(${className}Service.page(qo));
+    }
+
+    /**
+     * ${comments}-已上线数据-分页查询接口
+     *
+     * @param pageAo ${comments}分页查询Ao对象
+     * @return ${comments}BO分页数据对象
+     */
+    @PostMapping("/page-online")
+    @PermissionCheck("basic:${className}:page-online")
+    public Result<PageData<${ClassName}Bo>> pageOnline(@RequestBody ${ClassName}PageAo pageAo) {
+        ${ClassName}Qo qo = ${ClassName}Tools.pageAoToQo(pageAo);
+        qo.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        return Result.success(${className}Service.page(qo));
+    }
+
+    /**
+     * ${comments}-根据关键字进行模糊搜索
+     *
+     * @param listAo ${comments}列表查询Ao对象
+     * @return ${ClassName}Bo ${comments}业务对象列表
+     */
+    @PostMapping("/list-option-keyword")
+    public Result<List<OptionBo>> listOptionByKeyword(@RequestBody ${ClassName}ListAo listAo) {
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setKeywordLike(listAo.getKeywordLike());
+        qo.setIsLatest(IsLatestEnum.YES.getIndex());
+        qo.setOptionIdColumn("id");
+        qo.setOptionValueColumn("id");
+        qo.setOptionLabelColumn("concat(name,'-',key_path)");
+        qo.setSortConditionSql("modified_at desc limit 100");
+
+        return Result.success(${className}Service.listOptionByQo(qo));
+    }
+
+    /**
+     * ${comments}-已上线数据-根据关键字进行模糊搜索
+     *
+     * @param listAo ${comments}列表查询Ao对象
+     * @return ${ClassName}Bo ${comments}业务对象列表
+     */
+    @PostMapping("/list-option-online-keyword")
+    public Result<List<OptionBo>> listOptionOnlineByKeyword(@RequestBody ${ClassName}ListAo listAo) {
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setKeywordLike(listAo.getKeywordLike());
+        qo.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        qo.setOptionIdColumn("id");
+        qo.setOptionValueColumn("id");
+        qo.setOptionLabelColumn("concat(name,'-',key_path)");
+        qo.setSortConditionSql("modified_at desc limit 100");
+
+        return Result.success(${className}Service.listOptionByQo(qo));
+    }
+
+    /**
+     * ${comments} 历史版本列表查询
+     *
+     * @param id 当前${comments}ID
+     * @return ${ClassName}Bo ${comments}业务对象列表
+     */
+    @PostMapping("/list-version/{id}")
+    @PermissionCheck("basic:${className}:list-version")
+    public Result<List<${ClassName}Bo>> listVersion(@PathVariable("id") Long id) {
+        return Result.success(${className}Service.listVersion(id));
+    }
+
+}

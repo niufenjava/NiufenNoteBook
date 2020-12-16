@@ -1,0 +1,49 @@
+package ${modulePackage}.ao;
+
+import ${basePackage}.ao.BaseAo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * ${comments} 列表查询Ao对象
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class ${ClassName}ListAo extends BaseAo {
+
+    #foreach ($column in $columns)
+        #if($column.attrname != "id"
+        && $column.attrname != "deletedAt"
+        && $column.attrname != "creatorName"
+        && $column.attrname != "creatorId"
+        && $column.attrname != "createdAt"
+        && $column.attrname != "modifiedAt"
+        && $column.attrname != "modifierName"
+        && $column.attrname != "modifierId"
+        && $column.attrname != "name"
+        && $column.attrname != "keyPath"
+        && $column.attrname != "description"
+        && $column.attrname != "dataType"
+        && $column.attrname != "status"
+        )
+            /**
+             * $column.comments
+             */
+            private $column.attrType $column.attrname;
+
+        #end
+    #end
+
+    /**
+     * 关键字，用于 name 和 key 的模糊搜索
+     */
+    private String keywordLike;
+
+    /**
+     * ${comments}编码 模糊搜索条件
+     */
+    private String encodingLike;
+}

@@ -1,0 +1,138 @@
+package ${modulePackage}.service;
+
+import ${basePackage}.service.BaseService;
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}UpdateAo;
+import ${modulePackage}.bo.${ClassName}Bo;
+import ${modulePackage}.entity.${ClassName}Entity;
+import ${modulePackage}.qo.${ClassName}Qo;
+import com.linkdoc.pagehelper.PageData;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ${comments}-Service接口
+ *
+ * @author haijunzhang@linkdoc.com
+ * @date 2020-12-07 23:28:13
+ */
+public interface ${ClassName}Service extends BaseService<${ClassName}Entity, ${ClassName}Qo> {
+
+    /**
+     * 新增-${comments}
+     *
+     * @param createAo 新增Ao对象
+     * @return ${comments}ID
+     */
+    @Transactional(rollbackFor = Exception.class)
+    Long create(${ClassName}CreateAo createAo);
+
+    /**
+     * 删除-${comments}
+     *
+     * @param id ${comments}id
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void delete(Long id);
+
+    /**
+     * 更新-${comments}
+     *
+     * @param updateAo 更新Ao对象
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void update(${ClassName}UpdateAo updateAo);
+
+    /**
+     * 编辑操作-返回可编辑${comments}ID
+     *
+     * @param id ${comments}ID
+     * @return 被编辑的${comments}ID
+     */
+    @Transactional(rollbackFor = Exception.class)
+    Long toEdit(Long id);
+
+    /**
+     * 批量上线-${comments}
+     *
+     * @param ids ${comments}IDs
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void batchOnline(List<Long> ids);
+
+    /**
+     * 上线-${comments}
+     *
+     * @param id ${comments}ID
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void online(Long id);
+
+    /**
+     * 批量冻结-${comments}
+     *
+     * @param ids ${comments}IDs
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void batchLock(List<Long> ids);
+
+    /**
+     * 冻结-${comments}
+     *
+     * @param id ${comments}ID
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void lock(Long id);
+
+    void batchUnlock(List<Long> ids);
+
+    /**
+     * 解冻操作
+     *
+     * @param id ${comments}ID
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void unlock(Long id);
+
+    /**
+     * 查询-${comments}详情
+     *
+     * @param id ${comments}ID
+     * @return ${comments}-详情Bo
+     */
+        ${ClassName}Bo info(Long id);
+
+    /**
+     * 分页查询-${comments}
+     *
+     * @param ${className}Qo ${comments}查询对象
+     * @return ${comments}-分页对象
+     */
+    PageData<${ClassName}Bo> page(${ClassName}Qo ${className}Qo);
+
+    /**
+     * 列表查询-${comments}
+     *
+     * @param ${className}Qo ${comments}查询对象
+     * @return ${comments}-列表
+     */
+    List<${ClassName}Bo> list(${ClassName}Qo ${className}Qo);
+
+    /**
+     * 列表查询-${comments}-历史版本列表
+     *
+     * @param id ${comments}ID
+     * @return ${comments}的历史版本列表
+     */
+    List<${ClassName}Bo> listVersion(Long id);
+
+    /**
+     * Map查询-根据${comments}IDs，返回map数据，主键为id
+     *
+     * @param ids ${comments}IDs
+     * @return ${comments} maps
+     */
+    Map<Long, ${ClassName}Entity> mapByIds(List<Long> ids);
+}

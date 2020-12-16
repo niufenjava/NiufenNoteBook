@@ -1,0 +1,66 @@
+package ${modulePackage}.ao;
+
+import com.linkdoc.pagehelper.BasePageQo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
+
+/**
+ * ${comments} 分页查询Ao对象
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class ${ClassName}PageAo extends BasePageQo {
+
+    #foreach ($column in $columns)
+        #if($column.attrname != "id"
+        && $column.attrname != "deletedAt"
+        && $column.attrname != "creatorName"
+        && $column.attrname != "creatorId"
+        && $column.attrname != "createdAt"
+        && $column.attrname != "modifiedAt"
+        && $column.attrname != "modifierName"
+        && $column.attrname != "modifierId"
+        && $column.attrname != "name"
+        && $column.attrname != "keyPath"
+        && $column.attrname != "description"
+        && $column.attrname != "dataType"
+        && $column.attrname != "status"
+        )
+            /**
+             * $column.comments
+             */
+            private $column.attrType $column.attrname;
+
+        #end
+    #end
+
+    /**
+     * ${comments}-ID
+     */
+    private Long id;
+
+    /**
+     * ${comments}-ID数组
+     */
+    private List<Long> ids;
+
+    /**
+     * ${comments}-编码(模糊查询)
+     */
+    private String encodingLike;
+
+    /**
+     * ${comments}-数据类型, 1-String;2-Boolean;3-Integer;4-Double;5-Arrays;6-Date;7-Timestamp
+     */
+    private Integer dataType;
+
+    /**
+     * ${comments}-状态
+     */
+    private Integer status;
+}

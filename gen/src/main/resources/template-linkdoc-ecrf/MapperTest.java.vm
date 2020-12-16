@@ -1,0 +1,199 @@
+package ${modulePackage}.dao;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import com.linkdoc.pagehelper.PageData;
+import ${utilsPackage}.FakerUtils;
+import ${utilsPackage}.ListUtils;
+import ${utilsPackage}.MapUtils;
+import ${modulePackage}.entity.${ClassName}Entity;
+
+/**
+ * ${comments} Mapper 测试类
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@Slf4j
+public class ${ClassName}MapperTest {
+
+    @Autowired
+    private ${ClassName}Mapper ${className}Mapper;
+
+    private ${ClassName}Entity newEntity() {
+        ${ClassName}Entity entity = new ${ClassName}Entity();
+        // todo set
+        return entity;
+    }
+
+    @Test
+    public void insert() {
+        ${ClassName}Entity entity = newEntity();
+        Assert.assertEquals(1, ${className}Mapper.insert(entity));
+    }
+
+    @Test
+    public void deleteById() {
+        ${ClassName}Entity entity = newEntity();
+        Assert.assertEquals(1, ${className}Mapper.insert(entity));
+        Assert.assertEquals(1, ${className}Mapper.deleteById(entity.getId()));
+    }
+
+    @Test
+    public void deleteByMap() {
+        ${ClassName}Entity entity = newEntity();
+        Assert.assertEquals(1, ${className}Mapper.insert(entity));
+        Assert.assertNotNull(${className}Mapper.getById(entity.getId()));
+
+        Map<String, Object> deleteParams = MapUtils.newHashMap();
+        //todo
+        //deleteParams.put("channel", entity.getChannel());
+        Assert.assertEquals(1, ${className}Mapper.deleteByParams(deleteParams));
+        Assert.assertNull(${className}Mapper.getById(entity.getId()));
+    }
+
+
+    @Test
+    public void deleteBatchIds() {
+        List<Long> idList = ListUtils.newList();
+        for (int i = 0; i < 10; i++) {
+            ${ClassName}Entity entity = newEntity();
+            // todo set
+            Assert.assertEquals(1, ${className}Mapper.insert(entity));
+            // idList.add(entity.getId());
+        }
+        Assert.assertTrue((10 == idList.size()));
+        Assert.assertEquals(10, ${className}Mapper.deleteBatchIds(idList));
+    }
+
+    @Test
+    public void updateById() {
+        ${ClassName}Entity entity = newEntity();
+        ${className}Mapper.insert(entity);
+        ${ClassName}Entity queryEntity = ${className}Mapper.getById(entity.getId());
+        String channel = FakerUtils.nameEN();
+        //todo set
+        // query${ClassName}Entity.setChannel(channel);
+        Assert.assertEquals(1, ${className}Mapper.updateById(queryEntity));
+        ${ClassName}Entity updateEntity = ${className}Mapper.getById(entity.getId());
+        //Assert.assertEquals(channel, updateEntity.getChannel());
+    }
+
+    @Test
+    public void update() {
+        ${ClassName}Entity updateEntity = new ${ClassName}Entity();
+        //updateEntity.setStatus(0);
+        String creator = "测试用户";
+        for (int i = 0; i < 10; i++) {
+            ${ClassName}Entity entity = newEntity();
+            //todo set
+            //entity.setChannel(entity.getChannel() + i);
+            //entity.setCreator(creator);
+            ${className}Mapper.insert(entity);
+        }
+        Map<String, Object> params = MapUtils.newHashMap();
+        //params.put("status", 1);
+        //params.put("creator", creator);
+        Assert.assertTrue(10 <= ${className}Mapper.update(updateEntity, params));
+    }
+
+    @Test
+    public void getById() {
+        ${ClassName}Entity queryEntity = ${className}Mapper.getById(1L);
+    }
+
+    @Test
+    public void getOne() {
+        ${ClassName}Entity entity = newEntity();
+        Assert.assertEquals(1, ${className}Mapper.insert(entity));
+        ${ClassName}Entity queryEntity = ${className}Mapper.getById(entity.getId());
+        Map<String, Object> params = MapUtils.newHashMap();
+        // todo set
+        // params.put("channel", entity.getChannel());
+        // ${ClassName}Entity one = ${className}Mapper.getOneByParams(params);
+    }
+
+    @Test
+    public void listBatchIds() {
+        List<Long> idList = ListUtils.newList();
+        for (int i = 0; i < 10; i++) {
+            ${ClassName}Entity entity = newEntity();
+            Assert.assertEquals(1, ${className}Mapper.insert(entity));
+            //idList.add(entity.getId());
+        }
+        Assert.assertTrue((10 == idList.size()));
+        Assert.assertEquals(10, ${className}Mapper.listBatchIds(idList).size());
+    }
+
+    @Test
+    public void listByParams() {
+        String desc = FakerUtils.uuid();
+        for (int i = 0; i < 10; i++) {
+            ${ClassName}Entity entity = newEntity();
+            //todo set
+            // entity.setDescription(desc);
+            ${className}Mapper.insert(entity);
+        }
+        Map<String, Object> params = MapUtils.newHashMap();
+        //params.put("status", 1);
+        //params.put("description", desc);
+        //params.put("pageSortOrder", "id desc");
+        //params.put("pageStartIndex", 0);
+        //params.put("pageLimit", 10);
+        List<${ClassName}Entity> list = ${className}Mapper.listByParams(params);
+        Assert.assertNotNull(list);
+        Assert.assertTrue((list.size() == 10));
+    }
+
+    @Test
+    public void countByParams() {
+        String desc = FakerUtils.uuid();
+        for (int i = 0; i < 10; i++) {
+            ${ClassName}Entity entity = newEntity();
+            //entity.setDescription(desc);
+            ${className}Mapper.insert(entity);
+        }
+        Map<String, Object> params = MapUtils.newHashMap();
+        //params.put("status", 1);
+        //params.put("description", desc);
+        //params.put("pageSortOrder", "id desc");
+        //params.put("pageStartIndex", 0);
+        //params.put("pageLimit", 10);
+        Long count = ${className}Mapper.countByParams(params);
+        Assert.assertNotNull(count);
+        Assert.assertTrue((count == 10));
+    }
+
+    @Test
+    public void pageByParams() {
+        String desc = FakerUtils.uuid();
+        for (int i = 0; i < 10; i++) {
+                ${ClassName}Entity entity = newEntity();
+            //entity.setDescription(desc);
+                ${className}Mapper.insert(entity);
+        }
+        Map<String, Object> params = MapUtils.newHashMap();
+        //params.put("status", 1);
+        //params.put("description", desc);
+        //params.put("pageSortOrder", "id desc");
+        //params.put("pageStartIndex", 0);
+        //params.put("pageLimit", 10);
+        PageData<${ClassName}Entity> pageData = ${className}Mapper.pageByParams(params);
+        Assert.assertNotNull(pageData);
+        Assert.assertTrue((pageData.getTotal() == 10));
+    }
+
+}

@@ -125,5 +125,7 @@ alias cdhadoop='cd /usr/local/Cellar/hadoop/3.2.1_1'
 alias cdhive='cd /usr/local/Cellar/hive/3.1.2_1'
 alias cdhbase='/usr/local/Cellar/hbase/1.3.5'
 alias cdsqoop='/usr/local/Cellar/sqoop/1.4.7'
+alias cdsolr='/usr/local/Cellar/solr/8.5.1'
 
 alias sb='source ~/.bash_profile'
+

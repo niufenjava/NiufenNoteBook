@@ -1,0 +1,625 @@
+package ${modulePackage}.service.impl;
+
+import ${basePackage}.bo.OptionBo;
+import ${commonPackage}.constant.LongConstants;
+import ${commonPackage}.constant.SysConstants;
+import ${commonPackage}.enums.DataTypeEnum;
+import ${commonPackage}.enums.EcrfStatusEnum;
+import ${commonPackage}.enums.EncodingTypeEnum;
+import ${commonPackage}.enums.IsLatestEnum;
+import ${commonPackage}.exception.BusinessException;
+import com.linkdoc.framework.ecrf.module.ServiceImplTest;
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}UpdateAo;
+import ${modulePackage}.bo.${ClassName}Bo;
+import ${modulePackage}.entity.${ClassName}Entity;
+import ${modulePackage}.qo.${ClassName}Qo;
+import com.linkdoc.framework.ecrf.module.common.tools.SeqTools;
+import com.linkdoc.framework.ecrf.utils.BusinessUtils;
+import com.linkdoc.framework.ecrf.utils.FakerUtils;
+import com.linkdoc.framework.ecrf.utils.ListUtils;
+import com.linkdoc.pagehelper.PageData;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+/**
+ * ${ClassName}Service 测试类
+ *
+ * @author haijunzhang@linkdoc.com
+ * @date 2020-12-07 23:28:13
+ */
+@Slf4j
+public class ${ClassName}ServiceImplTest extends ServiceImplTest {
+
+    @Autowired
+    private ${ClassName}ServiceImpl ${className}Service;
+
+    /**
+     * 模拟新建Ao 数据
+     *
+     * @return 新建Ao对象
+     */
+    private ${ClassName}CreateAo newCreateAo() {
+        ${ClassName}CreateAo createAo = new ${ClassName}CreateAo();
+        createAo.setName(FakerUtils.nameCN()+FakerUtils.cellPhone());
+        createAo.setKeyPath(FakerUtils.nameEN());
+        createAo.setDescription("描述" + FakerUtils.uuid());
+        createAo.setDataType(DataTypeEnum.randomIndex());
+
+        createAo.setCurUserId(SysConstants.SYSTEM_DEFAULT_USER_ID);
+        createAo.setCurUserName(SysConstants.SYSTEM_DEFAULT_USER_NAME);
+
+        return createAo;
+    }
+
+    /**
+     * 模拟更新Ao 数据
+     *
+     * @return 新建Ao对象
+     */
+    private ${ClassName}UpdateAo newUpdateAo() {
+        ${ClassName}UpdateAo updateAo = new ${ClassName}UpdateAo();
+        updateAo.setKeyPath(FakerUtils.nameEN());
+        updateAo.setEncoding(SeqTools.generateEncoding(EncodingTypeEnum.${ClassName}));
+        updateAo.setDescription(FakerUtils.uuid());
+        updateAo.setDataType(DataTypeEnum.randomIndex());
+
+        return updateAo;
+    }
+
+    @Test
+    public void create() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        log.info("id={}", id);
+        Assert.assertNotNull(id);
+
+        ${ClassName}Bo infoBo = ${className}Service.info(id);
+        log.info("详情:{}", infoBo);
+    }
+
+    @Test(expected = BusinessException.class)
+    public void createByCheckUniqueKey() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        log.info("id={}", id);
+        Assert.assertNotNull(id);
+
+        ${className}Service.create(createAo);
+    }
+
+    @Test
+    public void delete() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        Assert.assertNotNull(bo);
+        log.info("详情:{}", bo);
+
+        ${className}Service.delete(id);
+
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(BusinessUtils.isDeleted(bo.getDeletedAt()));
+        log.info("删除时间:{}", bo.getDeletedAt());
+    }
+
+    @Test(expected = BusinessException.class)
+    public void deleteNotExistId() {
+        ${className}Service.delete(LongConstants.ZERO);
+    }
+
+    @Test
+    public void deleteByDeleted() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.delete(id);
+        ${className}Service.delete(id);
+    }
+
+    @Test(expected = BusinessException.class)
+    public void deleteByOnline() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        Assert.assertNotNull(bo);
+        log.info("详情:{}", bo);
+
+        ${className}Service.online(id);
+        ${className}Service.delete(id);
+    }
+
+    @Test(expected = BusinessException.class)
+    public void deleteByLock() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        Assert.assertNotNull(bo);
+        log.info("详情:{}", bo);
+
+        ${className}Service.lock(id);
+        ${className}Service.delete(id);
+    }
+
+    @Test
+    public void deleteAndRollbackVersion() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Long newId = ${className}Service.toEdit(id);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        Assert.assertFalse(IsLatestEnum.isTrue(bo.getIsLatest()));
+
+        ${className}Service.delete(newId);
+
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+    }
+
+    @Test
+    public void toEdit() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        Long newId = ${className}Service.toEdit(id);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        ${ClassName}Bo newBo = ${className}Service.info(newId);
+
+        log.info(bo.toString());
+        log.info(newBo.toString());
+        Assert.assertEquals(id, newId);
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertTrue(IsLatestEnum.isTrue(newBo.getIsLatest()));
+        Assert.assertEquals(bo.getVersion(), newBo.getVersion());
+    }
+
+    @Test
+    public void toEditByOnline() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Long newId = ${className}Service.toEdit(id);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        ${ClassName}Bo newBo = ${className}Service.info(newId);
+
+        log.info(bo.toString());
+        log.info(newBo.toString());
+        Assert.assertNotEquals(id, newId);
+        Assert.assertFalse(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertTrue(IsLatestEnum.isTrue(newBo.getIsLatest()));
+        Assert.assertEquals((int) bo.getVersion(), (newBo.getVersion() - 1));
+    }
+
+
+    @Test(expected = Exception.class)
+    public void toEditByLock() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${className}Service.lock(id);
+        ${className}Service.toEdit(id);
+    }
+
+
+    @Test(expected = Exception.class)
+    public void toEditByOffline() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Long newId = ${className}Service.toEdit(id);
+        ${className}Service.online(newId);
+        ${className}Service.toEdit(id);
+    }
+
+    @Test
+    public void update() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+
+        ${ClassName}UpdateAo updateAo = newUpdateAo();
+        updateAo.setId(id);
+        ${className}Service.update(updateAo);
+
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        log.info("详情:{}", bo);
+        Assert.assertEquals(updateAo.getEncoding(), bo.getEncoding());
+        Assert.assertEquals(updateAo.getDescription(), bo.getDescription());
+        Assert.assertEquals(updateAo.getKeyPath(), bo.getKeyPath());
+        Assert.assertEquals(updateAo.getDataType(), bo.getDataType());
+    }
+
+
+    @Test(expected = Exception.class)
+    public void updateByOnline() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${ClassName}UpdateAo updateAo = newUpdateAo();
+        updateAo.setId(id);
+        ${className}Service.update(updateAo);
+    }
+
+
+    @Test(expected = Exception.class)
+    public void updateByLock() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${className}Service.lock(id);
+        ${ClassName}UpdateAo updateAo = newUpdateAo();
+        updateAo.setId(id);
+        ${className}Service.update(updateAo);
+    }
+
+    @Test
+    public void batchOnline() {
+        List<Long> ids = ListUtils.newList();
+        int testNum = 10;
+        for (int i = 0; i < testNum; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            Long id = ${className}Service.create(createAo);
+            ids.add(id);
+        }
+        ${className}Service.batchOnline(ids);
+        for (int i = 0; i < testNum; i++) {
+            Assert.assertTrue(EcrfStatusEnum.isOnline(${className}Service.getById(ids.get(i)).getStatus()));
+        }
+    }
+
+    @Test
+    public void online() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Assert.assertTrue(EcrfStatusEnum.isOnline(${className}Service.getById(id).getStatus()));
+    }
+
+
+    @Test
+    public void onlineNewVersion() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Long newId = ${className}Service.toEdit(id);
+        ${className}Service.online(newId);
+
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        ${ClassName}Bo newBo = ${className}Service.info(newId);
+
+        log.info(bo.toString());
+        log.info(newBo.toString());
+
+        Assert.assertNotEquals(id, newId);
+        Assert.assertTrue(EcrfStatusEnum.isOffline(bo.getStatus()));
+        Assert.assertTrue(EcrfStatusEnum.isOnline(newBo.getStatus()));
+        Assert.assertFalse(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertTrue(IsLatestEnum.isTrue(newBo.getIsLatest()));
+        Assert.assertEquals((int) bo.getVersion(), (newBo.getVersion() - 1));
+    }
+
+    @Test(expected = Exception.class)
+    public void onlineByOnline() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${className}Service.online(id);
+    }
+
+    @Test
+    public void batchLock() {
+        List<Long> ids = ListUtils.newList();
+        int testNum = 10;
+        for (int i = 0; i < testNum; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            Long id = ${className}Service.create(createAo);
+            ${className}Service.online(id);
+            ids.add(id);
+        }
+        ${className}Service.batchLock(ids);
+        for (int i = 0; i < testNum; i++) {
+            Assert.assertTrue(EcrfStatusEnum.isLocked(${className}Service.getById(ids.get(i)).getStatus()));
+        }
+    }
+
+    @Test
+    public void lock() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${className}Service.lock(id);
+        Assert.assertTrue(EcrfStatusEnum.isLocked(${className}Service.getById(id).getStatus()));
+    }
+
+    @Test
+    public void batchUnlock() {
+        List<Long> ids = ListUtils.newList();
+        int testNum = 10;
+        for (int i = 0; i < testNum; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            Long id = ${className}Service.create(createAo);
+            ${className}Service.online(id);
+            ${className}Service.lock(id);
+            ids.add(id);
+        }
+        ${className}Service.batchUnlock(ids);
+        for (int i = 0; i < testNum; i++) {
+            Assert.assertTrue(EcrfStatusEnum.isOnline(${className}Service.getById(ids.get(i)).getStatus()));
+        }
+    }
+
+    @Test
+    public void unlock() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        ${className}Service.lock(id);
+        ${className}Service.unlock(id);
+        Assert.assertTrue(EcrfStatusEnum.isOnline(${className}Service.getById(id).getStatus()));
+    }
+
+    @Test
+    public void info() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${ClassName}Bo bo = ${className}Service.info(id);
+        log.info("详情bo:{}", bo);
+        Assert.assertTrue(EcrfStatusEnum.isDraft(bo.getStatus()));
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertEquals(1L, (int) bo.getVersion());
+        Assert.assertTrue(bo.getDeleteAuth());
+        Assert.assertTrue(bo.getEditAuth());
+        Assert.assertTrue(bo.getOnlineAuth());
+        Assert.assertFalse(bo.getLockAuth());
+        Assert.assertFalse(bo.getUnlockAuth());
+
+        // online
+        ${className}Service.online(id);
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(EcrfStatusEnum.isOnline(bo.getStatus()));
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertEquals(1L, (int) bo.getVersion());
+        Assert.assertFalse(bo.getDeleteAuth());
+        Assert.assertTrue(bo.getEditAuth());
+        Assert.assertFalse(bo.getOnlineAuth());
+        Assert.assertTrue(bo.getLockAuth());
+        Assert.assertFalse(bo.getUnlockAuth());
+
+
+        // lock
+        ${className}Service.lock(id);
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(EcrfStatusEnum.isLocked(bo.getStatus()));
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertEquals(1L, (int) bo.getVersion());
+        Assert.assertFalse(bo.getDeleteAuth());
+        Assert.assertFalse(bo.getEditAuth());
+        Assert.assertFalse(bo.getOnlineAuth());
+        Assert.assertFalse(bo.getLockAuth());
+        Assert.assertTrue(bo.getUnlockAuth());
+
+
+        // unlock
+        ${className}Service.unlock(id);
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(EcrfStatusEnum.isOnline(bo.getStatus()));
+        Assert.assertTrue(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertEquals(1L, (int) bo.getVersion());
+        Assert.assertFalse(bo.getDeleteAuth());
+        Assert.assertTrue(bo.getEditAuth());
+        Assert.assertFalse(bo.getOnlineAuth());
+        Assert.assertTrue(bo.getLockAuth());
+        Assert.assertFalse(bo.getUnlockAuth());
+
+        // toEdit
+        ${className}Service.toEdit(id);
+        bo = ${className}Service.info(id);
+        Assert.assertTrue(EcrfStatusEnum.isOnline(bo.getStatus()));
+        Assert.assertFalse(IsLatestEnum.isTrue(bo.getIsLatest()));
+        Assert.assertEquals(1L, (int) bo.getVersion());
+        Assert.assertFalse(bo.getDeleteAuth());
+        Assert.assertTrue(bo.getEditAuth());
+        Assert.assertFalse(bo.getOnlineAuth());
+        Assert.assertTrue(bo.getLockAuth());
+        Assert.assertFalse(bo.getUnlockAuth());
+    }
+
+    @Test
+    public void page() {
+        int testCount = 10;
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            ${className}Service.create(createAo);
+        }
+        ${ClassName}Qo ${className}Qo = new ${ClassName}Qo();
+        ${className}Qo.setStatus(EcrfStatusEnum.DRAFT.getIndex());
+        ${className}Qo.setEncodingLike("P");
+        ${className}Qo.setPageNum(1);
+        ${className}Qo.setPageSize(10);
+
+        PageData<${ClassName}Bo> pageData = ${className}Service.page(${className}Qo);
+        assert 10 <= pageData.getTotal();
+        assert 10 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+    }
+
+    @Test
+    public void pageByIds() {
+        int testCount = 10;
+        List<Long> ids = ListUtils.newList();
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            ids.add(${className}Service.create(createAo));
+        }
+        ${ClassName}Qo ${className}Qo = new ${ClassName}Qo();
+        ${className}Qo.setIds(ids);
+        ${className}Qo.setStatus(EcrfStatusEnum.DRAFT.getIndex());
+//        ${className}Qo.setDataType(newCreateAo().getDataType());
+        ${className}Qo.setPageNum(1);
+        ${className}Qo.setPageSize(10);
+
+        PageData<${ClassName}Bo> pageData = ${className}Service.page(${className}Qo);
+        assert 10 <= pageData.getTotal();
+        assert 10 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+
+        // 反ids条件测试
+        ids.clear();
+        ids.add(LongConstants.ZERO);
+        pageData = ${className}Service.page(${className}Qo);
+        assert 0 == pageData.getTotal();
+        assert 0 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+    }
+
+    @Test
+    public void pageByEncodings() {
+        int testCount = 10;
+        List<String> encodings = ListUtils.newList();
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            createAo.setDataType(DataTypeEnum.String.getIndex());
+            encodings.add(${className}Service.info(${className}Service.create(createAo)).getEncoding());
+        }
+        ${ClassName}Qo ${className}Qo = new ${ClassName}Qo();
+        ${className}Qo.setEncodings(encodings);
+        ${className}Qo.setStatus(EcrfStatusEnum.DRAFT.getIndex());
+        ${className}Qo.setDataType(DataTypeEnum.String.getIndex());
+        ${className}Qo.setPageNum(1);
+        ${className}Qo.setPageSize(10);
+
+        PageData<${ClassName}Bo> pageData = ${className}Service.page(${className}Qo);
+        assert 10 <= pageData.getTotal();
+        assert 10 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+
+        // 反ids条件测试
+        encodings.clear();
+        encodings.add("-");
+        pageData = ${className}Service.page(${className}Qo);
+        assert 0 == pageData.getTotal();
+        assert 0 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+    }
+
+
+
+    @Test
+    public void pageOnline() {
+        int testCount = 10;
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            Long id = ${className}Service.create(createAo);
+            ${className}Service.online(id);
+        }
+        ${ClassName}Qo ${className}Qo = new ${ClassName}Qo();
+        ${className}Qo.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        ${className}Qo.setEncodingLike("P");
+        ${className}Qo.setPageNum(1);
+        ${className}Qo.setPageSize(10);
+
+        PageData<${ClassName}Bo> pageData = ${className}Service.page(${className}Qo);
+        assert 10 <= pageData.getTotal();
+        assert 10 == pageData.getList().size();
+        log.info("pageData:{}", pageData);
+    }
+
+    @Test
+    public void list() {
+        int testCount = 10;
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            createAo.setName("Key"+createAo.getName());
+            ${className}Service.create(createAo);
+        }
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setKeywordLike("Key");
+        qo.setIsLatest(IsLatestEnum.YES.getIndex());
+        qo.setSortConditionSql("modified_at desc limit 10");
+        List<${ClassName}Bo> list = ${className}Service.list(qo);
+        log.info("list:{}", list);
+        Assert.assertEquals(10,list.size());
+    }
+
+    @Test
+    public void listVersion() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${className}Service.online(id);
+        Long newId = ${className}Service.toEdit(id);
+        ${className}Service.online(newId);
+        List<${ClassName}Bo> boList = ${className}Service.listVersion(id);
+        Assert.assertEquals(2, boList.size());
+
+    }
+
+    @Test
+    public void listOptionByKeyword() {
+        int testCount = 10;
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            createAo.setName("Key"+createAo.getName());
+            ${className}Service.create(createAo);
+        }
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setKeywordLike("");
+        qo.setIsLatest(IsLatestEnum.YES.getIndex());
+        qo.setOptionIdColumn("id");
+        qo.setOptionValueColumn("id");
+        qo.setOptionLabelColumn("concat(name,'-',key_path)");
+        qo.setSortConditionSql("modified_at desc limit 10");
+        List<OptionBo> optionBos = ${className}Service.listOptionByQo(qo);
+        log.info("optionBos:{}", optionBos);
+        Assert.assertEquals(10,optionBos.size());
+    }
+
+
+    @Test
+    public void listOptionOnlineByKeyword() {
+        int testCount = 10;
+        for (int i = 0; i < testCount; i++) {
+            ${ClassName}CreateAo createAo = newCreateAo();
+            createAo.setName("Key"+createAo.getName());
+            Long id = ${className}Service.create(createAo);
+            ${className}Service.online(id);
+        }
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setKeywordLike("");
+        qo.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        qo.setOptionIdColumn("id");
+        qo.setOptionValueColumn("id");
+        qo.setOptionLabelColumn("concat(name,'-',key_path)");
+        qo.setSortConditionSql("modified_at desc limit 10");
+        List<OptionBo> optionBos = ${className}Service.listOptionByQo(qo);
+        log.info("optionBos:{}", optionBos);
+        Assert.assertEquals(10,optionBos.size());
+    }
+
+    @Test
+    public void getAndCheckById() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        Long id = ${className}Service.create(createAo);
+        ${ClassName}Entity entity = ${className}Service.getAndCheckById(id);
+        log.info("entity:{}", entity);
+    }
+
+    @Test(expected = BusinessException.class)
+    public void getAndCheckByIdExceptedException() {
+        ${ClassName}Entity entity = ${className}Service.getAndCheckById(0L);
+    }
+
+    @Test
+    public void checkUniqueKey() {
+        ${className}Service.checkUniqueKey(FakerUtils.uuid());
+    }
+
+    @Test(expected = BusinessException.class)
+    public void checkUniqueKeyExceptedException() {
+        ${ClassName}CreateAo createAo = newCreateAo();
+        ${className}Service.create(createAo);
+        ${className}Service.checkUniqueKey(createAo.getName());
+    }
+
+
+}

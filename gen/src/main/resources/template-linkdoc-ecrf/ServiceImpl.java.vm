@@ -1,0 +1,504 @@
+package ${modulePackage}.service.impl;
+
+import ${basePackage}.dto.LoginUserDto;
+import ${basePackage}.service.impl.BaseServiceImpl;
+import ${commonPackage}.constant.IntConstants;
+import ${commonPackage}.enums.EcrfStatusEnum;
+import ${commonPackage}.enums.EncodingTypeEnum;
+import ${commonPackage}.enums.IsLatestEnum;
+import ${commonPackage}.exception.BusinessException;
+import com.linkdoc.framework.ecrf.config.RequestLocal;
+import ${modulePackage}.ao.${ClassName}CreateAo;
+import ${modulePackage}.ao.${ClassName}UpdateAo;
+import ${modulePackage}.bo.${ClassName}Bo;
+import ${modulePackage}.dao.${ClassName}Mapper;
+import ${modulePackage}.entity.${ClassName}Entity;
+import ${modulePackage}.qo.${ClassName}Qo;
+import ${modulePackage}.service.${ClassName}Service;
+import ${modulePackage}.tools.${ClassName}Tools;
+import com.linkdoc.framework.ecrf.module.common.tools.SeqTools;
+import ${utilsPackage}.BusinessUtils;
+import ${utilsPackage}.CollUtils;
+import ${utilsPackage}.DateUtils;
+import ${utilsPackage}.ListUtils;
+import com.linkdoc.pagehelper.PageData;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * ${comments}-Service实现类
+ *
+ * @author haijunzhang@linkdoc.com
+ * @date 2020-12-07 23:28:13
+ */
+@Slf4j
+@Service
+public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper, ${ClassName}Entity, ${ClassName}Qo> implements ${ClassName}Service {
+
+    @Override
+    public Long create(${ClassName}CreateAo createAo) {
+        // 业务主键唯一性校验
+        this.checkUniqueKey(createAo.getName());
+
+        // 封装实体对象
+        // -> 创建一个encoding
+        // -> 默认版本从V1开始
+        // -> 保存
+        ${ClassName}Entity entity = ${ClassName}Tools.createAoToEntity(createAo);
+        entity.setEncoding(SeqTools.generateEncoding(EncodingTypeEnum.${ClassName}));
+        entity.setVersion(IntConstants.ONE);
+        this.execCreate(entity);
+
+        // 返回ID
+        return entity.getId();
+    }
+
+    @Override
+    public void delete(Long id) {
+        // 根据ID获取entity
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+
+        // 是否可删除验证
+        if (!${ClassName}Tools.deleteAuth(entity)) {
+            log.error("删除${comments}失败,entity.status:{}", entity.getStatus());
+            throw new BusinessException("该${comments}状态不是草稿状态，不能删除!");
+        }
+
+        // 如果已经是删除状态，直接返回
+        if (BusinessUtils.isDeleted(entity.getDeletedAt())) {
+            log.error("删除${comments}失败,已经是删除状态, entity.deletedAt:{}", entity.getDeletedAt());
+            return;
+        }
+
+        // 设置删除属性，并执行删除
+        // -> 将当前版本设置为非最新版本
+        entity.setIsLatest(IsLatestEnum.NO.getIndex());
+        entity.setDeletedAt(DateUtils.newDate());
+        this.execUpdate(entity);
+
+        // 回滚上一个版本
+        this.execRollbackVersion(entity);
+    }
+
+    @Override
+    public Long toEdit(Long id) {
+        // 根据ID获取entity
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+
+        // 是否可进行编辑判断
+        if (!${ClassName}Tools.editAuth(entity)) {
+            log.error("该${comments}状态不是草稿或已上线状态，不能编辑,entity:{}", entity);
+            throw new BusinessException("该${comments}状态不是草稿或已上线状态，不能编辑!");
+        }
+        // 如果当前是草稿状态，直接返回当前ID进行编辑
+        if (EcrfStatusEnum.isDraft(entity.getStatus())) {
+            return entity.getId();
+        }
+
+        // 如果是已上线状态，将老版本设置为NO
+        entity.setIsLatest(IsLatestEnum.NO.getIndex());
+        this.execUpdate(entity);
+
+        // 产生新版本，并且设置当前版本为老版本
+        ${ClassName}Entity newEntity = this.newVersion(entity);
+        return newEntity.getId();
+    }
+
+    @Override
+    public void update(${ClassName}UpdateAo updateAo) {
+        // 根据ID获取entity
+        ${ClassName}Entity entity = this.getAndCheckById(updateAo.getId());
+
+        // 判断是否有更新权限
+        if (!${ClassName}Tools.updateAuth(entity)) {
+            log.error("该${comments}状态不是草稿状态，不能更新,entity:{}", entity);
+            throw new BusinessException("该${comments}状态不是草稿状态，不能更新!");
+        }
+
+        // encoding合法性校验
+        SeqTools.checkEncoding(EncodingTypeEnum.${ClassName}, updateAo.getEncoding());
+
+        // 设置修改信息，并进行更新
+        entity.setKeyPath(updateAo.getKeyPath());
+        entity.setEncoding(updateAo.getEncoding());
+        entity.setDescription(updateAo.getDescription());
+        entity.setDataType(updateAo.getDataType());
+        this.execUpdate(entity);
+    }
+
+    @Override
+    public void batchOnline(List<Long> ids) {
+        if (CollUtils.isEmpty(ids)) {
+            log.error("批量上线操作异常，ids为空, ids:{}", ids);
+            return;
+        }
+        for (Long id : ids) {
+            ${ClassName}Entity entity = this.getById(id);
+            // 执行上线
+            this.execOnline(entity);
+        }
+    }
+
+    @Override
+    public void online(Long id) {
+        // 判断实体对象是否存在
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+
+        // 只有在草稿状态并且是最新版本下才可以删除
+        if (!${ClassName}Tools.onlineAuth(entity)) {
+            log.error("该${comments}状态不是草稿状态或不是最新版本,entity:{}", entity);
+            throw new BusinessException("该${comments}状态不是草稿状态或不是最新版本，不能执行上线!");
+        }
+
+        // 执行上线
+        this.execOnline(entity);
+    }
+
+    /**
+     * 实际上线操作
+     *
+     * @param entity 简单节点实体对象
+     */
+    void execOnline(${ClassName}Entity entity) {
+        // 判断实体对象是否存在
+        if (Objects.isNull(entity)) {
+            log.error("上线操作异常，entity is null");
+            return;
+        }
+
+        // 只有在草稿状态并且是最新版本下才可以删除
+        if (!${ClassName}Tools.onlineAuth(entity)) {
+            log.error("该${comments}状态不是草稿状态或不是最新版本,entity:{}", entity.toString());
+            return;
+        }
+
+        // 将当前版本上线
+        entity.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        execStatusChange(entity);
+
+        // 查找出上一版本，并执行下线
+        ${ClassName}Entity lastEntity = this.getLastVersion(entity);
+        if (Objects.isNull(lastEntity)) {
+            return;
+        }
+        this.execOffline(lastEntity);
+    }
+
+    @Override
+    public void batchLock(List<Long> ids) {
+        if (CollUtils.isEmpty(ids)) {
+            log.error("批量冻结操作异常，ids为空");
+            return;
+        }
+        for (Long id : ids) {
+            ${ClassName}Entity entity = this.getById(id);
+            // 执行冻结
+            this.execLock(entity);
+        }
+    }
+
+    @Override
+    public void lock(Long id) {
+        // 判断实体对象是否存在
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+
+        // 只有在已上线状态下，才可以进行冻结操作
+        if (!${ClassName}Tools.lockAuth(entity)) {
+            log.error("该${comments}状态不是已上线状态，不能冻结,entity:{}", entity.toString());
+            throw new BusinessException("该${comments}状态不是已上线状态，不能冻结!");
+        }
+
+        // 执行冻结
+        this.execLock(entity);
+    }
+
+    /**
+     * 冻结 ${comments}
+     *
+     * @param entity 实体对象
+     */
+    void execLock(${ClassName}Entity entity) {
+        // 判断实体对象是否存在
+        if (Objects.isNull(entity)) {
+            log.error("冻结操作异常，entity is null");
+            return;
+        }
+
+        // 是否符合冻结条件
+        if (!${ClassName}Tools.lockAuth(entity)) {
+            return;
+        }
+
+        // 将状态设置为冻结
+        entity.setStatus(EcrfStatusEnum.LOCKED.getIndex());
+        execStatusChange(entity);
+    }
+
+    @Override
+    public void batchUnlock(List<Long> ids) {
+        if (CollUtils.isEmpty(ids)) {
+            log.error("批量解冻操作异常，ids:{} 为空", ids);
+            return;
+        }
+        for (Long id : ids) {
+            ${ClassName}Entity entity = this.getById(id);
+            // 执行解冻
+            this.execUnlock(entity);
+        }
+    }
+
+    @Override
+    public void unlock(Long id) {
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+        if (!${ClassName}Tools.unlockAuth(entity)) {
+            log.error("该${comments}状态有误，不能进行解冻操作!,entity:{}", entity);
+            throw new BusinessException("该${comments}状态有误，不能进行解冻操作！");
+        }
+        // 执行解冻
+        this.execUnlock(entity);
+    }
+
+    /**
+     * 解冻-${comments}
+     *
+     * @param entity ${comments}实体
+     */
+    void execUnlock(${ClassName}Entity entity) {
+        // 判断实体对象是否存在
+        if (Objects.isNull(entity)) {
+            log.error("解冻操作异常，entity is null");
+            return;
+        }
+
+        // 判断是否可以解锁
+        if (!${ClassName}Tools.unlockAuth(entity)) {
+            return;
+        }
+
+        // 设置状态并修改
+        entity.setStatus(EcrfStatusEnum.ONLINE.getIndex());
+        execStatusChange(entity);
+    }
+
+    @Override
+    public ${ClassName}Bo info(Long id) {
+        ${ClassName}Entity entity = this.getAndCheckById(id);
+        return ${ClassName}Tools.entityToBo(entity);
+    }
+
+    @Override
+    public PageData<${ClassName}Bo> page(${ClassName}Qo ${className}Qo) {
+        List<${ClassName}Bo> boList = ListUtils.newList();
+        PageData<${ClassName}Entity> pageData = this.pageByQo(${className}Qo);
+
+        for (${ClassName}Entity ${className}Entity : pageData.getList()) {
+            boList.add(${ClassName}Tools.entityToBo(${className}Entity));
+        }
+        return new PageData<>(pageData.getTotal(), boList);
+    }
+
+    @Override
+    public List<${ClassName}Bo> list(${ClassName}Qo ${className}Qo) {
+        List<${ClassName}Entity> entityList = this.listByQo(${className}Qo);
+        List<${ClassName}Bo> boList = ListUtils.newList();
+        if (CollectionUtils.isNotEmpty(entityList)) {
+            for (${ClassName}Entity ${className}Entity : entityList) {
+                boList.add(${ClassName}Tools.entityToBo(${className}Entity));
+            }
+        }
+        return boList;
+    }
+
+    @Override
+    public List<${ClassName}Bo> listVersion(Long id) {
+        List<${ClassName}Bo> boList = ListUtils.newList();
+        ${ClassName}Entity entity = this.getById(id);
+        if (Objects.isNull(entity)) {
+            return boList;
+        }
+
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setName(entity.getName());
+        qo.setSortConditionSql("version desc");
+
+        return this.list(qo);
+    }
+
+    /**
+     * 检查ID对应的数据是否存在，如果存在返回Entity对象
+     *
+     * @param id ${comments}ID
+     * @return ${comments}实体对象
+     */
+    ${ClassName}Entity getAndCheckById(Long id) {
+        ${ClassName}Entity entity = this.getById(id);
+        if (Objects.isNull(entity)) {
+            log.error("${comments}ID:{}对应的数据不存在", id);
+            throw new BusinessException("该${comments}不存在!");
+        }
+        return entity;
+    }
+
+    /**
+     * 检查业务主键是否存在，若存在则提示
+     *
+     * @param name ${comments}名称
+     */
+    void checkUniqueKey(String name) {
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setName(name);
+        ${ClassName}Entity entity = this.getOneByQo(qo);
+        if (Objects.nonNull(entity)) {
+            log.error("该${comments}名称已存在,name:{}", name);
+            throw new BusinessException("该${comments}名称已存在!");
+        }
+    }
+
+    /**
+     * 根据当前版本产生新版本
+     *
+     * @param entity 当前版本对象
+     * @return 新版本对象
+     */
+    ${ClassName}Entity newVersion(${ClassName}Entity entity) {
+        ${ClassName}Entity newVersionEntity = new ${ClassName}Entity();
+        newVersionEntity.setName(entity.getName());
+        newVersionEntity.setKeyPath(entity.getKeyPath());
+        newVersionEntity.setEncoding(entity.getEncoding());
+        newVersionEntity.setDescription(entity.getDescription());
+        newVersionEntity.setDataType(entity.getDataType());
+        newVersionEntity.setVersion(entity.getVersion() + 1);
+        this.execCreate(newVersionEntity);
+        return newVersionEntity;
+    }
+
+    /**
+     * 执行版本回滚
+     * 将点位 最新版本回滚到上一个
+     *
+     * @param entity ${comments}实体对象
+     */
+    void execRollbackVersion(${ClassName}Entity entity) {
+        // 如果当前版本是1，那么直接返回
+        if (IntConstants.ONE.equals(entity.getVersion())) {
+            return;
+        }
+
+        // 查找出上一个版本对象，如果为空直接返回
+        ${ClassName}Entity lastEntity = this.getLastVersion(entity);
+        if (Objects.isNull(lastEntity)) {
+            return;
+        }
+
+        // 将上一个版本设置为最新版本，并执行更新
+        lastEntity.setIsLatest(IsLatestEnum.YES.getIndex());
+        this.execUpdate(lastEntity);
+    }
+
+    /**
+     * 查找当前版本的上一个版本
+     * 如果当前版本为1 或者未找到，返回 null
+     *
+     * @param entity 当前版本 ${comments}
+     * @return 上一版 ${comments}
+     */
+    ${ClassName}Entity getLastVersion(${ClassName}Entity entity) {
+        // 如果当前版本是1，那么直接返回
+        if (IntConstants.ONE.equals(entity.getVersion())) {
+            return null;
+        }
+        // 查找出上一个版本并设置为最新版本
+        ${ClassName}Qo qo = new ${ClassName}Qo();
+        qo.setName(entity.getName());
+        qo.setVersion(entity.getVersion() - 1);
+        qo.setIsLatest(IsLatestEnum.NO.getIndex());
+        return this.getOneByQo(qo);
+    }
+
+    /**
+     * 更新${comments}-执行方法
+     *
+     * @param entity 实体对象
+     */
+    void execUpdate(${ClassName}Entity entity) {
+        entity.setModifiedAt(DateUtils.newDate());
+        LoginUserDto loginUser = RequestLocal.get();
+        if (!Objects.isNull(loginUser)) {
+            entity.setModifierId(loginUser.getId());
+            entity.setModifierName(loginUser.getRealName());
+        }
+        log.info("execUpdate, ${className}Entity:{}", entity);
+        this.updateById(entity);
+    }
+
+    /**
+     * 新增${comments}-执行方法
+     *
+     * @param entity 实体对象
+     */
+    void execCreate(${ClassName}Entity entity) {
+        entity.setStatus(EcrfStatusEnum.DRAFT.getIndex());
+        entity.setIsLatest(IsLatestEnum.YES.getIndex());
+        entity.setCreatedAt(DateUtils.newDate());
+        entity.setModifiedAt(DateUtils.newDate());
+        LoginUserDto loginUser = RequestLocal.get();
+        if (!Objects.isNull(loginUser)) {
+            entity.setModifierId(loginUser.getId());
+            entity.setModifierName(loginUser.getRealName());
+            entity.setCreatorId(loginUser.getId());
+            entity.setCreatorName(loginUser.getRealName());
+        }
+        log.info("execCreate, ${className}Entity:{}", entity);
+        this.save(entity);
+    }
+
+    /**
+     * 更新${comments}状态-执行方法
+     *
+     * @param entity 状态更新Ao对象
+     */
+    void execStatusChange(${ClassName}Entity entity) {
+        this.execUpdate(entity);
+    }
+
+    /**
+     * 下线 ${comments}
+     *
+     * @param entity ${comments}实体对象
+     */
+    void execOffline(${ClassName}Entity entity) {
+        // 判断是否为空
+        if (Objects.isNull(entity)) {
+            log.error("下线${comments}失败,entity is null");
+            return;
+        }
+
+        // 判断当前下线条件
+        if (!${ClassName}Tools.offlineAuth(entity)) {
+            return;
+        }
+        entity.setStatus(EcrfStatusEnum.OFFLINE.getIndex());
+        execStatusChange(entity);
+    }
+
+    @Override
+    public Map<Long, ${ClassName}Entity> mapByIds(List<Long> ids) {
+        Map<Long, ${ClassName}Entity> maps = MapUtils.newHashMap();
+        if (CollUtils.isEmpty(ids)) {
+            return maps;
+        }
+        List<${ClassName}Entity> list = this.listByIds(ids);
+        if (CollUtils.isEmpty(list)) {
+            return maps;
+        }
+        for (${ClassName}Entity entity : list) {
+            maps.put(entity.getId(), entity);
+        }
+        return maps;
+    }
+}
+

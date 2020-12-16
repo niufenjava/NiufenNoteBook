@@ -1,0 +1,19 @@
+package ${modulePackage}.dao;
+
+import ${basePackage}.dao.BaseMapper;
+import ${modulePackage}.entity.${ClassName}Entity;
+import ${modulePackage}.qo.${ClassName}Qo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
+/**
+ * ${comments} Mapper
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@Component
+@Mapper
+public interface ${ClassName}Mapper extends BaseMapper<${ClassName}Entity, ${ClassName}Qo> {
+
+}

@@ -1,0 +1,65 @@
+package ${modulePackage}.bo;
+
+import ${modulePackage}.entity.${ClassName}Entity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+/**
+ * ${comments} BO业务对象
+ *
+ * @author ${email}
+ * @date ${datetime}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class ${ClassName}Bo extends ${ClassName}Entity{
+
+
+    /**
+     * 版本描述
+     */
+    private String versionDesc;
+
+    /**
+     * 状态描述
+     */
+    private String statusDesc;
+
+    /**
+     * 数据类型描述
+     */
+    private String dataTypeDesc;
+
+    /**
+     * 是否可删除
+     */
+    private Boolean deleteAuth;
+
+    /**
+     * 是否可编辑
+     */
+    private Boolean editAuth;
+
+    /**
+     * 是否可提交更新
+     */
+    private Boolean updateAuth;
+
+    /**
+     * 是否可上线
+     */
+    private Boolean onlineAuth;
+
+    /**
+     * 是否可冻结
+     */
+    private Boolean lockAuth;
+
+    /**
+     * 是否可解冻
+     */
+    private Boolean unlockAuth;
+
+}
