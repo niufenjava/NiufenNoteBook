@@ -3,6 +3,7 @@ package ${modulePackage}.dao;
 import ${basePackage}.dao.BaseMapper;
 import ${modulePackage}.entity.${ClassName}Entity;
 import ${modulePackage}.qo.${ClassName}Qo;
+import ${modulePackage}.bo.${ClassName}Bo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Mapper
-public interface ${ClassName}Mapper extends BaseMapper<${ClassName}Entity, ${ClassName}Qo> {
+public interface ${ClassName}Mapper extends BaseMapper<${ClassName}Entity, ${ClassName}Qo, ${ClassName}Bo> {
 
 }

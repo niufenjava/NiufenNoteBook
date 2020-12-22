@@ -350,7 +350,9 @@ public class GenUtils {
             StringWriter sw = new StringWriter();
             Template tpl = Velocity.getTemplate(template, "UTF-8");
             tpl.merge(context, sw);
-
+//            if (!template.contains("Mapper.xml.vm")) {
+//                continue;
+//            }
             try {
                 //添加到zip
                 String fileName = getFileName(tableEntity, template, tableEntity.getClassName(), packagePath, config.getString("moduleName"));

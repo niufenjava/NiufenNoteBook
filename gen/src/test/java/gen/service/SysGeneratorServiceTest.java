@@ -17,7 +17,7 @@ public class SysGeneratorServiceTest {
 
     @Test
     public void generatorCode() {
-        String[] tableNames = {"tbl_option","tbl_option_item"};
+        String[] tableNames = {"tbl_json"};
         sysGeneratorService.localgeneratorCode(tableNames);
     }
 }

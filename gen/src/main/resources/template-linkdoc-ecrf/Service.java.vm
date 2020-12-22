@@ -6,6 +6,7 @@ import ${modulePackage}.ao.${ClassName}UpdateAo;
 import ${modulePackage}.bo.${ClassName}Bo;
 import ${modulePackage}.entity.${ClassName}Entity;
 import ${modulePackage}.qo.${ClassName}Qo;
+import ${modulePackage}.bo.${ClassName}Bo;
 import com.linkdoc.pagehelper.PageData;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,7 @@ import java.util.Map;
  * @author haijunzhang@linkdoc.com
  * @date 2020-12-07 23:28:13
  */
-public interface ${ClassName}Service extends BaseService<${ClassName}Entity, ${ClassName}Qo> {
+public interface ${ClassName}Service extends BaseService<${ClassName}Entity, ${ClassName}Qo, ${ClassName}Bo> {
 
     /**
      * 新增-${comments}

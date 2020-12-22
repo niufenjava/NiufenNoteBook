@@ -6,7 +6,7 @@
     <!-- 单表查询字段Sql -->
     <sql id="baseColumnsSql">
     #foreach($column in $columns)
- ${column.columnName}#if($foreach.hasNext),#end
+ m.${column.columnName}#if($foreach.hasNext),#end
 #end
 
     </sql>
@@ -19,7 +19,7 @@
     <!-- 单表FromSql -->
     <sql id="baseFromSql">
         from
-        <include refid="baseTableSql"/>
+        <include refid="baseTableSql"/> m
     </sql>
 
     <!-- 单表查询条件Sql -->
@@ -31,47 +31,47 @@
 )
 
             <if test="qo.${column.attrname} != null">
-                and ${column.columnName} = #{qo.${column.attrname}}
+                and m.${column.columnName} = #{qo.${column.attrname}}
             </if>#end
         #end
 
 
             <!-- 默认字段 -->
             <if test="qo.createdAt != null">
-                and DATE_FORMAT(created_at,'%Y-%m-%d') = DATE_FORMAT(#{qo.createdAt},'%Y-%m-%d')
+                and DATE_FORMAT(m.created_at,'%Y-%m-%d') = DATE_FORMAT(#{qo.createdAt},'%Y-%m-%d')
             </if>
             <if test="qo.startCreatedAt != null">
-                <![CDATA[ and created_at >= #{qo.startCreatedAt} ]]>
+                <![CDATA[ and m.created_at >= #{qo.startCreatedAt} ]]>
             </if>
             <if test="qo.endCreatedAt != null">
-                <![CDATA[ and created_at <= #{qo.endCreatedAt} ]]>
+                <![CDATA[ and m.created_at <= #{qo.endCreatedAt} ]]>
             </if>
             <if test="qo.creatorId != null">
-                and creator_id = #{qo.creatorId}
+                and m.creator_id = #{qo.creatorId}
             </if>
             <if test="qo.creatorName != null">
-                and creator_name = #{qo.creatorName}
+                and m.creator_name = #{qo.creatorName}
             </if>
             <if test="qo.modifiedAt != null">
-                and DATE_FORMAT(modified_at,'%Y-%m-%d') = DATE_FORMAT(#{qo.modifiedAt},'%Y-%m-%d')
+                and DATE_FORMAT(m.modified_at,'%Y-%m-%d') = DATE_FORMAT(#{qo.modifiedAt},'%Y-%m-%d')
             </if>
             <if test="qo.startModifiedAt != null">
-                <![CDATA[ and modified_at >= #{qo.startModifiedAt} ]]>
+                <![CDATA[ and m.modified_at >= #{qo.startModifiedAt} ]]>
             </if>
             <if test="qo.endModifiedAt != null">
-                <![CDATA[ and modified_at <= #{qo.endModifiedAt} ]]>
+                <![CDATA[ and m.modified_at <= #{qo.endModifiedAt} ]]>
             </if>
             <if test="qo.modifierId != null">
-                and modifier_id = #{qo.modifierId}
+                and m.modifier_id = #{qo.modifierId}
             </if>
             <if test="qo.modifierName != null">
-                and modifier_name = #{qo.modifierName}
+                and m.modifier_name = #{qo.modifierName}
             </if>
             <if test="qo.isDeleted == null or qo.isDeleted == false">
-                and deleted_at = '0000-00-00 00:00:00'
+                and m.deleted_at = '0000-00-00 00:00:00'
             </if>
             <if test="qo.ids != null">
-                and id in
+                and m.id in
                 <foreach item="id" index="index" collection="qo.ids"
                          open="(" separator="," close=")">
                     #{id}
@@ -79,18 +79,21 @@
             </if>
             <!-- 特殊处理字段 -->
             <if test="qo.keywordLike != null">
-                and (name like CONCAT('%',#{qo.keywordLike},'%') or key_path like CONCAT('%',#{qo.keywordLike},'%') )
+                and (m.name like CONCAT('%',#{qo.keywordLike},'%') or m.key_path like CONCAT('%',#{qo.keywordLike},'%') )
             </if>
             <if test="qo.encodingLike != null">
-                and encoding like CONCAT('%',#{qo.encodingLike},'%')
+                and m.encoding like CONCAT('%',#{qo.encodingLike},'%')
             </if>
             <if test="qo.encodings != null">
-                and encoding in
+                and m.encoding in
                 <foreach item="encoding" index="index" collection="qo.encodings"
                          open="(" separator="," close=")">
                     #{encoding}
                 </foreach>
             </if>
+
+            <!-- 联表查询条件开始 -->
+
         </where>
     </sql>
 
@@ -98,7 +101,7 @@
     <sql id="baseSetSql">
         <set>
 #foreach($column in $columns)
-            #if($column.attrname != "id")<if test="entity.${column.attrname} != null"> ${column.columnName}=#{entity.${column.attrname}},</if>#end
+            #if($column.attrname != "id")<if test="entity.${column.attrname} != null"> m.${column.columnName}=#{entity.${column.attrname}},</if>#end
 
 #end        </set>
     </sql>
@@ -140,38 +143,38 @@
 
     <!-- 根据 ID 删除一条数据 -->
     <delete id="deleteById" parameterType="long">
-        delete
+        delete m
         <include refid="baseFromSql"/>
-        where id = #{id}
+        where m.id = #{id}
     </delete>
 
     <!-- 根据 Qo 属性删除数据 -->
     <delete id="deleteByQo" parameterType="${ClassName}Qo">
-        delete
+        delete m
         <include refid="baseFromSql"/>
         <include refid="baseQueryConditionSql"/>
     </delete>
 
     <!-- 根据 Ids 批量删除 -->
     <delete id="deleteBatchIds" parameterType="collection">
-        delete
+        delete m
         <include refid="baseFromSql"/>
-        where id in
+        where m.id in
         <include refid="baseIdsSql"/>
     </delete>
 
     <!-- 根据 ID 更新一条数据 -->
     <update id="updateById" parameterType="${ClassName}Entity">
         update
-        <include refid="baseTableSql"/>
+        <include refid="baseTableSql"/> m
         <include refid="baseSetSql"/>
-        where id = #{entity.id}
+        where m.id = #{entity.id}
     </update>
 
     <!-- 根据 Qo条件 更新一条数据 -->
     <update id="updateByQo">
         update
-        <include refid="baseTableSql"/>
+        <include refid="baseTableSql"/> m
         <include refid="baseSetSql"/>
         <include refid="baseQueryConditionSql"/>
     </update>
@@ -181,7 +184,7 @@
         select
         <include refid="baseColumnsSql"/>
         <include refid="baseFromSql"/>
-        where id = #{id}
+        where m.id = #{id}
     </select>
 
     <!-- 根据 Qo条件 获取一个实体 -->
@@ -198,7 +201,7 @@
         SELECT
         <include refid="baseColumnsSql"/>
         <include refid="baseFromSql"/>
-        where id in
+        where m.id in
         <include refid="baseIdsSql"/>
     </select>
 
@@ -230,7 +233,7 @@
     </select>
 
     <!-- 根据 Qo，进行可选项查询 -->
-    <select id="listOptionByQo" parameterType="${ClassName}Qo" resultType="OptionBO">
+    <select id="listOptionByQo" parameterType="${ClassName}Qo" resultType="CommonOptionBO">
         SELECT
         <if test="qo.optionIdColumn != null">
             ${qo.optionIdColumn} as id,
@@ -252,4 +255,92 @@
         <include refid="baseSortSql"/>
     </select>
 
+    <!-- 自定义联表查询开始 -->
+    <!-- 链表查询字段Sql -->
+    <sql id="unionColumnsSql">
+
+    </sql>
+
+    <!-- 单表表名Sql -->
+    <sql id="unionTableSql">
+
+    </sql>
+
+
+    <!-- 根据 ID 获取一个实体 -->
+    <select id="getBoById" parameterType="long" resultType="${ClassName}Bo">
+        select
+        <include refid="baseColumnsSql"/>
+        <include refid="unionColumnsSql"/>
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        where m.id = #{id}
+    </select>
+
+    <!-- 根据 Qo条件 获取一个实体 -->
+    <select id="getOneBoByQo" parameterType="${ClassName}Qo" resultType="${ClassName}Bo">
+        SELECT
+        <include refid="baseColumnsSql"/>
+        <include refid="unionColumnsSql"/>
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+        limit 1
+    </select>
+
+    <!-- 根据 Map qo 查询条件，进行列表联表查询 -->
+    <select id="listBoByQo" parameterType="${ClassName}Qo" resultType="${ClassName}Bo">
+        SELECT
+        <include refid="baseColumnsSql"/>
+        <include refid="unionColumnsSql"/>
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+        <include refid="baseSortSql"/>
+    </select>
+
+    <!-- 根据 Qo，进行联表分页查询 -->
+    <select id="unionCountByQo" parameterType="${ClassName}Qo" resultType="java.lang.Long">
+        SELECT
+        count(1)
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+    </select>
+
+    <!-- 根据 Qo，进行联表分页查询 -->
+    <select id="pageBoByQo" parameterType="${ClassName}Qo" resultType="${ClassName}Bo">
+        SELECT
+        <include refid="baseColumnsSql"/>
+        <include refid="unionColumnsSql"/>
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+        <include refid="baseSortSql"/>
+    </select>
+
+    <!-- 根据 Qo，进行可选项联表查询 -->
+    <select id="unionListOptionByQo" parameterType="${ClassName}Qo" resultType="CommonOptionBO">
+        SELECT
+        <if test="qo.optionIdColumn != null">
+            ${qo.optionIdColumn} as id,
+        </if>
+        <if test="qo.optionValueColumn != null">
+            ${qo.optionValueColumn} as value,
+        </if>
+        ${qo.optionLabelColumn} as label
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+        <include refid="baseSortSql"/>
+    </select>
+
+    <!-- 根据 Qo，进行Ids联表查询 -->
+    <select id="unionListIdsByQo" parameterType="${ClassName}Qo" resultType="Long">
+        SELECT m.id
+        <include refid="baseFromSql"/>
+        <include refid="unionTableSql"/>
+        <include refid="baseQueryConditionSql"/>
+        <include refid="baseSortSql"/>
+    </select>
 </mapper>

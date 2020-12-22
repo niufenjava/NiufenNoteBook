@@ -2,7 +2,7 @@ package ${modulePackage}.controller;
 
 import com.linkdoc.common.vo.Result;
 import ${basePackage}.ao.IdsAo;
-import ${basePackage}.bo.OptionBo;
+import ${basePackage}.bo.CommonOptionBo;
 import ${basePackage}.controller.BaseController;
 import ${commonPackage}.annotation.PermissionCheck;
 import ${commonPackage}.annotation.SysLog;
@@ -231,7 +231,7 @@ public class ${ClassName}Controller extends BaseController {
      * @return ${ClassName}Bo ${comments}业务对象列表
      */
     @PostMapping("/list-option-keyword")
-    public Result<List<OptionBo>> listOptionByKeyword(@RequestBody ${ClassName}ListAo listAo) {
+    public Result<List<CommonOptionBo>> listOptionByKeyword(@RequestBody ${ClassName}ListAo listAo) {
         ${ClassName}Qo qo = new ${ClassName}Qo();
         qo.setKeywordLike(listAo.getKeywordLike());
         qo.setIsLatest(IsLatestEnum.YES.getIndex());
@@ -250,7 +250,7 @@ public class ${ClassName}Controller extends BaseController {
      * @return ${ClassName}Bo ${comments}业务对象列表
      */
     @PostMapping("/list-option-online-keyword")
-    public Result<List<OptionBo>> listOptionOnlineByKeyword(@RequestBody ${ClassName}ListAo listAo) {
+    public Result<List<CommonOptionBo>> listOptionOnlineByKeyword(@RequestBody ${ClassName}ListAo listAo) {
         ${ClassName}Qo qo = new ${ClassName}Qo();
         qo.setKeywordLike(listAo.getKeywordLike());
         qo.setStatus(EcrfStatusEnum.ONLINE.getIndex());

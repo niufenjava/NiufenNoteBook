@@ -8,6 +8,7 @@ import ${modulePackage}.ao.${ClassName}PageAo;
 import ${modulePackage}.bo.${ClassName}Bo;
 import ${modulePackage}.entity.${ClassName}Entity;
 import ${modulePackage}.qo.${ClassName}Qo;
+import ${modulePackage}.bo.${ClassName}Bo;
 import org.springframework.beans.BeanUtils;
 
 import java.util.Objects;
@@ -19,6 +20,17 @@ import java.util.Objects;
  * @date 2020/7/14 17:00
  */
 public class ${ClassName}Tools {
+
+    /**
+     * 填充bo
+     *
+     * @param bo 对象
+     */
+    public static void fillBo(${ClassName}Bo bo) {
+        ${ClassName}Bo entityBo = entityToBo(bo);
+        BeanUtils.copyProperties(entityBo, bo);
+        // bo.setModelVersionDesc("V" + bo.getModelVersion());
+    }
 
     /**
      * ${comments} Entity 转 Bo
