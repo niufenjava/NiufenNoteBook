@@ -4,9 +4,23 @@ echo "别名文件存放路径:" $thisPath
 source $thisPath/docker.zsh
 
 alias psall='favoriteps;dubbops;esps;kinabaps;rabbitps;activeps;mongops;redisps;tomcatps;nginxps;mysqlps;zkps'
+# docker
+alias dkps='docker ps'
+alias dkpsa='docker ps -a'
+alias dkk='func() { docker kill $1;}; func'
+alias dkstop='func() { docker stop $1;}; func'
+alias dkrm='func() { docker rm $1;}; func'
+alias dkrma='docker rm $(docker ps -a -q)'
+#同样使用docker inspect命令查看宿主机的挂载目录
+#进入容器
+alias dkex='func() {docker exec -it $1 /bin/bash;}; func'
+#在宿主机执行命令
+#docker cp atlas:/opt/apache-atlas-2.1.0/conf/* ~/data/docker-atlas/
+
 
 # jmeter
 alias jmeter='jmeter'
+alias dnsclear='sudo killall -HUP mDNSResponder;sudo dscacheutil -flushcache'
 
 # java
 alias javaps='ps -ef | grep java | grep -v grep'
@@ -30,44 +44,6 @@ alias dubbostop='ps -ef | grep dubbo-admin-server | grep -v grep | awk '"'"'{pri
 alias dubbops='ps -ef | grep dubbo-admin-server | grep -v grep'
 alias dubbolog='tail -f ~/logs/dubbo-admin-server.log -n 200'
 alias dubborestart='dubbostop;dubbostart;dubbolog'
-
-# es
-alias esstart='brew services start elasticsearch'
-alias esstop='brew services stop elasticsearch'
-alias esps='ps -ef | grep elasticsearch | grep -v grep'
-alias esrestart='esstart;esstop'
-
-# Kinaba
-alias kinabastart='brew services start kibana'
-alias kinabastop='brew services stop kibana'
-alias kinabaps='ps -ef | grep kibana | grep -v grep'
-alias kinabarestart='kinabastop;kinabastart'
-
-# RabbitMQ
-alias rabbitstart='sudo rabbitmq-server'
-alias rabbitstop='sudo ps -ef | grep rabbitmq | grep -v grep | awk '"'"'{print $2}'"'"' | xargs sudo kill -9;rabbitmq'
-alias rabbitps='ps -ef | grep rabbitmq | grep -v grep'
-alias rabbitrestart='rabbitstop;rabbitstart'
-
-# ActiveMQ
-alias activestart='activemq start;activestatus'
-alias activestop='activemq stop;activestatus'
-alias activestatus='activemq status'
-alias activeps='ps -ef | grep activemq | grep -v grep'
-alias activerestart='activestop;activestart;'
-
-# MongoDB
-alias mongohome='cd ~/server/mongodb/'
-alias mongoconf='echo '"'"'~/server/mongodb/master.cfg'"'"''
-alias mongoconfcat='cat ~/server/mongodb/master.cfg'
-alias mongoconfvim='vim ~/server/mongodb/master.cfg'
-alias mongostart='nohup mongod -config ~/server/mongodb/master.cfg > ~/logs/mongodb.log &'
-alias mongostop='favoritestop'
-alias mongostop='ps -ef | grep mongodb | grep -v grep | awk '"'"'{print $2}'"'"' | xargs kill -9;mongops'
-alias mongostatus='mongops'
-alias mongops='ps -ef | grep mongodb | grep -v grep'
-alias mongorestart='mongostop;mongostart;'
-alias mongolog='tail -f ~/logs/mongodb.log -n 200'
 
 # nginx
 alias nginxps='ps -ef | grep nginx | grep -v grep'
@@ -103,19 +79,6 @@ alias mysqlstart='sudo mysql.server start'
 alias mysqlstop='sudo mysql.server stop'
 alias mysqlstatus='mysql.server status'
 
-# zookeeper
-alias zkps='ps -ef | grep zookeeper | grep -v grep'
-alias zkhome='cd /usr/local/Cellar/zookeeper/3.4.10/'
-alias zkconfhome='cd /usr/local/etc/zookeeper/'
-alias zkconfcat='cat /usr/local/etc/zookeeper/zoo.cfg'
-alias zkconfvim='vim /usr/local/etc/zookeeper/zoo.cfg'
-alias zkstart='zkServer start;zkstatus'
-alias zkcli='zkCli -server localhost:2181'
-alias zkstatus='zkServer status'
-alias zkstop='zkServer stop'
-alias zkrestart='zkstop;zkstart'
-alias zkkill='ps -ef | grep zookeeper | grep -v grep | awk '"'"'{print $2}'"'"' | xargs kill -9'
-alias zklog='tail -f /usr/local/var/log/zookeeper/zookeeper.log -n 200'
 
 # deerkids
 alias deerkidstestssh='ssh root@test.it.deerkids.com'
