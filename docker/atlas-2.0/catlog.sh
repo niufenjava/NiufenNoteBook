@@ -1,1 +1,1 @@
-docker exec -ti atlas tail -f /opt/apache-atlas-2.1.0/logs/application.log
+docker exec -ti atlas.sh tail -f /opt/apache-atlas.sh-2.1.0/logs/application.log

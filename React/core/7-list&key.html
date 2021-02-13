@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<!--七、List 列表 & Key-->
+<!--7.1、渲染多个组件 -->
+<div id="root1"></div>
+<script type="text/babel">
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) =>
+        <li key={number}>{number}</li>
+    );
+
+    ReactDOM.render(
+        <ul>{listItems}</ul>,
+        document.getElementById('root1')
+    );
+</script>
+
+<!--7.2、基础组件列表 -->
+<div id="root2"></div>
+<script type="text/babel">
+    function NumberList(props) {
+        const numbers = props.numbers;
+        const listItems = numbers.map((number) =>
+            <li key={number}>{number}</li>
+        );
+        return (
+            <ul>{listItems}</ul>
+        );
+    }
+
+    const numbers = [1, 2, 3, 4, 5];
+    ReactDOM.render(
+        <NumberList numbers={numbers}/>,
+        document.getElementById('root2')
+    );
+</script>
+
+</body>
+</html>

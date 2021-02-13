@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+<!--React 安装  https://www.runoob.com/react/react-install.html-->
+<div id="example"></div>
+<script type="text/babel">
+    const element =
+        <div>
+            <h1>Hello, world!</h1>
+            <button style={{height: '50px', width: '100px'}}/>
+        </div>
+    ReactDOM.render(element,
+        document.getElementById('example')
+    );
+</script>
+
+<!--jsx中写固定样式style-->
+
+</body>
+</html>

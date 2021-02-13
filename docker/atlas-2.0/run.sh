@@ -6,10 +6,10 @@
 #docker run -d --privileged=true \
 
 docker run -d --privileged=true \
-    -v ~/data/docker-atlas/data:/opt/apache-atlas-2.1.0/data \
-    -v ~/data/docker-atlas/logs:/opt/apache-atlas-2.1.0/logs \
-    -v ~/data/docker-atlas/conf:/opt/apache-atlas-2.1.0/conf \
+    -v ~/data/docker-atlas.sh/data:/opt/apache-atlas.sh-2.1.0/data \
+    -v ~/data/docker-atlas.sh/logs:/opt/apache-atlas.sh-2.1.0/logs \
+    -v ~/data/docker-atlas.sh/conf:/opt/apache-atlas.sh-2.1.0/conf \
     -p 21000:21000 \
-    --name atlas \
-    sburn/apache-atlas \
-    /opt/apache-atlas-2.1.0/bin/atlas_start.py
+    --name atlas.sh \
+    sburn/apache-atlas.sh \
+    /opt/apache-atlas.sh-2.1.0/bin/atlas_start.py

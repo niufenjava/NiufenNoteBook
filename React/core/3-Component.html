@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<!--3.2 函数组件-->
+<div id="root"></div>
+<script type="text/babel">
+    function Welcome(props) {
+        return <h1>Hello, {props.name}，我是一个函数组件</h1>;
+    }
+
+    ReactDOM.render(
+        <Welcome name={"haijun"}/>,
+        document.getElementById('root')
+    );
+</script>
+
+<!--3.2 Class组件-->
+<div id="root2"></div>
+<script type="text/babel">
+    class Welcome extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}，我是一个Class组件</h1>;
+        }
+    }
+
+    ReactDOM.render(
+        <Welcome name={"haijun"}/>,
+        document.getElementById('root2')
+    );
+</script>
+
+
+<!--3.3 渲染组件-->
+<div id="root3"></div>
+<script type="text/babel">
+    //3.Welcome 组件将 <h1>Hello, Sara</h1> 元素作为返回值
+    function Welcome(props) {
+        return <h1>Hello, {props.name}，使用render 渲染组件</h1>;
+    }
+
+    const element = <Welcome name="Sara"/>;
+    //1. 调用render函数，传入 <Welcome name={"haijun"}/> 作为参数
+    //2. React 调用 Welcome 组件，并将{name: 'Sara'}作为 props 传入。
+    ReactDOM.render(
+        <Welcome name={"haijun"}/>,
+        document.getElementById('root3')
+    );
+    //4.ReactDOM 将 DOM 高效地更新为 <h1>Hello, Sara</h1>
+</script>
+
+<!--3.4 组合组件-->
+<div id="root4"></div>
+<script type="text/babel">
+    function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+    }
+
+    function App() {
+        return (
+            <div>
+                <Welcome name="Sara"/>
+                <Welcome name="Cahal"/>
+                <Welcome name="Edite"/>
+            </div>
+        );
+    }
+
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('root4')
+    );
+</script>
+
+<!--3.5 提取组件-->
+<div id="root5"></div>
+<script type="text/babel">
+    function Avatar(props) {
+        return (
+            // Avatar 不需知道它在 Comment 组件内部是如何渲染的。
+            // 因此，给它的 props 起了一个更通用的名字：user，而不是 author。
+            <img className="Avatar" src={props.user.avatarUrl} alt={props.user.name}/>
+        );
+    }
+
+    function UserInfo(props) {
+        return (
+            <div className="UserInfo">
+                <Avatar user={props.user}/>
+                <div className="UserInfo-name">
+                    {props.user.name}
+                </div>
+            </div>
+        );
+    }
+
+    function Comment(props) {
+        return (
+            <div className="Comment">
+                <UserInfo user={props.author}/>
+                <div className="Comment-text">
+                    {props.text}
+                </div>
+                <div className="Comment-date">
+                    {props.date}
+                </div>
+            </div>
+        );
+    }
+
+    const author = {
+        avatarUrl: 'www.baidu.com',
+        name: 'haijun'
+    }
+    ReactDOM.render(
+        <Comment author={author} text='comment text' date='2020-01-01'/>,
+        document.getElementById('root5')
+    );
+</script>
+
+</body>
+</html>

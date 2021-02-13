@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<!--1.2、在 JSX 中嵌入表达式-->
+<!--在 JSX 中使用变量-->
+<div id="root"></div>
+<script type="text/babel">
+    // 声明了一个名为 name 的变量
+    const name = 'Josh Perez';
+    // 在 JSX 中使用它，并将它包裹在大括号中：
+    const element = <h1>Hello, {name}</h1>;
+    ReactDOM.render(
+        element,
+        document.getElementById('root')
+    );
+</script>
+
+<!--在 JSX 中使用 JS表达式-->
+<div id="root2"></div>
+<script type="text/babel">
+    // 函数表达式
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+    const user = {
+        firstName: 'Harper',
+        lastName: 'Perez'
+    };
+    const element = (
+        // 调用 JavaScript 函数 formatName(user) 的结果，并将结果嵌入到 <h1> 元素中。
+        <h1>Hello, {formatName(user)}! </h1>
+    );
+    ReactDOM.render(
+        element,
+        document.getElementById('root2')
+    );
+</script>
+
+
+</body>
+</html>

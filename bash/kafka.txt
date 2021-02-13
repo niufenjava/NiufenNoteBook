@@ -1,0 +1,15 @@
+Topic名称：data-atlas-hook-event
+业务描述：大数据Atlas元数据钩子事件
+分区数：3
+副本数：3
+老化时间：72
+同步复制：N
+同步落盘：N
+
+Topic名称：data-atlas-entities-event
+业务描述：大数据Atlas元数据实体事件
+分区数：3
+副本数：3
+老化时间：72
+同步复制：N
+同步落盘：N

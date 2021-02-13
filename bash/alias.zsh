@@ -3,6 +3,8 @@ thisPath=$(cd $(dirname ${BASH_SOURCE:-$0});pwd)
 echo "别名文件存放路径:" $thisPath
 source $thisPath/docker.zsh
 
+alias kinithaiun='kinit -kt ~/haijun.zhang.keytab haijun.zhang'
+
 alias psall='favoriteps;dubbops;esps;kinabaps;rabbitps;activeps;mongops;redisps;tomcatps;nginxps;mysqlps;zkps'
 # docker
 alias dkps='docker ps'
@@ -15,7 +17,7 @@ alias dkrma='docker rm $(docker ps -a -q)'
 #进入容器
 alias dkex='func() {docker exec -it $1 /bin/bash;}; func'
 #在宿主机执行命令
-#docker cp atlas:/opt/apache-atlas-2.1.0/conf/* ~/data/docker-atlas/
+#docker cp atlas.sh:/opt/apache-atlas.sh-2.1.0/conf/* ~/data/docker-atlas.sh/
 
 
 # jmeter
@@ -92,3 +94,7 @@ alias cdsolr='/usr/local/Cellar/solr/8.5.1'
 
 alias sb='source ~/.bash_profile'
 
+# ssh
+alias hadooptest01='ssh root@hadooptest01.joymo.tech'
+alias hadooptest02='ssh root@hadooptest02.joymo.tech'
+alias hadooptestgw01='ssh root@hadooptestgw01.joymo.tech'

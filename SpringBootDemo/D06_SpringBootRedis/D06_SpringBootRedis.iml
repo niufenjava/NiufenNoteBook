@@ -25,26 +25,15 @@
     </facet>
     <facet type="JRebel" name="JRebel">
       <configuration>
-        <option name="deleteUnindexed" value="false" />
-        <option name="httpAuthEnabled" value="false" />
-        <option name="httpPassword" />
-        <option name="httpUsername" />
         <option name="ideModuleStorage">
           <map>
             <entry key="com.zeroturnaround.jrebel.FormatVersion" value="7.0.0" />
             <entry key="com.zeroturnaround.jrebel.remoting.DeleteUnindexedFiles" value="false" />
             <entry key="com.zeroturnaround.jrebel.remoting.ModuleRemoteServerSelection" value="off" />
             <entry key="jrebelEnabled" value="true" />
-            <entry key="lastExternalPluginCheckTime" value="1590075715238" />
+            <entry key="lastExternalPluginCheckTime" value="1611718774770" />
           </map>
         </option>
-        <option name="masterModuleName" />
-        <option name="overrideStandardXmlFolder" value="false" />
-        <option name="remotingEnabled" value="false" />
-        <option name="secure" value="true" />
-        <option name="url" />
-        <option name="useRelativePathsInXml" value="false" />
-        <option name="xmlDir" />
       </configuration>
     </facet>
   </component>
@@ -70,6 +59,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:2.2.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.lettuce:lettuce-core:5.2.2.RELEASE" level="project" />
@@ -84,6 +74,7 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.2.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
@@ -104,12 +95,14 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.2.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.34" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.34" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.34" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.19.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.2.7.RELEASE" level="project" />
@@ -166,7 +159,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-test:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.xmlunit:xmlunit-core:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:2.2.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:2.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf-spring5:3.0.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.0.11.RELEASE" level="project" />
@@ -176,19 +169,14 @@
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.2" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="module" module-name="common" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.6.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.6.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.6.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
     <orderEntry type="library" name="Maven: com.github.javafaker:javafaker:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:android:1.23" level="project" />
     <orderEntry type="library" name="Maven: com.github.mifmif:generex:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: dk.brics.automaton:automaton:1.11-8" level="project" />
     <orderEntry type="library" name="Maven: com.belerweb:pinyin4j:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.68" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.34" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.34" level="project" />
     <orderEntry type="module" module-name="SpringBootCommon" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.68" level="project" />
   </component>
 </module>
