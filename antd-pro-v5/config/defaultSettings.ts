@@ -1,20 +1,23 @@
 import { Settings as LayoutSettings } from '@ant-design/pro-layout';
-
+// doc https://procomponents.ant.design/components/layout
 const Settings: LayoutSettings & {
   pwa?: boolean;
   logo?: string;
 } = {
   navTheme: 'light',
   // 拂晓蓝
-  primaryColor: '#1890ff',
-  layout: 'mix',
-  contentWidth: 'Fluid',
-  fixedHeader: false,
-  fixSiderbar: true,
+  primaryColor: '#28a745',
+  layout: 'top',
+  contentWidth: 'Fixed',
+  fixedHeader: true,
+  fixSiderbar: false,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  //layout 的左上角 的 title
+  title: 'Joymo Gaze',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  //layout 的左上角 logo 的 url
+  logo: 'http://navi.joymo.tech/static/img/logo.png',
+  // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
 };
 
